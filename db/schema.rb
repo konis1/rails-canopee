@@ -10,9 +10,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_05_135505) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_05_141801) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "garden_plants", force: :cascade do |t|
+    t.string "nickname"
+    t.string "pot_color"
+    t.bigint "plant_id", null: false
+    t.bigint "garden_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["garden_id"], name: "index_garden_plants_on_garden_id"
+    t.index ["plant_id"], name: "index_garden_plants_on_plant_id"
+  end
+
+  create_table "gardens", force: :cascade do |t|
+    t.string "name"
+    t.integer "light"
+    t.integer "size"
+    t.integer "care_willing"
+    t.string "location"
+    t.float "latitude"
+    t.float "longitude"
+    t.string "color"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_gardens_on_user_id"
+  end
 
   create_table "plants", force: :cascade do |t|
     t.string "name"
@@ -28,6 +54,17 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_05_135505) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "tasks", force: :cascade do |t|
+    t.string "activity"
+    t.string "criticity"
+    t.datetime "due_date"
+    t.datetime "done_time"
+    t.bigint "garden_plant_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["garden_plant_id"], name: "index_tasks_on_garden_plant_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -40,4 +77,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_05_135505) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "wishlists", force: :cascade do |t|
+    t.bigint "garden_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["garden_id"], name: "index_wishlists_on_garden_id"
+  end
+
+  add_foreign_key "garden_plants", "gardens"
+  add_foreign_key "garden_plants", "plants"
+  add_foreign_key "gardens", "users"
+  add_foreign_key "tasks", "garden_plants"
+  add_foreign_key "wishlists", "gardens"
 end
