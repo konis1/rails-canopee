@@ -10,9 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_05_141130) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_05_141801) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "garden_plants", force: :cascade do |t|
+    t.string "nickname"
+    t.string "pot_color"
+    t.bigint "plant_id", null: false
+    t.bigint "garden_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["garden_id"], name: "index_garden_plants_on_garden_id"
+    t.index ["plant_id"], name: "index_garden_plants_on_plant_id"
+  end
 
   create_table "gardens", force: :cascade do |t|
     t.string "name"
@@ -54,6 +65,17 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_05_141130) do
     t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
+  create_table "tasks", force: :cascade do |t|
+    t.string "activity"
+    t.string "criticity"
+    t.datetime "due_date"
+    t.datetime "done_time"
+    t.bigint "garden_plant_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["garden_plant_id"], name: "index_tasks_on_garden_plant_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -82,9 +104,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_05_141130) do
     t.index ["garden_id"], name: "index_wishlists_on_garden_id"
   end
 
+  add_foreign_key "garden_plants", "gardens"
+  add_foreign_key "garden_plants", "plants"
   add_foreign_key "gardens", "users"
   add_foreign_key "reviews", "plants"
   add_foreign_key "reviews", "users"
+  add_foreign_key "tasks", "garden_plants"
   add_foreign_key "wishlist_plants", "plants"
   add_foreign_key "wishlist_plants", "wishlists"
   add_foreign_key "wishlists", "gardens"
