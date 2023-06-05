@@ -10,9 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_05_135505) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_05_141130) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "gardens", force: :cascade do |t|
+    t.string "name"
+    t.integer "light"
+    t.integer "size"
+    t.integer "care_willing"
+    t.string "location"
+    t.float "latitude"
+    t.float "longitude"
+    t.string "color"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_gardens_on_user_id"
+  end
 
   create_table "plants", force: :cascade do |t|
     t.string "name"
@@ -28,6 +43,17 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_05_135505) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "reviews", force: :cascade do |t|
+    t.float "note"
+    t.text "content"
+    t.bigint "user_id", null: false
+    t.bigint "plant_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["plant_id"], name: "index_reviews_on_plant_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -40,4 +66,26 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_05_135505) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "wishlist_plants", force: :cascade do |t|
+    t.bigint "wishlist_id", null: false
+    t.bigint "plant_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["plant_id"], name: "index_wishlist_plants_on_plant_id"
+    t.index ["wishlist_id"], name: "index_wishlist_plants_on_wishlist_id"
+  end
+
+  create_table "wishlists", force: :cascade do |t|
+    t.bigint "garden_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["garden_id"], name: "index_wishlists_on_garden_id"
+  end
+
+  add_foreign_key "gardens", "users"
+  add_foreign_key "reviews", "plants"
+  add_foreign_key "reviews", "users"
+  add_foreign_key "wishlist_plants", "plants"
+  add_foreign_key "wishlist_plants", "wishlists"
+  add_foreign_key "wishlists", "gardens"
 end
