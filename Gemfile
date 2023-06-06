@@ -28,6 +28,7 @@ gem "stimulus-rails"
 gem "jbuilder"
 gem "geocoder"
 
+
 # Add cloudinary
 gem "cloudinary"
 
@@ -53,6 +54,7 @@ gem "sassc-rails"
 # gem "image_processing", "~> 1.2"
 
 gem "bootstrap", "~> 5.2"
+gem 'bootstrap3-datetimepicker-rails', '~> 4.17', '>= 4.17.47'
 gem "devise"
 gem "autoprefixer-rails"
 gem "font-awesome-sass", "~> 6.1"
