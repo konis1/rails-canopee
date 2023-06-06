@@ -1,3 +1,5 @@
 <h1>Gardens#show</h1>
 
-<%= render 'form', garden: @garden %>
+<%= render 'garden', garden: @garden %>
+
+<%= link_to 'Back to Garden', gardens_path, class:"btn btn-primary" %>

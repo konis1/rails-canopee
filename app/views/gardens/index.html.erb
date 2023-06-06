@@ -2,6 +2,7 @@
 
 <div class="row">
     <% @gardens.each do |garden| %>
+    <div class="col 3 p-3">
       <div class="col 3 p-3">
           <%= garden.name %>
           <%= garden.light %>
@@ -11,6 +12,11 @@
           <%= garden.latitude %>
           <%= garden.longitude %>
           <%= garden.color %>
-        </div>
-    <% end %>
+      </div>
+
+          <%= link_to 'Edit', edit_garden_path(garden), class:"btn btn-primary" %>
+          <%= link_to 'Show', garden_path(garden), class:"btn btn-primary" %>
+
+    </div>
+  <% end %>
 </div>

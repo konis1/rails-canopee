@@ -16,8 +16,8 @@ puts user1.inspect
 puts user2.inspect
 
 # Create gardens
-garden1 = Garden.create!(name: "Garden 1", light: 3, size: 2, care_willing: 4, location: "Location 1", latitude: 51.1234, longitude: -0.5678, color: "Green", user: user1)
-garden2 = Garden.create!(name: "Garden 2", light: 2, size: 3, care_willing: 5, location: "Location 2", latitude: 52.4321, longitude: -1.9876, color: "Red", user: user2)
+garden1 = Garden.create!(name: "Garden 1", light: 3, size: 2, care_willing: 4, location: "paris, France", latitude: 0, longitude: 1, color: "Green", user: user1)
+garden2 = Garden.create!(name: "Garden 2", light: 2, size: 3, care_willing: 5, location: "brest, France", latitude: 0, longitude: 1, color: "Red", user: user2)
 
 puts "Create!create!d gardens:"
 puts garden1.inspect
