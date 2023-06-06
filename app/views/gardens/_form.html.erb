@@ -5,12 +5,14 @@
     <%= f.input :light %>
     <%= f.input :size %>
     <%= f.input :care_willing %>
-    <%= f.input :location %>
-    <%= f.input :latitude %>
-    <%= f.input :longitude %>
+    <%= f.input :location,
+      input_html: {data: {address_autocomplete_target: "address"}, class: "d-none"},
+      wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}
+    %>
     <%= f.input :color %>
   </div>
 
   <div>
     <%= f.button :submit %>
   </div>
+<% end %>
