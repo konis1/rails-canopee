@@ -5,18 +5,24 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+User.destroy_all
+Garden.destroy_all
+Plant.destroy_all
+Garden_plant.destroy_all
+Review.destroy_all
+Task.destroy_all
 
 # Create users
-user1 = User.create(email: "user1@example.com", password: "password1")
-user2 = User.create(email: "user2@example.com", password: "password2")
+user1 = User.create!(email: "user1@example.com", password: "password1")
+user2 = User.create!(email: "user2@example.com", password: "password2")
 
 puts "Created users:"
 puts user1.inspect
 puts user2.inspect
 
 # Create gardens
-garden1 = Garden.create(name: "Garden 1", light: 3, size: 2, care_willing: 4, location: "Location 1", latitude: 51.1234, longitude: -0.5678, color: "Green", user: user1)
-garden2 = Garden.create(name: "Garden 2", light: 2, size: 3, care_willing: 5, location: "Location 2", latitude: 52.4321, longitude: -1.9876, color: "Red", user: user2)
+garden1 = Garden.create(name: "Garden 1", light: 3, size: 2, care_willing: 4, location: "Location 1", latitude: 51.1234, longitude: -0.5678, color: "Green", user1: user1)
+garden2 = Garden.create(name: "Garden 2", light: 2, size: 3, care_willing: 5, location: "Location 2", latitude: 52.4321, longitude: -1.9876, color: "Red", user2: user2)
 
 puts "Created gardens:"
 puts garden1.inspect
@@ -53,18 +59,3 @@ task2 = Task.create(activity: "Pruning", criticity: "Medium", due_date: DateTime
 puts "Created tasks:"
 puts task1.inspect
 puts task2.inspect
-
-# Create wishlist
-wishlist1 = Wishlist.create(garden: garden1)
-wishlist2 = Wishlist.create(garden: garden2)
-
-puts "Created wishlists:"
-puts wishlist1.inspect
-puts wishlist2.inspect
-
-# Add plants to wishlist
-WishlistPlant.create(wishlist: wishlist1, plant: plant1)
-WishlistPlant.create(wishlist: wishlist2, plant: plant2)
-
-puts "Created wishlist plants:"
-puts WishlistPlant.all.inspect

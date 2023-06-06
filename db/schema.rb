@@ -88,29 +88,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_05_141801) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  create_table "wishlist_plants", force: :cascade do |t|
-    t.bigint "wishlist_id", null: false
-    t.bigint "plant_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["plant_id"], name: "index_wishlist_plants_on_plant_id"
-    t.index ["wishlist_id"], name: "index_wishlist_plants_on_wishlist_id"
-  end
-
-  create_table "wishlists", force: :cascade do |t|
-    t.bigint "garden_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["garden_id"], name: "index_wishlists_on_garden_id"
-  end
-
   add_foreign_key "garden_plants", "gardens"
   add_foreign_key "garden_plants", "plants"
   add_foreign_key "gardens", "users"
   add_foreign_key "reviews", "plants"
   add_foreign_key "reviews", "users"
   add_foreign_key "tasks", "garden_plants"
-  add_foreign_key "wishlist_plants", "plants"
-  add_foreign_key "wishlist_plants", "wishlists"
-  add_foreign_key "wishlists", "gardens"
 end
