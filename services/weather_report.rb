@@ -19,7 +19,7 @@ class WeatherService
     JSON.parse(URI.open(@weather_api).read)['daily']['rain_sum'][0]
   end
 
-  def determine_climat
+  def determine_climate
     location_region = retrieve_region
     locate_in_climate_map(location_region)
   end

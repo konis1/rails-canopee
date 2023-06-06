@@ -20,6 +20,8 @@ class GardensController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
+    climate_checker = WeatherService.new(@garden.latitude, @garden.longitude, @garden.location)
+    @garden.climate = climate_checker.determine_climate
   end
 
   def edit
