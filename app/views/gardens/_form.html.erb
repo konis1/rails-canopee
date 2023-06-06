@@ -1,0 +1,16 @@
+<%= simple_form_for @garden do |f| %>
+
+  <div>
+    <%= f.input :name %>
+    <%= f.input :light %>
+    <%= f.input :size %>
+    <%= f.input :care_willing %>
+    <%= f.input :location %>
+    <%= f.input :latitude %>
+    <%= f.input :longitude %>
+    <%= f.input :color %>
+  </div>
+
+  <div>
+    <%= f.button :submit %>
+  </div>
