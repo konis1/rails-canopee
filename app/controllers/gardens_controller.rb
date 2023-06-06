@@ -47,6 +47,10 @@ class GardensController < ApplicationController
   end
 
   def garden_params
+<<<<<<< HEAD
     params.require(:garden).permit(:name, :light, :size, :care_willing, :location, :latitude, :longitude, :color)
+=======
+    params.require(:garden).permit(:name, :light, :size, :care_willing, :location, :color, :user_id)
+>>>>>>> master
   end
 end

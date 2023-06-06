@@ -1,0 +1,4806 @@
+[
+  {
+    "name": "Abélia",
+    "color": "pink",
+    "caducity": "semi_persistant",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Normale",
+    "cold_resistance": 1,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat méditerranéen"
+    ],
+    "final_size": 1.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/519/mainImage-full-11071182.jpg"
+  },
+  {
+    "name": "Abricotier du Japon",
+    "color": "white",
+    "caducity": "caduc",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Normale",
+    "cold_resistance": 0,
+    "light_need": 0,
+    "climate": [
+      "Climat semi-océanique",
+      "Climat méditerranéen"
+    ],
+    "final_size": 6.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/1731/mainImage-full-12879315.jpg"
+  },
+  {
+    "name": "Absinthe",
+    "color": "yellow",
+    "caducity": "persistant",
+    "care_frequency": 0,
+    "water_need": 0,
+    "growth_speed": "Normale",
+    "cold_resistance": 2,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/314/mainImage-full-11702065.jpg"
+  },
+  {
+    "name": "Acaena",
+    "color": "white",
+    "caducity": "persistant",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Normale",
+    "cold_resistance": 2,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/1263/mainImage-full-12511673.jpg"
+  },
+  {
+    "name": "Acalypha",
+    "color": "white",
+    "caducity": "persistant",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Rapide",
+    "cold_resistance": 0,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard",
+      "Climat méditerranéen"
+    ],
+    "final_size": 30.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/1193/mainImage-full-12458243.jpg"
+  },
+  {
+    "name": "Acanthe",
+    "color": "white",
+    "caducity": "persistant",
+    "care_frequency": 0,
+    "water_need": 0,
+    "growth_speed": "Lente",
+    "cold_resistance": 1,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/203/mainImage-full-11518188.jpg"
+  },
+  {
+    "name": "Acanthocalycium",
+    "color": "white",
+    "caducity": "persistant",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Lente",
+    "cold_resistance": 1,
+    "light_need": 0,
+    "climate": [
+      "Climat semi-océanique",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/2005/mainImage-full-13444083.jpg"
+  },
+  {
+    "name": "Acantholimon",
+    "color": "white",
+    "caducity": "persistant",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Lente",
+    "cold_resistance": 2,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/1493/mainImage-full-12632383.jpg"
+  },
+  {
+    "name": "Acer negundo",
+    "color": "red",
+    "caducity": "caduc",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Rapide",
+    "cold_resistance": 1,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard",
+      "Climat méditerranéen"
+    ],
+    "final_size": 3.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/1441/mainImage-full-12608247.jpg"
+  },
+  {
+    "name": "Acer platanoides",
+    "color": "yellow",
+    "caducity": "caduc",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Rapide",
+    "cold_resistance": 2,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard",
+      "Climat méditerranéen"
+    ],
+    "final_size": 7.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/1443/mainImage-full-12608533.jpg"
+  },
+  {
+    "name": "Achimenes",
+    "color": "white",
+    "caducity": "caduc",
+    "care_frequency": 1,
+    "water_need": 1,
+    "growth_speed": "Normale",
+    "cold_resistance": 0,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/1183/mainImage-full-12457139.jpg"
+  },
+  {
+    "name": "Aconit",
+    "color": "white",
+    "caducity": "caduc",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Normale",
+    "cold_resistance": 2,
+    "light_need": 0,
+    "climate": [
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/38/mainImage-full-9342582.jpg"
+  },
+  {
+    "name": "Acroclinium",
+    "color": "white",
+    "caducity": "caduc",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Rapide",
+    "cold_resistance": 0,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/873/mainImage-full-12264612.jpg"
+  },
+  {
+    "name": "Babiana",
+    "color": "white",
+    "caducity": "caduc",
+    "care_frequency": 1,
+    "water_need": 1,
+    "growth_speed": "Normale",
+    "cold_resistance": 0,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/1113/mainImage-full-12402913.jpg"
+  },
+  {
+    "name": "Baccharis",
+    "color": "white",
+    "caducity": "persistant",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Rapide",
+    "cold_resistance": 2,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat méditerranéen"
+    ],
+    "final_size": 2.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/1545/mainImage-full-12788183.jpg"
+  },
+  {
+    "name": "Bacopa",
+    "color": "white",
+    "caducity": "persistant",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Rapide",
+    "cold_resistance": 1,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/629/mainImage-full-12111974.jpg"
+  },
+  {
+    "name": "Baguenaudier",
+    "color": "yellow",
+    "caducity": "caduc",
+    "care_frequency": 0,
+    "water_need": 0,
+    "growth_speed": "Rapide",
+    "cold_resistance": 2,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat montagnard",
+      "Climat méditerranéen"
+    ],
+    "final_size": 1.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/375/mainImage-full-10322308.jpg"
+  },
+  {
+    "name": "Baie de mai",
+    "color": "white",
+    "caducity": "caduc",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Lente",
+    "cold_resistance": 2,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/1827/mainImage-full-12930117.jpg"
+  },
+  {
+    "name": "Ballote",
+    "color": "white",
+    "caducity": "persistant",
+    "care_frequency": 0,
+    "water_need": 0,
+    "growth_speed": "Rapide",
+    "cold_resistance": 2,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/591/mainImage-full-11362244.jpg"
+  },
+  {
+    "name": "Bambou sacré",
+    "color": "white",
+    "caducity": "persistant",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Lente",
+    "cold_resistance": 2,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/267/mainImage-full-11529360.jpg"
+  },
+  {
+    "name": "Bananier",
+    "color": "white",
+    "caducity": "caduc",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Rapide",
+    "cold_resistance": 0,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat méditerranéen"
+    ],
+    "final_size": 1.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/137/mainImage-full-10901408.jpg"
+  },
+  {
+    "name": "Banksia",
+    "color": "white",
+    "caducity": "persistant",
+    "care_frequency": 1,
+    "water_need": 1,
+    "growth_speed": "Lente",
+    "cold_resistance": 1,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat méditerranéen"
+    ],
+    "final_size": 1.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/1004/mainImage-full-12340797.jpg"
+  },
+  {
+    "name": "Baobab",
+    "color": "white",
+    "caducity": "caduc",
+    "care_frequency": 0,
+    "water_need": 0,
+    "growth_speed": "Lente",
+    "cold_resistance": 0,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/508/mainImage-full-11994524.jpg"
+  },
+  {
+    "name": "Baptisia australis",
+    "color": "white",
+    "caducity": "caduc",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Lente",
+    "cold_resistance": 2,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/250/mainImage-full-9946736.jpg"
+  },
+  {
+    "name": "Barbarea vulgaris",
+    "color": "yellow",
+    "caducity": "persistant",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Rapide",
+    "cold_resistance": 2,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard",
+      "Climat méditerranéen"
+    ],
+    "final_size": 30.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/2071/mainImage-full-13531851.jpg"
+  },
+  {
+    "name": "Barbe de capucin",
+    "color": "blue",
+    "caducity": "persistant",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Rapide",
+    "cold_resistance": 2,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/1345/mainImage-full-12550275.jpg"
+  },
+  {
+    "name": "Basilic",
+    "color": "white",
+    "caducity": "caduc",
+    "care_frequency": 1,
+    "water_need": 1,
+    "growth_speed": "Normale",
+    "cold_resistance": 0,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/16/mainImage-full-9167564.jpg"
+  },
+  {
+    "name": "Cacaoyer",
+    "color": "white",
+    "caducity": "persistant",
+    "care_frequency": 2,
+    "water_need": 1,
+    "growth_speed": "Normale",
+    "cold_resistance": 0,
+    "light_need": 1,
+    "climate": [
+
+    ],
+    "final_size": 3.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/1943/mainImage-full-13105491.jpg"
+  },
+  {
+    "name": "Cactus de Pâques",
+    "color": "white",
+    "caducity": "persistant",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Normale",
+    "cold_resistance": 0,
+    "light_need": 1,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/996/mainImage-full-12330614.jpg"
+  },
+  {
+    "name": "Cactus San Pedro",
+    "color": "white",
+    "caducity": "persistant",
+    "care_frequency": 0,
+    "water_need": 0,
+    "growth_speed": "Rapide",
+    "cold_resistance": 1,
+    "light_need": 0,
+    "climate": [
+
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/1855/mainImage-full-12944565.jpg"
+  },
+  {
+    "name": "Cade",
+    "color": "yellow",
+    "caducity": "persistant",
+    "care_frequency": 0,
+    "water_need": 0,
+    "growth_speed": "Lente",
+    "cold_resistance": 1,
+    "light_need": 0,
+    "climate": [
+      "Climat méditerranéen"
+    ],
+    "final_size": 1.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/539/mainImage-full-11156838.jpg"
+  },
+  {
+    "name": "Caesalpinia",
+    "color": "yellow",
+    "caducity": "persistant",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Rapide",
+    "cold_resistance": 2,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat méditerranéen"
+    ],
+    "final_size": 1.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/774/mainImage-full-12161897.jpg"
+  },
+  {
+    "name": "Calamagrostis",
+    "color": "grey",
+    "caducity": "caduc",
+    "care_frequency": 0,
+    "water_need": 0,
+    "growth_speed": "Rapide",
+    "cold_resistance": 2,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/329/mainImage-full-11706953.jpg"
+  },
+  {
+    "name": "Calamondin",
+    "color": "white",
+    "caducity": "persistant",
+    "care_frequency": 1,
+    "water_need": 1,
+    "growth_speed": "Normale",
+    "cold_resistance": 0,
+    "light_need": 0,
+    "climate": [
+      "Climat méditerranéen"
+    ],
+    "final_size": 2.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/747/mainImage-full-12122414.jpg"
+  },
+  {
+    "name": "Calandrinia",
+    "color": "white",
+    "caducity": "persistant",
+    "care_frequency": 0,
+    "water_need": 0,
+    "growth_speed": "Normale",
+    "cold_resistance": 1,
+    "light_need": 0,
+    "climate": [
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/843/mainImage-full-12233220.jpg"
+  },
+  {
+    "name": "Calanthe",
+    "color": "white",
+    "caducity": "persistant",
+    "care_frequency": 2,
+    "water_need": 1,
+    "growth_speed": "Normale",
+    "cold_resistance": 1,
+    "light_need": 1,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/1006/mainImage-full-12341030.jpg"
+  },
+  {
+    "name": "Calathea",
+    "color": "white",
+    "caducity": "persistant",
+    "care_frequency": 2,
+    "water_need": 1,
+    "growth_speed": "Lente",
+    "cold_resistance": 0,
+    "light_need": 1,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/233/mainImage-full-11480118.jpg"
+  },
+  {
+    "name": "Calcéolaire",
+    "color": "yellow",
+    "caducity": "caduc",
+    "care_frequency": 1,
+    "water_need": 1,
+    "growth_speed": "Rapide",
+    "cold_resistance": 0,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/729/mainImage-full-11988957.jpg"
+  },
+  {
+    "name": "Calibrachoa",
+    "color": "white",
+    "caducity": "persistant",
+    "care_frequency": 1,
+    "water_need": 1,
+    "growth_speed": "Rapide",
+    "cold_resistance": 0,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/575/mainImage-full-11290062.jpg"
+  },
+  {
+    "name": "Calla palustris",
+    "color": "white",
+    "caducity": "semi_persistant",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Rapide",
+    "cold_resistance": 2,
+    "light_need": 0,
+    "climate": [
+      "Climat continental",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/745/mainImage-full-11991165.jpg"
+  },
+  {
+    "name": "Callicarpa",
+    "color": "white",
+    "caducity": "semi_persistant",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Normale",
+    "cold_resistance": 2,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat méditerranéen"
+    ],
+    "final_size": 1.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/138/mainImage-full-10902716.jpg"
+  },
+  {
+    "name": "Callistemon",
+    "color": "yellow",
+    "caducity": "persistant",
+    "care_frequency": 1,
+    "water_need": 1,
+    "growth_speed": "Normale",
+    "cold_resistance": 1,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat méditerranéen"
+    ],
+    "final_size": 1.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/433/mainImage-full-11847132.jpg"
+  },
+  {
+    "name": "Daboecia",
+    "color": "white",
+    "caducity": "persistant",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Normale",
+    "cold_resistance": 2,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/1123/mainImage-full-12403633.jpg"
+  },
+  {
+    "name": "Dacrydium",
+    "color": "yellow",
+    "caducity": "persistant",
+    "care_frequency": 2,
+    "water_need": 1,
+    "growth_speed": "Lente",
+    "cold_resistance": 1,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique"
+    ],
+    "final_size": 8.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/2109/mainImage-full-13655759.jpg"
+  },
+  {
+    "name": "Dactyle pelotonné",
+    "color": "yellow",
+    "caducity": "semi_persistant",
+    "care_frequency": 0,
+    "water_need": 0,
+    "growth_speed": "Rapide",
+    "cold_resistance": 2,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/1869/mainImage-full-12951053.jpg"
+  },
+  {
+    "name": "Dactylorhiza",
+    "color": "white",
+    "caducity": "caduc",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Normale",
+    "cold_resistance": 2,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/1269/mainImage-full-12512499.jpg"
+  },
+  {
+    "name": "Dalechampia",
+    "color": "white",
+    "caducity": "semi_persistant",
+    "care_frequency": 1,
+    "water_need": 1,
+    "growth_speed": "Rapide",
+    "cold_resistance": 1,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/1721/mainImage-full-12870435.jpg"
+  },
+  {
+    "name": "Daphné",
+    "color": "white",
+    "caducity": "persistant",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Lente",
+    "cold_resistance": 1,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/227/mainImage-full-11517343.jpg"
+  },
+  {
+    "name": "Daphne laureola",
+    "color": "yellow",
+    "caducity": "persistant",
+    "care_frequency": 0,
+    "water_need": 0,
+    "growth_speed": "Normale",
+    "cold_resistance": 2,
+    "light_need": 1,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/2019/mainImage-full-13452013.jpg"
+  },
+  {
+    "name": "Darmera peltata",
+    "color": "white",
+    "caducity": "caduc",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Lente",
+    "cold_resistance": 2,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/632/mainImage-full-12026413.jpg"
+  },
+  {
+    "name": "Dasylirion",
+    "color": "yellow",
+    "caducity": "persistant",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Lente",
+    "cold_resistance": 1,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/661/mainImage-full-12124927.jpg"
+  },
+  {
+    "name": "Datisca cannabina",
+    "color": "yellow",
+    "caducity": "caduc",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Rapide",
+    "cold_resistance": 2,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard",
+      "Climat méditerranéen"
+    ],
+    "final_size": 2.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/2129/mainImage-full-13916061.jpg"
+  },
+  {
+    "name": "Dattier",
+    "color": "white",
+    "caducity": "persistant",
+    "care_frequency": 1,
+    "water_need": 0,
+    "growth_speed": "Lente",
+    "cold_resistance": 1,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat méditerranéen"
+    ],
+    "final_size": 14.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/1009/mainImage-full-12341461.jpg"
+  },
+  {
+    "name": "Delosperma",
+    "color": "white",
+    "caducity": "persistant",
+    "care_frequency": 0,
+    "water_need": 0,
+    "growth_speed": "Normale",
+    "cold_resistance": 0,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat méditerranéen"
+    ],
+    "final_size": 30.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/564/mainImage-full-11239441.jpg"
+  },
+  {
+    "name": "Delphinium",
+    "color": "white",
+    "caducity": "caduc",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Rapide",
+    "cold_resistance": 2,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/293/mainImage-full-10063362.jpg"
+  },
+  {
+    "name": "Echeveria",
+    "color": "white",
+    "caducity": "persistant",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Rapide",
+    "cold_resistance": 0,
+    "light_need": 0,
+    "climate": [
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/435/mainImage-full-10555901.jpg"
+  },
+  {
+    "name": "Échinacée",
+    "color": "white",
+    "caducity": "caduc",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Lente",
+    "cold_resistance": 2,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/214/mainImage-full-9872540.jpg"
+  },
+  {
+    "name": "Echinocactus",
+    "color": "yellow",
+    "caducity": "persistant",
+    "care_frequency": 1,
+    "water_need": 0,
+    "growth_speed": "Lente",
+    "cold_resistance": 0,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat méditerranéen"
+    ],
+    "final_size": 1.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/851/mainImage-full-12238457.jpg"
+  },
+  {
+    "name": "Echinocereus",
+    "color": "orange",
+    "caducity": "persistant",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Lente",
+    "cold_resistance": 0,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/1911/mainImage-full-13019683.jpg"
+  },
+  {
+    "name": "Echinops",
+    "color": "white",
+    "caducity": "caduc",
+    "care_frequency": 0,
+    "water_need": 0,
+    "growth_speed": "Rapide",
+    "cold_resistance": 2,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/653/mainImage-full-11573848.jpg"
+  },
+  {
+    "name": "Edgeworthia",
+    "color": "white",
+    "caducity": "caduc",
+    "care_frequency": 1,
+    "water_need": 1,
+    "growth_speed": "Lente",
+    "cold_resistance": 2,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat méditerranéen"
+    ],
+    "final_size": 1.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/785/mainImage-full-12129569.jpg"
+  },
+  {
+    "name": "Églantier commun",
+    "color": "white",
+    "caducity": "semi_persistant",
+    "care_frequency": 0,
+    "water_need": 0,
+    "growth_speed": "Rapide",
+    "cold_resistance": 2,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat méditerranéen"
+    ],
+    "final_size": 1.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/180/mainImage-full-9770496.jpg"
+  },
+  {
+    "name": "Elaeagnus angustifolia",
+    "color": "yellow",
+    "caducity": "caduc",
+    "care_frequency": 0,
+    "water_need": 0,
+    "growth_speed": "Rapide",
+    "cold_resistance": 2,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard",
+      "Climat méditerranéen"
+    ],
+    "final_size": 4.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/1589/mainImage-full-12805943.jpg"
+  },
+  {
+    "name": "Eléagnus",
+    "color": "white",
+    "caducity": "persistant",
+    "care_frequency": 0,
+    "water_need": 0,
+    "growth_speed": "Normale",
+    "cold_resistance": 2,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard",
+      "Climat méditerranéen"
+    ],
+    "final_size": 2.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/445/mainImage-full-11907483.jpg"
+  },
+  {
+    "name": "Elsholtzia",
+    "color": "white",
+    "caducity": "caduc",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Rapide",
+    "cold_resistance": 2,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard",
+      "Climat méditerranéen"
+    ],
+    "final_size": 1.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/1921/mainImage-full-13035287.jpg"
+  },
+  {
+    "name": "Elymus magellanicus",
+    "color": "blue",
+    "caducity": "semi_persistant",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Rapide",
+    "cold_resistance": 2,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/1205/mainImage-full-12459491.jpg"
+  },
+  {
+    "name": "Emilia coccinea",
+    "color": "orange",
+    "caducity": "caduc",
+    "care_frequency": 0,
+    "water_need": 0,
+    "growth_speed": "Normale",
+    "cold_resistance": 1,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat méditerranéen"
+    ],
+    "final_size": 30.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/938/mainImage-full-12296926.jpg"
+  },
+  {
+    "name": "Encephalartos",
+    "color": "yellow",
+    "caducity": "persistant",
+    "care_frequency": 2,
+    "water_need": 1,
+    "growth_speed": "Lente",
+    "cold_resistance": 0,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat méditerranéen"
+    ],
+    "final_size": 1.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/1819/mainImage-full-12915045.jpg"
+  },
+  {
+    "name": "Fabiana",
+    "color": "white",
+    "caducity": "persistant",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Normale",
+    "cold_resistance": 1,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat méditerranéen"
+    ],
+    "final_size": 60.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/980/mainImage-full-12323978.jpg"
+  },
+  {
+    "name": "Fatshedera",
+    "color": "white",
+    "caducity": "persistant",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Rapide",
+    "cold_resistance": 1,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/1217/mainImage-full-12461113.jpg"
+  },
+  {
+    "name": "Fatsia japonica",
+    "color": "white",
+    "caducity": "persistant",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Normale",
+    "cold_resistance": 1,
+    "light_need": 1,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique"
+    ],
+    "final_size": 1.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/567/mainImage-full-12078297.jpg"
+  },
+  {
+    "name": "Faucaria",
+    "color": "white",
+    "caducity": "persistant",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Normale",
+    "cold_resistance": 0,
+    "light_need": 0,
+    "climate": [
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/865/mainImage-full-12257784.jpg"
+  },
+  {
+    "name": "Faux poivrier",
+    "color": "yellow",
+    "caducity": "persistant",
+    "care_frequency": 0,
+    "water_need": 0,
+    "growth_speed": "Rapide",
+    "cold_resistance": 1,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat méditerranéen"
+    ],
+    "final_size": 3.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/1011/mainImage-full-12341652.jpg"
+  },
+  {
+    "name": "Feijoa",
+    "color": "white",
+    "caducity": "persistant",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Lente",
+    "cold_resistance": 1,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat méditerranéen"
+    ],
+    "final_size": 4.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/1065/mainImage-full-12379816.jpg"
+  },
+  {
+    "name": "Fenouil bulbeux",
+    "color": "yellow",
+    "caducity": "semi_persistant",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Normale",
+    "cold_resistance": 0,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/369/mainImage-full-10287574.jpg"
+  },
+  {
+    "name": "Fenouil officinal",
+    "color": "yellow",
+    "caducity": "caduc",
+    "care_frequency": 0,
+    "water_need": 0,
+    "growth_speed": "Rapide",
+    "cold_resistance": 2,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/190/mainImage-full-11713937.jpg"
+  },
+  {
+    "name": "Ferocactus",
+    "color": "yellow",
+    "caducity": "persistant",
+    "care_frequency": 1,
+    "water_need": 0,
+    "growth_speed": "Lente",
+    "cold_resistance": 0,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/1403/mainImage-full-12575661.jpg"
+  },
+  {
+    "name": "Férule commune",
+    "color": "yellow",
+    "caducity": "caduc",
+    "care_frequency": 0,
+    "water_need": 0,
+    "growth_speed": "Rapide",
+    "cold_resistance": 1,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/609/mainImage-full-11430325.jpg"
+  },
+  {
+    "name": "Festuca",
+    "color": "yellow",
+    "caducity": "persistant",
+    "care_frequency": 0,
+    "water_need": 0,
+    "growth_speed": "Normale",
+    "cold_resistance": 2,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/386/mainImage-full-11787335.jpg"
+  },
+  {
+    "name": "Féverole",
+    "color": "white",
+    "caducity": "persistant",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Rapide",
+    "cold_resistance": 1,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/2057/mainImage-full-13509641.jpg"
+  },
+  {
+    "name": "Févier d’Amérique",
+    "color": "green",
+    "caducity": "caduc",
+    "care_frequency": 0,
+    "water_need": 0,
+    "growth_speed": "Rapide",
+    "cold_resistance": 2,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard",
+      "Climat méditerranéen"
+    ],
+    "final_size": 5.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/446/mainImage-full-11903711.jpg"
+  },
+  {
+    "name": "Ficoïde glaciale",
+    "color": "white",
+    "caducity": "caduc",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Rapide",
+    "cold_resistance": 0,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/152/mainImage-full-12073132.jpg"
+  },
+  {
+    "name": "Ficus",
+    "color": "green",
+    "caducity": "persistant",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Lente",
+    "cold_resistance": 0,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/229/mainImage-full-11505569.jpg"
+  },
+  {
+    "name": "Gaillarde",
+    "color": "yellow",
+    "caducity": "semi_persistant",
+    "care_frequency": 0,
+    "water_need": 0,
+    "growth_speed": "Rapide",
+    "cold_resistance": 2,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/1321/mainImage-full-12534473.jpg"
+  },
+  {
+    "name": "Galega",
+    "color": "white",
+    "caducity": "caduc",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Rapide",
+    "cold_resistance": 2,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard",
+      "Climat méditerranéen"
+    ],
+    "final_size": 1.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/436/mainImage-full-11848035.jpg"
+  },
+  {
+    "name": "Garrya elliptica",
+    "color": "yellow",
+    "caducity": "persistant",
+    "care_frequency": 1,
+    "water_need": 1,
+    "growth_speed": "Lente",
+    "cold_resistance": 2,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat méditerranéen"
+    ],
+    "final_size": 2.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/856/mainImage-full-12282019.jpg"
+  },
+  {
+    "name": "Gattilier",
+    "color": "white",
+    "caducity": "caduc",
+    "care_frequency": 1,
+    "water_need": 0,
+    "growth_speed": "Normale",
+    "cold_resistance": 2,
+    "light_need": 0,
+    "climate": [
+      "Climat montagnard",
+      "Climat méditerranéen"
+    ],
+    "final_size": 1.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/641/mainImage-full-12112997.jpg"
+  },
+  {
+    "name": "Gaulthérie",
+    "color": "white",
+    "caducity": "persistant",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Lente",
+    "cold_resistance": 2,
+    "light_need": 1,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/552/mainImage-full-12076952.jpg"
+  },
+  {
+    "name": "Gaura",
+    "color": "white",
+    "caducity": "caduc",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Normale",
+    "cold_resistance": 2,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/544/mainImage-full-12068119.jpg"
+  },
+  {
+    "name": "Gelsemium",
+    "color": "yellow",
+    "caducity": "persistant",
+    "care_frequency": 1,
+    "water_need": 1,
+    "growth_speed": "Normale",
+    "cold_resistance": 0,
+    "light_need": 0,
+    "climate": [
+      "Climat méditerranéen"
+    ],
+    "final_size": 2.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/535/mainImage-full-11104505.jpg"
+  },
+  {
+    "name": "Genêt",
+    "color": "white",
+    "caducity": "semi_persistant",
+    "care_frequency": 0,
+    "water_need": 0,
+    "growth_speed": "Normale",
+    "cold_resistance": 2,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat méditerranéen"
+    ],
+    "final_size": 1.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/332/mainImage-full-11707363.jpg"
+  },
+  {
+    "name": "Genévrier",
+    "color": "yellow",
+    "caducity": "persistant",
+    "care_frequency": 0,
+    "water_need": 0,
+    "growth_speed": "Lente",
+    "cold_resistance": 2,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/334/mainImage-full-11708347.jpg"
+  },
+  {
+    "name": "Genista",
+    "color": "yellow",
+    "caducity": "semi_persistant",
+    "care_frequency": 0,
+    "water_need": 0,
+    "growth_speed": "Normale",
+    "cold_resistance": 1,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/335/mainImage-full-11708899.jpg"
+  },
+  {
+    "name": "Gerbera",
+    "color": "white",
+    "caducity": "semi_persistant",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Normale",
+    "cold_resistance": 0,
+    "light_need": 0,
+    "climate": [
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/76/mainImage-full-9411887.jpg"
+  },
+  {
+    "name": "Germandrée",
+    "color": "white",
+    "caducity": "persistant",
+    "care_frequency": 0,
+    "water_need": 0,
+    "growth_speed": "Normale",
+    "cold_resistance": 1,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/1028/mainImage-full-12351250.jpg"
+  },
+  {
+    "name": "Habranthus",
+    "color": "pink",
+    "caducity": "caduc",
+    "care_frequency": 1,
+    "water_need": 1,
+    "growth_speed": "Normale",
+    "cold_resistance": 0,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/1012/mainImage-full-12341772.jpg"
+  },
+  {
+    "name": "Haemanthus",
+    "color": "white",
+    "caducity": "persistant",
+    "care_frequency": 1,
+    "water_need": 1,
+    "growth_speed": "Lente",
+    "cold_resistance": 0,
+    "light_need": 0,
+    "climate": [
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/1483/mainImage-full-12623115.jpg"
+  },
+  {
+    "name": "Hakea",
+    "color": "white",
+    "caducity": "persistant",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Normale",
+    "cold_resistance": 2,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard",
+      "Climat méditerranéen"
+    ],
+    "final_size": 1.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/1066/mainImage-full-12379961.jpg"
+  },
+  {
+    "name": "Halimiocistus",
+    "color": "white",
+    "caducity": "persistant",
+    "care_frequency": 0,
+    "water_need": 0,
+    "growth_speed": "Normale",
+    "cold_resistance": 1,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/1369/mainImage-full-12553587.jpg"
+  },
+  {
+    "name": "Halimium",
+    "color": "white",
+    "caducity": "persistant",
+    "care_frequency": 0,
+    "water_need": 0,
+    "growth_speed": "Normale",
+    "cold_resistance": 1,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/1705/mainImage-full-12856921.jpg"
+  },
+  {
+    "name": "Hamamélis",
+    "color": "yellow",
+    "caducity": "caduc",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Lente",
+    "cold_resistance": 2,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard"
+    ],
+    "final_size": 2.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/310/mainImage-full-11701369.jpg"
+  },
+  {
+    "name": "Hardenbergia",
+    "color": "white",
+    "caducity": "persistant",
+    "care_frequency": 1,
+    "water_need": 1,
+    "growth_speed": "Rapide",
+    "cold_resistance": 0,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/1707/mainImage-full-12857209.jpg"
+  },
+  {
+    "name": "Haricot ailé",
+    "color": "blue",
+    "caducity": "caduc",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Rapide",
+    "cold_resistance": 0,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/1607/mainImage-full-12818267.jpg"
+  },
+  {
+    "name": "Hebe",
+    "color": "white",
+    "caducity": "persistant",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Lente",
+    "cold_resistance": 1,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/737/mainImage-full-11990250.jpg"
+  },
+  {
+    "name": "Hedychium",
+    "color": "white",
+    "caducity": "caduc",
+    "care_frequency": 1,
+    "water_need": 0,
+    "growth_speed": "Rapide",
+    "cold_resistance": 1,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/857/mainImage-full-12282091.jpg"
+  },
+  {
+    "name": "Helenium",
+    "color": "yellow",
+    "caducity": "caduc",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Normale",
+    "cold_resistance": 2,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/536/mainImage-full-11104532.jpg"
+  },
+  {
+    "name": "Hélianthème",
+    "color": "white",
+    "caducity": "persistant",
+    "care_frequency": 0,
+    "water_need": 0,
+    "growth_speed": "Normale",
+    "cold_resistance": 2,
+    "light_need": 0,
+    "climate": [
+      "Climat semi-océanique",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/765/mainImage-full-12090840.jpg"
+  },
+  {
+    "name": "Idesia polycarpa",
+    "color": "green",
+    "caducity": "caduc",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Rapide",
+    "cold_resistance": 2,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard",
+      "Climat méditerranéen"
+    ],
+    "final_size": 4.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/2131/mainImage-full-13916395.jpg"
+  },
+  {
+    "name": "If",
+    "color": "yellow",
+    "caducity": "persistant",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Lente",
+    "cold_resistance": 2,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/337/mainImage-full-11709306.jpg"
+  },
+  {
+    "name": "Igname de Chine",
+    "color": "white",
+    "caducity": "caduc",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Normale",
+    "cold_resistance": 2,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/150/mainImage-full-9683317.jpg"
+  },
+  {
+    "name": "Immortelle à bractées",
+    "color": "white",
+    "caducity": "caduc",
+    "care_frequency": 0,
+    "water_need": 0,
+    "growth_speed": "Rapide",
+    "cold_resistance": 0,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/546/mainImage-full-12072463.jpg"
+  },
+  {
+    "name": "Immortelle vivace",
+    "color": "yellow",
+    "caducity": "persistant",
+    "care_frequency": 0,
+    "water_need": 0,
+    "growth_speed": "Normale",
+    "cold_resistance": 1,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/555/mainImage-full-12076230.jpg"
+  },
+  {
+    "name": "Imperata cylindrica",
+    "color": "white",
+    "caducity": "persistant",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Normale",
+    "cold_resistance": 1,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/673/mainImage-full-11698842.jpg"
+  },
+  {
+    "name": "Incarvillea",
+    "color": "white",
+    "caducity": "caduc",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Normale",
+    "cold_resistance": 2,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/1219/mainImage-full-12461209.jpg"
+  },
+  {
+    "name": "Indigotier",
+    "color": "white",
+    "caducity": "caduc",
+    "care_frequency": 0,
+    "water_need": 0,
+    "growth_speed": "Rapide",
+    "cold_resistance": 2,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat méditerranéen"
+    ],
+    "final_size": 1.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/787/mainImage-full-12193192.jpg"
+  },
+  {
+    "name": "Inule visqueuse",
+    "color": "yellow",
+    "caducity": "caduc",
+    "care_frequency": 0,
+    "water_need": 0,
+    "growth_speed": "Rapide",
+    "cold_resistance": 2,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/848/mainImage-full-12232051.jpg"
+  },
+  {
+    "name": "Iochroma",
+    "color": "violet_purple",
+    "caducity": "persistant",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Rapide",
+    "cold_resistance": 1,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat méditerranéen"
+    ],
+    "final_size": 1.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/1425/mainImage-full-12589499.jpg"
+  },
+  {
+    "name": "Ipomée",
+    "color": "white",
+    "caducity": "caduc",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Rapide",
+    "cold_resistance": 0,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/360/mainImage-full-11739436.jpg"
+  },
+  {
+    "name": "Iris japonais",
+    "color": "violet_purple",
+    "caducity": "caduc",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Normale",
+    "cold_resistance": 2,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/967/mainImage-full-12314441.jpg"
+  },
+  {
+    "name": "Iris versicolor",
+    "color": "violet_purple",
+    "caducity": "caduc",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Normale",
+    "cold_resistance": 2,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/959/mainImage-full-12307603.jpg"
+  },
+  {
+    "name": "Ismène",
+    "color": "white",
+    "caducity": "caduc",
+    "care_frequency": 1,
+    "water_need": 1,
+    "growth_speed": "Normale",
+    "cold_resistance": 0,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/849/mainImage-full-12231924.jpg"
+  },
+  {
+    "name": "Jaborosa integrifolia",
+    "color": "white",
+    "caducity": "caduc",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Normale",
+    "cold_resistance": 1,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/1807/mainImage-full-12912017.jpg"
+  },
+  {
+    "name": "Jacaranda",
+    "color": "violet_purple",
+    "caducity": "caduc",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Rapide",
+    "cold_resistance": 1,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat méditerranéen"
+    ],
+    "final_size": 6.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/479/mainImage-full-10962296.jpg"
+  },
+  {
+    "name": "Jacinthe des bois",
+    "color": "white",
+    "caducity": "caduc",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Rapide",
+    "cold_resistance": 2,
+    "light_need": 1,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/2021/mainImage-full-13868983.jpg"
+  },
+  {
+    "name": "Jacinthe du Cap",
+    "color": "white",
+    "caducity": "caduc",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Lente",
+    "cold_resistance": 1,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/191/mainImage-full-10031658.jpg"
+  },
+  {
+    "name": "Jacinthe d’eau",
+    "color": "violet_purple",
+    "caducity": "persistant",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Rapide",
+    "cold_resistance": 0,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/258/mainImage-full-9946256.jpg"
+  },
+  {
+    "name": "Jacquier",
+    "color": "white",
+    "caducity": "persistant",
+    "care_frequency": 1,
+    "water_need": 1,
+    "growth_speed": "Rapide",
+    "cold_resistance": 0,
+    "light_need": 0,
+    "climate": [
+
+    ],
+    "final_size": 2.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/1783/mainImage-full-12892723.jpg"
+  },
+  {
+    "name": "Jasione",
+    "color": "blue",
+    "caducity": "persistant",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Lente",
+    "cold_resistance": 2,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/1165/mainImage-full-12455459.jpg"
+  },
+  {
+    "name": "Jasmin étoilé",
+    "color": "white",
+    "caducity": "persistant",
+    "care_frequency": 0,
+    "water_need": 0,
+    "growth_speed": "Normale",
+    "cold_resistance": 2,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat méditerranéen"
+    ],
+    "final_size": 3.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/1069/mainImage-full-12380321.jpg"
+  },
+  {
+    "name": "Jatropha",
+    "color": "red",
+    "caducity": "caduc",
+    "care_frequency": 1,
+    "water_need": 0,
+    "growth_speed": "Lente",
+    "cold_resistance": 0,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/866/mainImage-full-12257688.jpg"
+  },
+  {
+    "name": "Jiaogulan",
+    "color": "yellow",
+    "caducity": "semi_persistant",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Rapide",
+    "cold_resistance": 2,
+    "light_need": 1,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard",
+      "Climat méditerranéen"
+    ],
+    "final_size": 1.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/1427/mainImage-full-12589689.jpg"
+  },
+  {
+    "name": "Jicama",
+    "color": "white",
+    "caducity": "caduc",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Rapide",
+    "cold_resistance": 0,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard",
+      "Climat méditerranéen"
+    ],
+    "final_size": 5.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/1575/mainImage-full-12797207.jpg"
+  },
+  {
+    "name": "Jonc",
+    "color": "green",
+    "caducity": "persistant",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Normale",
+    "cold_resistance": 2,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/439/mainImage-full-11902066.jpg"
+  },
+  {
+    "name": "Jonquille",
+    "color": "white",
+    "caducity": "caduc",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Normale",
+    "cold_resistance": 1,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/1235/mainImage-full-12477733.jpg"
+  },
+  {
+    "name": "Joubarbe",
+    "color": "yellow",
+    "caducity": "persistant",
+    "care_frequency": 0,
+    "water_need": 0,
+    "growth_speed": "Normale",
+    "cold_resistance": 2,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/1373/mainImage-full-12553825.jpg"
+  },
+  {
+    "name": "Jovellana",
+    "color": "white",
+    "caducity": "semi_persistant",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Rapide",
+    "cold_resistance": 1,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/1553/mainImage-full-12789335.jpg"
+  },
+  {
+    "name": "Juanulloa aurantiaca",
+    "color": "orange",
+    "caducity": "semi_persistant",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Rapide",
+    "cold_resistance": 0,
+    "light_need": 0,
+    "climate": [
+
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/1461/mainImage-full-12612429.jpg"
+  },
+  {
+    "name": "Jubaea chilensis",
+    "color": "yellow",
+    "caducity": "persistant",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Lente",
+    "cold_resistance": 2,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat méditerranéen"
+    ],
+    "final_size": 3.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/534/mainImage-full-12063988.jpg"
+  },
+  {
+    "name": "Kaki",
+    "color": "yellow",
+    "caducity": "caduc",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Lente",
+    "cold_resistance": 1,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat méditerranéen"
+    ],
+    "final_size": 6.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/404/mainImage-full-10429319.jpg"
+  },
+  {
+    "name": "Kalanchoé",
+    "color": "white",
+    "caducity": "persistant",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Rapide",
+    "cold_resistance": 0,
+    "light_need": 0,
+    "climate": [
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/241/mainImage-full-11482441.jpg"
+  },
+  {
+    "name": "Kalimeris",
+    "color": "white",
+    "caducity": "caduc",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Rapide",
+    "cold_resistance": 2,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/454/mainImage-full-12065362.jpg"
+  },
+  {
+    "name": "Kalmia",
+    "color": "white",
+    "caducity": "persistant",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Lente",
+    "cold_resistance": 2,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/192/mainImage-full-9823985.jpg"
+  },
+  {
+    "name": "Kalopanax",
+    "color": "white",
+    "caducity": "caduc",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Rapide",
+    "cold_resistance": 2,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard",
+      "Climat méditerranéen"
+    ],
+    "final_size": 4.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/949/mainImage-full-12302495.jpg"
+  },
+  {
+    "name": "Kirengeshoma palmata",
+    "color": "yellow",
+    "caducity": "caduc",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Lente",
+    "cold_resistance": 2,
+    "light_need": 1,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard",
+      "Climat méditerranéen"
+    ],
+    "final_size": 1.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/512/mainImage-full-11038332.jpg"
+  },
+  {
+    "name": "Kitaibelia vitifolia",
+    "color": "white",
+    "caducity": "caduc",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Normale",
+    "cold_resistance": 2,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/461/mainImage-full-12064806.jpg"
+  },
+  {
+    "name": "Kiwano",
+    "color": "yellow",
+    "caducity": "caduc",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Rapide",
+    "cold_resistance": 0,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/655/mainImage-full-11573994.jpg"
+  },
+  {
+    "name": "Kiwi",
+    "color": "white",
+    "caducity": "caduc",
+    "care_frequency": 1,
+    "water_need": 1,
+    "growth_speed": "Rapide",
+    "cold_resistance": 2,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat méditerranéen"
+    ],
+    "final_size": 3.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/616/mainImage-full-11469725.jpg"
+  },
+  {
+    "name": "Kniphofia",
+    "color": "yellow",
+    "caducity": "persistant",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Rapide",
+    "cold_resistance": 1,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique"
+    ],
+    "final_size": 40.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/579/mainImage-full-12088292.jpg"
+  },
+  {
+    "name": "Kochia",
+    "color": "yellow",
+    "caducity": "persistant",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Rapide",
+    "cold_resistance": 0,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/924/mainImage-full-12290760.jpg"
+  },
+  {
+    "name": "Koeleria glauca",
+    "color": "yellow",
+    "caducity": "persistant",
+    "care_frequency": 0,
+    "water_need": 0,
+    "growth_speed": "Normale",
+    "cold_resistance": 2,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/872/mainImage-full-12257408.jpg"
+  },
+  {
+    "name": "Kohleria",
+    "color": "white",
+    "caducity": "persistant",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Rapide",
+    "cold_resistance": 0,
+    "light_need": 1,
+    "climate": [
+
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/1883/mainImage-full-12982207.jpg"
+  },
+  {
+    "name": "Lablab",
+    "color": "white",
+    "caducity": "caduc",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Rapide",
+    "cold_resistance": 0,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat méditerranéen"
+    ],
+    "final_size": 4.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/1203/mainImage-full-12459301.jpg"
+  },
+  {
+    "name": "Lantana",
+    "color": "white",
+    "caducity": "persistant",
+    "care_frequency": 1,
+    "water_need": 1,
+    "growth_speed": "Rapide",
+    "cold_resistance": 1,
+    "light_need": 0,
+    "climate": [
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/162/mainImage-full-9730670.jpg"
+  },
+  {
+    "name": "Laurier sauce",
+    "color": "white",
+    "caducity": "persistant",
+    "care_frequency": 0,
+    "water_need": 0,
+    "growth_speed": "Lente",
+    "cold_resistance": 2,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat méditerranéen"
+    ],
+    "final_size": 2.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/295/mainImage-full-11597467.jpg"
+  },
+  {
+    "name": "Laurier-tin",
+    "color": "white",
+    "caducity": "persistant",
+    "care_frequency": 0,
+    "water_need": 0,
+    "growth_speed": "Lente",
+    "cold_resistance": 1,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat méditerranéen"
+    ],
+    "final_size": 2.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/193/mainImage-full-11456353.jpg"
+  },
+  {
+    "name": "Lavande",
+    "color": "white",
+    "caducity": "persistant",
+    "care_frequency": 0,
+    "water_need": 0,
+    "growth_speed": "Normale",
+    "cold_resistance": 0,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/19/mainImage-full-13641483.jpg"
+  },
+  {
+    "name": "Lavatère",
+    "color": "white",
+    "caducity": "persistant",
+    "care_frequency": 0,
+    "water_need": 0,
+    "growth_speed": "Rapide",
+    "cold_resistance": 1,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat méditerranéen"
+    ],
+    "final_size": 1.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/502/mainImage-full-11992771.jpg"
+  },
+  {
+    "name": "Lavatère annuelle",
+    "color": "white",
+    "caducity": "caduc",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Normale",
+    "cold_resistance": 0,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/339/mainImage-full-11709956.jpg"
+  },
+  {
+    "name": "Macadamia",
+    "color": "white",
+    "caducity": "persistant",
+    "care_frequency": 1,
+    "water_need": 1,
+    "growth_speed": "Lente",
+    "cold_resistance": 0,
+    "light_need": 0,
+    "climate": [
+      "Climat méditerranéen"
+    ],
+    "final_size": 4.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/1085/mainImage-full-12387532.jpg"
+  },
+  {
+    "name": "Maceron",
+    "color": "yellow",
+    "caducity": "semi_persistant",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Rapide",
+    "cold_resistance": 1,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat méditerranéen"
+    ],
+    "final_size": 60.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/441/mainImage-full-10556363.jpg"
+  },
+  {
+    "name": "Mackaya bella",
+    "color": "white",
+    "caducity": "persistant",
+    "care_frequency": 1,
+    "water_need": 1,
+    "growth_speed": "Normale",
+    "cold_resistance": 1,
+    "light_need": 1,
+    "climate": [
+      "Climat océanique",
+      "Climat méditerranéen"
+    ],
+    "final_size": 1.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/1141/mainImage-full-12453297.jpg"
+  },
+  {
+    "name": "Macleaya",
+    "color": "white",
+    "caducity": "caduc",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Rapide",
+    "cold_resistance": 1,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard",
+      "Climat méditerranéen"
+    ],
+    "final_size": 1.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/789/mainImage-full-12130515.jpg"
+  },
+  {
+    "name": "Magnolia",
+    "color": "white",
+    "caducity": "persistant",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Lente",
+    "cold_resistance": 1,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat méditerranéen"
+    ],
+    "final_size": 5.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/12/mainImage-full-9140396.jpg"
+  },
+  {
+    "name": "Mahonia",
+    "color": "yellow",
+    "caducity": "persistant",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Lente",
+    "cold_resistance": 2,
+    "light_need": 1,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat méditerranéen"
+    ],
+    "final_size": 1.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/186/mainImage-full-11428707.jpg"
+  },
+  {
+    "name": "Malanga",
+    "color": "yellow",
+    "caducity": "persistant",
+    "care_frequency": 1,
+    "water_need": 1,
+    "growth_speed": "Rapide",
+    "cold_resistance": 1,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat méditerranéen"
+    ],
+    "final_size": 1.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/1291/mainImage-full-12515705.jpg"
+  },
+  {
+    "name": "Malus Evereste",
+    "color": "white",
+    "caducity": "caduc",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Normale",
+    "cold_resistance": 2,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard",
+      "Climat méditerranéen"
+    ],
+    "final_size": 2.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/1849/mainImage-full-12943893.jpg"
+  },
+  {
+    "name": "Malvastrum",
+    "color": "orange",
+    "caducity": "persistant",
+    "care_frequency": 0,
+    "water_need": 0,
+    "growth_speed": "Rapide",
+    "cold_resistance": 2,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental"
+    ],
+    "final_size": 1.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/790/mainImage-full-12130655.jpg"
+  },
+  {
+    "name": "Mammillaria elongata",
+    "color": "yellow",
+    "caducity": "persistant",
+    "care_frequency": 1,
+    "water_need": 0,
+    "growth_speed": "Lente",
+    "cold_resistance": 0,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/838/mainImage-full-12213053.jpg"
+  },
+  {
+    "name": "Mandarinier",
+    "color": "white",
+    "caducity": "persistant",
+    "care_frequency": 1,
+    "water_need": 1,
+    "growth_speed": "Normale",
+    "cold_resistance": 1,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat méditerranéen"
+    ],
+    "final_size": 1.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/1771/mainImage-full-12888259.jpg"
+  },
+  {
+    "name": "Mandarinier 'Satsuma'",
+    "color": "white",
+    "caducity": "persistant",
+    "care_frequency": 1,
+    "water_need": 1,
+    "growth_speed": "Normale",
+    "cold_resistance": 1,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat méditerranéen"
+    ],
+    "final_size": 3.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/2061/mainImage-full-13510169.jpg"
+  },
+  {
+    "name": "Narcisse",
+    "color": "white",
+    "caducity": "caduc",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Normale",
+    "cold_resistance": 2,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/43/mainImage-full-9228723.jpg"
+  },
+  {
+    "name": "Nashi",
+    "color": "white",
+    "caducity": "caduc",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Normale",
+    "cold_resistance": 2,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat méditerranéen"
+    ],
+    "final_size": 4.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/1431/mainImage-full-12589979.jpg"
+  },
+  {
+    "name": "Nectarinier",
+    "color": "white",
+    "caducity": "caduc",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Normale",
+    "cold_resistance": 2,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat méditerranéen"
+    ],
+    "final_size": 4.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/1885/mainImage-full-12982495.jpg"
+  },
+  {
+    "name": "Nectaroscordum siculum",
+    "color": "white",
+    "caducity": "caduc",
+    "care_frequency": 0,
+    "water_need": 0,
+    "growth_speed": "Rapide",
+    "cold_resistance": 2,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/1959/mainImage-full-13124163.jpg"
+  },
+  {
+    "name": "Neem",
+    "color": "white",
+    "caducity": "persistant",
+    "care_frequency": 1,
+    "water_need": 0,
+    "growth_speed": "Rapide",
+    "cold_resistance": 0,
+    "light_need": 0,
+    "climate": [
+      "Climat méditerranéen"
+    ],
+    "final_size": 3.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/670/mainImage-full-12093661.jpg"
+  },
+  {
+    "name": "Néflier commun",
+    "color": "white",
+    "caducity": "caduc",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Lente",
+    "cold_resistance": 2,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard",
+      "Climat méditerranéen"
+    ],
+    "final_size": 4.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/275/mainImage-full-11551200.jpg"
+  },
+  {
+    "name": "Néflier du Japon",
+    "color": "white",
+    "caducity": "persistant",
+    "care_frequency": 0,
+    "water_need": 0,
+    "growth_speed": "Rapide",
+    "cold_resistance": 2,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat méditerranéen"
+    ],
+    "final_size": 4.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/299/mainImage-full-10063554.jpg"
+  },
+  {
+    "name": "Némésia",
+    "color": "white",
+    "caducity": "semi_persistant",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Normale",
+    "cold_resistance": 0,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/242/mainImage-full-11482809.jpg"
+  },
+  {
+    "name": "Nénuphar",
+    "color": "white",
+    "caducity": "caduc",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Rapide",
+    "cold_resistance": 0,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard",
+      "Climat méditerranéen"
+    ],
+    "final_size": 1.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/570/mainImage-full-12026152.jpg"
+  },
+  {
+    "name": "Neomarica",
+    "color": "white",
+    "caducity": "persistant",
+    "care_frequency": 1,
+    "water_need": 1,
+    "growth_speed": "Rapide",
+    "cold_resistance": 0,
+    "light_need": 1,
+    "climate": [
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/1715/mainImage-full-12858265.jpg"
+  },
+  {
+    "name": "Neoregelia",
+    "color": "violet_purple",
+    "caducity": "persistant",
+    "care_frequency": 1,
+    "water_need": 1,
+    "growth_speed": "Lente",
+    "cold_resistance": 0,
+    "light_need": 0,
+    "climate": [
+
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/1981/mainImage-full-13200799.jpg"
+  },
+  {
+    "name": "Nepenthes",
+    "color": "yellow",
+    "caducity": "semi_persistant",
+    "care_frequency": 2,
+    "water_need": 1,
+    "growth_speed": "Normale",
+    "cold_resistance": 0,
+    "light_need": 1,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/1086/mainImage-full-12387653.jpg"
+  },
+  {
+    "name": "Nepeta",
+    "color": "white",
+    "caducity": "caduc",
+    "care_frequency": 0,
+    "water_need": 0,
+    "growth_speed": "Rapide",
+    "cold_resistance": 1,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/393/mainImage-full-11789954.jpg"
+  },
+  {
+    "name": "Nérine",
+    "color": "orange",
+    "caducity": "semi_persistant",
+    "care_frequency": 1,
+    "water_need": 1,
+    "growth_speed": "Rapide",
+    "cold_resistance": 1,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/695/mainImage-full-12136203.jpg"
+  },
+  {
+    "name": "Nerprun",
+    "color": "yellow",
+    "caducity": "caduc",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Lente",
+    "cold_resistance": 2,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard"
+    ],
+    "final_size": 1.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/758/mainImage-full-12056851.jpg"
+  },
+  {
+    "name": "Nertera",
+    "color": "white",
+    "caducity": "persistant",
+    "care_frequency": 1,
+    "water_need": 1,
+    "growth_speed": "Normale",
+    "cold_resistance": 0,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/1145/mainImage-full-12453585.jpg"
+  },
+  {
+    "name": "Obione",
+    "color": "yellow",
+    "caducity": "persistant",
+    "care_frequency": 0,
+    "water_need": 0,
+    "growth_speed": "Normale",
+    "cold_resistance": 2,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/767/mainImage-full-12088941.jpg"
+  },
+  {
+    "name": "Oca du Pérou",
+    "color": "yellow",
+    "caducity": "caduc",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Normale",
+    "cold_resistance": 1,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/143/mainImage-full-10903914.jpg"
+  },
+  {
+    "name": "Olearia",
+    "color": "white",
+    "caducity": "persistant",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Normale",
+    "cold_resistance": 1,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat méditerranéen"
+    ],
+    "final_size": 1.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/1147/mainImage-full-12453777.jpg"
+  },
+  {
+    "name": "Olivier",
+    "color": "white",
+    "caducity": "persistant",
+    "care_frequency": 1,
+    "water_need": 0,
+    "growth_speed": "Lente",
+    "cold_resistance": 1,
+    "light_need": 0,
+    "climate": [
+      "Climat méditerranéen"
+    ],
+    "final_size": 5.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/4/mainImage-full-8883324.jpg"
+  },
+  {
+    "name": "Omphalodes",
+    "color": "white",
+    "caducity": "semi_persistant",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Normale",
+    "cold_resistance": 2,
+    "light_need": 1,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/1747/mainImage-full-12881443.jpg"
+  },
+  {
+    "name": "Ophiopogon",
+    "color": "white",
+    "caducity": "persistant",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Lente",
+    "cold_resistance": 1,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/416/mainImage-full-11838768.jpg"
+  },
+  {
+    "name": "Ophrys",
+    "color": "white",
+    "caducity": "caduc",
+    "care_frequency": 1,
+    "water_need": 1,
+    "growth_speed": "Rapide",
+    "cold_resistance": 1,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/1591/mainImage-full-12806183.jpg"
+  },
+  {
+    "name": "Oranger",
+    "color": "white",
+    "caducity": "persistant",
+    "care_frequency": 1,
+    "water_need": 1,
+    "growth_speed": "Normale",
+    "cold_resistance": 0,
+    "light_need": 0,
+    "climate": [
+      "Climat méditerranéen"
+    ],
+    "final_size": 3.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/176/mainImage-full-9744022.jpg"
+  },
+  {
+    "name": "Oranger du Mexique",
+    "color": "white",
+    "caducity": "persistant",
+    "care_frequency": 0,
+    "water_need": 0,
+    "growth_speed": "Normale",
+    "cold_resistance": 1,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat méditerranéen"
+    ],
+    "final_size": 1.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/443/mainImage-full-11902395.jpg"
+  },
+  {
+    "name": "Orchidées",
+    "color": "white",
+    "caducity": "persistant",
+    "care_frequency": 1,
+    "water_need": 1,
+    "growth_speed": "Normale",
+    "cold_resistance": 0,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/217/mainImage-full-11475428.jpg"
+  },
+  {
+    "name": "Orge",
+    "color": "white",
+    "caducity": "persistant",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Rapide",
+    "cold_resistance": 1,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat méditerranéen"
+    ],
+    "final_size": 5.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/1925/mainImage-full-13035959.jpg"
+  },
+  {
+    "name": "Pacanier",
+    "color": "yellow",
+    "caducity": "caduc",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Rapide",
+    "cold_resistance": 2,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat méditerranéen"
+    ],
+    "final_size": 15.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/1375/mainImage-full-12562705.jpg"
+  },
+  {
+    "name": "Pachystachys",
+    "color": "yellow",
+    "caducity": "persistant",
+    "care_frequency": 1,
+    "water_need": 1,
+    "growth_speed": "Normale",
+    "cold_resistance": 0,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/993/mainImage-full-12329846.jpg"
+  },
+  {
+    "name": "Pallenis maritima",
+    "color": "yellow",
+    "caducity": "persistant",
+    "care_frequency": 0,
+    "water_need": 0,
+    "growth_speed": "Normale",
+    "cold_resistance": 1,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/990/mainImage-full-12329508.jpg"
+  },
+  {
+    "name": "Palmier bouteille",
+    "color": "white",
+    "caducity": "persistant",
+    "care_frequency": 1,
+    "water_need": 0,
+    "growth_speed": "Normale",
+    "cold_resistance": 0,
+    "light_need": 0,
+    "climate": [
+
+    ],
+    "final_size": 1.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/1581/mainImage-full-12804599.jpg"
+  },
+  {
+    "name": "Palmier chanvre",
+    "color": "yellow",
+    "caducity": "persistant",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Normale",
+    "cold_resistance": 2,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat méditerranéen"
+    ],
+    "final_size": 1.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/494/mainImage-full-11962302.jpg"
+  },
+  {
+    "name": "Palmier de Noël",
+    "color": "white",
+    "caducity": "persistant",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Lente",
+    "cold_resistance": 0,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard",
+      "Climat méditerranéen"
+    ],
+    "final_size": 1.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/1365/mainImage-full-12552481.jpg"
+  },
+  {
+    "name": "Palmier porc-épic",
+    "color": "yellow",
+    "caducity": "persistant",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Lente",
+    "cold_resistance": 2,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard",
+      "Climat méditerranéen"
+    ],
+    "final_size": 1.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/2135/mainImage-full-13916731.jpg"
+  },
+  {
+    "name": "Pamplemoussier",
+    "color": "white",
+    "caducity": "persistant",
+    "care_frequency": 2,
+    "water_need": 1,
+    "growth_speed": "Lente",
+    "cold_resistance": 0,
+    "light_need": 0,
+    "climate": [
+      "Climat méditerranéen"
+    ],
+    "final_size": 3.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/619/mainImage-full-12104173.jpg"
+  },
+  {
+    "name": "Panais",
+    "color": "yellow",
+    "caducity": "semi_persistant",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Rapide",
+    "cold_resistance": 2,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard",
+      "Climat méditerranéen"
+    ],
+    "final_size": 40.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/484/mainImage-full-10962605.jpg"
+  },
+  {
+    "name": "Pandanus",
+    "color": "yellow",
+    "caducity": "persistant",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Rapide",
+    "cold_resistance": 1,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/792/mainImage-full-12131209.jpg"
+  },
+  {
+    "name": "Panicaut",
+    "color": "white",
+    "caducity": "semi_persistant",
+    "care_frequency": 0,
+    "water_need": 0,
+    "growth_speed": "Normale",
+    "cold_resistance": 1,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/330/mainImage-full-10212934.jpg"
+  },
+  {
+    "name": "Papyrus",
+    "color": "white",
+    "caducity": "persistant",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Rapide",
+    "cold_resistance": 0,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/526/mainImage-full-12011729.jpg"
+  },
+  {
+    "name": "Pâquerette",
+    "color": "white",
+    "caducity": "persistant",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Rapide",
+    "cold_resistance": 2,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard",
+      "Climat méditerranéen"
+    ],
+    "final_size": 2.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/197/mainImage-full-11457564.jpg"
+  },
+  {
+    "name": "Queue de lézard",
+    "color": "white",
+    "caducity": "caduc",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Normale",
+    "cold_resistance": 1,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard",
+      "Climat méditerranéen"
+    ],
+    "final_size": 60.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/528/mainImage-full-12063749.jpg"
+  },
+  {
+    "name": "Radermachera",
+    "color": "white",
+    "caducity": "persistant",
+    "care_frequency": 1,
+    "water_need": 1,
+    "growth_speed": "Normale",
+    "cold_resistance": 1,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/1595/mainImage-full-12806711.jpg"
+  },
+  {
+    "name": "Radis serpent",
+    "color": "white",
+    "caducity": "caduc",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Rapide",
+    "cold_resistance": 0,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/1557/mainImage-full-12789767.jpg"
+  },
+  {
+    "name": "Raifort",
+    "color": "yellow",
+    "caducity": "caduc",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Normale",
+    "cold_resistance": 1,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/518/mainImage-full-11995676.jpg"
+  },
+  {
+    "name": "Raiponce en épi",
+    "color": "white",
+    "caducity": "caduc",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Normale",
+    "cold_resistance": 2,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/969/mainImage-full-12314947.jpg"
+  },
+  {
+    "name": "Ramboutan",
+    "color": "white",
+    "caducity": "persistant",
+    "care_frequency": 1,
+    "water_need": 1,
+    "growth_speed": "Lente",
+    "cold_resistance": 0,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard",
+      "Climat méditerranéen"
+    ],
+    "final_size": 1.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/1089/mainImage-full-12388036.jpg"
+  },
+  {
+    "name": "Raoulia",
+    "color": "white",
+    "caducity": "persistant",
+    "care_frequency": 2,
+    "water_need": 1,
+    "growth_speed": "Lente",
+    "cold_resistance": 1,
+    "light_need": 0,
+    "climate": [
+      "Climat continental",
+      "Climat montagnard"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/1505/mainImage-full-12633151.jpg"
+  },
+  {
+    "name": "Raphiolepis",
+    "color": "white",
+    "caducity": "persistant",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Lente",
+    "cold_resistance": 0,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat méditerranéen"
+    ],
+    "final_size": 1.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/1953/mainImage-full-13108275.jpg"
+  },
+  {
+    "name": "Réglisse",
+    "color": "white",
+    "caducity": "caduc",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Rapide",
+    "cold_resistance": 2,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/493/mainImage-full-11956083.jpg"
+  },
+  {
+    "name": "Reinwardtia",
+    "color": "yellow",
+    "caducity": "semi_persistant",
+    "care_frequency": 1,
+    "water_need": 1,
+    "growth_speed": "Rapide",
+    "cold_resistance": 0,
+    "light_need": 0,
+    "climate": [
+
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/1689/mainImage-full-13110403.jpg"
+  },
+  {
+    "name": "Renouée",
+    "color": "white",
+    "caducity": "semi_persistant",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Normale",
+    "cold_resistance": 1,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/708/mainImage-full-11824056.jpg"
+  },
+  {
+    "name": "Réséda",
+    "color": "white",
+    "caducity": "semi_persistant",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Rapide",
+    "cold_resistance": 1,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/659/mainImage-full-11574353.jpg"
+  },
+  {
+    "name": "Sabal",
+    "color": "white",
+    "caducity": "persistant",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Lente",
+    "cold_resistance": 2,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat méditerranéen"
+    ],
+    "final_size": 2.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/558/mainImage-full-12071284.jpg"
+  },
+  {
+    "name": "Sagine",
+    "color": "white",
+    "caducity": "persistant",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Lente",
+    "cold_resistance": 2,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/598/mainImage-full-12094606.jpg"
+  },
+  {
+    "name": "Sagittaire",
+    "color": "white",
+    "caducity": "caduc",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Rapide",
+    "cold_resistance": 2,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/467/mainImage-full-11929824.jpg"
+  },
+  {
+    "name": "Saintpaulia",
+    "color": "white",
+    "caducity": "persistant",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Normale",
+    "cold_resistance": 0,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/717/mainImage-full-11896969.jpg"
+  },
+  {
+    "name": "Salicaire commune",
+    "color": "red",
+    "caducity": "caduc",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Rapide",
+    "cold_resistance": 2,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/201/mainImage-full-11457973.jpg"
+  },
+  {
+    "name": "Salsifis",
+    "color": "violet_purple",
+    "caducity": "caduc",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Normale",
+    "cold_resistance": 2,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/164/mainImage-full-9733361.jpg"
+  },
+  {
+    "name": "Sandersonia",
+    "color": "orange",
+    "caducity": "caduc",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Normale",
+    "cold_resistance": 0,
+    "light_need": 0,
+    "climate": [
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/342/mainImage-full-12078182.jpg"
+  },
+  {
+    "name": "Sanguisorbe",
+    "color": "white",
+    "caducity": "caduc",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Normale",
+    "cold_resistance": 2,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/1995/mainImage-full-13202335.jpg"
+  },
+  {
+    "name": "Sansevieria",
+    "color": "white",
+    "caducity": "persistant",
+    "care_frequency": 0,
+    "water_need": 0,
+    "growth_speed": "Lente",
+    "cold_resistance": 0,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/405/mainImage-full-11798382.jpg"
+  },
+  {
+    "name": "Santoline",
+    "color": "white",
+    "caducity": "persistant",
+    "care_frequency": 0,
+    "water_need": 0,
+    "growth_speed": "Rapide",
+    "cold_resistance": 1,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/419/mainImage-full-11843900.jpg"
+  },
+  {
+    "name": "Sanvitalia",
+    "color": "yellow",
+    "caducity": "persistant",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Rapide",
+    "cold_resistance": 0,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/263/mainImage-full-10006007.jpg"
+  },
+  {
+    "name": "Sapin",
+    "color": "yellow",
+    "caducity": "persistant",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Lente",
+    "cold_resistance": 2,
+    "light_need": 1,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard",
+      "Climat méditerranéen"
+    ],
+    "final_size": 2.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/325/mainImage-full-11705188.jpg"
+  },
+  {
+    "name": "Sapin de Douglas",
+    "color": "yellow",
+    "caducity": "persistant",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Rapide",
+    "cold_resistance": 2,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard",
+      "Climat méditerranéen"
+    ],
+    "final_size": 8.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/870/mainImage-full-12257424.jpg"
+  },
+  {
+    "name": "Saponaire",
+    "color": "white",
+    "caducity": "caduc",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Rapide",
+    "cold_resistance": 2,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/1929/mainImage-full-13037783.jpg"
+  },
+  {
+    "name": "Tabac",
+    "color": "white",
+    "caducity": "persistant",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Rapide",
+    "cold_resistance": 0,
+    "light_need": 1,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/1074/mainImage-full-12381089.jpg"
+  },
+  {
+    "name": "Talipot",
+    "color": "white",
+    "caducity": "persistant",
+    "care_frequency": 1,
+    "water_need": 1,
+    "growth_speed": "Lente",
+    "cold_resistance": 0,
+    "light_need": 0,
+    "climate": [
+
+    ],
+    "final_size": 1.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/1907/mainImage-full-13006531.jpg"
+  },
+  {
+    "name": "Tamarillo",
+    "color": "white",
+    "caducity": "persistant",
+    "care_frequency": 2,
+    "water_need": 1,
+    "growth_speed": "Rapide",
+    "cold_resistance": 0,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/599/mainImage-full-11362702.jpg"
+  },
+  {
+    "name": "Tamaris",
+    "color": "white",
+    "caducity": "caduc",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Rapide",
+    "cold_resistance": 2,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat méditerranéen"
+    ],
+    "final_size": 2.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/407/mainImage-full-10429607.jpg"
+  },
+  {
+    "name": "Taro",
+    "color": "white",
+    "caducity": "caduc",
+    "care_frequency": 1,
+    "water_need": 1,
+    "growth_speed": "Rapide",
+    "cold_resistance": 0,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/507/mainImage-full-11993874.jpg"
+  },
+  {
+    "name": "Tellima grandiflora",
+    "color": "white",
+    "caducity": "persistant",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Rapide",
+    "cold_resistance": 2,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/1036/mainImage-full-12351994.jpg"
+  },
+  {
+    "name": "Telopea",
+    "color": "white",
+    "caducity": "persistant",
+    "care_frequency": 1,
+    "water_need": 1,
+    "growth_speed": "Lente",
+    "cold_resistance": 1,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard",
+      "Climat méditerranéen"
+    ],
+    "final_size": 2.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/1096/mainImage-full-12391319.jpg"
+  },
+  {
+    "name": "Tetradium daniellii",
+    "color": "white",
+    "caducity": "caduc",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Rapide",
+    "cold_resistance": 2,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard",
+      "Climat méditerranéen"
+    ],
+    "final_size": 4.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/853/mainImage-full-12281683.jpg"
+  },
+  {
+    "name": "Tétragone",
+    "color": "green",
+    "caducity": "caduc",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Rapide",
+    "cold_resistance": 0,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/127/mainImage-full-9596959.jpg"
+  },
+  {
+    "name": "Tetrapanax",
+    "color": "white",
+    "caducity": "persistant",
+    "care_frequency": 1,
+    "water_need": 1,
+    "growth_speed": "Rapide",
+    "cold_resistance": 1,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat méditerranéen"
+    ],
+    "final_size": 2.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/1693/mainImage-full-12855243.jpg"
+  },
+  {
+    "name": "Thym",
+    "color": "white",
+    "caducity": "persistant",
+    "care_frequency": 0,
+    "water_need": 0,
+    "growth_speed": "Normale",
+    "cold_resistance": 1,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/30/mainImage-full-9204631.jpg"
+  },
+  {
+    "name": "Tiarella",
+    "color": "white",
+    "caducity": "persistant",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Normale",
+    "cold_resistance": 2,
+    "light_need": 1,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/720/mainImage-full-12146152.jpg"
+  },
+  {
+    "name": "Valériane officinale",
+    "color": "white",
+    "caducity": "caduc",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Normale",
+    "cold_resistance": 2,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/245/mainImage-full-9925055.jpg"
+  },
+  {
+    "name": "Vallea stipularis",
+    "color": "red",
+    "caducity": "persistant",
+    "care_frequency": 1,
+    "water_need": 1,
+    "growth_speed": "Normale",
+    "cold_resistance": 1,
+    "light_need": 1,
+    "climate": [
+      "Climat océanique"
+    ],
+    "final_size": 3.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/2121/mainImage-full-13786317.jpg"
+  },
+  {
+    "name": "Vanillier",
+    "color": "yellow",
+    "caducity": "persistant",
+    "care_frequency": 1,
+    "water_need": 1,
+    "growth_speed": "Lente",
+    "cold_resistance": 0,
+    "light_need": 0,
+    "climate": [
+
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/2113/mainImage-full-13678759.jpg"
+  },
+  {
+    "name": "Vergerette",
+    "color": "white",
+    "caducity": "semi_persistant",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Rapide",
+    "cold_resistance": 2,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/297/mainImage-full-11597863.jpg"
+  },
+  {
+    "name": "Veronicastrum",
+    "color": "white",
+    "caducity": "caduc",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Normale",
+    "cold_resistance": 2,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/743/mainImage-full-12097441.jpg"
+  },
+  {
+    "name": "Verveine citronnelle",
+    "color": "white",
+    "caducity": "caduc",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Rapide",
+    "cold_resistance": 0,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/574/mainImage-full-12088015.jpg"
+  },
+  {
+    "name": "Verveine de Buenos-Aires",
+    "color": "violet_purple",
+    "caducity": "semi_persistant",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Rapide",
+    "cold_resistance": 1,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/671/mainImage-full-11698793.jpg"
+  },
+  {
+    "name": "Verveine hybride",
+    "color": "white",
+    "caducity": "semi_persistant",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Rapide",
+    "cold_resistance": 0,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/891/mainImage-full-12265452.jpg"
+  },
+  {
+    "name": "Verveine officinale",
+    "color": "violet_purple",
+    "caducity": "semi_persistant",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Normale",
+    "cold_resistance": 2,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard",
+      "Climat méditerranéen"
+    ],
+    "final_size": 25.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/644/mainImage-full-11555523.jpg"
+  },
+  {
+    "name": "Viburnum davidii",
+    "color": "white",
+    "caducity": "persistant",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Lente",
+    "cold_resistance": 2,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat méditerranéen"
+    ],
+    "final_size": 1.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/1597/mainImage-full-12806951.jpg"
+  },
+  {
+    "name": "Viburnum plicatum",
+    "color": "white",
+    "caducity": "caduc",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Normale",
+    "cold_resistance": 2,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard",
+      "Climat méditerranéen"
+    ],
+    "final_size": 2.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/1543/mainImage-full-12775275.jpg"
+  },
+  {
+    "name": "Viburnum rhytidophyllum",
+    "color": "white",
+    "caducity": "persistant",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Rapide",
+    "cold_resistance": 2,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard",
+      "Climat méditerranéen"
+    ],
+    "final_size": 2.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/1615/mainImage-full-12818939.jpg"
+  },
+  {
+    "name": "Victoria cruziana",
+    "color": "white",
+    "caducity": "caduc",
+    "care_frequency": 2,
+    "water_need": 1,
+    "growth_speed": "Rapide",
+    "cold_resistance": 0,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat méditerranéen"
+    ],
+    "final_size": 3.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/909/mainImage-full-12281228.jpg"
+  },
+  {
+    "name": "Vigne",
+    "color": "white",
+    "caducity": "caduc",
+    "care_frequency": 1,
+    "water_need": 1,
+    "growth_speed": "Normale",
+    "cold_resistance": 2,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat méditerranéen"
+    ],
+    "final_size": 2.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/495/mainImage-full-10963326.jpg"
+  },
+  {
+    "name": "Waldsteinia",
+    "color": "yellow",
+    "caducity": "persistant",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Rapide",
+    "cold_resistance": 2,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/1617/mainImage-full-12819035.jpg"
+  },
+  {
+    "name": "Washingtonia",
+    "color": "white",
+    "caducity": "persistant",
+    "care_frequency": 1,
+    "water_need": 1,
+    "growth_speed": "Rapide",
+    "cold_resistance": 1,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat méditerranéen"
+    ],
+    "final_size": 2.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/469/mainImage-full-11910000.jpg"
+  },
+  {
+    "name": "Watsonia",
+    "color": "white",
+    "caducity": "persistant",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Normale",
+    "cold_resistance": 1,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat méditerranéen"
+    ],
+    "final_size": 30.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/780/mainImage-full-12107536.jpg"
+  },
+  {
+    "name": "Wrightia antidysenterica",
+    "color": "white",
+    "caducity": "persistant",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Normale",
+    "cold_resistance": 1,
+    "light_need": 0,
+    "climate": [
+      "Climat méditerranéen"
+    ],
+    "final_size": 2.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/2127/mainImage-full-13843995.jpg"
+  },
+  {
+    "name": "Ylang-ylang",
+    "color": "yellow",
+    "caducity": "persistant",
+    "care_frequency": 1,
+    "water_need": 1,
+    "growth_speed": "Rapide",
+    "cold_resistance": 0,
+    "light_need": 0,
+    "climate": [
+
+    ],
+    "final_size": 6.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/1619/mainImage-full-12819227.jpg"
+  },
+  {
+    "name": "Yucca",
+    "color": "white",
+    "caducity": "persistant",
+    "care_frequency": 1,
+    "water_need": 1,
+    "growth_speed": "Lente",
+    "cold_resistance": 1,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/15/mainImage-full-9140348.jpg"
+  },
+  {
+    "name": "Yuzu",
+    "color": "white",
+    "caducity": "persistant",
+    "care_frequency": 1,
+    "water_need": 1,
+    "growth_speed": "Lente",
+    "cold_resistance": 1,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat méditerranéen"
+    ],
+    "final_size": 3.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/1621/mainImage-full-12819421.jpg"
+  },
+  {
+    "name": "Zamioculcas",
+    "color": "green",
+    "caducity": "persistant",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Lente",
+    "cold_resistance": 0,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat montagnard",
+      "Climat méditerranéen"
+    ],
+    "final_size": 0.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/408/mainImage-full-11798913.jpg"
+  },
+  {
+    "name": "Zenobia",
+    "color": "white",
+    "caducity": "semi_persistant",
+    "care_frequency": 0,
+    "water_need": 1,
+    "growth_speed": "Normale",
+    "cold_resistance": 2,
+    "light_need": 1,
+    "climate": [
+      "Climat océanique",
+      "Climat semi-océanique",
+      "Climat continental",
+      "Climat méditerranéen"
+    ],
+    "final_size": 1.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/1161/mainImage-full-12455077.jpg"
+  },
+  {
+    "name": "Zephyranthes",
+    "color": "white",
+    "caducity": "caduc",
+    "care_frequency": 1,
+    "water_need": 1,
+    "growth_speed": "Normale",
+    "cold_resistance": 0,
+    "light_need": 0,
+    "climate": [
+      "Climat océanique",
+      "Climat méditerranéen"
+    ],
+    "final_size": 10.0,
+    "image_url": "https://media.ooreka.fr/public/image/plant/1018/mainImage-full-12342396.jpg"
+  }
+]
