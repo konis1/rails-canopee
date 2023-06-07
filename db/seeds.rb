@@ -5,10 +5,7 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
-
-
 require "json"
-require "pry-byebug"
 
 # Purge database
 Plant.destroy_all
@@ -38,7 +35,26 @@ plants.each_with_index do |p, i|
     break
   end
   puts "adding plant number #{counter}"
-  plant = Plant.create(name: p["name"], color: p["color"], caducity: p["caducity"],care_frequency: p["care_frequency"], water_need: p["water_need"], growth_speed: p["growth_speed"], cold_resistance: "cold_resistance",light_need: "light_need", climate: "climate", final_size: "final_size")
+  speed = nil
+  case p["growth_speed"]
+  when "Lente"
+    speed = 0
+  when "Normale"
+    speed = 1
+  when "Rapide"
+    speed = 2
+  end
+  p speed
+  plant = Plant.create(name: p["name"],
+                       color: p["color"],
+                       caducity: p["caducity"],
+                       care_frequency: p["care_frequency"],
+                       water_need: p["water_need"],
+                       growth_speed: speed,
+                       cold_resistance: "cold_resistance",
+                       light_need: "light_need",
+                       climate: "climate",
+                       final_size: "final_size")
   if plant.photo.attached?
     plant.photo.purge
   end
