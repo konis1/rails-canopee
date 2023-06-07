@@ -21,7 +21,7 @@ export default class extends Controller {
     this.geocoder.onRemove()
   }
   #setInputValue(event) {
-    this.addressTarget.value = event.result["text_fr-FR"]
+    this.addressTarget.value = event.result["place_name"]
   }
 
   #clearInputValue() {

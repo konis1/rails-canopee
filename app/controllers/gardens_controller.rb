@@ -1,4 +1,4 @@
-require '/Users/nicolasbourdin/code/konis1/rails-canopee/services/weather_report.rb'
+require_relative '../../services/weather_report.rb'
 
 class GardensController < ApplicationController
   before_action :set_garden, only: [:show, :edit, :update, :destroy]
@@ -23,7 +23,7 @@ class GardensController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
-  
+
     climate_checker = WeatherService.new(@garden.latitude, @garden.longitude, @garden.location)
     @garden.climate = climate_checker.determine_climate
     @garden.save
