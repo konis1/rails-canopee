@@ -1,5 +1,3 @@
-require_relative '../../services/weather_report.rb'
-
 class GardensController < ApplicationController
   before_action :set_garden, only: [:show, :edit, :update, :destroy]
 
@@ -26,6 +24,7 @@ class GardensController < ApplicationController
 
     climate_checker = WeatherService.new(@garden.latitude, @garden.longitude, @garden.location)
     @garden.climate = climate_checker.determine_climate
+
     @garden.save
   end
 
