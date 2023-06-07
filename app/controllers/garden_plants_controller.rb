@@ -7,6 +7,7 @@ class GardenPlantsController < ApplicationController
   end
 
   def show
+    
   end
 
 
@@ -45,7 +46,7 @@ class GardenPlantsController < ApplicationController
   private
 
   def set_garden_plant
-    @garden_plant = Garden_plants.find(params[:id])
+    @garden_plant = GardenPlant.find(params[:id])
   end
 
   def garden_plant_params

@@ -1,0 +1,14 @@
+<div class="container">
+  <h1><%= @garden_plant.nickname %></h1>
+  <%= cl_image_tag @garden_plant.photo.key, height 200, width 400, crop: :fill %>
+  <h2> Qui suis-je ?</h2>
+  <p><%= @garden_plant.plant.name %></p>
+  <% @garden_plant.tasks.each do |task| %>
+  <ul>
+    <li>
+      <%= task %>
+    </li>
+  </ul>
+  <% end %>
+  <%= link_to 'Back to Garden', gardens_path, class: "btn btn-primary" %>
+</div>
