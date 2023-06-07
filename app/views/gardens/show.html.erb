@@ -12,3 +12,20 @@
     </div>
   <%= link_to 'Back to Garden', gardens_path, class: "btn btn-primary" %>
 </div>
+<div class="container">
+  <div class="row mt-5">
+    <% @garden.garden_plants.each do |plant| %>
+      <div class="col-4">
+        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)">
+          <%= plant.nickname %>
+          <%= link_to "+", garden_plant_path(plant), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "card-remove-link" %>
+          <div class="card-tags">
+            <% plant.tags.each do |tag| %>
+              <%= tag.name %>
+            <% end %>
+          </div>
+          <%= link_to "+", new_plant_plant_tag_path(plant) %>
+        </div>
+      </div>
+    <% end %>
+  </div>
