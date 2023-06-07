@@ -22,7 +22,9 @@ class WeatherService
     JSON.parse(forecast_response)['daily']['rain_sum'][0]
   end
 
-  def determine_climat
+  def determine_climate
+    response = RestClient.get 'https://geocoding-api.open-meteo.com/v1/search', {params: {name: @location, language: "fr"}}
+    @json = JSON.parse(response.body)
     location_region = retrieve_region
     locate_in_climate_map(location_region)
   end
