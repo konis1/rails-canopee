@@ -1,11 +1,12 @@
 require 'json'
 require 'open-uri'
+require 'rest-client'
 
 # Takes arguments given by Geocoder, gets weather data and region to filter plants by climate.
 class WeatherService
   def initialize(latitude, longitude, location)
-    @location = location.gsub!(',', '%2C').gsub(' ', '+') # Format commas and spaces for URL.
-    @weather_api = "https://api.open-meteo.com/v1/forecast?latitude=#{latitude}&longitude=#{longitude}&daily=rain_sum&forecast_days=16&timezone=Europe%2FLondon"
+    @location = location
+    @weather_api = "https://api.open-meteo.com/v1/search"
     @geocoding_api = "https://geocoding-api.open-meteo.com/v1/search?name=#{@location}&count=10&language=fr&format=json"
   end
 
@@ -20,6 +21,8 @@ class WeatherService
   end
 
   def determine_climate
+    response = RestClient.get 'https://geocoding-api.open-meteo.com/v1/search', {params: {name: @location, language: "fr"}}
+    @json = JSON.parse(response.body)
     location_region = retrieve_region
     locate_in_climate_map(location_region)
   end
@@ -27,7 +30,7 @@ class WeatherService
   private
 
   def retrieve_region
-    JSON.parse(URI.open(@geocoding_api).read)['results'][0]['admin1']
+    @json['results'][0]['admin1'] rescue ""
   end
 
   def locate_in_climate_map(region)
