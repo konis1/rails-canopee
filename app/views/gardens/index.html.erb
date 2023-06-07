@@ -1,0 +1,16 @@
+<h1>ALL Gardens</h1>
+
+<div class="row">
+    <% @gardens.each do |garden| %>
+      <div class="col 3 p-3">
+          <%= garden.name %>
+          <%= garden.light %>
+          <%= garden.size %>
+          <%= garden.care_willing %>
+          <%= garden.location %>
+          <%= garden.latitude %>
+          <%= garden.longitude %>
+          <%= garden.color %>
+        </div>
+    <% end %>
+</div>

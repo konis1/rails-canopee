@@ -1,0 +1,15 @@
+<%= simple_form_for :garden_plant do |f| %>
+
+    <div>
+      <%#= f.input :nickname %>
+      <%#= f.input :pot_color %>
+      <%#= f.association :plant, collection: Plant.all, prompt: "Select a plant" %>
+      <%#= f.association :garden, collection: Garden.all, prompt: "Select a garden" %>
+      <%= f.input :choices, as: :checkboxes, collection: @garden.garden_plants %>
+      <%# %, label_method: lambda { |garden_plant| garden_plant.plant.nickname } %>
+    </div>
+
+    <div>
+      <%= f.button :submit %>
+    </div>
+  <% end %>
