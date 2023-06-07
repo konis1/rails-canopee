@@ -9,6 +9,10 @@
 
 require "json"
 
-filepath = Rails.root.join("db", "plants.json")
+filepath = File.join(Rails.root, 'db/plants.json')
 serialized_plants = File.read(filepath)
 plants = JSON.parse(serialized_plants)
+
+plants.each do |p|
+ Plant.create(name: p["name"], color: p["color"], caducity: p["caducity"],care_frequency: p["care_frequency"], water_need: p["water_need"], growth_speed: p["growth_speed"], cold_resistance: "cold_resistance",light_need: "light_need", climate: "climate", final_size: "final_size", image_url: "image_url" )
+end
