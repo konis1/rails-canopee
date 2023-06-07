@@ -17,9 +17,22 @@ class WeatherService
   MEDITERRANEEN = ['Occitanie', "Provence-Alpes-Côte d'Azur", 'Corse']
   MONTAGNARD = ['Auvergne-Rhône-Alpes']
 
-  def retrieve_day_rain
-    forecast_response = RestClient.get @weather_api, { params: { latitude: @latitude, longitude: @longitude, daily: 'rain_sum', forecast_days: 16, timezone: 'Europe%2FLondon' } }
+  def retrieve_daily_rain_data
+    forecast_response = RestClient.get @weather_api, { params: { latitude: @latitude,
+                                                                 longitude: @longitude,
+                                                                 daily: 'rain_sum',
+                                                                 forecast_days: 16,
+                                                                 timezone: 'Europe/London' } }
     JSON.parse(forecast_response)['daily']['rain_sum'][0]
+  end
+
+  def retrieve_min_temp_16_days
+    forecast_response = RestClient.get @weather_api, { params: { latitude: @latitude,
+                                                                 longitude: @longitude,
+                                                                 daily: 'temperature_2m_min',
+                                                                 forecast_days: 16,
+                                                                 timezone: 'Europe/London' } }
+    JSON.parse(forecast_response)['daily']['temperature_2m_min']
   end
 
   def determine_climate
