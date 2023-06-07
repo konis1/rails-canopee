@@ -5,52 +5,65 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+
+require "json"
+require "pry-byebug"
+
+# Purge database
+Plant.destroy_all
 User.destroy_all
+Garden.destroy_all
+GardenPlant.destroy_all
 
-# Create users
-user1 = User.create!(email: "user1@example.com", password: "password1")
-user2 = User.create!(email: "user2@example.com", password: "password2")
+filepath = File.join(Rails.root, 'db/plants.json')
+serialized_plants = File.read(filepath)
+plants = JSON.parse(serialized_plants)
 
-puts "Created users:"
-puts user1.inspect
-puts user2.inspect
+puts "adding user test@test.fr"
 
-# Create gardens
-garden1 = Garden.create!(name: "Garden 1", light: 3, size: 2, care_willing: 4, location: "Location 1", latitude: 51.1234, longitude: -0.5678, color: "Green", user: user1)
-garden2 = Garden.create!(name: "Garden 2", light: 2, size: 3, care_willing: 5, location: "Location 2", latitude: 52.4321, longitude: -1.9876, color: "Red", user: user2)
+user = User.new(email: "test@test.fr", password: "123456")
+user.save
 
-puts "Create!create!d gardens:"
-puts garden1.inspect
-puts garden2.inspect
+puts "user Test added with password 123456"
 
-# Create plants
-plant1 = Plant.create!(name: "Rose Plant", color: "Red", caducity: "Deciduous", final_size: 80, light_need: 3, water_need: 4, growth_speed: 2, care_frequency: 2, cold_resistance: -5)
-plant2 = Plant.create!(name: "Lily Plant", color: "White", caducity: "Evergreen", final_size: 60, light_need: 4, water_need: 3, growth_speed: 3, care_frequency: 3, cold_resistance: -2)
+#how many plants we want
+number_of_plants = 10
 
-puts "Create!create!d plants:"
-puts plant1.inspect
-puts plant2.inspect
+puts "Adding plants ..."
+counter = 1
 
-# Create garden plants
-garden_plant1 = GardenPlant.create!(nickname: "Rose Plant", pot_color: "Green", plant: plant1, garden: garden1)
-garden_plant2 = GardenPlant.create!(nickname: "Lily Plant", pot_color: "Blue", plant: plant2, garden: garden2)
+plants.each_with_index do |p, i|
+  if i == number_of_plants
+    break
+  end
+  puts "adding plant number #{counter}"
+  plant = Plant.create(name: p["name"], color: p["color"], caducity: p["caducity"],care_frequency: p["care_frequency"], water_need: p["water_need"], growth_speed: p["growth_speed"], cold_resistance: "cold_resistance",light_need: "light_need", climate: "climate", final_size: "final_size")
+  if plant.photo.attached?
+    plant.photo.purge
+  end
+  file = URI.open(p["image_url"])
+  plant.photo.attach(io: file, filename: "#{p["name"]}.jpg", content_type: "image/jpg")
+  counter += 1
+end
 
-puts "Create!create!d garden plants:"
-puts garden_plant1.inspect
-puts garden_plant2.inspect
+puts "Plants added !"
 
-# Create reviews
-review1 = Review.create!(note: 4.5, content: "Beautiful plant", user: user1, plant: plant1)
-review2 = Review.create!(note: 3.8, content: "Great addition to the garden", user: user2, plant: plant2)
+puts "Adding gardens"
+number_of_gardens = 3
 
-puts "Create!create!d reviews:"
-puts review1.inspect
-puts review2.inspect
+puts "Adding #{number_of_gardens} test gardens"
+counter = 1
 
-# Create tasks
-task1 = Task.create!(activity: "Watering", criticity: "High", due_date: DateTime.now + 2.days, garden_plant: garden_plant1)
-task2 = Task.create!(activity: "Pruning", criticity: "Medium", due_date: DateTime.now + 1.week, garden_plant: garden_plant2)
+Garden.create(user_id: user.id, name: "Test", light: 1 , size: 3 , care_willing: 2, location: "16 villa gaudelet, Paris", color: "black" )
+Garden.create(user_id: user.id, name: "My garden", light: 2 , size: 3 , care_willing: 2, location: "231 rue de belleville Paris", color: "black" )
+Garden.create(user_id: user.id, name: "My balcony 2", light: 0 , size: 1 , care_willing: 3, location: "Lyon", color: "black" )
 
-puts "Create!create!d tasks:"
-puts task1.inspect
-puts task2.inspect
+puts "Adding plants to the garden"
+
+plants = Plant.all
+gardens = Garden.all
+
+plants.each do |p|
+  GardenPlant.create(nickname: "test", pot_color: "blue", garden_id: gardens[rand(0..2)].id, plant_id: p.id)
+end

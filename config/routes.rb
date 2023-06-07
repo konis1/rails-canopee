@@ -2,8 +2,9 @@ Rails.application.routes.draw do
   devise_for :users
   root to: "gardens#index"
   resources :gardens do
-    resources :garden_plants, only: [:create]
-    resources :tasks, only: [:index]
+    resources :garden_plants, only: [:create] do
+      resources :tasks, only: [:index]
+    end
   end
 
   resources :plants, only: [] do

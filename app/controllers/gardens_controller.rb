@@ -1,3 +1,5 @@
+require_relative '../../services/weather_report.rb'
+
 class GardensController < ApplicationController
   before_action :set_garden, only: [:show, :edit, :update, :destroy]
 
@@ -15,11 +17,16 @@ class GardensController < ApplicationController
   def create
     @garden = Garden.new(garden_params)
     @garden.user = current_user
+
     if @garden.save
       redirect_to @garden, notice: 'Garden was successfully created.'
     else
       render :new, status: :unprocessable_entity
     end
+
+    climate_checker = WeatherService.new(@garden.latitude, @garden.longitude, @garden.location)
+    @garden.climate = climate_checker.determine_climate
+    @garden.save
   end
 
   def edit
@@ -46,6 +53,8 @@ class GardensController < ApplicationController
   end
 
   def garden_params
-    params.require(:garden).permit(:name, :light, :size, :care_willing, :location, :color, :user_id)
+
+    params.require(:garden).permit(:name, :light, :size, :care_willing, :location, :color)
+
   end
 end
