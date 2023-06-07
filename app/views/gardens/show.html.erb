@@ -17,15 +17,13 @@
     <% @garden.garden_plants.each do |plant| %>
       <div class="col-4">
         <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)">
+          <%= cl_image_path(plant.photo.key, width: 400, height: 300, crop: :fill) %>
           <%= plant.nickname %>
-          <%= link_to "+", garden_plant_path(plant), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "card-remove-link" %>
-          <div class="card-tags">
-            <% plant.tags.each do |tag| %>
-              <%= tag.name %>
-            <% end %>
-          </div>
-          <%= link_to "+", new_plant_plant_tag_path(plant) %>
+          <%= plant.pot_color %>
+          <%= plant.plant.name %></p>
+          <%= link_to "-", garden_plant_path(plant), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "card-remove-link" %>
         </div>
       </div>
     <% end %>
   </div>
+</div>
