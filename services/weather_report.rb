@@ -1,12 +1,14 @@
 require 'json'
-require 'open-uri'
+require 'rest-client'
 
 # Takes arguments given by Geocoder, gets weather data and region to filter plants by climate.
 class WeatherService
   def initialize(latitude, longitude, location)
-    @location = location.gsub!(',', '%2C').gsub(' ', '+') # Format commas and spaces for URL.
-    @weather_api = "https://api.open-meteo.com/v1/forecast?latitude=#{latitude}&longitude=#{longitude}&daily=rain_sum&forecast_days=16&timezone=Europe%2FLondon"
-    @geocoding_api = "https://geocoding-api.open-meteo.com/v1/search?name=#{@location}&count=10&language=fr&format=json"
+    @location = "#{location.split(',')[0]}, France"
+    @latitude = latitude
+    @longitude = longitude
+    @weather_api = "https://api.open-meteo.com/v1/forecast"
+    @geocoding_api = "https://geocoding-api.open-meteo.com/v1/search"
   end
 
   CONTINENTAL = ['Grand Est', 'Bourgogne-Franche-Comté']
@@ -16,10 +18,11 @@ class WeatherService
   MONTAGNARD = ['Auvergne-Rhône-Alpes']
 
   def retrieve_day_rain
-    JSON.parse(URI.open(@weather_api).read)['daily']['rain_sum'][0]
+    forecast_response = RestClient.get @weather_api, { params: { latitude: @latitude, longitude: @longitude, daily: 'rain_sum', forecast_days: 16, timezone: 'Europe%2FLondon' } }
+    JSON.parse(forecast_response)['daily']['rain_sum'][0]
   end
 
-  def determine_climat
+  def determine_climate
     location_region = retrieve_region
     locate_in_climate_map(location_region)
   end
@@ -27,7 +30,8 @@ class WeatherService
   private
 
   def retrieve_region
-    JSON.parse(URI.open(@geocoding_api).read)['results'][0]['admin1']
+    location_data = RestClient.get @geocoding_api, { params: { name: @location, count: 10, language: 'fr', format: 'json' } }
+    JSON.parse(location_data)['results'][0]['admin1']
   end
 
   def locate_in_climate_map(region)
