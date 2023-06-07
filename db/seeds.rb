@@ -8,6 +8,7 @@
 
 
 require "json"
+require "pry-byebug"
 
 # Purge database
 Plant.destroy_all
@@ -48,8 +49,8 @@ end
 
 puts "Plants added !"
 
-puts "Adding gardens"
-number_of_gardens = 2
+# puts "Adding gardens"
+# number_of_gardens = 2
 
 puts "Adding one test garden"
 # counter = 1
@@ -60,5 +61,5 @@ puts "Adding plants to the garden"
 
 plants = Plant.all
 plants.each do |p|
-  GardenPlant.create(garden_id: Garden.first, plant_id: p.id)
+  GardenPlant.create(nickname: "test", pot_color: "blue", garden_id: Garden.first.id, plant_id: p.id)
 end
