@@ -28,7 +28,7 @@ user.save
 puts "user Test added with password 123456"
 
 #how many plants we want
-number_of_plants = 1
+number_of_plants = 10
 
 puts "Adding plants ..."
 counter = 1
