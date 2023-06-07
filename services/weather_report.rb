@@ -26,6 +26,15 @@ class WeatherService
     JSON.parse(forecast_response)['daily']['rain_sum'][0]
   end
 
+  def retrieve_rain_data_16_days
+    forecast_response = RestClient.get @weather_api, { params: { latitude: @latitude,
+                                                                 longitude: @longitude,
+                                                                 daily: 'rain_sum',
+                                                                 forecast_days: 16,
+                                                                 timezone: 'Europe/London' } }
+    JSON.parse(forecast_response)['daily']['rain_sum']
+  end
+
   def retrieve_min_temp_16_days
     forecast_response = RestClient.get @weather_api, { params: { latitude: @latitude,
                                                                  longitude: @longitude,
