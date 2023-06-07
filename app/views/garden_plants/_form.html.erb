@@ -1,27 +1,14 @@
-<%= simple_form_for @garden_plant do |f| %>
-    <div class="form-inputs">
-      <%= f.input :pot_color, label: "Pot Color" %>
-      <%= f.input :status, collection: GardenPlant.statuses, as: :check_boxes, label: "Status" %>
-      <%= f.input :plant_nickname, label: "Plant Nickname", input_html: { value: garden_plant.plant.nickname } %>
-    </div>
-    <div class="form-actions">
-      <%= f.button :submit, class: "btn btn-primary" %>
-    </div>
-  <% end %>
-
-
-
-<%# <%= simple_form_for :garden_plant do |f| %>
+<%= simple_form_for :garden_plant, url:  do |f| %>
     <div>
-      <%#= f.input :nickname %>
-      <%#= f.input :pot_color %>
-      <%#= f.association :plant, collection: Plant.all, prompt: "Select a plant" %>
-      <%#= f.association :garden, collection: Garden.all, prompt: "Select a garden" %>
-      <%# <#%= f.input :choices, as: :checkboxes, collection: @garden.garden_plants %>
-      <%# %, label_method: lambda { |garden_plant| garden_plant.plant.nickname } %>
+      <%= f.input :nickname %>
+      <%= f.input :pot_color %>
+      <%= f.association :plant, collection: Plant.all, prompt: "Select a plant" %>
+      <%= f.association :garden, collection: Garden.all, prompt: "Select a garden" %>
+      <%= f.input :choices, as: :checkboxes, collection: @garden.garden_plants %>
+      <%, label_method: lambda { |garden_plant| garden_plant.plant.nickname } %>
     </div>
 
-    <%# <div>
+    <% <div>
       <%= f.button :submit %>
-    <%# </div>
+    <% </div>
   <% end %>

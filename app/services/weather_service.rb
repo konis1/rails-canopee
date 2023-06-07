@@ -23,7 +23,7 @@ class WeatherService
   end
 
   def determine_climate
-    location_region = retrieve_region
+    location_region = retrieve_region rescue 'continental'
     locate_in_climate_map(location_region)
   end
 

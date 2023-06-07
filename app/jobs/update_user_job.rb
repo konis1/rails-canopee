@@ -8,5 +8,5 @@ class UpdateUserJob < ApplicationJob
       sleep 2
       puts "Done! Enriched #{user.email} with Clearbit"
     end
-  end
+
 end

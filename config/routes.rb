@@ -19,4 +19,7 @@ Rails.application.routes.draw do
 
   resources :garden_plants, only: [:show, :destroy, :update]
   resources :tasks, only: [:update]
+
+  patch "garden/:id/validate_plants", to: "gardens#validate_plants"
+
 end
