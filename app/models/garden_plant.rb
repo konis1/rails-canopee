@@ -25,13 +25,13 @@ class GardenPlant < ApplicationRecord
                    start_time: DateTime.now + 1.year,
                    due_date: DateTime.now + 1.year + 1.week,
                    garden_plant: self)
-    elsif growth_speed == 1
+    elsif plant.growth_speed == 1
       Task.create!(activity: 'Rempote-moi !',
                    criticity: 'low',
                    start_time: DateTime.now + 2.year,
                    due_date: DateTime.now + 2.year + 1.week,
                    garden_plant: self)
-    elsif growth_speed == 2
+    elsif plant.growth_speed == 2
       Task.create!(activity: 'Rempote-moi !',
                    criticity: 'low',
                    start_time: DateTime.now + 3.year,
