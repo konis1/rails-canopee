@@ -30,13 +30,13 @@ number_of_plants = 10
 puts "Adding plants ..."
 counter = 1
 
-plants.each_with_index do |p, i|
+plants.each_with_index do |plant, i|
   if i == number_of_plants
     break
   end
   puts "adding plant number #{counter}"
   speed = nil
-  case p["growth_speed"]
+  case plant["growth_speed"]
   when "Lente"
     speed = 0
   when "Normale"
@@ -44,22 +44,21 @@ plants.each_with_index do |p, i|
   when "Rapide"
     speed = 2
   end
-  p speed
-  plant = Plant.create(name: p["name"],
-                       color: p["color"],
-                       caducity: p["caducity"],
-                       care_frequency: p["care_frequency"],
-                       water_need: p["water_need"],
+  plante = Plant.create(name: plant["name"],
+                       color: plant["color"],
+                       caducity: plant["caducity"],
+                       care_frequency: plant["care_frequency"],
+                       water_need: plant["water_need"],
                        growth_speed: speed,
-                       cold_resistance: "cold_resistance",
-                       light_need: "light_need",
-                       climate: "climate",
-                       final_size: "final_size")
-  if plant.photo.attached?
-    plant.photo.purge
+                       cold_resistance: plant["cold_resistance"],
+                       light_need: plant["light_need"],
+                       climate: plant["climate"],
+                       final_size: plant["final_size"])
+  if plante.photo.attached?
+    plante.photo.purge
   end
-  file = URI.open(p["image_url"])
-  plant.photo.attach(io: file, filename: "#{p["name"]}.jpg", content_type: "image/jpg")
+  file = URI.open(plant["image_url"])
+  plante.photo.attach(io: file, filename: "#{plant["name"]}.jpg", content_type: "image/jpg")
   counter += 1
 end
 

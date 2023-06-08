@@ -12,6 +12,10 @@ class GardenPlant < ApplicationRecord
   }
   # validates :pot_color, inclusion: {in: %w()}
 
+  def score
+    return 5
+  end
+
   private
 
   def create_initial_tasks
