@@ -6,7 +6,8 @@ module ApplicationHelper
     elsif current_page?(root_path)
       "bg-red"
     end
-    
+  end
+
   def color_level(percentage)
     coef         = percentage.fdiv(100)
     red, green = "F91818", "57A262"
