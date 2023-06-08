@@ -1,15 +1,21 @@
-<%= simple_form_for :garden_plant, url: validate_plants_garden_path(@garden) do |f| %>
-    <div>
-      <%= f.input :choices,
-                  as: :check_boxes,
-                  collection: @garden.garden_plants,
-                  label_method: lambda { |garden_plant|
-                    render 'garden_plants/select_card',  garden_plant: garden_plant
-                  } %>
-      <%#= label_method: lambda { |garden_plant| garden_plant.plant.nickname } %>
-    </div>
+<div class="container">
+  <%= simple_form_for :garden_plant, url: validate_plants_garden_path(@garden) do |f| %>
+      <div class="form-class">
 
+        <%= f.input :choices,
+                    as: :check_boxes,
+                    legend_tag: false,
+                    collection: @garden.garden_plants,
+                    input_html: { class: "tag-selector" },
+                    item_wrapper_class: 'tag-item',
+                    label_method: lambda { |garden_plant|
+                      render 'garden_plants/select_card', garden_plant: garden_plant
+                    }%>
 
-      <%= f.button :submit %>
+        <%#= label_method: lambda { |garden_plant| garden_plant.plant.nickname } %>
 
-  <% end %>
+          <%= f.button :submit %>
+        </div>
+
+    <% end %>
+</div>
