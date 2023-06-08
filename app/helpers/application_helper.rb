@@ -1,4 +1,12 @@
 module ApplicationHelper
+
+  def page_background_color_class
+    if current_page?(gardens_path)
+      "bg-green"
+    elsif current_page?(root_path)
+      "bg-red"
+    end
+    
   def color_level(percentage)
     coef         = percentage.fdiv(100)
     red, green = "F91818", "57A262"
