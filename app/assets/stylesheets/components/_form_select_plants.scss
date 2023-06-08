@@ -1,0 +1,26 @@
+
+.garden_plant_choices {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 1em;
+
+}
+
+
+.tag-item {
+  display: inline-flex;
+}
+
+.tag-selector {
+  position: absolute;
+  transform: scale(0);
+}
+
+.tag-selector + label {
+  cursor: pointer;
+  width: 100%;
+}
+
+.tag-selector:checked + label .plant-option {
+  border: 2px solid red;
+}
