@@ -15,5 +15,5 @@ class GardenPlant < ApplicationRecord
   def score
     return 5
   end
-
+  
 end

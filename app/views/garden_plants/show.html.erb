@@ -18,14 +18,11 @@
         <strong>My Tasks</strong>
       </span>
       <% if task.done_time.nil? %>
+        <%= link_to task_path(task) %>
         <li>
-          <%= task.activity %> <input class="form-check-input me-1" type="checkbox" >
+          <%= task.activity %>
         </li>
-        <% else %>
-          <li>
-            <%= task.activity %> <input class="form-check-input me-1" type="checkbox" checked >
-          </li>
-        <% end %>
+      <% end %>
     <li>
       <%= task.due_date %>
     </li>
