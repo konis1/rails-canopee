@@ -29,6 +29,7 @@ number_of_plants = 10
 
 puts "Adding plants ..."
 counter = 1
+
 plants.each_with_index do |plant, i|
   if i == number_of_plants
     break

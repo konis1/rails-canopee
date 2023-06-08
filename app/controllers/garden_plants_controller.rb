@@ -39,13 +39,13 @@ class GardenPlantsController < ApplicationController
 
   def destroy
     @garden_plant.destroy
-    redirect_to garden_plants_path, notice: 'Garden plant was successfully destroyed.'
+    redirect_to garden_path(@garden_plant.garden), notice: 'Garden plant was successfully destroyed.'
   end
 
   private
 
   def set_garden_plant
-    @garden_plant = Garden_plants.find(params[:id])
+    @garden_plant = GardenPlant.find(params[:id])
   end
 
   def garden_plant_params

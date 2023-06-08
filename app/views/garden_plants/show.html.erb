@@ -1,0 +1,36 @@
+<div class="container text-center mt-3">
+  <h1><%= @garden_plant.nickname %></h1>
+  <%= cl_image_tag @garden_plant.plant.photo.key, height: 200, class:"image-card" %>
+  <h2> Qui suis-je ?</h2>
+  <p><%= @garden_plant.plant.name %></p>
+  <% @garden_plant.tasks.each do |task| %>
+  <ul class="tasks-list">
+    <li>
+      <div class="health-bar-container">
+        <span class="health-bar-score">
+          <%= @garden_plant.score %> %
+        </span>
+        <div class="health-bar" style="width:<%= @garden_plant.score %>%; background: <%= color_level(@garden_plant.score ) %>">
+        </div>
+      </div>
+    </li>
+      <span>
+        <strong>My Tasks</strong>
+      </span>
+      <% if task.done_time.nil? %>
+        <li>
+          <%= task.activity %> <input class="form-check-input me-1" type="checkbox" >
+        </li>
+        <% else %>
+          <li>
+            <%= task.activity %> <input class="form-check-input me-1" type="checkbox" checked >
+          </li>
+        <% end %>
+    <li>
+      <%= task.due_date %>
+    </li>
+    <hr>
+  </ul>
+  <% end %>
+  <%= link_to 'Back to Garden', garden_path(@garden_plant.garden), class: "btn btn-primary" %>
+</div>
