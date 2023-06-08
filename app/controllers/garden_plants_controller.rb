@@ -7,7 +7,6 @@ class GardenPlantsController < ApplicationController
   end
 
   def show
-    
   end
 
 
