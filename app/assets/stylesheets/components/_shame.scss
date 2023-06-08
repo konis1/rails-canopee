@@ -1,0 +1,12 @@
+.min-container-scroll {
+  height: calc(100vh - #{$navbar-height} - #{$navbar-bottom-height});
+  overflow-y: auto;
+}
+
+.bg-green {
+  background-color: $light-green;
+}
+
+.bg-red {
+  background-color: $red;
+}
