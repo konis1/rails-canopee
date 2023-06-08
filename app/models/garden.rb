@@ -16,7 +16,6 @@ class Garden < ApplicationRecord
     # recuperer tyoutes les instances de plantes correspondant a ce jardin
     plants = Plant.where(
       name: self.name,
-      color: self.color,
       care_frequency: self.care_willing,
       light_need: self.light,
       cold_resistance: self.climate,
