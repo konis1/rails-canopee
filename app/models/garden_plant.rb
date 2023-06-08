@@ -10,5 +10,4 @@ class GardenPlant < ApplicationRecord
     validated: 20
   }
   # validates :pot_color, inclusion: {in: %w()}
-  has_one_attached :photo
 end
