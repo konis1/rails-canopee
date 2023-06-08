@@ -13,7 +13,7 @@ User.destroy_all
 Garden.destroy_all
 GardenPlant.destroy_all
 
-filepath = File.join(Rails.root, 'db/plants.json')
+filepath = File.join(Rails.root, '/db/data/plants.json')
 serialized_plants = File.read(filepath)
 plants = JSON.parse(serialized_plants)
 
@@ -53,6 +53,7 @@ plants.each_with_index do |plant, i|
                        cold_resistance: plant["cold_resistance"],
                        light_need: plant["light_need"],
                        climate: plant["climate"],
+                       content: plant["desription"],
                        final_size: plant["final_size"])
   if plante.photo.attached?
     plante.photo.purge
