@@ -1,0 +1,28 @@
+.button_yes_no {
+  border: solid black 1px;
+  background-color: white;
+  padding: 10px;
+  width: 35%;
+}
+
+.button_next_step {
+  border: solid black 1px;
+  border-radius: 25px;
+  background-color: white;
+  padding: 10px;
+}
+
+.button_lets_go {
+  border: solid green 1px;
+  border-radius: 25px;
+  background-color: $third_color;
+  padding: 10px;
+}
+
+.button_validate {
+  width: 30%;
+  border: solid black 1px;
+  border-radius: 25px;
+  background-color: white;
+  padding: 10px;
+}
