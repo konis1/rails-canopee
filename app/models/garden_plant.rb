@@ -19,10 +19,24 @@ class GardenPlant < ApplicationRecord
   end
 
   def create_repot_task
-    case growth_speed
-    when 0 then Task.create(activity: 'Rempote-moi !', criticity: 'low', start_time: DateTime.now + 1.year, due_date: :start_time + 1.week)
-    when 1 then Task.create(activity: 'Rempote-moi !', criticity: 'low', start_time: DateTime.now + 2.year, due_date: :start_time + 1.week)
-    when 2 then Task.create(activity: 'Rempote-moi !', criticity: 'low', start_time: DateTime.now + 3.year, due_date: :start_time + 1.week)
+    if plant.growth_speed.zero?
+      Task.create!(activity: 'Rempote-moi !',
+                   criticity: 'low',
+                   start_time: DateTime.now + 1.year,
+                   due_date: DateTime.now + 1.year + 1.week,
+                   garden_plant: self)
+    elsif growth_speed == 1
+      Task.create!(activity: 'Rempote-moi !',
+                   criticity: 'low',
+                   start_time: DateTime.now + 2.year,
+                   due_date: DateTime.now + 2.year + 1.week,
+                   garden_plant: self)
+    elsif growth_speed == 2
+      Task.create!(activity: 'Rempote-moi !',
+                   criticity: 'low',
+                   start_time: DateTime.now + 3.year,
+                   due_date: DateTime.now + 3.year + 1.week,
+                   garden_plant: self)
     end
   end
 end

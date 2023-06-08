@@ -67,3 +67,7 @@ gardens = Garden.all
 plants.each do |p|
   GardenPlant.create(nickname: "test", pot_color: "blue", garden_id: gardens[rand(0..2)].id, plant_id: p.id)
 end
+
+GardenPlant.find_each do |garden_plant|
+  garden_plant.validated!
+end
