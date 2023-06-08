@@ -5,6 +5,7 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
 require "json"
 
 # Purge database
@@ -25,7 +26,7 @@ user.save
 puts "user Test added with password 123456"
 
 #how many plants we want
-number_of_plants = 10
+number_of_plants = 100
 
 puts "Adding plants ..."
 counter = 1
