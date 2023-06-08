@@ -9,3 +9,9 @@
   - mailers
   - active_storage_analysis
   - active_storage_purge
+
+:scheduler:
+  :schedule:
+    retrieve_gardens:
+      cron: '0 6 * * * '
+      class: RetrieveGardensJob
