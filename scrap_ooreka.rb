@@ -16,9 +16,7 @@ class OorekaScrapper
 
   def scrap
     alphabet = ("a".."z").to_a
-    alphabet.each do |letter|
-      scrap_page(letter)
-    end
+    alphabet.each { |letter| scrap_pages(letter) }
     scrap_plants
   end
 
@@ -29,8 +27,19 @@ class OorekaScrapper
   
   private
 
-  def scrap_page(letter)
+  def scrap_pages(letter)
     url = "https://jardinage.ooreka.fr/plante/rechercheAlpha/#{letter}"
+    search_page = URI.open(url).read
+    noko_doc = Nokogiri::HTML.parse(search_page)
+    pages_count = noko_doc.search('.pagination_unite a').count
+    pages_count.times do |n|
+      page_number = n + 1
+      page_url = page_number == 1 ? url : "#{url}/#{page_number}"
+      scrap_page(page_url)
+    end
+  end
+
+  def scrap_page(url)
     search_page = URI.open(url).read
     noko_doc = Nokogiri::HTML.parse(search_page)
     noko_doc.search('.titre_liste_plante').each do |plant|
@@ -59,6 +68,7 @@ class OorekaScrapper
           climate: find_climate_need_for(plant_doc),
           final_size: find_final_size_for(plant_doc),
           image_url: find_image_url_for(doc),
+          desription: find_description_for(doc),
         }
         @plants << plant_data
       rescue NoMethodError
@@ -148,10 +158,14 @@ class OorekaScrapper
   def find_climate_need_for(plant_doc)
     plant_doc.search('p:contains("Climat")').first.parent.search('.span_bulle_info2._informationTooltips').map(&:text)
   end
+
+  def find_description_for(doc)
+    doc.search(".intro_courte_plantes").first.text.strip
+  end
 end
 
 scrapper = OorekaScrapper.new
 scrapper.scrap
 puts scrapper.plants.count
-puts scrapper.plants
+# puts scrapper.plants
 scrapper.extract_json!(File.join(__dir__, 'plants.json'))

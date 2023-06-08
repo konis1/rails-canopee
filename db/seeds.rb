@@ -6,33 +6,7 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-
-
-# user = User.last
-# dinagarden = user.gardens.create(
-#     name: 'dinagardenn',
-#     care_willing: 3,
-#     light: 'Full Sun',
-#     climate: ['Moderate']
-#   )
-
-#   dinagarden.associate_plants(
-#     name: dinagarden.name,
-#     care_willing: dinagarden.care_willing,
-#     light: dinagarden.light,
-#     climate: dinagarden.climate
-#   )
-
-#   dinagarden.plants
-
-
-
-
-
-
-
 require "json"
-require "pry-byebug"
 
 # Purge database
 Plant.destroy_all
@@ -40,7 +14,7 @@ User.destroy_all
 Garden.destroy_all
 GardenPlant.destroy_all
 
-filepath = File.join(Rails.root, 'db/plants.json')
+filepath = File.join(Rails.root, '/db/data/plants.json')
 serialized_plants = File.read(filepath)
 plants = JSON.parse(serialized_plants)
 
@@ -80,6 +54,7 @@ plants.each_with_index do |plant, i|
                        cold_resistance: plant["cold_resistance"],
                        light_need: plant["light_need"],
                        climate: plant["climate"],
+                       content: plant["desription"],
                        final_size: plant["final_size"])
   if plante.photo.attached?
     plante.photo.purge
@@ -89,8 +64,6 @@ plants.each_with_index do |plant, i|
   counter += 1
 end
 
-
-
 puts "Plants added !"
 
 puts "Adding gardens"
@@ -99,8 +72,8 @@ number_of_gardens = 3
 puts "Adding #{number_of_gardens} test gardens"
 counter = 1
 
-Garden.create(user_id: user.id, name: "Test", light: 1 , size: 3 , care_willing: 2, location: "16 villa gaudelet, Paris" )
-Garden.create(user_id: user.id, name: "My garden", light: 2 , size: 3 , care_willing: 2, location: "231 rue de belleville Paris" )
+Garden.create(user_id: user.id, name: "Test", light: 1 , size: 3 , care_willing: 2, location: "16 villa gaudelet, Paris")
+Garden.create(user_id: user.id, name: "My garden", light: 2 , size: 3 , care_willing: 2, location: "231 rue de belleville Paris")
 Garden.create(user_id: user.id, name: "My balcony 2", light: 0 , size: 1 , care_willing: 3, location: "Lyon")
 
 puts "Adding plants to the garden"
@@ -110,4 +83,8 @@ gardens = Garden.all
 
 plants.each do |p|
   GardenPlant.create(nickname: "test", pot_color: "blue", garden_id: gardens[rand(0..2)].id, plant_id: p.id)
+end
+
+GardenPlant.find_each do |garden_plant|
+  garden_plant.validated!
 end

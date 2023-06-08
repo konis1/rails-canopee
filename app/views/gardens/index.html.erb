@@ -1,27 +1,17 @@
-<div class="container">
-  <h1>ALL Gardens</h1>
-
-  <div class="row">
-    <% @gardens.each do |garden| %>
-      <div class="col-3">
-        <div class="card p-3">
-          <div class="card-body">
-            <strong>Name:</strong> <%= garden.name %><br>
-            <strong>Light:</strong> <%= garden.light %><br>
-            <strong>Size:</strong> <%= garden.size %><br>
-            <strong>Care Willing:</strong> <%= garden.care_willing %><br>
-            <strong>Location:</strong> <%= garden.location %><br>
-            <strong>Latitude:</strong> <%= garden.latitude %><br>
-            <strong>Longitude:</strong> <%= garden.longitude %><br>
-
-            <div>
-              <%= link_to 'New', new_garden_path, class: "btn btn-primary btn-sm btn-flat d-inline-block " %>
-              <%= link_to 'Edit', edit_garden_path(garden), class: "btn btn-success btn-sm btn-flat d-inline-block" %>
-              <%= link_to 'Show', garden_path(garden), class: "btn btn-warning btn-sm btn-flat d-inline-block" %>
-            </div>
+<div class="wrapper">
+  <div class="container">
+    <h1>Mes jardins 🪴</h1>
+    <div>
+      <% @gardens.each do |garden| %>
+        <div class="card_garden p-3 m-3" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path garden.garden_plants.first.plant.photo.key, height: 300, crop: :fill %>')">
+          <strong>Name:</strong> <%= garden.name %><br>
+          <strong>Location:</strong> <%= garden.location %><br>
+          <div>
+            <%= link_to 'Edit', edit_garden_path(garden), class: "btn btn-success btn-sm btn-flat d-inline-block" %>
+            <%= link_to 'Show', garden_path(garden), class: "btn btn-warning btn-sm btn-flat d-inline-block" %>
           </div>
         </div>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
 </div>

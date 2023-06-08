@@ -1,0 +1,39 @@
+.card_garden {
+  background-color: $light-green;
+  color: $secondary-color;
+  border-radius: 4px;
+  width: 90%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.card_plant_small {
+  background-color: $main-color;
+  color: $third_color;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  height: 20%;
+}
+
+.card_plant_medium {
+  background-color: $main-color;
+  color: $third_color;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  height: 50%;
+}
+
+.card_plant-large {
+  background-color: $main-color;
+  color: $third_color;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  height: 100%;
+}
+
+.card_selection {
+  background-color: $light-green;
+  color: $secondary-color;
+  border-radius: 4px;
+  width: 90%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}

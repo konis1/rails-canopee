@@ -15,9 +15,12 @@
     <%= render 'shared/ios_pwa_links' %>
   </head>
 
-  <body><%= render "shared/navbar" %>
-<%= render "shared/flashes" %>
-
-    <%= yield %>
+  <body>
+    <%= render "shared/navbar" %>
+    <%= render "shared/flashes" %>
+    <div class="min-container-scroll <%= page_background_color_class %>">
+      <%= yield %>
+    </div>
+    <%= render "shared/navbar_bottom" %>
   </body>
 </html>
