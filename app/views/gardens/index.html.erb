@@ -3,7 +3,14 @@
     <h1>Mes jardins 🪴</h1>
     <div>
       <% @gardens.each do |garden| %>
-        <div class="card_garden p-3 m-3" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path garden.garden_plants.first.plant.photo.key, height: 300, crop: :fill %>')">
+
+        <% if garden.garden_plants.any? %>
+          <div class="card_garden p-3 m-3" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path garden.garden_plants.first.plant.photo.key, height: 300, crop: :fill %>')">
+        <% else %>
+          <div class="card_garden p-3 m-3" style="background-color:rgba(0,0,0,0.3)">
+          <h5>Vous n'avez pas encore de plante 😭</h5>
+        <% end %>
+
           <strong>Name:</strong> <%= garden.name %><br>
           <strong>Location:</strong> <%= garden.location %><br>
           <div>
