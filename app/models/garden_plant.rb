@@ -13,7 +13,7 @@ class GardenPlant < ApplicationRecord
   has_one_attached :photo
 
   def score
-    return 25
+    return 5
   end
 
 end

@@ -1,0 +1,22 @@
+.health-bar-container{
+  height: 30px;
+  width: 100%;
+  position: relative;
+  border: solid 1px;
+  border-radius: 50px;
+
+  .health-bar {
+    min-width: 30px;
+    height: 100%;
+    position: absolute;
+    border-radius: inherit;
+  }
+
+  .health-bar-score {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+  }
+
+}
