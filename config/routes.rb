@@ -21,6 +21,6 @@ Rails.application.routes.draw do
   resources :tasks, only: [:update]
 
 
-  patch "garden/:id/validate_plants", to: "gardens#validate_plants", as: :validate_plants_garden
-  get "garden/:id/select_plants", to: "gardens#select_plants", as: :select_plants
+  post "gardens/:id/validate_plants", to: "gardens#validate_plants", as: :validate_plants_garden
+  get "gardens/:id/select_plants", to: "gardens#select_plants", as: :select_plants
 end

@@ -44,13 +44,9 @@ class GardensController < ApplicationController
   end
 
   def validate_plants
-    @garden = Garden.find(params[:garden_id])
-    choices = params[:garden_plant][:choices]
-
-      choices.each do |garden_plant_id|
-        garden_plant = @garden.garden_plants.find(garden_plant_id)
-        garden_plant.validated!
-      end
+    @garden = Garden.find(params[:id])
+    garden_plants = GardenPlant.where(id: params.dig(:garden_plant, :choices))
+    garden_plants.each(&:validated!)
     redirect_to @garden
   end
 
