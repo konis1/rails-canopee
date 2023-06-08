@@ -1,5 +1,6 @@
 class GardensController < ApplicationController
-  before_action :set_garden, only: [:show, :edit, :update, :destroy]
+  before_action :set_garden, only: [:show, :edit, :update, :destroy, :select_plants]
+
 
   def index
     @gardens = Garden.all
@@ -15,17 +16,14 @@ class GardensController < ApplicationController
   def create
     @garden = Garden.new(garden_params)
     @garden.user = current_user
-
-    if @garden.save
-      redirect_to @garden, notice: 'Garden was successfully created.'
-    else
-      render :new, status: :unprocessable_entity
-    end
-
     climate_checker = WeatherService.new(@garden.latitude, @garden.longitude, @garden.location)
     @garden.climate = climate_checker.determine_climate
 
-    @garden.save
+    if @garden.save
+      redirect_to select_plants_path(@garden), notice: 'Garden was successfully created.'
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   def edit
@@ -44,6 +42,22 @@ class GardensController < ApplicationController
     @garden.destroy
     redirect_to gardens_url, notice: 'Garden was successfully destroyed.'
   end
+
+  def validate_plants
+    @garden = Garden.find(params[:garden_id])
+    choices = params[:garden_plant][:choices]
+
+      choices.each do |garden_plant_id|
+        garden_plant = @garden.garden_plants.find(garden_plant_id)
+        garden_plant.validated!
+      end
+    redirect_to @garden
+  end
+
+  def select_plants
+
+  end
+
 
   private
 

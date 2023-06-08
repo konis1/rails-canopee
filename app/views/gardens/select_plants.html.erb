@@ -1,0 +1,15 @@
+<%= simple_form_for :garden_plant, url: validate_plants_garden_path(@garden) do |f| %>
+    <div>
+      <%= f.input :choices,
+                  as: :check_boxes,
+                  collection: @garden.garden_plants,
+                  label_method: lambda { |garden_plant|
+                    render 'garden_plants/select_card',  garden_plant: garden_plant
+                  } %>
+      <%#= label_method: lambda { |garden_plant| garden_plant.plant.nickname } %>
+    </div>
+
+
+      <%= f.button :submit %>
+
+  <% end %>

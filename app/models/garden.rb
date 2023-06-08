@@ -9,21 +9,19 @@ class Garden < ApplicationRecord
 
   after_create_commit :associate_plants
 
-  private
 
   def associate_plants
+
     # garden = self
     # recuperer tyoutes les instances de plantes correspondant a ce jardin
-    plants = Plant.where(
-      name: self.name,
-      color: self.color,
-      care_frequency: self.care_willing,
+    plants = Plant.where("? = ANY(climate)", "Climat #{self.climate}").where(
       light_need: self.light,
-      cold_resistance: self.climate,
-      water_need: self.climate,
+      care_frequency: self.care_willing
+      # TODO add other criterias
     )
     # et créer les garden_plants correspondantes
     self.plants << plants
     save
   end
+
 end
