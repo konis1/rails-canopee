@@ -1,30 +1,19 @@
-
 <div class="container">
-  <h1>Gardens#show</h1>
-    <div class="row">
-      <div class="col-3 p-3">
-        <div class="mb-3 bg-secondary">
-          <div class="card-body">
-            <%= render 'garden', garden: @garden %>
+    <% @garden.garden_plants.each do |garden_plant| %>
+    <%= link_to garden_plant_path(garden_plant) do %>
+        <div class="card-category">
+          <div>
+            <h2><%= garden_plant.nickname %></h2>
+            <%= cl_image_tag garden_plant.plant.photo.key, height: 200, class:"image-card" %>
+          </div>
+          <div>
+            <%= garden_plant.pot_color %>
+            <%= garden_plant.plant.name %></p>
+            <%= garden_plant.plant.content %></p>
           </div>
         </div>
-      </div>
-    </div>
-  <%= link_to 'Back to Garden', gardens_path, class: "btn btn-primary" %>
-</div>
-<div class="container">
-  <div class="row mt-5">
-    <% @garden.garden_plants.each do |garden_plant| %>
-      <div class="col-4">
-        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)">
-          <%= cl_image_tag(garden_plant.plant.photo.key, width: 400, height: 300, crop: :fill) %>
-          <%= garden_plant.nickname %>
-          <%= garden_plant.pot_color %>
-          <%= garden_plant.plant.name %></p>
-          <%= link_to garden_plant.nickname, garden_plant_path(garden_plant) %>
-          <%= link_to "-", garden_plant_path(garden_plant), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "card-remove-link" %>
-        </div>
-      </div>
+          <%= link_to "Delete", garden_plant_path(garden_plant), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "card-remove-link" %>
+      <% end %>
     <% end %>
-  </div>
+    <%= link_to 'Back to Garden', gardens_path, class: "btn btn-primary" %>
 </div>

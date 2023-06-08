@@ -6,6 +6,16 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+.card-category {
+  color: $secondary-color;
+  margin-top: 2em;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  a {
+    text-decoration: none;
+  }
+}
+
 .card_plant_small {
   background-color: $main-color;
   color: $third_color;
