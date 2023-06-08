@@ -44,6 +44,17 @@ class WeatherService
     JSON.parse(forecast_response)['daily']['temperature_2m_min']
   end
 
+  def retrieve_16_days_forecast
+    forecast_response = RestClient.get @weather_api, { params: { latitude: @latitude,
+                                                                 longitude: @longitude,
+                                                                 daily: 'temperature_2m_max,temperature_2m_min,rain_sum',
+                                                                 past_days: 7,
+                                                                 forecast_days: 16,
+                                                                 timezone: 'Europe/London' } }
+    data = JSON.parse(forecast_response)['daily']
+    [data[temperature_2m_max], data[temperature_2m_min], data[rain_sum]]
+  end
+
   def determine_climate
     location_region = retrieve_region rescue 'continental'
     locate_in_climate_map(location_region)
