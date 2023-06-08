@@ -48,11 +48,11 @@ class WeatherService
     forecast_response = RestClient.get @weather_api, { params: { latitude: @latitude,
                                                                  longitude: @longitude,
                                                                  daily: 'temperature_2m_max,temperature_2m_min,rain_sum',
-                                                                 past_days: 7,
+                                                                 past_days: 31,
                                                                  forecast_days: 16,
                                                                  timezone: 'Europe/London' } }
     data = JSON.parse(forecast_response)['daily']
-    [data[temperature_2m_max], data[temperature_2m_min], data[rain_sum]]
+    [data['temperature_2m_max'], data['temperature_2m_min'], data['rain_sum'], data['time']]
   end
 
   def determine_climate
