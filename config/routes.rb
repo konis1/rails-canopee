@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  root to: "gardens#index"
+  root to: "pages#home"
   resources :gardens do
     resources :garden_plants, only: [:create] do
       resources :tasks, only: [:index]
