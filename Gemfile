@@ -31,7 +31,6 @@ gem "geocoder"
 
 # Add perso
 gem "cloudinary"
-gem 'pry-byebug'
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
