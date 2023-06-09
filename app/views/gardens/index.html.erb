@@ -3,22 +3,21 @@
     <h1>Mes jardins 🪴</h1>
     <div>
       <% @gardens.each do |garden| %>
-
-        <% if garden.garden_plants.any? %>
-          <div class="card_garden p-3 m-3" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path garden.garden_plants.first.plant.photo.key, height: 300, crop: :fill %>')">
-        <% else %>
-          <div class="card_garden p-3 m-3" style="background-color:rgba(0,0,0,0.3)">
-          <h5>Vous n'avez pas encore de plante 😭</h5>
-        <% end %>
-
+        <%= link_to garden_path(garden), class: "d-block" do %>
+          <% if garden.garden_plants.any? %>
+            <div class="card_garden p-3 m-3" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path garden.garden_plants.first.plant.photo.key, height: 300, crop: :fill %>')">
+          <% else %>
+            <div class="card_garden p-3 m-3" style="background-color:rgba(0,0,0,0.3)">
+            <h5>Vous n'avez pas encore de plante 😭</h5>
+          <% end %>
           <strong>Name:</strong> <%= garden.name %><br>
-          <strong>Location:</strong> <%= garden.location %><br>
-          <div>
-            <%= link_to 'Edit', edit_garden_path(garden), class: "btn btn-success btn-sm btn-flat d-inline-block" %>
-            <%= link_to 'Show', garden_path(garden), class: "btn btn-warning btn-sm btn-flat d-inline-block" %>
+          <strong>Location:</strong> <%= garden.location %><br>        
           </div>
-        </div>
+        <% end %>
       <% end %>
+      <div class="button_yes_no">   
+      <%= link_to "New garden",new_garden_path %>
+      </div>
     </div>
   </div>
 </div>
