@@ -1,0 +1,5 @@
+meta_name: "Canopee"
+meta_title: "Canopee - Rencontrez l'amour vert"
+meta_description: "Votre paysagiste de poche pour vous aider à créer et entretenir votre jardin citadin!"
+meta_image: "gorillaz_canopee_2.png" # should exist in `app/assets/images/`
+twitter_account: "@NicolasBourdin3"   # required for Twitter Cards
