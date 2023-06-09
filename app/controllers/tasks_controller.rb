@@ -2,8 +2,7 @@ class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
 
   def index
-    @garden_plant = GardenPlant.find(params[:garden_plant_id])
-    @tasks = @garden_plant.tasks
+    @my_tasks = Task.joins(garden_plant: [{ garden: :user }]).where('users.id' => current_user.id)
   end
 
   def new
