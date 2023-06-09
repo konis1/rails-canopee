@@ -1,5 +1,5 @@
 <div class="container">
-    <% @garden.garden_plants.each do |garden_plant| %>
+    <% @garden.garden_plants.validated.each do |garden_plant| %>
     <%= link_to garden_plant_path(garden_plant) do %>
         <div class="card-category">
           <div>
