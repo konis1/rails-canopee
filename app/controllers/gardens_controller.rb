@@ -40,7 +40,7 @@ class GardensController < ApplicationController
 
   def destroy
     @garden.destroy
-    redirect_to gardens_url, notice: 'Garden was successfully destroyed.'
+    redirect_to garden_path(@garden), notice: 'Garden was successfully destroyed.'
   end
 
   def validate_plants
