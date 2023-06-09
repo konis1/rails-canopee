@@ -1,7 +1,6 @@
 <div class="wrapper">
   <div class="container">
-    <h1>Mes jardins 🪴</h1>
-    <div>
+    <h1 class="text-center">Mes jardins 🪴</h1>
       <% @gardens.each do |garden| %>
         <%= link_to garden_path(garden), class: "d-block" do %>
           <% if garden.garden_plants.any? %>
@@ -11,13 +10,12 @@
             <h5>Vous n'avez pas encore de plante 😭</h5>
           <% end %>
           <strong>Name:</strong> <%= garden.name %><br>
-          <strong>Location:</strong> <%= garden.location %><br>        
+          <strong>Location:</strong> <%= garden.location %><br>
           </div>
         <% end %>
       <% end %>
-      <div class="button_next_step">   
-      <%= link_to "ajouter un jardin",new_garden_path %>
+      <div class="text-center">
+        <%= link_to "Ajouter un jardin", new_garden_path, class:"btn btn-primary"%>
       </div>
-    </div>
   </div>
 </div>

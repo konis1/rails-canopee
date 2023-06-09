@@ -13,7 +13,7 @@ class GardenPlant < ApplicationRecord
   # validates :pot_color, inclusion: {in: %w()}
 
   def score
-    return 5
+    return 20
   end
 
   private
