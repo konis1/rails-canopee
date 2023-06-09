@@ -26,15 +26,15 @@ user.save
 puts "user Test added with password 123456"
 
 #how many plants we want
-number_of_plants = 20
+# number_of_plants = 987
 
 puts "Adding plants ..."
 counter = 1
 
-plants.each_with_index do |plant, i|
-  if i == number_of_plants
-    break
-  end
+plants.each do |plant|
+  # if i == number_of_plants
+  #   break
+  # end
   puts "adding plant number #{counter}"
   speed = nil
   case plant["growth_speed"]
