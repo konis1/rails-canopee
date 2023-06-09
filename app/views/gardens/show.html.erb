@@ -11,9 +11,10 @@
             </div>
           </div>
         <% end %>
-        <%= link_to "Delete", garden_plant_path(garden_plant), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "card-remove-link" %>
+        <%= link_to "cette plante est morte", garden_plant_path(garden_plant), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "card-remove-link" %>
       </div>
     <% end %>
   </div>
-  <%= link_to 'Back to Garden', gardens_path, class: "btn btn-primary" %>
+  <%= link_to 'Retour aux jardins', gardens_path, class: "btn btn-primary" %>
+  <%= link_to 'Supprimer le jardin', garden_path(@garden), class: "btn btn-warning", data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }%>
 </div>
