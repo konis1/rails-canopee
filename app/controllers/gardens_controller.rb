@@ -31,7 +31,7 @@ class GardensController < ApplicationController
 
   def update
     if @garden.update(garden_params)
-      redirect_to @garden, notice: 'Garden was successfully updated.'
+      redirect_to garden_path(@garden), notice: 'Garden was successfully updated.'
     else
       render :edit, status: :unprocessable_entity
 
@@ -40,14 +40,14 @@ class GardensController < ApplicationController
 
   def destroy
     @garden.destroy
-    redirect_to gardens_url, notice: 'Garden was successfully destroyed.'
+    redirect_to gardens_path, notice: 'Garden was successfully destroyed.'
   end
 
   def validate_plants
     @garden = Garden.find(params[:id])
     garden_plants = GardenPlant.where(id: params.dig(:garden_plant, :choices))
     garden_plants.each(&:validated!)
-    redirect_to @garden
+    redirect_to garden_path(@garden)
   end
 
   def select_plants

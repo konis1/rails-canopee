@@ -23,5 +23,4 @@ class Garden < ApplicationRecord
     self.plants << plants
     save
   end
-
 end

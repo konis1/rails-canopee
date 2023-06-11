@@ -7,12 +7,19 @@
 }
 
 .card-category {
-  color: $secondary-color;
+  color: black;
+  text-align: justify;
   margin-top: 2em;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  a {
-    text-decoration: none;
+  display: flex;
+  > img {
+    width: 150px;
+  }
+  > div {
+    flex-grow: 1;
+    padding: 0.5rem;
+  }
+  > p {
+    text-align: center;
   }
 }
 

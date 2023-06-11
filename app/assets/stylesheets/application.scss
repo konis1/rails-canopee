@@ -12,3 +12,13 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+body {
+  overscroll-behavior: none;
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: none;
+}
