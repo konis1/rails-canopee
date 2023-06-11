@@ -26,12 +26,12 @@ user.save
 puts "user Test added with password 123456"
 
 #how many plants we want
-number_of_plants = 100
+number_of_plants = 40
 
 puts "Adding plants ..."
 counter = 1
 
-plants.each do |plant, i|
+plants.each_with_index do |plant, i|
   if i == number_of_plants
     break
   end
@@ -46,16 +46,16 @@ plants.each do |plant, i|
     speed = 2
   end
   plante = Plant.create(name: plant["name"],
-                       color: plant["color"],
-                       caducity: plant["caducity"],
-                       care_frequency: plant["care_frequency"],
-                       water_need: plant["water_need"],
-                       growth_speed: speed,
-                       cold_resistance: plant["cold_resistance"],
-                       light_need: plant["light_need"],
-                       climate: plant["climate"],
-                       content: plant["desription"],
-                       final_size: plant["final_size"])
+                        color: plant["color"],
+                        caducity: plant["caducity"],
+                        care_frequency: plant["care_frequency"],
+                        water_need: plant["water_need"],
+                        growth_speed: speed,
+                        cold_resistance: plant["cold_resistance"],
+                        light_need: plant["light_need"],
+                        climate: plant["climate"],
+                        content: plant["desription"],
+                        final_size: plant["final_size"])
   if plante.photo.attached?
     plante.photo.purge
   end
