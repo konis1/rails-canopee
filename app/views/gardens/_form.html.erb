@@ -1,17 +1,27 @@
 <%= simple_form_for @garden do |f| %>
 
-  <div>
-    <%= f.input :name %>
-    <%= f.input :light %>
-    <%= f.input :size %>
-    <%= f.input :care_willing %>
-    <%= f.input :location,
-      input_html: {data: {address_autocomplete_target: "address"}, class: "d-none"},
-      wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}
-    %>
+  <div class="m-2">
+    <div class="card_plant_small">
+      <%= f.input :name, label:false, input_html: {placeholder: "Nom"} %>
+    </div>
+    <div class="card_plant_small">
+      <%= f.input :light, label:false, input_html: {placeholder: "Luminosité"} %>
+    </div>
+    <div class="card_plant_small">
+      <%= f.input :size, label:false, input_html: {placeholder: "Taille"} %>
+    </div>
+    <div class="card_plant_small">
+      <%= f.input :care_willing, label:false, input_html: {placeholder: "Soins"} %>
+    </div>
+    <div class="card_plant_small">
+      <%= f.input :location, label:false,
+        input_html: {data: {address_autocomplete_target: "address"}, class: "d-none"},
+        wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}
+      %>
+    </div>
+  <div style= "text-align: center">
+    <%= button_tag 'Suivant', type: :submit, class: "button_next_step" %>
+  </div>
   </div>
 
-  <div>
-    <%= f.button :submit %>
-  </div>
 <% end %>
