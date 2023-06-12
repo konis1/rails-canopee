@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get'cover1', to:'pages#cover1'
   get'cover2', to:'pages#cover2'
   get'cover3', to:'pages#cover3'
+  get'merci', to:'pages#merci'
 
   resources :gardens do
     resources :garden_plants, only: [:create] do
