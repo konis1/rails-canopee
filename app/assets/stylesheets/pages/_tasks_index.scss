@@ -1,9 +1,16 @@
 .green-square {
   background-color: #19362C;
   margin-left: 1em;
-  padding: 40px;
+  border-radius: 50px;
+  height: 20vh;
+  max-width: 20vh;
+  position: relative;
   i {
     color: #EEE6D2;
-    font-size:7em;
+    font-size:5em;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
 }
