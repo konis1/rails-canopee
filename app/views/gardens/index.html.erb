@@ -1,21 +1,31 @@
 <div class="wrapper">
   <div class="container">
-    <h1 class="text-center">Mes jardins 🪴</h1>
+    <h2 class="page-title">Mes jardins</h2>
+    <p class="page-description">Voici ta sélection actuelle !</p>
+    <p class="gardens-counter"></p>
       <% @gardens.each do |garden| %>
-        <%= link_to garden_path(garden), class: "d-block" do %>
-          <% if garden.garden_plants.any? %>
-            <div class="card_garden p-3 m-3" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path garden.garden_plants.first.plant.photo.key, height: 300, crop: :fill %>')">
-          <% else %>
-            <div class="card_garden p-3 m-3" style="background-color:rgba(0,0,0,0.3)">
-            <h5>Vous n'avez pas encore de plante 😭</h5>
+        <div class="card-garden p-3 m-3">
+          <% if garden.garden_plants.none? %>
+            <p>Vous n'avez pas encore de plante 😭</p>
           <% end %>
-          <strong>Name:</strong> <%= garden.name %><br>
-          <strong>Location:</strong> <%= garden.location %><br>
-          </div>
-        <% end %>
+          <%= link_to garden_path(garden), class: 'garden-info' do %>
+            <p><%= garden.name %></p>
+            <p><%= garden.location %></p>
+          <% end %>
+          <%= link_to garden_path(garden), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } do %>
+            <i class="fa-solid fa-trash-can"></i>
+          <% end %>
+          <%= link_to garden_path(garden) do %>
+            <img src="<%= cl_image_path garden.garden_plants.first.plant.photo.key, height: 80, crop: :fill %>" alt="A plant" class="first-plant">
+          <% end %>
+        </div>
       <% end %>
       <div class="text-center">
-        <%= link_to "Ajouter un jardin", new_garden_path, class:"btn btn-primary"%>
+        <%= link_to new_garden_path, class:"link-of-the-plus" do %>
+          <div class="circle-of-the-plus">
+            <i class="fa-solid fa-plus"></i>
+          </div>
+        <% end %>
       </div>
   </div>
 </div>

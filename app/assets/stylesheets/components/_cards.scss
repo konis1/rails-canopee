@@ -1,9 +1,34 @@
-.card_garden {
-  background-color: $light-green;
-  color: $secondary-color;
-  border-radius: 4px;
-  width: 90%;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+.card-garden {
+  background-color: $dark-green;
+  border-radius: 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  a {
+    color: $light-yellow;
+  }
+
+  .garden-info {
+    flex-basis: 38%;
+
+    :first-child {
+      margin: 0 0 3px 0;
+    }
+
+    :last-child {
+      margin: 3px 0 0 0;
+      font-size: 13px;
+    }
+  }
+
+  .fa-trash-can {
+    font-size: 25px;
+  }
+
+  .first-plant {
+    border-radius: 28px;
+  }
 }
 
 .card-category {
