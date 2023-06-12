@@ -1,3 +1,21 @@
+.counter-wrapper {
+  display: flex;
+  margin-left: 8px;
+  color: $orange;
+  align-items: center;
+
+  i {
+    font-size: 30px;
+  }
+
+  p {
+    margin-left: 8px;
+    margin-bottom: 0;
+    font-size: 32px;
+    font-weight: bold;
+  }
+}
+
 .link-of-the-plus {
   display: block;
   margin-top: 25px;

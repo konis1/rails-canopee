@@ -1,10 +1,13 @@
 <div class="wrapper">
-  <div class="container">
+  <div class="container" data-controller='gardens-counter'>
     <h2 class="page-title">Mes jardins</h2>
     <p class="page-description">Voici ta sélection actuelle !</p>
-    <p class="gardens-counter"></p>
+    <div class='counter-wrapper'>
+      <i class="fa-solid fa-heart"></i>
+      <p class="counter" data-gardens-counter-target='counter'></p>
+    </div>
       <% @gardens.each do |garden| %>
-        <div class="card-garden p-3 m-3">
+        <div class="card-garden p-3 m-3" data-gardens-counter-target='garden'>
           <% if garden.garden_plants.none? %>
             <p>Vous n'avez pas encore de plante 😭</p>
           <% end %>
