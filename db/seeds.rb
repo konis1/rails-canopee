@@ -46,16 +46,16 @@ plants.each_with_index do |plant, i|
     speed = 2
   end
   plante = Plant.create(name: plant["name"],
-                       color: plant["color"],
-                       caducity: plant["caducity"],
-                       care_frequency: plant["care_frequency"],
-                       water_need: plant["water_need"],
-                       growth_speed: speed,
-                       cold_resistance: plant["cold_resistance"],
-                       light_need: plant["light_need"],
-                       climate: plant["climate"],
-                       content: plant["desription"],
-                       final_size: plant["final_size"])
+                        color: plant["color"],
+                        caducity: plant["caducity"],
+                        care_frequency: plant["care_frequency"],
+                        water_need: plant["water_need"],
+                        growth_speed: speed,
+                        cold_resistance: plant["cold_resistance"],
+                        light_need: plant["light_need"],
+                        climate: plant["climate"],
+                        content: plant["desription"],
+                        final_size: plant["final_size"])
   if plante.photo.attached?
     plante.photo.purge
   end
