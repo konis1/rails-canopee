@@ -1,21 +1,23 @@
 <div class="container">
-  <h2><%= @garden.name %></h2>
+  <h2 class="garden-show-title"><%= @garden.name %></h2>
+  <p class="garden-description">Voici toute ta team en place !</p>
+  <p class="garden-description">N’hésite pas à jeter un oeil de temps à autre voir si tout va bien 😊</p>
   <div class="row">
     <% @garden.garden_plants.validated.each do |garden_plant| %>
-      <div>
-        <%= link_to garden_plant_path(garden_plant) do %>
-          <div class="card-category">
-            <div class="col-6">
-              <%= cl_image_tag garden_plant.plant.photo.key, height: 200, class: "image-card" %>
+        <%= link_to garden_plant_path(garden_plant), class: 'garden-plant-card' do %>
+          <div class='d-flex'>
+            <div class="col-6 nickname-and-life-bar">
+              <h3 class='plant-nickname'><%= garden_plant.nickname %></h3>
+              <div class='life-bar'>
+                <div class='current-life'></div>
+                <div class='max-life'></div>
+              </div>
             </div>
             <div class="col-6">
-              <h3><%= garden_plant.plant.name %></h3>
-              <p><%= garden_plant.plant.content.truncate(80) %></p>
+              <%= cl_image_tag garden_plant.plant.photo.key, width: 183, class: "image-card" %>
             </div>
           </div>
         <% end %>
-        <%= link_to "cette plante est morte", garden_plant_path(garden_plant), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "card-remove-link" %>
-      </div>
     <% end %>
   </div>
   <%= link_to 'Retour aux jardins', gardens_path, class: "btn btn-primary" %>
