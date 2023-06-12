@@ -1,24 +1,60 @@
 <div class="container">
-  <h1>My Tasks</h1>
-    <% @my_tasks.each do |task| %>
-      <% if task.done_time.nil? %>
-        <%#= link_to task.garden_plant do %>
-          <div class="card mb-3 bg-light">
-            <div class="card-body">
-              <h2><%= task.garden_plant.plant.name %></h2>
-              <h5 class="card-title"><%= task.activity %></h5>
-              <p class="card-text">Criticity: <%= task.criticity %></p>
-              <p class="card-text">Due Date: <%= task.due_date %></p>
-              <%= simple_form_for task, url: update_tasks_task_path(task) , method: :patch do |f| %>
-                <%= f.button :submit, "Fait", class: "btn btn-primary" %>
+  <h1 class="text-center m-3">Mes soins</h1>
+    <% @all_activities.each do |activity| %>
+      <div class="row mb-4" data-controller="collapse" data-collapse-opened-value="false">
+        <div class="green-square col-5 text-center">
+        <% if activity == "Arrose-moi !" %>
+          <i class="fa-solid fa-droplet"></i>
+          <% elsif activity == "Rempote-moi !"  %>
+          <i class="fa-solid fa-whiskey-glass"></i>
+          <% end %>
+        </div>
+        <div class= "col-5">
+          <h4><%= activity %></h4>
+          <% @my_tasks.take(5).each do |task| %>
+            <% if task.done_time.nil? && task.activity == activity %>
+              <%#= link_to task.garden_plant do %>
+                  <div class="row justify-content-around">
+                    <div class= "col-9 align-self-center">
+                      <%= task.garden_plant.plant.name %>
+                    </div>
+                    <div class="col-2 align-self-center">
+                      <%= simple_form_for task, url: update_tasks_task_path(task) , method: :patch do |f| %>
+                        <%= f.button :button do %>
+                          <i class="fa-solid fa-circle-check"></i>
+                        <% end %>
+                      <% end %>
+                    </div>
+                  </div>
+              <%#end %>
+            <% end %>
+          <% end %>
+          <a data-action="click->collapse#fire" href="" data-collapse-target="link">Voir plus</a>
+        </div>
+        <div class="col"  >
+          <div class="d-none" data-collapse-target="toggableElement">
+            <div class="mt-3">
+              <% @my_tasks.drop(5).each do |task| %>
+                <% if task.done_time.nil? && task.activity == activity %>
+                  <%#= link_to task.garden_plant do %>
+                      <div class="row justify-content-around">
+                        <div class= "col-9 align-self-center">
+                          <%= task.garden_plant.plant.name %>
+                        </div>
+                        <div class="col-2 align-self-center">
+                          <%= simple_form_for task, url: update_tasks_task_path(task) , method: :patch do |f| %>
+                            <%= f.button :button do %>
+                              <i class="fa-solid fa-circle-check"></i>
+                            <% end %>
+                          <% end %>
+                        </div>
+                      </div>
+                  <%#end %>
+                <% end %>
               <% end %>
-              <div class="btn-group" role="group" aria-label="Task Actions">
-                <%# <%= link_to "Edit", edit_garden_plant_task_path(@garden_plant, task), class: "btn btn-primary" %>
-                <%# <%= link_to "Delete", garden_plant_task_path(@garden_plant, task), method: :delete, data: { confirm: "Are you sure you want to delete this task?" }, class: "btn btn-danger" %>
-              </div>
             </div>
           </div>
-        <%#end %>
-      <% end %>
+        </div>
+      </div>
     <% end %>
 </div>
