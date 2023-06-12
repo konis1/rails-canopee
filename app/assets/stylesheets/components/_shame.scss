@@ -7,7 +7,7 @@
   height: calc(100vh - #{$navbar-height});
   overflow-y: auto;
   .filler {
-    height: $navbar-bottom-total-height;
+    min-height: $navbar-bottom-total-height;
   }
 }
 
