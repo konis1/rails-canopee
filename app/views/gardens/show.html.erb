@@ -2,7 +2,7 @@
   <h2 class="garden-show-title"><%= @garden.name %></h2>
   <p class="garden-description">Voici toute ta team en place !</p>
   <p class="garden-description">N’hésite pas à jeter un oeil de temps à autre voir si tout va bien 😊</p>
-  <div class="row">
+  <div class="row plants-list-wrapper" data-controller='garden-show-plants-list'>
     <% @garden.garden_plants.validated.each do |garden_plant| %>
         <%= link_to garden_plant_path(garden_plant), class: 'garden-plant-card' do %>
           <div class='d-flex'>
@@ -10,7 +10,6 @@
               <h3 class='plant-nickname'><%= garden_plant.nickname %></h3>
               <div class='life-bar'>
                 <div class='current-life'></div>
-                <div class='max-life'></div>
               </div>
             </div>
             <div class="col-6">
@@ -20,6 +19,8 @@
         <% end %>
     <% end %>
   </div>
-  <%= link_to 'Retour aux jardins', gardens_path, class: "btn btn-primary" %>
-  <%= link_to 'Supprimer le jardin', garden_path(@garden), class: "btn btn-warning", data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }%>
+  <div class='garden-options'>
+    <%= link_to 'Retour aux jardins', gardens_path, class: "btn btn-primary" %>
+    <%= link_to 'Supprimer le jardin', garden_path(@garden), class: "btn btn-warning", data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }%>
+  </div>
 </div>

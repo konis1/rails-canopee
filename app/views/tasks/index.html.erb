@@ -1,20 +1,24 @@
 <div class="container">
   <h1>My Tasks</h1>
     <% @my_tasks.each do |task| %>
-      <%= link_to task.garden_plant do %>
-        <div class="card mb-3 bg-light">
-          <div class="card-body">
-            <h2><%= task.garden_plant.plant.name %></h2>
-            <h5 class="card-title"><%= task.activity %></h5>
-            <p class="card-text">Criticity: <%= task.criticity %></p>
-            <p class="card-text">Due Date: <%= task.due_date %></p>
-            <p class="card-text">Done Time: <%= task.done_time %></p>
-            <div class="btn-group" role="group" aria-label="Task Actions">
-              <%# <%= link_to "Edit", edit_garden_plant_task_path(@garden_plant, task), class: "btn btn-primary" %>
-              <%# <%= link_to "Delete", garden_plant_task_path(@garden_plant, task), method: :delete, data: { confirm: "Are you sure you want to delete this task?" }, class: "btn btn-danger" %>
+      <% if task.done_time.nil? %>
+        <%#= link_to task.garden_plant do %>
+          <div class="card mb-3 bg-light">
+            <div class="card-body">
+              <h2><%= task.garden_plant.plant.name %></h2>
+              <h5 class="card-title"><%= task.activity %></h5>
+              <p class="card-text">Criticity: <%= task.criticity %></p>
+              <p class="card-text">Due Date: <%= task.due_date %></p>
+              <%= simple_form_for task, url: update_tasks_task_path(task) , method: :patch do |f| %>
+                <%= f.button :submit, "Fait", class: "btn btn-primary" %>
+              <% end %>
+              <div class="btn-group" role="group" aria-label="Task Actions">
+                <%# <%= link_to "Edit", edit_garden_plant_task_path(@garden_plant, task), class: "btn btn-primary" %>
+                <%# <%= link_to "Delete", garden_plant_task_path(@garden_plant, task), method: :delete, data: { confirm: "Are you sure you want to delete this task?" }, class: "btn btn-danger" %>
+              </div>
             </div>
           </div>
-        </div>
-        <% end %>
+        <%#end %>
+      <% end %>
     <% end %>
 </div>

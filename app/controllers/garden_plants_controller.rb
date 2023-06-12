@@ -31,7 +31,10 @@ class GardenPlantsController < ApplicationController
 
   def update
     if @garden_plant.update(garden_plant_params)
-      redirect_to garden_plant_path(@garden_plant), notice: 'Garden plant was successfully updated.'
+      respond_to do |format|
+        format.json { render json: { coucou: :lol } }
+        format.html { redirect_to garden_plant_path(@garden_plant), notice: 'Garden plant was successfully updated.'}
+      end
     else
       render :edit, status: :unprocessable_entity
     end
@@ -49,6 +52,6 @@ class GardenPlantsController < ApplicationController
   end
 
   def garden_plant_params
-    params.require(:garden_plant).permit(:nickname, :pot_color, :plant_id)
+    params.require(:garden_plant).permit(:nickname, :pot_color, :plant_id, :status)
   end
 end
