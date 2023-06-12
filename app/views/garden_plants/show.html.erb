@@ -1,20 +1,18 @@
 <div class="container text-center mt-3">
-  <h1><%= @garden_plant.nickname %></h1>
   <%= cl_image_tag @garden_plant.plant.photo.key, height: 200, class:"image-card" %>
-  <h2> Qui suis-je ?</h2>
-  <p><%= @garden_plant.plant.name %></p>
-  <div class="health-bar-container">
-    <span class="health-bar-score">
-      <%= @garden_plant.score %> %
-    </span>
-    <div class="health-bar" style="width:<%= @garden_plant.score %>%; background: <%= color_level(@garden_plant.score) %>">
-    </div>
-  </div>
-  <span>
-    <strong>Mes tâches</strong>
-  </span>
-  <hr>
-  <% @garden_plant.tasks.each do |task| %>
+</div>
+<div class="info-card">
+  <div class="container text-center mt-3">
+    <h1><strong><%= @garden_plant.nickname %></strong></h1>
+    <h4><%= @garden_plant.plant.name %></h4>
+       <div class="health-bar-container">
+         <span class="health-bar-score">
+           <%= @garden_plant.score %> %
+         </span>
+         <div class="health-bar" style="width:<%= @garden_plant.score %>%; background: <%= color_level(@garden_plant.score) %>">
+         </div>
+        </div>
+    <% @garden_plant.tasks.each do |task| %>
     <ul class="tasks-list">
       <% if task.done_time.nil? %>
         <div>
@@ -29,6 +27,8 @@
         <hr>
       <% end %>
     </ul>
-  <% end %>
-  <%= link_to 'Retour au jardin', garden_path(@garden_plant.garden), class: "btn btn-primary" %>
+    <% end %>
+    <%= link_to 'Retour au jardin', garden_path(@garden_plant.garden), class: "yes_no" %>
+    <div class="filler bg-dark-green"></div>
+  </div>
 </div>
