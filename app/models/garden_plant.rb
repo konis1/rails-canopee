@@ -1,16 +1,20 @@
 class GardenPlant < ApplicationRecord
-  after_update :create_initial_tasks
-
   belongs_to :plant
   belongs_to :garden
+
   has_many :tasks, dependent: :destroy
+
   # validates :nickname, uniqueness: { scope: :garden_id }
+  # validates :pot_color, inclusion: {in: %w()}
+
+  after_update :create_initial_tasks
+
   enum :status, {
     pre_selected: 0,
+    refused: 5,
     selected: 10,
     validated: 20
   }
-  # validates :pot_color, inclusion: {in: %w()}
 
   def score
     return 20
@@ -19,6 +23,8 @@ class GardenPlant < ApplicationRecord
   private
 
   def create_initial_tasks
+    return unless validated?
+
     create_initial_repotting_task
     create_initial_watering_task
   end
