@@ -40,6 +40,13 @@ class TasksController < ApplicationController
     redirect_to garden_plant_tasks_path(@garden_plant), notice: 'Task was successfully destroyed.'
   end
 
+  def update_done
+    date = DateTime.now
+    @task = Task.find(params[:id])
+    @task.update(done_time: date)
+    redirect_to garden_plant_path(@task.garden_plant.id), notice: 'Task is done'
+  end
+
   private
 
   def task_params

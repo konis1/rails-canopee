@@ -3,31 +3,32 @@
   <%= cl_image_tag @garden_plant.plant.photo.key, height: 200, class:"image-card" %>
   <h2> Qui suis-je ?</h2>
   <p><%= @garden_plant.plant.name %></p>
-      <div class="health-bar-container">
-        <span class="health-bar-score">
-          <%= @garden_plant.score %> %
-        </span>
-        <div class="health-bar" style="width:<%= @garden_plant.score %>%; background: <%= color_level(@garden_plant.score) %>">
-        </div>
-      </div>
+  <div class="health-bar-container">
+    <span class="health-bar-score">
+      <%= @garden_plant.score %> %
+    </span>
+    <div class="health-bar" style="width:<%= @garden_plant.score %>%; background: <%= color_level(@garden_plant.score) %>">
+    </div>
+  </div>
+  <span>
+    <strong>Mes tâches</strong>
+  </span>
+  <hr>
   <% @garden_plant.tasks.each do |task| %>
-  <ul class="tasks-list">
-    <li>
-    </li>
-      <span>
-        <strong>Mes tâches</strong>
-      </span>
+    <ul class="tasks-list">
       <% if task.done_time.nil? %>
-        <%= link_to task_path(task) %>
-        <li>
+        <div>
           <%= task.activity %>
-        </li>
+        </div>
+        <%= simple_form_for task, url: update_done_task_path(task) , method: :patch do |f| %>
+          <%= f.button :submit, "Fait", class: "btn btn-primary" %>
+        <% end %>
+        <div>
+          <p>A faire avant le <%= task.due_date.day%>/<%= task.due_date.month %>/<%= task.due_date.year %></p>
+        </div>
+        <hr>
       <% end %>
-    <li>
-      <%= task.due_date %>
-    </li>
-    <hr>
-  </ul>
+    </ul>
   <% end %>
   <%= link_to 'Retour au jardin', garden_path(@garden_plant.garden), class: "btn btn-primary" %>
 </div>
