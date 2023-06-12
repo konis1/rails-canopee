@@ -24,11 +24,13 @@
 }
 
 .card_plant_small {
-  background-color: $main-color;
-  color: $third_color;
+  background-color: $light-yellow;
+  color: $light-yellow;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   border-radius: 4px;
-  height: 20%;
+  color: white;
+  margin: 10px;
+  padding: 10px;
 }
 
 .card_plant_medium {
@@ -53,4 +55,12 @@
   border-radius: 4px;
   width: 90%;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.info-card {
+  border-top-left-radius: 50px;
+  border-top-right-radius: 50px;
+  background-color: $dark-green;
+  color: white;
+  flex-grow: 1;
 }
