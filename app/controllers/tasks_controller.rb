@@ -3,6 +3,10 @@ class TasksController < ApplicationController
 
   def index
     @my_tasks = Task.joins(garden_plant: [{ garden: :user }]).where('users.id' => current_user.id)
+    my_activities = Task.select("activity").group("tasks.activity")
+    @all_activities = my_activities.map do |acti|
+      acti.activity
+    end
   end
 
   def new
