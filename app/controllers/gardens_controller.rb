@@ -51,7 +51,7 @@ class GardensController < ApplicationController
   end
 
   def select_plants
-
+    @garden_plants = @garden.garden_plants
   end
 
 

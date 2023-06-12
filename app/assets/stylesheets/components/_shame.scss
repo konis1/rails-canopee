@@ -3,10 +3,22 @@
   overflow-y: auto;
 }
 
+.min-container-scroll-with-fixed-navbar-bottom {
+  height: calc(100vh - #{$navbar-height});
+  overflow-y: auto;
+  .filler {
+    min-height: $navbar-bottom-total-height;
+  }
+}
+
 .bg-green {
   background-color: $pastel-green;
 }
 
 .bg-red {
   background-color: $pastel-green;
+}
+
+.bg-dark-green {
+  background-color: $dark-green;
 }

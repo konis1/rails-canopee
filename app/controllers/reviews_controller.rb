@@ -1,6 +1,9 @@
 class ReviewsController < ApplicationController
-  before_action :set_plant, only: [ :index, :new, :create ]
+  before_action :set_plant, only: [ :index, :new, :create, :show ]
 
+  def index
+    @reviews = Review.find(params[:plant_id])
+  end
 
   def new
     @review = Review.new
@@ -14,6 +17,11 @@ class ReviewsController < ApplicationController
     @review.save
     redirect_to plant_path(@plant)
   end
+
+  def show
+    @review = Review.find(params[:plant_id])
+  end
+
 
   private
 

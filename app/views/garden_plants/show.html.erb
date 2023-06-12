@@ -1,33 +1,34 @@
 <div class="container text-center mt-3">
-  <h1><%= @garden_plant.nickname %></h1>
   <%= cl_image_tag @garden_plant.plant.photo.key, height: 200, class:"image-card" %>
-  <h2> Qui suis-je ?</h2>
-  <p><%= @garden_plant.plant.name %></p>
-      <div class="health-bar-container">
-        <span class="health-bar-score">
-          <%= @garden_plant.score %> %
-        </span>
-        <div class="health-bar" style="width:<%= @garden_plant.score %>%; background: <%= color_level(@garden_plant.score) %>">
+</div>
+<div class="info-card">
+  <div class="container text-center mt-3">
+    <h1><strong><%= @garden_plant.nickname %></strong></h1>
+    <h4><%= @garden_plant.plant.name %></h4>
+       <div class="health-bar-container">
+         <span class="health-bar-score">
+           <%= @garden_plant.score %> %
+         </span>
+         <div class="health-bar" style="width:<%= @garden_plant.score %>%; background: <%= color_level(@garden_plant.score) %>">
+         </div>
         </div>
-      </div>
-  <% @garden_plant.tasks.each do |task| %>
-  <ul class="tasks-list">
-    <li>
-    </li>
-      <span>
-        <strong>Mes tâches</strong>
-      </span>
+    <% @garden_plant.tasks.each do |task| %>
+    <ul class="tasks-list">
       <% if task.done_time.nil? %>
-        <%= link_to task_path(task) %>
-        <li>
+        <div>
           <%= task.activity %>
-        </li>
+        </div>
+        <%= simple_form_for task, url: update_done_task_path(task) , method: :patch do |f| %>
+          <%= f.button :submit, "Fait", class: "btn btn-primary" %>
+        <% end %>
+        <div>
+          <p>A faire avant le <%= task.due_date.day%>/<%= task.due_date.month %>/<%= task.due_date.year %></p>
+        </div>
+        <hr>
       <% end %>
-    <li>
-      <%= task.due_date %>
-    </li>
-    <hr>
-  </ul>
-  <% end %>
-  <%= link_to 'Retour au jardin', garden_path(@garden_plant.garden), class: "btn btn-primary" %>
+    </ul>
+    <% end %>
+    <%= link_to 'Retour au jardin', garden_path(@garden_plant.garden), class: "yes_no" %>
+    <div class="filler bg-dark-green"></div>
+  </div>
 </div>

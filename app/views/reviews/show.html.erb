@@ -1,0 +1,24 @@
+<div class="container">
+  <h2 class="plant-show-name"><%= @plant.name %></h2>
+  <p class="review-description">Nos amoureux des plantes en parlent !</p>
+  <div class="row">
+    <% @review.garden_plants.plant.each do |review| %>
+        <%= link_to garden_plant_path(garden_plant), class: 'garden-plant-card' do %>
+          <div class='d-flex'>
+            <div class="col-6 nickname-and-life-bar">
+              <h3 class='plant-nickname'><%= garden_plant.nickname %></h3>
+              <div class='life-bar'>
+                <div class='current-life'></div>
+                <div class='max-life'></div>
+              </div>
+            </div>
+            <div class="col-6">
+              <%= cl_image_tag garden_plant.plant.photo.key, width: 183, class: "image-card" %>
+            </div>
+          </div>
+        <% end %>
+    <% end %>
+  </div>
+  <%= link_to 'Retour aux jardins', gardens_path, class: "btn btn-primary" %>
+  <%= link_to 'Supprimer le jardin', garden_path(@garden), class: "btn btn-warning", data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }%>
+</div>
