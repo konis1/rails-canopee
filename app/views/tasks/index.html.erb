@@ -1,5 +1,5 @@
 <div class="container">
-  <h1 class="text-center m-3">Mes soins</h1>
+  <h1 class="text-center m-3 dark-green-text">Mes soins</h1>
     <% @all_activities.each do |activity| %>
       <div class="row mb-4" data-controller="collapse" data-collapse-opened-value="false">
         <div class="green-square col-5 text-center">
@@ -7,10 +7,11 @@
           <i class="fa-solid fa-droplet"></i>
           <% elsif activity == "Rempote-moi !"  %>
           <i class="fa-solid fa-whiskey-glass"></i>
+          <%# Rajouter les deux autres font awesme icons %>
           <% end %>
         </div>
         <div class= "col-5">
-          <h4><%= activity %></h4>
+          <h4 class="dark-green-text"><%= activity %></h4>
           <% @my_tasks.take(5).each do |task| %>
             <% if task.done_time.nil? && task.activity == activity %>
               <%#= link_to task.garden_plant do %>
@@ -29,7 +30,7 @@
               <%#end %>
             <% end %>
           <% end %>
-          <a data-action="click->collapse#fire" href="" data-collapse-target="link">Voir plus</a>
+          <a data-action="click->collapse#fire" href="" class="dark-green-text" data-collapse-target="link">Voir plus<i class="fa-solid fa-plus"></i></a>
         </div>
         <div class="col"  >
           <div class="d-none" data-collapse-target="toggableElement">
