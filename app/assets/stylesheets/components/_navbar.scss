@@ -14,4 +14,11 @@
 
 .navbar-bottom {
   height: $navbar-bottom-height;
+  border-radius: 9999px;
+  position: fixed;
+  bottom: $navbar-bottom-bottom-spacing;
+  width: 93%;
+  background-color: white;
+  margin-left: 14px;
+  margin-right: 10px;
 }
