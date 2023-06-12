@@ -12,10 +12,10 @@ export default class extends Controller {
     this.toggableElementTarget.classList.toggle("d-none");
     this.openedValue = !this.openedValue;
     if (this.openedValue) {
-      this.linkTarget.innerText="Voir moins";
+      this.linkTarget.innerHTML="Voir moins <i class=\"fa-solid fa-minus\"></i>";
     }
     else {
-      this.linkTarget.innerText="Voir plus";
+      this.linkTarget.innerHTML="Voire plus <i class=\"fa-solid fa-plus\">";
     }
   }
 }
