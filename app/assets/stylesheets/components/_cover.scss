@@ -1,0 +1,64 @@
+.cover1 {
+  height: calc(100vh - 104px);
+  background-size: cover;
+  padding-top: 4%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  font-weight: bold;
+}
+
+.cover1 h1, .cover1 h2, .cover1 p {
+  margin-bottom: 50%;
+  margin-left: 10px;
+  margin-left: 10px;
+}
+
+.cover2 {
+  height: calc(100vh - 104px);
+  background-size: cover;
+  padding-top: 4%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  font-weight: bold;
+}
+
+.cover2 h1, .cover2 h2, .cover2 p {
+  margin-bottom: 50%;
+  margin-left: 10px;
+  margin-left: 10px;
+}
+
+.cover3 {
+  height: calc(100vh - 104px);
+  background-size: cover;
+  padding-top: 39%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  font-weight: bold;
+}
+
+.cover3 h1, .cover3 h2, .cover3 p {
+  margin-bottom: 50%;
+  margin-left: 10px;
+  margin-left: 10px;
+}
+
+.page {
+  display: none;
+}
+
+.hidden {
+  display: none;
+}

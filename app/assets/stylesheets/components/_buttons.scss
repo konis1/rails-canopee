@@ -8,8 +8,10 @@
 .button_next_step {
   border: solid black 1px;
   border-radius: 25px;
-  background-color: white;
-  padding: 10px;
+  background-color: $light-yellow;
+  padding-left: 10px;
+  padding-right: 10px;
+  color: grey;
 }
 
 .button_lets_go {

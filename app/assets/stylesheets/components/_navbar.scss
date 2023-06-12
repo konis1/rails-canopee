@@ -12,6 +12,15 @@
   width: 40px;
 }
 
-.navbar-bottom {
-  height: $navbar-bottom-height;
+.navbar-bottom-container {
+  position: fixed;
+  bottom: $navbar-bottom-bottom-spacing;
+  padding: 0 1rem;
+  width: 100%;
+  .navbar-bottom {
+    height: $navbar-bottom-height;
+    border-radius: 9999px;
+    width: 100%;
+    background-color: $light-gray;
+}
 }

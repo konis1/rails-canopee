@@ -1,12 +1,5 @@
-.garden-show-title {
-  color: $dark-green;
-  font-weight: bold;
-  font-size: 45px;
-}
-
-.garden-description {
-  color: $dark-green;
-  font-size: 17px;
+.plants-list-wrapper {
+  margin-bottom: 20px;
 }
 
 .garden-plant-card {
@@ -33,6 +26,17 @@
   border-radius: 40px;
 }
 
+.current-life {
+  height: 100%;
+  border-radius: 40px;
+  background-color: $danger-yellow; // Must be neutralized and set conditionally in Ruby
+  width: 30%; // Must be neutralized and set conditionally in Ruby
+}
+
+.image-card {
+  border-radius: 28px;
+}
+
 .garden-plant-card:nth-child(3n + 1) {
   background-color: $dark-green;
 }
@@ -43,4 +47,20 @@
 
 .garden-plant-card:nth-child(3n) {
   background-color: $orange;
+}
+
+.garden-plant-card:not(:is(:first-child)) {
+  position: relative;
+  bottom: 320px;
+}
+
+.garden-options {
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 80px;
+}
+
+.bg-dark-green {
+  background-color: $dark-green;
 }
