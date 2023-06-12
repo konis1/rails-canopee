@@ -1,0 +1,46 @@
+.garden-show-title {
+  color: $dark-green;
+  font-weight: bold;
+  font-size: 45px;
+}
+
+.garden-description {
+  color: $dark-green;
+  font-size: 17px;
+}
+
+.garden-plant-card {
+  width: 100vw;
+  height: 450px;
+  border-top-left-radius: 58px;
+  padding: 25px;
+}
+
+.nickname-and-life-bar {
+  padding-left: 15px;
+}
+
+.plant-nickname {
+  color: $not-quite-white;
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.life-bar {
+  width: 112px;
+  height: 26px;
+  background-color: $not-quite-white;
+  border-radius: 40px;
+}
+
+.garden-plant-card:nth-child(3n + 1) {
+  background-color: $dark-green;
+}
+
+.garden-plant-card:nth-child(3n + 2) {
+  background-color: $light-brown;
+}
+
+.garden-plant-card:nth-child(3n) {
+  background-color: $orange;
+}
