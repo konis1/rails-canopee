@@ -1,36 +1,31 @@
 <div class="container text-center mt-3">
   <%= cl_image_tag @garden_plant.plant.photo.key, height: 200, class:"image-card" %>
 </div>
-
 <div class="info-card">
-
   <div class="container text-center mt-3">
-
     <h1><strong><%= @garden_plant.nickname %></strong></h1>
     <h4><%= @garden_plant.plant.name %></h4>
-        <div class="health-bar-container">
-          <span class="health-bar-score">
-            <%= @garden_plant.score %> %
-          </span>
-          <div class="health-bar" style="width:<%= @garden_plant.score %>%; background: <%= color_level(@garden_plant.score) %>">
-          </div>
+       <div class="health-bar-container">
+         <span class="health-bar-score">
+           <%= @garden_plant.score %> %
+         </span>
+         <div class="health-bar" style="width:<%= @garden_plant.score %>%; background: <%= color_level(@garden_plant.score) %>">
+         </div>
         </div>
     <% @garden_plant.tasks.each do |task| %>
     <ul class="tasks-list">
-      <li>
-      </li>
-        <span>
-          <strong>Mes tâches</strong>
-        </span>
-        <% if task.done_time.nil? %>
-          <%= link_to task_path(task) %>
-          <li>
-            <%= task.activity %>
-          </li>
+      <% if task.done_time.nil? %>
+        <div>
+          <%= task.activity %>
+        </div>
+        <%= simple_form_for task, url: update_done_task_path(task) , method: :patch do |f| %>
+          <%= f.button :submit, "Fait", class: "btn btn-primary" %>
         <% end %>
-      <li>
-        <%= task.due_date %>
-      </li>
+        <div>
+          <p>A faire avant le <%= task.due_date.day%>/<%= task.due_date.month %>/<%= task.due_date.year %></p>
+        </div>
+        <hr>
+      <% end %>
     </ul>
     <% end %>
     <%= link_to 'Retour au jardin', garden_path(@garden_plant.garden), class: "yes_no" %>
