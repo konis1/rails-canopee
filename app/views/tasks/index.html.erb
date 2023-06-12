@@ -7,10 +7,11 @@
           <i class="fa-solid fa-droplet"></i>
           <% elsif activity == "Rempote-moi !"  %>
           <i class="fa-solid fa-whiskey-glass"></i>
+          <%# Rajouter les deux autres font awesme icons %>
           <% end %>
         </div>
         <div class= "col-5">
-          <h4><%= activity %></h4>
+          <strong><%= activity %></strong>
           <% @my_tasks.take(5).each do |task| %>
             <% if task.done_time.nil? && task.activity == activity %>
               <%#= link_to task.garden_plant do %>
