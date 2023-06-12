@@ -40,12 +40,19 @@
   </head>
 
   <body>
-    <%= render "shared/navbar" %>
+    <% if action_name != "home" %>
+      <%= render "shared/navbar" %>
+    <% end %>
+
     <%= render "shared/flashes" %>
+
     <div class="min-container-scroll <%= page_background_color_class %>">
       <%= yield %>
     </div>
-    <%= render "shared/navbar_bottom" %>
-    
+
+    <% if action_name != "home" %>
+      <%= render "shared/navbar_bottom" %>
+    <% end %>
+
   </body>
 </html>

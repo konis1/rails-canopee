@@ -1,5 +1,37 @@
-<%= link_to gardens_path do %>
-<div class="logo">
-</div>
-<% end %>
+<div data-controller="navigation">
+  <div id="home" class="logo" data-navigation-target="logo" data-action="click->navigation#goToNextCover">
+  </div>
 
+  <div data-navigation-target="cover1" data-action="click->navigation#goToNextCover2" class="cover1 d-none" style="background-image: url(<%= image_path('cover.png', alt: 'Cover Photo') %>); position:fixed">
+    <h1>Rencontre <br> l’amour vert !</h1>
+    <%# <h2>Hello!</h2> %>
+    <p>
+        Hello! <br> Ici on t’aide à trouver
+        la plante qui est faîte pour toi
+        en fonction de tes goûts, de ta
+        localisation et du temps que tu
+        souhaites lui accorder !</p>
+  </div>
+
+  <div data-navigation-target="cover2" class="cover2 d-none" data-action="click->navigation#goToNextCover3" style="background-image: url(<%= image_path('cover.png', alt: 'Cover Photo') %>); position:fixed">
+    <h1>Pas de pot <br> avec les plantes?</h1>
+    <p>Pas de soucis on a pensé à tout. <br>
+    On a imaginé un pot adapté à tous
+    les rebords de fenêtres citadins,
+    en plastique recyclé, fabriqué en
+    France, et disponible dans 3
+    coloris ! </p>
+  </div>
+
+  <%= link_to gardens_path do %>
+    <div data-navigation-target="cover3" class="cover3 d-none" style="background-image: url(<%= image_path('cover.png', alt: 'Cover Photo') %>); position:fixed">
+      <h1>Pas de pot <br> avec les plantes?</h1>
+      <p>Pas de soucis on a pensé à tout. <br>
+      On a imaginé un pot adapté à tous
+      les rebords de fenêtres citadins,
+      en plastique recyclé, fabriqué en
+      France, et disponible dans 3
+      coloris ! </p>
+    </div>
+  <% end %>
+</div>
