@@ -1,5 +1,5 @@
 $orange: #FF945A;
-$green: #B1DA96;
+$light-brown: #E6C5B8;
 
 .swiper {
   position: absolute;
@@ -9,6 +9,8 @@ $green: #B1DA96;
   padding-top: 5.875rem;
   bottom: 5.875rem;
   overflow: hidden;
+  padding-top: 1.5rem;
+
 
   &__content {
     user-select: none;

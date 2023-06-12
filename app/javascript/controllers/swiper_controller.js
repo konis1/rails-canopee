@@ -152,7 +152,7 @@ export default class extends Controller {
 
   connect() {
     this.initSwiper()
-    this.initModal()
+    // this.initModal()
   }
 
   initSwiper() {
@@ -163,19 +163,23 @@ export default class extends Controller {
     })
   }
 
-  initModal() {
-    this.modal = new bootstrap.Modal(this.modalTarget)
-  }
+  // initModal() {
+  //   this.modal = new bootstrap.Modal(this.modalTarget)
+  // }
 
-  hideModal() {
-    this.modal.hide()
-  }
+  // hideModal() {
+  //   this.modal.hide()
+  // }
 
   swipeLeft(id){
+    console.log('swipeLeft(id){')
     const url     = `/garden_plants/${id}`
     const options = {
       method: "PATCH",
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+        "Accept-Content": "application/json"
+      },
       body: JSON.stringify({
         "id": id,
         "garden_plant": {
@@ -187,10 +191,14 @@ export default class extends Controller {
   }
 
   swipeRight(id){
+    console.log('swipeRight(id){')
     const url     = `/garden_plants/${id}`
     const options = {
       method: "PATCH",
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+        "Accept-Content": "application/json"
+      },
       body: JSON.stringify({
         "id": id,
         "garden_plant": {
