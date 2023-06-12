@@ -9,6 +9,10 @@
   font-size: 17px;
 }
 
+.plants-list-wrapper {
+  margin-bottom: 20px;
+}
+
 .garden-plant-card {
   width: 100vw;
   height: 450px;
@@ -59,4 +63,10 @@
 .garden-plant-card:not(:is(:first-child)) {
   position: relative;
   bottom: 320px;
+}
+
+.garden-options {
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
 }
