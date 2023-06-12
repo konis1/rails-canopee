@@ -1,8 +1,57 @@
-<div class="container">
-  <%= simple_form_for :garden_plant, url: validate_plants_garden_path(@garden) do |f| %>
-      <div class="form-class">
+<div class="swiper" data-controller="swipe coordinates">
+    <div class="swiper__content">
+      <div class="swiper__card-cont">
+        <% @garden_plants.each do |garden_plant| %>
 
-        <%= f.input :choices,
+          <div class="swiper__card"
+               data-swipe-target="card"
+               data-id="<%= garden_plant.id %>">
+
+
+            <%# TODOOOO %>
+            <%= link_to 'Profile', root_path, class: 'profile-link hidden' %>
+            <div class="swiper__card__content">
+
+              <div class="swiper__card__content_top">
+                <%# La partie du haut de la carte %>
+              </div>
+
+              <% if garden_plant.plant.photo.attached? %>
+                <%= cl_image_tag garden_plant.plant.photo.key, class: 'swiper__card__img' %>
+              <% end %>
+
+              <div class="swiper__card__content_bottom">
+                <p class="swiper__card__name">
+                  <strong><%= garden_plant.plant.name %></strong>
+                </p>
+              </div>
+
+            </div>
+            <div class="swiper__card__choice m--reject"></div>
+            <div class="swiper__card__choice m--like"></div>
+            <div class="swiper__card__drag"></div>
+          </div>
+
+        <% end %>
+      </div>
+    </div>
+    <div class="modal fade" data-swipe-target="modal" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="false">
+      <div class="modal-dialog success-modal-dialog">
+        <div class="modal-content success-modal-content">
+          <div class="modal-body success-modal-body" data-swipe-target="modalBody">
+            <%# Ici c'est la modale pour notifier que le match a eu lieu, voir controller stimulus %>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+
+<%# <div class="container">
+  <%#= simple_form_for :garden_plant, url: validate_plants_garden_path(@garden) do |f| %>
+      <%# <div class="form-class"> %>
+
+        <%#= f.input :choices,
                     as: :check_boxes,
                     legend_tag: false,
                     collection: @garden.garden_plants,
@@ -14,8 +63,8 @@
 
         <%#= label_method: lambda { |garden_plant| garden_plant.plant.nickname } %>
 
-          <%= f.button :submit %>
+          <%#= f.button :submit %>
         </div>
 
-    <% end %>
-</div>
+    <%# end %>
+<%# </div> %>

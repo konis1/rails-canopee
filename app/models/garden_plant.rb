@@ -7,6 +7,7 @@ class GardenPlant < ApplicationRecord
   # validates :nickname, uniqueness: { scope: :garden_id }
   enum :status, {
     pre_selected: 0,
+    refused: 5,
     selected: 10,
     validated: 20
   }
