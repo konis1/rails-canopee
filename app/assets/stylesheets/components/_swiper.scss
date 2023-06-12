@@ -11,6 +11,14 @@ $light-brown: #E6C5B8;
   overflow: hidden;
   padding-top: 1.5rem;
 
+  h1 {
+    text-align: center;
+  }
+
+  strong {
+    color: white;
+  }
+
 
   &__content {
     user-select: none;
