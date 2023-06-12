@@ -33,6 +33,17 @@
   border-radius: 40px;
 }
 
+.current-life {
+  height: 100%;
+  border-radius: 40px;
+  background-color: $danger-yellow; // Must be neutralized and set conditionally in Ruby
+  width: 30%; // Must be neutralized and set conditionally in Ruby
+}
+
+.image-card {
+  border-radius: 28px;
+}
+
 .garden-plant-card:nth-child(3n + 1) {
   background-color: $dark-green;
 }
@@ -43,4 +54,9 @@
 
 .garden-plant-card:nth-child(3n) {
   background-color: $orange;
+}
+
+.garden-plant-card:not(:is(:first-child)) {
+  position: relative;
+  bottom: 320px;
 }
