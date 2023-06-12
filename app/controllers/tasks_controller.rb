@@ -41,13 +41,22 @@ class TasksController < ApplicationController
   end
 
   def update_done
-    date = DateTime.now
-    @task = Task.find(params[:id])
-    @task.update(done_time: date)
+    update_task(params[:id])
     redirect_to garden_plant_path(@task.garden_plant.id), notice: 'Task is done'
   end
 
+  def update_tasks
+    update_task(params[:id])
+    redirect_to tasks_path, notice: 'Task is done'
+  end
+
   private
+
+  def update_task(id)
+    date = DateTime.now
+    @task = Task.find(id)
+    @task.update(done_time: date)
+  end
 
   def task_params
     params.require(:task).permit(:activity, :criticity, :due_date, :done_time)

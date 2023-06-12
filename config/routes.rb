@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   resources :tasks, only: [:index] do
     member do
       patch :update_done
+      patch :update_tasks
     end
   end
   resources :garden_plants, only: [:show, :destroy, :update]
