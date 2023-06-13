@@ -1,22 +1,31 @@
 <div class="container">
   <h2 class="page-title"><%= @garden.name %></h2>
-  <p class="page-description">Voici toute ta team en place !</p>
-  <p class="page-description">N’hésite pas à jeter un oeil de temps à autre voir si tout va bien 😊</p>
-  <div class="row plants-list-wrapper" data-controller='garden-show-plants-list'>
-    <% @garden.garden_plants.validated.each do |garden_plant| %>
-        <%= link_to garden_plant_path(garden_plant), class: 'garden-plant-card' do %>
-          <div class='d-flex'>
-            <div class="col-6 nickname-and-life-bar">
-              <h3 class='plant-nickname'><%= garden_plant.nickname %></h3>
-              <div class='life-bar'>
-                <div class='current-life'></div>
+  <% if @garden.garden_plants.validated.any? %>
+    <p class="page-description">Voici toute ta team en place !</p>
+    <p class="page-description">N’hésite pas à jeter un oeil de temps à autre voir si tout va bien 😊</p>
+    <div class="row plants-list-wrapper" data-controller='garden-show-plants-list'>
+      <% @garden.garden_plants.validated.each do |garden_plant| %>
+          <%= link_to garden_plant_path(garden_plant), class: 'garden-plant-card' do %>
+            <div class='d-flex'>
+              <div class="col-6 nickname-and-life-bar">
+                <h3 class='plant-nickname'><%= garden_plant.nickname %></h3>
+                <div class='life-bar'>
+                  <div class='current-life'></div>
+                </div>
+              </div>
+              <div class="col-6">
+                <%= cl_image_tag garden_plant.plant.photo.key, width: 183, class: "image-card" %>
               </div>
             </div>
-            <div class="col-6">
-              <%= cl_image_tag garden_plant.plant.photo.key, width: 183, class: "image-card" %>
-            </div>
-          </div>
-        <% end %>
-    <% end %>
+          <% end %>
+      <% end %>
+    </div>
+    <% else %>
+      <p class="page-description">Tu n'as pas encore de plantes dans ce jardin !</p>
+      <p class="page-description">N’hésite pas à cliquer sur l'un des boutons ci-dessous pour obtenir des suggestions de plantes ou changer les préférences du jardin 😊</p>
+  <% end %>
+  <div class='garden-options'>
+    <%= link_to 'Retour aux jardins', gardens_path, class: "btn btn-primary" %>
+    <%= link_to 'Supprimer le jardin', garden_path(@garden), class: "btn btn-warning", data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }%>
   </div>
 </div>

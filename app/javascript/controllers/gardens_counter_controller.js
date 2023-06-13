@@ -5,6 +5,6 @@ export default class extends Controller {
   static targets = ['counter', 'crush']
 
   connect() {
-    this.counterTarget.innerText = `${this.crushTargets.length} jardins`
+    this.counterTarget.innerText = this.gardenTargets.length
   }
 }
