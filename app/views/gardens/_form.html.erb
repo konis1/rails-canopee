@@ -1,27 +1,70 @@
-<%= simple_form_for @garden do |f| %>
-
-  <div class="m-2">
-    <div class="card_plant_small">
-      <%= f.input :name, label:false, input_html: {placeholder: "Nom"} %>
+<div data-controller="garden-form">
+  <%= simple_form_for @garden do |f| %>
+    <div class="m-2">
+      <%= f.input :name, 
+                  label:false, 
+                  wrapper_html: {
+                    class: "card_plant_small",
+                    data: {
+                      garden_form_target: 'input'
+                    }
+                  }, 
+                  input_html: {
+                    placeholder: "Nom"
+                  } %>
+        <span data-action="click->garden-form#goToNextQuestion">Suivant</span>
+        <%= f.input :light, 
+                    label:false, 
+                    wrapper_html: { 
+                      class: "d-none card_plant_small",
+                      data: {
+                        garden_form_target: 'input'
+                      }
+                    }, 
+                    input_html: {
+                      placeholder: "Luminosité"
+                    } %>
+        <%= f.input :size, 
+                    label:false, 
+                    wrapper_html: { 
+                      class: "d-none card_plant_small",
+                      data: {
+                        garden_form_target: 'input'
+                      }
+                    }, 
+                    input_html: {
+                      placeholder: "Taille"
+                    } %>
+        <%= f.input :care_willing, 
+                    label:false, 
+                    wrapper_html: { 
+                      class: "d-none card_plant_small",
+                      data: {
+                        garden_form_target: 'input'
+                      }
+                    }, 
+                    input_html: {
+                      placeholder: "Soins"
+                    } %>
+        <%= f.input :location, 
+                    label:false, 
+                    input_html: {
+                      data: {
+                        address_autocomplete_target: "address"
+                      }, 
+                      class: "d-none card_plant_small"
+                    },
+                    wrapper_html: {
+                      class: "d-none",
+                      data: {
+                        garden_form_target: 'input',
+                        controller: "address-autocomplete", 
+                        address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]
+                      }
+                    } %>
+      <div style= "text-align: center">
+        <%= button_tag 'Suivant', type: :submit, class: "button_next_step" %>
+      </div>
     </div>
-    <div class="card_plant_small">
-      <%= f.input :light, label:false, input_html: {placeholder: "Luminosité"} %>
-    </div>
-    <div class="card_plant_small">
-      <%= f.input :size, label:false, input_html: {placeholder: "Taille"} %>
-    </div>
-    <div class="card_plant_small">
-      <%= f.input :care_willing, label:false, input_html: {placeholder: "Soins"} %>
-    </div>
-    <div class="card_plant_small">
-      <%= f.input :location, label:false,
-        input_html: {data: {address_autocomplete_target: "address"}, class: "d-none"},
-        wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}
-      %>
-    </div>
-  <div style= "text-align: center">
-    <%= button_tag 'Suivant', type: :submit, class: "button_next_step" %>
-  </div>
-  </div>
-
-<% end %>
+  <% end %>  
+</div>  
