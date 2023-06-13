@@ -1,5 +1,5 @@
 class GardensController < ApplicationController
-  before_action :set_garden, only: [:show, :edit, :update, :destroy, :select_plants, :crush]
+  before_action :set_garden, only: [:show, :edit, :update, :destroy, :select_plants, :crush, :validate_plants]
 
 
   def index
@@ -44,9 +44,10 @@ class GardensController < ApplicationController
   end
 
   def validate_plants
-    @garden = Garden.find(params[:id])
-    garden_plants = GardenPlant.where(id: params.dig(:garden_plant, :choices))
+    # garden_plants = GardenPlant.where(id: params.dig(:garden_plant, :choices))
+    garden_plants = @garden.garden_plants.selected.all
     garden_plants.each(&:validated!)
+
     redirect_to garden_path(@garden)
   end
 
@@ -55,7 +56,7 @@ class GardensController < ApplicationController
   end
 
   def crush
-    @garden_plants = Garden.last.garden_plants.selected.all
+    @garden_plants = @garden.garden_plants.selected.all
   end
 
 
