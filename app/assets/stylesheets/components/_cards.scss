@@ -74,7 +74,7 @@
 }
 
 .card_plant_small {
-  background-color: $light-yellow;
+
   color: $light-yellow;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   border-radius: 4px;
@@ -110,14 +110,67 @@
 .info-card {
   border-top-left-radius: 50px;
   border-top-right-radius: 50px;
-  background-color: #12511b;
   color: white;
   flex-grow: 1;
- }
+  background-size: cover;
+  // height: 100vh;
+  background-position: center;
+  // padding: 370px 0;
+  color: #B09754;
 
+
+
+
+  }
+
+  .cover-card {
+    background-image: url('cover-plant.png');
+    height: 100%;
+
+  .h2 {
+      padding-bottom: 5px;
+    }
+  }
 
  .info-card .button_next_step {
   background-color: #376117;;
   color:white;
   background-color: #1f3210;
+ }
+
+ .card-avatar {
+  display: flex;
+    color: black;
+    flex-wrap: wrap;
+    color: white;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+
+ }
+
+ .fake-input {
+  border: solid white;
+  border-radius: 4px;
+  width: 44%;
+  margin-bottom: 16px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 16px 8px;
+  flex-direction: column;
+
+  .avatar {
+    /* margin: auto; */
+    text-align: center;
+    /* margin-top: 1em; */
+  }
+
+  p {
+    margin-bottom: 0;
+  }
+
+  &:first-of-type .avatar img {
+    margin-top: -11px;
+  }
  }
