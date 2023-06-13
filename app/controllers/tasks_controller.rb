@@ -7,6 +7,7 @@ class TasksController < ApplicationController
     @all_activities = my_activities.map do |acti|
       acti.activity
     end
+    @notifications = current_user.notifications
   end
 
   def new

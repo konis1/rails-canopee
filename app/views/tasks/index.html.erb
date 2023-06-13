@@ -58,4 +58,12 @@
         </div>
       </div>
     <% end %>
+    <div>
+      <% @notifications.each do |notification| %>
+        <% if notification.unread? %>
+          <%= notification.params[:task].activity%>
+          <% notification.mark_as_read! %>
+        <% end %>
+      <% end %>
+    </div>
 </div>

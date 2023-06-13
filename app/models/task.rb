@@ -40,5 +40,4 @@ class Task < ApplicationRecord
   def notify_recipient
     TaskNotification.with(task: self).deliver_later(garden_plant.garden.user)
   end
-
 end
