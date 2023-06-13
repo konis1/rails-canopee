@@ -1,5 +1,5 @@
 class GardensController < ApplicationController
-  before_action :set_garden, only: [:show, :edit, :update, :destroy, :select_plants]
+  before_action :set_garden, only: [:show, :edit, :update, :destroy, :select_plants, :crush]
 
 
   def index
