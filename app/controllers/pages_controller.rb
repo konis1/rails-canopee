@@ -10,4 +10,6 @@ class PagesController < ApplicationController
   end
   def cover3
   end
+  def merci
+  end
 end
