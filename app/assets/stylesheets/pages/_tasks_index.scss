@@ -1,3 +1,28 @@
+.tasks-index-wrapper {
+  height: 100%;
+  background-image: url('background_soins_index.png');
+  background-size: cover;
+  background-position-y: top 70px;
+  background-repeat: no-repeat;
+
+  .page-title {
+    margin-bottom: 80px;
+  }
+
+  .tabs {
+    display: flex;
+    justify-content: center;
+
+    .tab-one {
+      margin-right: 25px;
+    }
+
+    .tab-two {
+      margin-left: 25px;
+    }
+  }
+}
+
 .green-square {
   background-color: #19362C;
   margin-left: 1em;
@@ -14,5 +39,3 @@
     transform: translate(-50%, -50%);
   }
 }
-
-
