@@ -1,5 +1,4 @@
-import { Controller } from "@hotwired/stimulus"
-import * as bootstrap from 'bootstrap'
+import { Controller } from "@hotwired/stimulus";
 
 const Swiper = class Swiper {
   constructor(attributes) {
@@ -148,7 +147,7 @@ const csrfToken = () => {
 }
 
 export default class extends Controller {
-  static targets = ["card", "modal", "modalBody"]
+  static targets = ["card", "modal", "modalBody", "counter"]
 
   connect() {
     this.initSwiper()
@@ -203,6 +202,7 @@ export default class extends Controller {
         "id": id,
         "garden_plant": {
           "status": "selected"
+
         }
       })
     }
@@ -213,9 +213,9 @@ export default class extends Controller {
   }
 
   responseHandler(data) {
-    if (data.content) {
-      this.modalBodyTarget.innerHTML = data.content
-      this.modal.show()
+    console.log(data);
+    if (data.garden_plant_count) {
+      this.counterTarget.innerHTML = data.garden_plant_count
     }
   }
 }

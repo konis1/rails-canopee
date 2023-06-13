@@ -1,7 +1,7 @@
 class Garden < ApplicationRecord
   belongs_to :user
-  has_many :garden_plants, dependent: :destroy
-  has_many :plants, through: :garden_plants
+  has_many :garden_plants, -> {includes(:plant).order("plants.name desc")}, dependent: :destroy
+  has_many :plants, -> {order(name: :desc)}, through: :garden_plants
   validates :light, :size, :location, presence: true
   validates :name, uniqueness: true
   geocoded_by :location

@@ -1,0 +1,38 @@
+<div class="swiper__card"
+    data-swiper-target="card"
+    data-id="<%= garden_plant.id %>"
+    data-bs-toggle="offcanvas"
+    data-bs-target="#offcanvas-<%= garden_plant.id%>">
+  <div class="swiper__card__content">
+    <div class="swiper__card__content_top">
+      <h2><strong><%= garden_plant.plant.name %></strong></h2>
+      <h2><strong><%= garden_plant.garden.plants.index(garden_plant.plant)+1 %>/<%= garden_plant.garden.plants.count%> </strong></h2>
+      <%# La partie du haut de la carte %>
+    </div>
+
+    <% if garden_plant.plant.photo.attached? %>
+      <%= cl_image_tag garden_plant.plant.photo.key, class: 'swiper__card__img' %>
+    <% end %>
+
+    <div class="swiper__card__content_bottom">
+      <p class="swiper__card__name">
+      </p>
+    </div>
+
+  </div>
+  <div class="swiper__card__choice m--reject"></div>
+  <div class="swiper__card__choice m--like"></div>
+  <div class="swiper__card__drag"></div>
+</div>
+
+
+<div class="offcanvas offcanvas-bottom offcanvas-plant-info" tabindex="-1" id="offcanvas-<%= garden_plant.id %>">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title"><%= garden_plant.plant.name %></h5>
+    <%# <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button> %>
+  </div>
+  <div class="offcanvas-body small">
+    <%= cl_image_tag garden_plant.plant.photo.key, class: 'modal_content__img' if garden_plant.plant.photo.attached? %>
+    <p><%= garden_plant.plant.content %></p>
+  </div>
+</div>
