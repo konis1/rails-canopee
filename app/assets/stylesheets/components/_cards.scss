@@ -3,10 +3,15 @@
   border-radius: 28px;
   display: flex;
   justify-content: space-between;
-  align-items: center;
 
   a {
     color: $light-yellow;
+  }
+
+  .info-trash {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 
   .garden-info {
@@ -28,6 +33,26 @@
 
   .first-plant {
     border-radius: 28px;
+  }
+}
+
+.with-plants {
+  align-items: center;
+}
+
+.without-plants {
+  flex-direction: column;
+  justify-content: stretch;
+
+  .no-plants-card-filler {
+    flex-grow: 1;
+    align-self: stretch;
+  }
+
+  .no-plant-message {
+    display: block;
+    margin: 8px auto 0 auto;
+    align-self: center;
   }
 }
 
