@@ -22,9 +22,10 @@
 }
 
 .button_validate {
-  width: 30%;
-  border: solid black 1px;
+  width: 50%;
+  color: white;
+  // border: solid black 1px;
   border-radius: 25px;
-  background-color: white;
-  padding: 10px;
+  background-color: $dark-green;
+  padding: 2px;
 }

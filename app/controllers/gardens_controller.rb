@@ -54,6 +54,10 @@ class GardensController < ApplicationController
     @garden_plants = @garden.garden_plants
   end
 
+  def crush
+    @garden_plants = Garden.last.garden_plants.selected.all
+  end
+
 
   private
 
