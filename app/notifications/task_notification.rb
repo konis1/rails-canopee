@@ -25,10 +25,11 @@ class TaskNotification < Noticed::Base
     tasks_path
   end
 
-  around_deliver do
-    raise
-    if notification.read?
-      notification.destroy
-    end
-  end
+  # after_deliver do
+  #   raise
+  #   if notification.read?
+  #     notification.destroy
+  #   end
+  # end
+
 end

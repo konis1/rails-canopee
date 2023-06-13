@@ -17,7 +17,7 @@ class TasksController < ApplicationController
 
   def edit
     @garden_plant = @task.garden_plant
-   end
+  end
 
   def create
     @garden_plant = GardenPlant.find(params[:garden_plant_id])
