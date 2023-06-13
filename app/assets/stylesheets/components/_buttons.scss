@@ -6,12 +6,12 @@
 }
 
 .button_next_step {
-  border: solid black 1px;
+  border: solid $dark-green 1px;
   border-radius: 25px;
-  background-color: $light-yellow;
+  background-color: $light-gray;
   padding-left: 10px;
   padding-right: 10px;
-  color: grey;
+  color: $dark-green;
 }
 
 .button_lets_go {
@@ -19,6 +19,9 @@
   border-radius: 25px;
   background-color: $third_color;
   padding: 10px;
+  margin-left: 5px;
+  margin-right: 5px;
+
 }
 
 .button_validate {
