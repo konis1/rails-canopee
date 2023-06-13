@@ -67,12 +67,8 @@
 }
 
 .card_plant_small {
-  background-color: $light-yellow;
-  color: $light-yellow;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  border-radius: 4px;
+  background-color: $dark-green;
   color: white;
-  margin: 10px;
   padding: 10px;
 }
 
@@ -106,11 +102,12 @@
   background-color: #12511b;
   color: white;
   flex-grow: 1;
- }
+}
 
 
- .info-card .button_next_step {
+.info-card .button_next_step {
   background-color: #376117;;
   color:white;
   background-color: #1f3210;
- }
+}
+

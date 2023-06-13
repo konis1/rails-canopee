@@ -1,6 +1,7 @@
 <div data-controller="garden-form">
   <%= simple_form_for @garden do |f| %>
     <div class="m-2">
+      
       <%= f.input :name, 
                   label:false, 
                   wrapper_html: {
@@ -13,6 +14,7 @@
                     placeholder: "Nom"
                   } %>
         <span data-action="click->garden-form#goToNextQuestion">Suivant</span>
+
         <%= f.input :light, 
                     label:false, 
                     wrapper_html: { 
@@ -24,17 +26,36 @@
                     input_html: {
                       placeholder: "Luminosité"
                     } %>
-        <%= f.input :size, 
-                    label:false, 
-                    wrapper_html: { 
-                      class: "d-none card_plant_small",
-                      data: {
-                        garden_form_target: 'input'
-                      }
-                    }, 
-                    input_html: {
-                      placeholder: "Taille"
-                    } %>
+        
+          <%# <%= f.input :size, 
+                      label:false, 
+                      wrapper_html: { 
+                        class: "d-none card-dimension",
+                        data: {
+                          garden_form_target: 'input'
+                        }
+                      }, 
+                      input_html: {
+                        placeholder: "Dimension"
+                      } %>
+        
+        <div class="d-none card_plant_small" data-garden-form-target='input' >
+          <h3 style="text-align: center">Dimension</h3>
+          <%= f.input :size,
+                      label:false,
+                      input_html: { class: 'hidden-input' } %>
+          <div class="dimension-info">
+            <%= button_tag 'Petit', type: :submit, class: "button_next_step" %>
+            <%= button_tag 'Moyen', type: :submit, class: "button_next_step" %>
+            <%= button_tag 'Grand', type: :submit, class: "button_next_step" %>
+          </div>
+        <div style= "text-align: center">
+          <%= button_tag 'Valider', type: :submit %>
+        </div>
+        </div>
+
+
+
         <%= f.input :care_willing, 
                     label:false, 
                     wrapper_html: { 
