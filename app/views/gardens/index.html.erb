@@ -10,16 +10,17 @@
         <div class="card-garden p-3 m-3" data-gardens-counter-target='garden'>
           <% if garden.garden_plants.none? %>
             <p>Vous n'avez pas encore de plante 😭</p>
-          <% end %>
-          <%= link_to garden_path(garden), class: 'garden-info' do %>
-            <p><%= garden.name %></p>
-            <p><%= garden.location %></p>
-          <% end %>
-          <%= link_to garden_path(garden), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } do %>
-            <i class="fa-solid fa-trash-can"></i>
-          <% end %>
-          <%= link_to garden_path(garden) do %>
-            <img src="<%= cl_image_path garden.garden_plants.first.plant.photo.key, height: 80, crop: :fill %>" alt="A plant" class="first-plant">
+          <% else %>
+            <%= link_to garden_path(garden), class: 'garden-info' do %>
+              <p><%= garden.name %></p>
+              <p><%= garden.location %></p>
+            <% end %>
+            <%= link_to garden_path(garden), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } do %>
+              <i class="fa-solid fa-trash-can"></i>
+            <% end %>
+            <%= link_to garden_path(garden) do %>
+              <img src="<%= cl_image_path garden.garden_plants.first.plant.photo.key, height: 80, crop: :fill %>" alt="A plant" class="first-plant">
+            <% end %>
           <% end %>
         </div>
       <% end %>
