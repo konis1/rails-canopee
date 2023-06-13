@@ -85,7 +85,14 @@
 .info-card {
   border-top-left-radius: 50px;
   border-top-right-radius: 50px;
-  background-color: $dark-green;
+  background-color: #12511b;
   color: white;
   flex-grow: 1;
-}
+ }
+
+
+ .info-card .button_next_step {
+  background-color: #376117;;
+  color:white;
+  background-color: #1f3210;
+ }
