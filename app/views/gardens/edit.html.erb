@@ -1,2 +1,43 @@
 <h1>Gardens#edit</h1>
 <p>Find me in app/views/gardens/edit.html.erb</p>
+
+
+
+
+    <!-- Button trigger modal -->
+  <button type="button" class="btn btn-primary profile-link d-none" data-bs-toggle="modal" data-bs-target="#modal-<%= garden_plant.id%>">
+    Launch demo modal
+  </button>
+
+  <!-- Modal -->
+  <div class="modal fade" id="modal-<%= garden_plant.id" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"> %>
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <%# Content-only from here %>
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12 bg-white">
+              <h1>Choisis tes plantes</h1>
+              <% @garden_plants.each do |garden_plant| %>
+                <% if garden_plant.plant.photo.attached? %>
+                <%= cl_image_tag garden_plant.plant.photo.key, class: 'swiper__card__img' %>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel"><%= garden_plant.plant.name %></h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+
+          ....
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

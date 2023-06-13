@@ -1,15 +1,13 @@
 <div class="d-flex flex-column h-100">
   <div class="container">
     <div class="row">
-      <div class="col-md-12">
+      <div class="col-md-12 bg-white">
         <h1>Choisis tes plantes</h1>
-
-        <button>Options avancées</button>
       </div>
     </div>
   </div>
 
-  <div class="flex-grow-1 position-relative">
+  <div class="flex-grow-1 position-relative bg-white">
     <div class="swiper" data-controller="swiper">
       <div class="swiper__content">
         <div class="swiper__card-cont">
@@ -21,24 +19,33 @@
 
 
               <!-- Button trigger modal -->
-              <button type="button" class="btn btn-primary profile-link d-none" data-bs-toggle="modal" data-bs-target="#exampleModal">
+              <button type="button" class="btn btn-primary profile-link d-none" data-bs-toggle="modal" data-bs-target="#modal-<%= garden_plant.id%>">
                 Launch demo modal
               </button>
 
               <!-- Modal -->
-              <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal fade" id="modal-<%= garden_plant.id%>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                   <div class="modal-content">
+                    <%# Content-only from here %>
+                    <div class="container">
+                    <% if garden_plant.plant.photo.attached? %>
+                    <%= cl_image_tag garden_plant.plant.photo.key, class: 'modal_content__img' %>
+                    <% end %>
+                    <%= garden_plant.plant.content %>
+                    </div>
+
                     <div class="modal-header">
-                      <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                      <h1 class="modal-title fs-5" id="exampleModalLabel"><%= garden_plant.plant.name %></h1>
                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                      ...
+
+                      ....
                     </div>
                     <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                      <button type="button" class="btn btn-primary">Save changes</button>
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Non merci</button>
+                      <button type="button" class="btn btn-primary">Ok je prends !</button>
                     </div>
                   </div>
                 </div>
@@ -48,6 +55,7 @@
               <div class="swiper__card__content">
 
                 <div class="swiper__card__content_top">
+                <h2><strong><%= garden_plant.plant.name %></strong></h2>
                   <%# La partie du haut de la carte %>
                 </div>
 
@@ -57,7 +65,6 @@
 
                 <div class="swiper__card__content_bottom">
                   <p class="swiper__card__name">
-                    <strong><%= garden_plant.plant.name %></strong>
                   </p>
                 </div>
 
@@ -69,10 +76,15 @@
 
           <% end %>
         </div>
+        <div class="container">
+              <%= link_to 'Mes crushs ❤️', root_path, class: "btn, btn-primary" %>
+              <%= link_to 'Options avancés', root_path, class: "btn, btn-primary" %>
+        </div>
       </div>
     </div>
   </div>
 
+<div >
 
   <%# <div class="container">
     <%#= simple_form_for :garden_plant, url: validate_plants_garden_path(@garden) do |f| %>
