@@ -1,112 +1,32 @@
-<div class="d-flex flex-column h-100">
+<div class="d-flex flex-column h-100"
+      data-controller="swiper">
   <div class="container">
     <div class="row">
       <div class="col-md-12 bg-white">
         <h1>Choisis tes plantes</h1>
+        <div class="d-flex btn bg-dark-green p-2 pr-2">
+          <p>Mes likes:</p>
+          <div class="likes_counter" data-swiper-target="counter"><%= @garden_plants.selected.count %></div>
+        </div>
       </div>
     </div>
   </div>
 
   <div class="flex-grow-1 position-relative bg-white">
-    <div class="swiper" data-controller="swiper">
+    <div class="swiper">
       <div class="swiper__content">
         <div class="swiper__card-cont">
-          <% @garden_plants.each do |garden_plant| %>
-
-            <div class="swiper__card"
-                data-swiper-target="card"
-                data-id="<%= garden_plant.id %>">
-
-
-              <!-- Button trigger modal -->
-              <button type="button" class="btn btn-primary profile-link d-none" data-bs-toggle="modal" data-bs-target="#modal-<%= garden_plant.id%>">
-                Launch demo modal
-              </button>
-
-              <!-- Modal -->
-              <div class="modal fade" id="modal-<%= garden_plant.id%>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                  <div class="modal-content">
-                    <%# Content-only from here %>
-                    <div class="container">
-                    <% if garden_plant.plant.photo.attached? %>
-                    <%= cl_image_tag garden_plant.plant.photo.key, class: 'modal_content__img' %>
-                    <% end %>
-                    <%= garden_plant.plant.content %>
-                    <%= garden_plant.plant.content %>
-
-                    </div>
-
-                    <div class="modal-header">
-                      <h1 class="modal-title fs-5" id="exampleModalLabel"><%= garden_plant.plant.name %></h1>
-                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-
-                      ....
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Non merci</button>
-                      <button type="button" class="btn btn-primary">Ok je prends !</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <a href="" class="profile-link"></a>
-              <div class="swiper__card__content">
-
-                <div class="swiper__card__content_top">
-                <h2><strong><%= garden_plant.plant.name %></strong></h2>
-                  <%# La partie du haut de la carte %>
-                </div>
-
-                <% if garden_plant.plant.photo.attached? %>
-                  <%= cl_image_tag garden_plant.plant.photo.key, class: 'swiper__card__img' %>
-                <% end %>
-
-                <div class="swiper__card__content_bottom">
-                  <p class="swiper__card__name">
-                  </p>
-                </div>
-
-              </div>
-              <div class="swiper__card__choice m--reject"></div>
-              <div class="swiper__card__choice m--like"></div>
-              <div class="swiper__card__drag"></div>
-            </div>
-
+          <% @garden_plants.reverse.each do |garden_plant| %>
+            <%= render "swiper_card", garden_plant: garden_plant %>
           <% end %>
-        </div>
-        <div class="container">
-              <%= link_to 'Mes crushs ❤️', root_path, class: "btn, btn-primary" %>
-              <%= link_to 'Options avancés', root_path, class: "btn, btn-primary" %>
         </div>
       </div>
     </div>
   </div>
+  <div class="container d-flex justify-content-around">
+    <%= link_to 'Mes crushs ❤️', crush_path, class: "btn, btn-primary" %>
+    <%= link_to 'Critères avancés', root_path, class: "btn, btn-primary" %>
+  </div>
+  <div class="filler"></div>
 
 <div >
-
-  <%# <div class="container">
-    <%#= simple_form_for :garden_plant, url: validate_plants_garden_path(@garden) do |f| %>
-        <%# <div class="form-class"> %>
-
-          <%#= f.input :choices,
-                      as: :check_boxes,
-                      legend_tag: false,
-                      collection: @garden.garden_plants,
-                      input_html: { class: "tag-selector" },
-                      item_wrapper_class: 'tag-item',
-                      label_method: lambda { |garden_plant|
-                        render 'garden_plants/select_card', garden_plant: garden_plant
-                      }%>
-
-          <%#= label_method: lambda { |garden_plant| garden_plant.plant.nickname } %>
-
-            <%#= f.button :submit %>
-          </div>
-
-      <%# end %>
-  <%# </div> %>
-</div>
