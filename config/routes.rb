@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get'cover1', to:'pages#cover1'
   get'cover2', to:'pages#cover2'
   get'cover3', to:'pages#cover3'
+  get'merci', to:'pages#merci'
 
   resources :gardens do
     resources :garden_plants, only: [:create] do
@@ -34,4 +35,5 @@ Rails.application.routes.draw do
 
   # post "gardens/:id/validate_plants", to: "gardens#validate_plants", as: :validate_plants_garden
   get "gardens/:id/select_plants", to: "gardens#select_plants", as: :select_plants
+
 end

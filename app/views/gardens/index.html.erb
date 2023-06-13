@@ -7,10 +7,22 @@
       <p class="counter" data-gardens-counter-target='counter'></p>
     </div>
       <% @gardens.each do |garden| %>
-        <div class="card-garden p-3 m-3" data-gardens-counter-target='garden'>
-          <% if garden.garden_plants.none? %>
-            <p>Vous n'avez pas encore de plante 😭</p>
-          <% else %>
+        <% if garden.garden_plants.where(status: 'validated').none? %>
+          <div class="card-garden without-plants p-3 m-3" data-gardens-counter-target='garden'>
+            <div class='info-trash'>
+              <%= link_to garden_path(garden), class: 'garden-info' do %>
+                <p><%= garden.name %></p>
+                <p><%= garden.location %></p>
+              <% end %>
+              <%= link_to '', garden_path(garden), class: 'no-plants-card-filler' %>
+              <%= link_to garden_path(garden), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } do %>
+                <i class="fa-solid fa-trash-can"></i>
+              <% end %>
+            </div>
+            <%= link_to "Vous n'avez pas encore de plante 😭", garden_path(garden), class: 'no-plant-message' %>
+          </div>
+        <% else %>
+          <div class="card-garden with-plants p-3 m-3" data-gardens-counter-target='garden'>
             <%= link_to garden_path(garden), class: 'garden-info' do %>
               <p><%= garden.name %></p>
               <p><%= garden.location %></p>
@@ -21,8 +33,8 @@
             <%= link_to garden_path(garden) do %>
               <img src="<%= cl_image_path garden.garden_plants.first.plant.photo.key, height: 80, crop: :fill %>" alt="A plant" class="first-plant">
             <% end %>
-          <% end %>
-        </div>
+          </div>
+        <% end %>
       <% end %>
       <div class="text-center">
         <%= link_to new_garden_path, class:"link-of-the-plus" do %>
@@ -33,3 +45,4 @@
       </div>
   </div>
 </div>
+<div class="filler"></div>

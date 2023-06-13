@@ -19,8 +19,4 @@
         <% end %>
     <% end %>
   </div>
-  <div class='garden-options'>
-    <%= link_to 'Retour aux jardins', gardens_path, class: "btn btn-primary" %>
-    <%= link_to 'Supprimer le jardin', garden_path(@garden), class: "btn btn-warning", data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }%>
-  </div>
 </div>
