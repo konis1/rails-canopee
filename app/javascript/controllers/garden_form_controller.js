@@ -21,7 +21,7 @@ export default class extends Controller {
 
     if (this.#getPreviousInput()) this.#getPreviousInput().classList.add('d-none');
     if (this.#getNextInput()) this.#getNextInput().classList.remove('d-none');
-    if (this.currentStep == 5) {
+    if (this.currentStep == 4) {
       this.buttonTarget.classList.remove('d-none');
       event.currentTarget.classList.add('d-none');
     }

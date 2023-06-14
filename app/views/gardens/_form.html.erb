@@ -1,6 +1,7 @@
 <div data-controller="garden-form">
   <%= simple_form_for @garden do |f| %>
     <div class="m-2">
+<<<<<<< HEAD
       <h3 style=“text-align: center”>Nom</h3>
       <%= f.input :name,
                   label:false,
@@ -16,13 +17,37 @@
       <div class="d-none card_plant_small" data-garden-form-target='input' >
         <h3 style=“text-align: center”>Luminosité</h3>
         <%= f.input :light,
+=======
+      <div data-garden-form-target='input' id="name-and-light">
+        <h3>Nom</h3>
+        <%= f.input :name,
+>>>>>>> master
                     label:false,
-                    input_html: {
-                      placeholder: "Luminosité"
+                    wrapper_html: {
+                      class: "card_plant_small"
                     } %>
+
+        <div class="card_plant_small">
+          <h3>Luminosité</h3>
+          <%= f.input :light,
+                      as: :radio_buttons,
+                      label:"",
+                      required: false,
+                      collection: [["Ombre", 0], ["Mi-ombre", 1], ["Ensoleillé", 2]],
+                      input_html: { class: "light-selector" },
+                      item_wrapper_class: "light-item",
+                      label_method: lambda { |(label, _value)| render("gardens/labels/light", label: label) }
+          %>
+        </div>
       </div>
+<<<<<<< HEAD
       <div class="d-none card_plant_small" data-garden-form-target='input'>
         <h3 style=“text-align: center”>Dimension</h3>
+=======
+
+      <div class="d-none card_plant_small" data-garden-form-target='input' id="size">
+        <h3>Dimension</h3>
+>>>>>>> master
         <%= f.input :size,
                     as: :radio_buttons,
                     label: "",
@@ -30,10 +55,18 @@
                     collection: [["petit", 0], ["moyen", 1], ["grand", 2]],
                     input_html: { class: "size-selector" },
                     item_wrapper_class: 'size-item' %>
+
       </div>
+<<<<<<< HEAD
       <div class="d-none card_plant_small" data-garden-form-target='input'>
         <h3 style=“text-align: center”>Soins</h3>
         <div class="card-avatar ">
+=======
+
+      <div class="d-none card_plant_small" data-garden-form-target='input' id="care-willing">
+        <h3>Soins</h3>
+        <div class="card-avatar">
+>>>>>>> master
           <%= f.input :care_willing,
             label: "",
             required: false,
