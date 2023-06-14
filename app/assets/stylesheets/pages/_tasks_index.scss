@@ -1,9 +1,5 @@
 .tasks-index-wrapper {
   height: 100%;
-  // background: top 70px no-repeat url('background_soins_index_part_1.png'), url('background_soins_index_part_2.png');
-  // background-size: cover;
-  // background-position-y: top 70px;
-  // background-repeat: no-repeat;
 
   .filler {
     background-color: #2c6455;
@@ -26,15 +22,7 @@
 
   .tabs {
     display: flex;
-    justify-content: center;
-
-    .tab-one {
-      margin-right: 25px;
-    }
-
-    .tab-two {
-      margin-left: 25px;
-    }
+    justify-content: space-around;
   }
 
   .category-title {

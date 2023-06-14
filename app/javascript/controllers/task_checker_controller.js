@@ -2,22 +2,27 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="task-checker"
 export default class extends Controller {
-  static targets = ['form']
+  static targets = ['all', 'current', 'next']
 
   connect() {
     console.log(this)
   }
 
-  done(event) {
-    event.preventDefault;
-    fetch(event.target.action, {
-      method: "PATCH", // Could be dynamic with Stimulus values
-      headers: { "Accept": "application/json" },
-      body: new FormData(event.target)
-    })
-      .then(response => response.json())
-      .then((data) => {
-        console.log(data)
-      })
+  all() {
+    this.allTarget.classList.remove('d-none');
+    this.currentTarget.classList.add('d-none');
+    this.nextTarget.classList.add('d-none');
+  }
+
+  current() {
+    this.allTarget.classList.add('d-none');
+    this.currentTarget.classList.remove('d-none');
+    this.nextTarget.classList.add('d-none');
+  }
+
+  next() {
+    this.allTarget.classList.add('d-none');
+    this.currentTarget.classList.add('d-none');
+    this.nextTarget.classList.remove('d-none');
   }
 }
