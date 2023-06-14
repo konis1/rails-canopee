@@ -12,7 +12,6 @@
                   input_html: {
                     placeholder: "Nom"
                   } %>
-        <span data-action="click->garden-form#goToNextQuestion">Suivant</span>
 
 
 
@@ -92,7 +91,6 @@
                 </div>
               </div>
 
-
           <%= f.input :care_willing,
                       label: false,
                       input_html: {
@@ -101,29 +99,8 @@
           <div style="text-align: center">
             <%= button_tag 'Valider', type: :submit, class: "button_next_step" %>
           </div>
+
         </div>
-
-
-        <div class="d-none card_plant_small" data-garden-form-target='input' >
-          <%= f.input :location,
-                    label:false,
-                    input_html: {
-                      data: {
-                        address_autocomplete_target: "address"
-                      },
-                      class: "d-none card_plant_small"
-                    },
-                    wrapper_html: {
-                      class: "",
-                      data: {
-                        garden_form_target: 'input',
-                        controller: "address-autocomplete",
-                        address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]
-                      }
-                    } %>
-        </div>
-
-
 
         <%#= f.input :size,
                     label:false,
@@ -163,8 +140,11 @@
                         address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]
                       }
                     } %>
+                        <span data-action="click->garden-form#goToNextQuestion" class="cursor-pointer">Suivant</span>
+                    
       <div style= "text-align: center">
-        <%= button_tag 'My selection', type: :submit, class: "button_next_step" %>
+
+        <%= button_tag 'Suivant', type: :submit, class: "d-none button_next_step", data: { garden_form_target:'button'}%>
       </div>
     </div>
   <% end %>
