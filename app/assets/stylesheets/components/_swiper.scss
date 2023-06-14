@@ -15,11 +15,12 @@ button {
   align-items: center;
 }
 
-.bg-dark-green {
+.likes-counter {
   color: white;
   padding: 2px;
   border-radius: 20px;
   justify-content: space-around;
+  background-color: $dark-green;
 }
 
 

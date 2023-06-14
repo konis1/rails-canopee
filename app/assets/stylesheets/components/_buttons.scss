@@ -37,7 +37,10 @@
   border: solid $dark-green 1px;
   border-radius: 25px;
   background-color: $light-gray;
-  padding-left: 10px;
-  padding-right: 10px;
+  padding-left: 30px;
+  padding-right: 30px;
   color: $dark-green;
+  position: sticky;
+  bottom: 20px; /* Adjust the desired position */
+  z-index: 9999; /* Make sure the button appears above other elements */
 }
