@@ -6,8 +6,9 @@
   width: 100vw;
   height: 450px;
   border-top-left-radius: 58px;
-  padding: 25px;
-
+  //padding: 25px;
+  padding-left: 25px;
+  padding-top: 1em;
 }
 
 .nickname-and-life-bar {
@@ -56,9 +57,12 @@
   width: 30%; // Must be neutralized and set conditionally in Ruby
 }
 
-// .image-card {
-//   border-radius: 28px;
-// }
+.image-card {
+  object-fit: cover;
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+}
 
 .garden-plant-card:nth-child(3n + 1) {
   background-color: $dark-green;
