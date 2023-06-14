@@ -1,0 +1,20 @@
+.crush {
+  height: calc(100vh - 104px);
+  background-size: cover;
+  padding-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: justify;
+  font-weight: bold;
+  color: $dark-green;
+}
+
+.crush h1, .crush h2, .crush p {
+  margin-bottom: 1rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  color: $dark-green;
+  text-align: justify;
+}

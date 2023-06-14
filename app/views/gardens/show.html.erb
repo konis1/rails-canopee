@@ -5,12 +5,16 @@
     <p class="page-description">N’hésite pas à jeter un oeil de temps à autre voir si tout va bien 😊</p>
     <div class="row plants-list-wrapper" data-controller='garden-show-plants-list'>
       <% @garden.garden_plants.validated.each do |garden_plant| %>
-          <%= link_to garden_plant_path(garden_plant), class: 'garden-plant-card' do %>
-            <div class='d-flex'>
+          <%= link_to garden_plant_path(garden_plant), class: 'garden-plant-card text-decoration-none' do %>
+            <div class='d-flex justify-content-between'>
               <div class="col-6 nickname-and-life-bar">
                 <h3 class='plant-nickname'><%= garden_plant.nickname %></h3>
-                <div class='life-bar'>
-                  <div class='current-life'></div>
+                <div class="hp-container">
+                  <div class="health-bar" style="width:<%= garden_plant.score %>%; background: <%= color_level(garden_plant.score) %>">
+                  </div>
+                    <span class="health-bar-score">
+                      <%= garden_plant.score %> %
+                    </span>
                 </div>
               </div>
               <div class="col-6">

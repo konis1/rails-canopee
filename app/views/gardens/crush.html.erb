@@ -1,37 +1,38 @@
-<div class="wrapper" data-controller="crush">
-  <div class="container">
-    <h2 class="page-title">Mes crushs</h2>
-    <p class="page-description">Voici ta sélection actuelle !</p>
-    <div class='counter-wrapper'>
-      <i class="fa-solid fa-heart"></i>
-      <div class="counter d-flex" >
-        <p><span data-crush-target="counter"><%= @garden_plants.selected.count %></span> crushes</p>
-      </div>
-    </div>
-      <% @garden_plants.each do |garden_plant| %>
-        <div class="card-garden p-3 m-3">
-          <% if @garden.garden_plants.none? %>
-            <p>Vous n'avez pas sélectionné de plante 😭</p>
-          <% else %>
-            <%= link_to garden_plant_path(garden_plant), class: 'garden-info' do %>
-              <p><%= garden_plant.plant.name %></p>
-            <% end %>
-            <%= link_to garden_plant_path(garden_plant), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } do %>
-              <i class="fa-solid fa-trash-can"></i>
-            <% end %>
-            <a href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvas-<%= garden_plant.id%>">
-              <img src="<%= cl_image_path garden_plant.plant.photo.key, height: 80, crop: :fill %>" alt="A plant" class="first-plant">
-            </a>
-          <% end %>
+<div class="crush" style="background-image: url(<%= image_path('cover_crushs.png', alt: 'Cover crushs') %>)">
+  <div data-controller="crush">
+    <div class="crush-container">
+      <h2 class="page-title">Mes crushes</h2>
+      <p class="page-description">Voici ta sélection actuelle !</p>
+      <div class='counter-wrapper'>
+        <i class="fa-solid fa-heart"></i>
+        <div class="counter d-flex" >
+          <p><span data-crush-target="counter"><%= @garden_plants.selected.count %></span> crushes</p>
         </div>
-      <% end %>
-      <div class="text-center">
-        <%= link_to validate_plants_garden_path(@garden), data: { turbo_method: :post }, class:"link-to-validate" do %>
-          <div class="circle-of-the-plus">
-
+      </div>
+        <% @garden_plants.each do |garden_plant| %>
+          <div class="card-crush p-3 m-3">
+              <a href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvas-<%= garden_plant.id%>">
+                <img src="<%= cl_image_path garden_plant.plant.photo.key, height: 80, crop: :fill %>" alt="A plant" class="first-plant">
+              </a>
+            <% if @garden.garden_plants.none? %>
+              <p>Vous n'avez pas sélectionné de plante 😭</p>
+            <% else %>
+              <a href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvas-<%= garden_plant.id%>">
+                <p><%= garden_plant.plant.name %></p>
+              <%= link_to garden_plant_path(garden_plant), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } do %>
+                <i class="fa-solid fa-trash-can"></i>
+              <% end %>
+            <% end %>
           </div>
         <% end %>
-      </div>
+        <div class="text-center">
+          <%= link_to validate_plants_garden_path(@garden), data: { turbo_method: :post }, class:"link-to-validate" do %>
+          <button type="button" class="btn crush-btn btn-success">Go !</button>           <%# <div class="circle-of-the-plus">
+
+            </div> %>
+          <% end %>
+        </div>
+    </div>
   </div>
 </div>
 

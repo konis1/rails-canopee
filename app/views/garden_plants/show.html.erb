@@ -15,44 +15,21 @@
             <%= @garden_plant.score %>
           </span>
         </div>
+
         <p>Uhm ça sent le roussi par ici !
         Il faut m’arroser d’ici à demain 💦</p>
         <div>
           <button class="btn-garden"> + Tard</button>
           <button class="btn-garden"> Fait !</button>
         </div>
-        <!-- Button trigger modal -->
+<!--         <!-- Button trigger modal -->
           <button type="button" class="btn btn-primary profile-link" data-bs-toggle="modal" data-bs-target="#modal-<%= @garden_plant.plant.id%>">
             <%= "donne une note à #{@garden_plant.nickname} ⭐️ !" %>
-          </button>
-          <!-- Modal -->
-            <div class="modal fade" id="modal-<%= @garden_plant.plant.id%>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-              <div class="modal-dialog">
-                <div class="modal-content">
-                  <%# Content-only from here %>
-                  <div class="container">
-                    <% if @garden_plant.plant.photo.attached? %>
-                    <%= cl_image_tag @garden_plant.plant.photo.key, class: 'modal_content__img' %>
-                    <% end %>
-                  </div>
-                  <div class="modal-header">
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                  </div>
-                  <div class="modal-body">
-                    <h1><%#= @garden_plant.nickname %></h1>
-                    <%#= simple_form_for, gardent_plant, url: method: :patch do |f| %>
-                    <%#= simple_form_for :garden_plant, url: review_plants_path(@garden_plant) do |f| %>
-                    <%#= f.button :submit, "Fait", class: "btn btn-primary" %>
+          </button> -->
+          
 
-                    ....
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Non merci</button>
-                    <button type="button" class="btn btn-primary">Ok je prends !</button>
-                  </div>
-                </div>
-              </div>
-            </div>
+          <%= render "review_card" %>
+
         <% @garden_plant.tasks.each do |task| %>
         <ul class="tasks-list">
           <% if task.done_time.nil? %>
