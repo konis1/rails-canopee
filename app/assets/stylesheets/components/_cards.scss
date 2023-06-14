@@ -160,10 +160,25 @@
 
  }
 
+ .card-avatar fieldset {
+  display: flex;
+    color: black;
+    flex-wrap: wrap;
+    color: white;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+ }
+
+ .card-avatar fieldset .form-check {
+  padding-left: 0;
+ }
+
  .fake-input {
   border: solid white;
   border-radius: 4px;
-  width: 44%;
+  width: 150px;
+  height: 110px;
   margin-bottom: 16px;
   display: flex;
   justify-content: flex-end;
@@ -186,6 +201,12 @@
   }
  }
 
+ .care-willing-selector:checked + label {
+  .fake-input {
+    color:#1f3210;
+    background-color: $fourth-color;  
+  }
+}
 
  .card-crush {
   background-color: $light-gray;
