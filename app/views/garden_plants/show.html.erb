@@ -6,44 +6,13 @@
     <h1><strong><%= @garden_plant.nickname %></strong></h1>
     <h4><%= @garden_plant.plant.name %></h4>
        <div class="health-bar-container">
-         <span class="health-bar-score">
-           <%= @garden_plant.score %> %
-         </span>
-         <div class="health-bar" style="width:<%= @garden_plant.score %>%; background: <%= color_level(@garden_plant.plant.id) %>">
+         <div class="health-bar" style="width:<%= @garden_plant.score %>%; background: <%= color_level(@garden_plant.score) %>">
          </div>
+          <span class="health-bar-score">
+            <%= @garden_plant.score %> %
+          </span>
         </div>
-        <!-- Button trigger modal -->
-          <button type="button" class="btn btn-primary profile-link" data-bs-toggle="modal" data-bs-target="#modal-<%= @garden_plant.plant.id%>">
-            Dis lui combien tu l'aimes ⭐️ !
-          </button>
-          <!-- Modal -->
-            <div class="modal fade" id="modal-<%= @garden_plant.plant.id%>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-              <div class="modal-dialog">
-                <div class="modal-content">
-                  <%# Content-only from here %>
-                  <div class="container">
-                    <% if @garden_plant.plant.photo.attached? %>
-                    <%= cl_image_tag @garden_plant.plant.photo.key, class: 'modal_content__img' %>
-                    <% end %>
-                  </div>
-                  <div class="modal-header">
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                  </div>
-                  <div class="modal-body">
-                    <h1><%#= @garden_plant.nickname %></h1>
-                    <%#= simple_form_for, gardent_plant, url: method: :patch do |f| %>
-                    <%#= simple_form_for :garden_plant, url: review_plants_path(@garden_plant) do |f| %>
-                    <%#= f.button :submit, "Fait", class: "btn btn-primary" %>
-
-                    ....
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Non merci</button>
-                    <button type="button" class="btn btn-primary">Ok je prends !</button>
-                  </div>
-                </div>
-              </div>
-            </div>
+          <%= render "review_card" %>
         <% @garden_plant.tasks.each do |task| %>
         <ul class="tasks-list">
           <% if task.done_time.nil? %>

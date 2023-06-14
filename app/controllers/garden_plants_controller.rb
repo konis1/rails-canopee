@@ -42,7 +42,8 @@ class GardenPlantsController < ApplicationController
 
   def destroy
     @garden_plant.destroy
-    redirect_to garden_path(@garden_plant.garden), notice: 'Garden plant was successfully destroyed.'
+    redirect_to garden_path(@garden_plant.garden), notice: 'Garden plant was successfully destroyed.' if @garden_plant.validated?
+    redirect_to crush_path(@garden_plant.garden), notice: 'Garden plant was successfully destroyed.' if @garden_plant.selected?
   end
 
   private

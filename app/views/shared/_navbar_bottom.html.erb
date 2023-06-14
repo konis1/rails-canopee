@@ -6,7 +6,16 @@
     <%= link_to gardens_path do %>
       <i class="fa-solid fa-seedling"></i>
     <% end %>
-    <%= link_to tasks_path do %>
+    <% if user_signed_in?%>
+      <%= link_to tasks_path do %>
+        <% @notifications.each do |notification| %>
+          <% if notification.unread? %>
+            <div class="notification-dot blinking"></div>
+          <% end %>
+        <% end %>
+        <i class="fa-solid fa-heart"></i>
+      <% end %>
+    <% else %>
       <i class="fa-solid fa-heart"></i>
     <% end %>
     <% if user_signed_in?%>
