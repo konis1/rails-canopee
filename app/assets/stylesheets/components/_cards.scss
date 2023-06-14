@@ -106,12 +106,31 @@
   border-top-right-radius: 50px;
   color: white;
   flex-grow: 1;
-
   background-size: cover;
   // height: 100vh;
   background-position: center;
   // padding: 370px 0;
-  color: #B09754;
+  background-color: $dark-green;
+  position: relative;
+    top: -60px;
+
+  p {
+    text-align: justify;
+    margin-top: 4px;
+    margin-left: 50PX;
+    margin-right: 50px;
+    margin-bottom: 1rem;
+  }
+
+  .btn-garden  {
+    display: inline-block;
+    border-radius: 25px;
+    background-color: #90cb63;
+    color: white;
+    border-radius: 25;
+
+  }
+
   }
 
   .cover-card {
@@ -188,3 +207,10 @@
     background-color: $fourth-color;  
   }
 }
+
+ .card-crush {
+  background-color: $light-gray;
+  border-radius: 20px;
+  display: flex;
+  justify-content: space-between;
+ }

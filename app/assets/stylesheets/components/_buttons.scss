@@ -32,3 +32,12 @@
   background-color: $dark-green;
   padding: 2px;
 }
+
+.crush-btn {
+  border: solid $dark-green 1px;
+  border-radius: 25px;
+  background-color: $light-gray;
+  padding-left: 10px;
+  padding-right: 10px;
+  color: $dark-green;
+}
