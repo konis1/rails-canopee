@@ -29,8 +29,11 @@
     }
   }
 
-  .first-plant {
-    border-radius: 28px;
+  .plant-image-avatar {
+    object-fit: cover;
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
   }
 }
 
@@ -112,7 +115,7 @@
   // padding: 370px 0;
   background-color: $dark-green;
   position: relative;
-    top: -60px;
+  top: -60px;
 
   p {
     text-align: justify;
@@ -204,7 +207,7 @@
  .care-willing-selector:checked + label {
   .fake-input {
     color:#1f3210;
-    background-color: $fourth-color;  
+    background-color: $fourth-color;
   }
 }
 
