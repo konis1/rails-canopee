@@ -40,6 +40,13 @@
         </ul>
       <% end %>
     <% end %>
+    <div>
+      <% @notifications.each do |notification| %>
+        <% if notification.unread? %>
+          <% notification.mark_as_read! %>
+        <% end %>
+      <% end %>
+    </div>
   </div>
   <div class='filler'></div>
 </div>
