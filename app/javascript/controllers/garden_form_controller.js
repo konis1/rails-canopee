@@ -17,6 +17,8 @@ export default class extends Controller {
     // this.InputTarget.classList.remove();
     this.currentStep++
     console.log(this.currentStep);
+    console.log(this.#getNextInput())
+
     if (this.#getPreviousInput()) this.#getPreviousInput().classList.add('d-none');
     if (this.#getNextInput()) this.#getNextInput().classList.remove('d-none');
     if (this.currentStep == 5) {

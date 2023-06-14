@@ -9,16 +9,14 @@ module ApplicationHelper
   end
 
   def color_level(percentage)
-    coef         = percentage.fdiv(100)
-    red, green = "F91818", "57A262"
-
-    vr, vg, vb = red.scan(/.{2}/).map { |e| e.to_i(16) }
-    pr, pg, pb = green.scan(/.{2}/).map { |e| e.to_i(16) }
-
-    r = (vr + ((pr - vr) * coef).round).to_s(16)
-    g = (vg + ((pg - vg) * coef).round).to_s(16)
-    b = (vb + ((pb - vb) * coef).round).to_s(16)
-
-    "##{r}#{g}#{b}"
+    if percentage < 25
+      return "#ef476f"
+    elsif percentage < 50
+      return "#ffd166"
+    elsif percentage < 75
+      return "#fb5607"
+    elsif percentage <=100
+      return "#06d6a0"
+    end
   end
 end
