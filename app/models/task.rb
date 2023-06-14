@@ -3,7 +3,7 @@ class Task < ApplicationRecord
 
   scope :watering, -> { where(activity: 'Arrose-moi !') }
   scope :mulching, -> { where(activity: 'Paille-moi !') }
-  scope :repotting, -> { where(activity: 'Rempotte-moi !') }
+  scope :repotting, -> { where(activity: 'Rempote-moi !') }
   scope :covering, -> { where(activity: 'Couvre-moi !') }
   scope :sheltering, -> { where(activity: "Rentre-moi à l'intérieur !") }
   scope :urgent, -> { where(criticity: 2) }

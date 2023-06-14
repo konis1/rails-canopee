@@ -21,6 +21,39 @@
       margin-left: 25px;
     }
   }
+
+  .category-title {
+    width: 100%;
+    background-color: $not-quite-white;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    margin-bottom: 6px;
+
+    i {
+      width: 16px;
+      text-align: center;
+    }
+
+    h4 {
+      margin: 0 0 0 6px;
+    }
+  }
+
+  ul {
+    list-style-type: none;
+    padding-left: 0.5rem;
+  }
+}
+
+form {
+  display: flex;
+  justify-content: space-between;
+
+  .task-checkbox {
+    display: none;
+  }
 }
 
 .green-square {
