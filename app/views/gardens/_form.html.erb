@@ -13,7 +13,6 @@
                   input_html: {
                     placeholder: "Nom"
                   } %>
-        <span data-action="click->garden-form#goToNextQuestion">Suivant</span>
 
         <%= f.input :light, 
                     label:false, 
@@ -49,9 +48,6 @@
             <%= button_tag 'Moyen', type: :submit, class: "button_next_step" %>
             <%= button_tag 'Grand', type: :submit, class: "button_next_step" %>
           </div>
-        <div style= "text-align: center">
-          <%= button_tag 'Valider', type: :submit %>
-        </div>
         </div>
 
 
@@ -83,8 +79,10 @@
                         address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]
                       }
                     } %>
+                        <span data-action="click->garden-form#goToNextQuestion" class="cursor-pointer">Suivant</span>
+                    
       <div style= "text-align: center">
-        <%= button_tag 'Suivant', type: :submit, class: "button_next_step" %>
+        <%= button_tag 'Suivant', type: :submit, class: "d-none button_next_step", data: { garden_form_target:'button'}%>
       </div>
     </div>
   <% end %>  
