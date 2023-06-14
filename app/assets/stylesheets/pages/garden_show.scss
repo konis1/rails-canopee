@@ -1,5 +1,8 @@
 .plants-list-wrapper {
   margin-bottom: 20px;
+  a {
+    color:$dark-green;
+  }
 }
 
 .garden-plant-card {
@@ -7,10 +10,33 @@
   height: 450px;
   border-top-left-radius: 58px;
   padding: 25px;
+
 }
 
 .nickname-and-life-bar {
   padding-left: 15px;
+}
+
+.hp-container {
+  height: 30px;
+  width: 80%;
+  position: relative;
+  border-radius: 50px;
+  background-color: white;
+
+  .health-bar {
+    min-width: 30px;
+    height: 100%;
+    position: absolute;
+    border-radius: inherit;
+  }
+
+  .health-bar-score {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+  }
 }
 
 .plant-nickname {
