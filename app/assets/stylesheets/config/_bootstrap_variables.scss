@@ -30,5 +30,6 @@ $navbar-bottom-bottom-spacing: 0.5rem;
 $navbar-bottom-total-height: calc(#{$navbar-bottom-height} + #{$navbar-bottom-bottom-spacing});
 
 
-$offcanvas-vertical-height: 70vh;
-$offcanvas-bg-color: $light-brown;
+$offcanvas-vertical-height: 80vh;
+$offcanvas-bg-color: $dark-green;
+$offcanvas-box-shadow: box-shadow;
