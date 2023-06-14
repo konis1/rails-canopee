@@ -33,9 +33,9 @@
   width: 30%; // Must be neutralized and set conditionally in Ruby
 }
 
-.image-card {
-  border-radius: 28px;
-}
+// .image-card {
+//   border-radius: 28px;
+// }
 
 .garden-plant-card:nth-child(3n + 1) {
   background-color: $dark-green;
