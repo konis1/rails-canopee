@@ -32,7 +32,7 @@ class GardenPlantsController < ApplicationController
   def update
     if @garden_plant.update(garden_plant_params)
       respond_to do |format|
-        format.json { render json: { coucou: :lol } }
+        format.json { render json: { garden_plant_count: @garden_plant.garden.garden_plants.selected.count  } }
         format.html { redirect_to garden_plant_path(@garden_plant), notice: 'Garden plant was successfully updated.'}
       end
     else
@@ -42,7 +42,8 @@ class GardenPlantsController < ApplicationController
 
   def destroy
     @garden_plant.destroy
-    redirect_to garden_path(@garden_plant.garden), notice: 'Garden plant was successfully destroyed.'
+    redirect_to garden_path(@garden_plant.garden), notice: 'Garden plant was successfully destroyed.' if @garden_plant.validated?
+    redirect_to crush_path(@garden_plant.garden), notice: 'Garden plant was successfully destroyed.' if @garden_plant.selected?
   end
 
   private

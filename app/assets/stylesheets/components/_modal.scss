@@ -1,0 +1,20 @@
+.modal-backdrop {
+  display: none!important;
+}
+
+.modal {
+  background-color: rgba(0,0,0, 0.6)!important;
+
+  &-body {
+    background-color: $dark-green;
+  }
+
+  &-header {
+    background-color: $dark-green;
+  }
+
+
+  &-footer {
+    background-color: $dark-green;
+  }
+}

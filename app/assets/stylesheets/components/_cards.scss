@@ -1,34 +1,32 @@
 .card-garden {
-  background-color: $dark-green;
-  border-radius: 28px;
+  background-color: $not-quite-white;
+  border-radius: 10px;
   display: flex;
   justify-content: space-between;
 
-  a {
-    color: $light-yellow;
-  }
-
-  .info-trash {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
   .garden-info {
-    flex-basis: 38%;
-
-    :first-child {
-      margin: 0 0 3px 0;
+    h3 {
+      color: $not-quite-black;
+      font-size: 22px;
     }
 
-    :last-child {
-      margin: 3px 0 0 0;
-      font-size: 13px;
-    }
-  }
+    .location-line, .plant-count-line {
+      color: $dark-gray;
+      display: flex;
+      align-items: center;
 
-  .fa-trash-can {
-    font-size: 25px;
+      i {
+        font-size: 17px;
+        margin-right: 8px;
+        width: 24px;
+        text-align: center;
+      }
+
+      p {
+        font-size: 14px;
+        margin: 0;
+      }
+    }
   }
 
   .first-plant {
@@ -43,11 +41,6 @@
 .without-plants {
   flex-direction: column;
   justify-content: stretch;
-
-  .no-plants-card-filler {
-    flex-grow: 1;
-    align-self: stretch;
-  }
 
   .no-plant-message {
     display: block;
@@ -75,11 +68,12 @@
 
 .card_plant_small {
 
+
   color: $light-yellow;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   border-radius: 4px;
+  background-color: $dark-green;
   color: white;
-  margin: 10px;
   padding: 10px;
 }
 
@@ -112,6 +106,7 @@
   border-top-right-radius: 50px;
   color: white;
   flex-grow: 1;
+
   background-size: cover;
   // height: 100vh;
   background-position: center;
@@ -123,6 +118,8 @@
 
   }
 
+}
+
   .cover-card {
     background-image: url('cover-plant.png');
     height: 100%;
@@ -132,10 +129,11 @@
     }
   }
 
- .info-card .button_next_step {
+.info-card .button_next_step {
   background-color: #376117;;
   color:white;
   background-color: #1f3210;
+
  }
 
  .card-avatar {
@@ -174,3 +172,7 @@
     margin-top: -11px;
   }
  }
+
+}
+
+
