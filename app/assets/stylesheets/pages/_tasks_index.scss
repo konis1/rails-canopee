@@ -1,3 +1,61 @@
+.tasks-index-wrapper {
+  height: 100%;
+  background-image: url('background_soins_index.png');
+  background-size: cover;
+  background-position-y: top 70px;
+  background-repeat: no-repeat;
+
+  .page-title {
+    margin-bottom: 80px;
+  }
+
+  .tabs {
+    display: flex;
+    justify-content: center;
+
+    .tab-one {
+      margin-right: 25px;
+    }
+
+    .tab-two {
+      margin-left: 25px;
+    }
+  }
+
+  .category-title {
+    width: 100%;
+    background-color: $not-quite-white;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    margin-bottom: 6px;
+
+    i {
+      width: 16px;
+      text-align: center;
+    }
+
+    h4 {
+      margin: 0 0 0 6px;
+    }
+  }
+
+  ul {
+    list-style-type: none;
+    padding-left: 0.5rem;
+  }
+}
+
+form {
+  display: flex;
+  justify-content: space-between;
+
+  .task-checkbox {
+    display: none;
+  }
+}
+
 .green-square {
   background-color: #19362C;
   margin-left: 1em;
@@ -14,5 +72,3 @@
     transform: translate(-50%, -50%);
   }
 }
-
-

@@ -2,7 +2,9 @@ class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
 
   def index
-    @my_tasks = Task.joins(garden_plant: [{ garden: :user }]).where('users.id' => current_user.id)
+    @my_tasks = Task.joins(garden_plant: [{ garden: :user }]).where('users.id' => current_user.id).where(done: false)
+    @current_week_tasks = @my_tasks.where(due_date: DateTime.now.all_week)
+    @next_week_task = @my_tasks.where(due_date: DateTime.now.next_week.all_week)
     my_activities = Task.select("activity").group("tasks.activity")
     @all_activities = my_activities.map do |acti|
       acti.activity
@@ -33,7 +35,8 @@ class TasksController < ApplicationController
 
   def update
     if @task.update(task_params)
-      redirect_to garden_plant_tasks_path(@garden_plant), notice: 'Task was successfully updated.'
+      set_done_time
+      redirect_to tasks_path, notice: 'Task was successfully updated.'
     else
       render :edit, status: :unprocessable_entity
     end
@@ -63,7 +66,16 @@ class TasksController < ApplicationController
     @task.update(done_time: date)
   end
 
+  def set_task
+    @task = Task.find(params[:id])
+  end
+
   def task_params
-    params.require(:task).permit(:activity, :criticity, :due_date, :done_time)
+    params.require(:task).permit(:activity, :criticity, :due_date, :done_time, :done)
+  end
+
+  def set_done_time
+    @task.done_time = DateTime.now if @task.done == true
+    @task.save
   end
 end
