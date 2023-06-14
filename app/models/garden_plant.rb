@@ -17,7 +17,18 @@ class GardenPlant < ApplicationRecord
   }
 
   def score
-    return 20
+    urgence = 0
+    tasks = self.tasks
+    tasks.each do |task|
+      if task.done_time.nil?
+        urgence += task.criticity.to_i * 10
+      end
+    end
+    if urgence < 50 && urgence > 0
+      return 50 - urgence
+    else
+      return 100 - urgence
+    end
   end
 
   private
