@@ -5,9 +5,11 @@
 <div class="info-card">
   <div class="container text-center mt-3">
     <h1><strong><%= @garden_plant.nickname %></strong></h1>
-    <p> Je suis un dahlia rouge et j’ai grandi en Ile de France chez Maurice Boyauval mon horticulteur. </p>
+    <p>Je suis un <%= @garden_plant.plant.name %> et j’ai grandi en Ile de France chez Maurice Boyauval mon horticulteur.</p>
     <h4><%= @garden_plant.plant.name %></h4>
-    <h5>Lire plus sur mon histoire</h5> <br>
+    <button type="button" class="btn btn-primary profile-link" data-bs-toggle="modal" data-bs-target="#modal-<%= @garden_plant.plant.id%>">
+          </button> <h5>Lire plus sur mon histoire</h5> <br><%= render "review_card" %><%= "donne une note à #{@garden_plant.nickname} ⭐️ !" %>
+
        <div class="health-bar-container">
          <div class="health-bar" style="width:<%= @garden_plant.score %>%; background: <%= color_level(@garden_plant.score) %>">
          </div>
@@ -22,13 +24,11 @@
           <button class="btn-garden"> + Tard</button>
           <button class="btn-garden"> Fait !</button>
         </div>
-<!--         <!-- Button trigger modal -->
-          <button type="button" class="btn btn-primary profile-link" data-bs-toggle="modal" data-bs-target="#modal-<%= @garden_plant.plant.id%>">
-            <%= "donne une note à #{@garden_plant.nickname} ⭐️ !" %>
-          </button> -->
-          
+<!--       Button trigger modal -->
 
-          <%= render "review_card" %>
+
+
+
 
         <% @garden_plant.tasks.each do |task| %>
         <ul class="tasks-list">
