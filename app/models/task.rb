@@ -1,5 +1,6 @@
 class Task < ApplicationRecord
   belongs_to :garden_plant
+  after_create_commit :notify_recipient
 
   scope :watering, -> { where(activity: 'Arrose-moi !') }
   scope :mulching, -> { where(activity: 'Paille-moi !') }
@@ -34,4 +35,9 @@ class Task < ApplicationRecord
          )
   }
 
+  private
+
+  def notify_recipient
+    TaskNotification.with(task: self).deliver_later(garden_plant.garden.user)
+  end
 end

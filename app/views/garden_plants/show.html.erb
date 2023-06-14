@@ -6,11 +6,11 @@
     <h1><strong><%= @garden_plant.nickname %></strong></h1>
     <h4><%= @garden_plant.plant.name %></h4>
        <div class="health-bar-container">
-         <span class="health-bar-score">
-           <%= @garden_plant.score %> %
-         </span>
-         <div class="health-bar" style="width:<%= @garden_plant.score %>%; background: <%= color_level(@garden_plant.plant.id) %>">
+         <div class="health-bar" style="width:<%= @garden_plant.score %>%; background: <%= color_level(@garden_plant.score) %>">
          </div>
+          <span class="health-bar-score">
+            <%= @garden_plant.score %> %
+          </span>
         </div>
           <%= render "review_card" %>
         <% @garden_plant.tasks.each do |task| %>

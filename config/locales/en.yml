@@ -31,3 +31,6 @@
 
 en:
   hello: "Hello world"
+  notifications:
+    task_notification:
+      message: "You have a new task to do"
