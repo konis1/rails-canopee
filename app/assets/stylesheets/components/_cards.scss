@@ -29,8 +29,11 @@
     }
   }
 
-  .first-plant {
-    border-radius: 28px;
+  .plant-image-avatar {
+    object-fit: cover;
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
   }
 }
 
@@ -112,7 +115,7 @@
   // padding: 370px 0;
   background-color: $dark-green;
   position: relative;
-    top: -60px;
+  top: -60px;
 
   p {
     text-align: justify;
@@ -171,10 +174,25 @@
 
  }
 
+ .card-avatar fieldset {
+  display: flex;
+    color: black;
+    flex-wrap: wrap;
+    color: white;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+ }
+
+ .card-avatar fieldset .form-check {
+  padding-left: 0;
+ }
+
  .fake-input {
   border: solid white;
   border-radius: 4px;
-  width: 44%;
+  width: 150px;
+  height: 110px;
   margin-bottom: 16px;
   display: flex;
   justify-content: flex-end;
@@ -197,6 +215,12 @@
   }
  }
 
+ .care-willing-selector:checked + label {
+  .fake-input {
+    color:#1f3210;
+    background-color: $fourth-color;
+  }
+}
 
  .card-crush {
   background-color: $light-gray;

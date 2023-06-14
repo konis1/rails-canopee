@@ -37,7 +37,7 @@
                   <p><%= garden.plants.count %></p>
                 </div>
               </div>
-              <img src="<%= cl_image_path garden.garden_plants.first.plant.photo.key, height: 80, crop: :fill %>" alt="A plant" class="first-plant">
+              <img src="<%= cl_image_path garden.garden_plants.first.plant.photo.key, height: 80, crop: :fill %>" alt="A plant" class="plant-image-avatar">
             </div>
           <% end %>
         <% end %>

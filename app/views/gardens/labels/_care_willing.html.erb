@@ -1,0 +1,18 @@
+<div class="fake-input">
+  <div class="avatar">
+    <% if label == "Pas du tout" %>
+      <%= image_tag asset_path('pas_du_tout.png'), alt: "Avatar" %>
+    <% elsif label == "Un peu" %>
+      <%= image_tag asset_path('bcp.png'), alt: "Avatar" %>
+    <% elsif label == "Beaucoup" %>
+      <%= image_tag asset_path('bcp.png'), alt: "Avatar" %>
+    <% elsif label == "Passionnément" %>
+      <%= image_tag asset_path('passion.png'), alt: "Avatar" %>
+    <% elsif label == "A la folie" %>
+      <%= image_tag asset_path('folie.png'), alt: "Avatar" %>
+    <% end %>
+  </div>
+  <div class="card-text">
+    <p><%= label %></p>
+  </div>
+</div>

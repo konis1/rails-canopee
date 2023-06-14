@@ -1,6 +1,34 @@
+.cursor-pointer {
+  cursor: pointer;
+}
 
 .dimension-info {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.size-item {
+  display: inline-block;
+}
+
+.size-selector {
+  position: absolute;
+  transform: scale(0);
+}
+
+.size-selector + label {
+  cursor: pointer;
+  display: inline-block;
+  border-radius: 50rem;
+  padding: 0.1rem 0.5rem;
+  color:white;
+  background-color: #1f3210;
+  margin-right: 0.6rem;
+  margin-bottom: 0.4rem;
+}
+
+.size-selector:checked + label {
+  color:#1f3210;
+  background-color: white;
 }
