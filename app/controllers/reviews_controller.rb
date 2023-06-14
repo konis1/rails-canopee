@@ -15,7 +15,7 @@ class ReviewsController < ApplicationController
     @review.user = current_user
     @review.plant = Plant.find(params[:plant_id])
     @review.save
-    redirect_to plant_path(@plant)
+    redirect_to plant_path(@plant.garden)
   end
 
   def show

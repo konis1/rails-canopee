@@ -4,7 +4,7 @@
 }
 
 .min-container-scroll-with-fixed-navbar-bottom {
-  height: calc(100vh - #{$navbar-height});
+  height: calc(100vh - #{$navbar-height} - #{$navbar-bottom-height});
   overflow-y: auto;
   .filler {
     min-height: $navbar-bottom-total-height;
