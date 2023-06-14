@@ -1,0 +1,20 @@
+<div class="review__card"
+    data-review-target="card"
+    data-id="<%= @garden_plant.id %>"
+    data-bs-toggle="offcanvas"
+    data-bs-target="#offcanvas-<%= @garden_plant.id%>">
+       <span><h2>Donne ton avis sur</h2><%= @garden_plant.nickname %></span>
+</div>
+
+
+<div class="offcanvas offcanvas-bottom offcanvas-plant-info" tabindex="-1" id="offcanvas-<%= @garden_plant.id %>">
+  <div class="offcanvas-header">
+    <%# <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button> %>
+  </div>
+  <div class="offcanvas-body small">
+    <h5><%= @garden_plant.nickname %></h5>
+    <%= cl_image_tag @garden_plant.plant.photo.key, class: 'modal_content__img' if @garden_plant.plant.photo.attached? %>
+
+    <p><%= @garden_plant.plant.content %></p>
+  </div>
+</div>

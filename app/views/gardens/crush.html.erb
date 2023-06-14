@@ -13,9 +13,8 @@
           <% if @garden.garden_plants.none? %>
             <p>Vous n'avez pas sélectionné de plante 😭</p>
           <% else %>
-            <%= link_to garden_plant_path(garden_plant), class: 'garden-info' do %>
+            <a href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvas-<%= garden_plant.id%>">
               <p><%= garden_plant.plant.name %></p>
-            <% end %>
             <%= link_to garden_plant_path(garden_plant), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } do %>
               <i class="fa-solid fa-trash-can"></i>
             <% end %>
