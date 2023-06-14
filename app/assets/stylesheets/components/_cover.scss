@@ -7,13 +7,13 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  color: white;
+  color: $light-yellow;
   font-weight: bold;
 }
 
 .cover1 h1, .cover1 h2, .cover1 p {
-  margin-bottom: 50%;
-  margin-left: 51px;
+  margin-bottom: 28vh;
+  margin-left: 50px;
   margin-right: 35px;
 }
 
@@ -26,35 +26,48 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  color: white;
+  color: $light-yellow;
   font-weight: bold;
 }
 
 .cover2 h1, .cover2 h2, .cover2 p {
-  margin-bottom: 50%;
-  margin-left: 78px;
-  margin-right: 60px;
-  text-align: justify;
+  margin-bottom: 28vh;
+  margin-left: 50px;
+  margin-right: 35px;
 }
 
 .cover3 {
   height: calc(100vh);
   background-size: cover;
-  padding-top: 39%;
+  padding-top: 4%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
-  color: white;
+  color: $light-yellow;
   font-weight: bold;
+
+  h1 {
+    margin-bottom: 10vh;
+    margin-left: 50px;
+    margin-right: 35px;
+    color: $light-yellow;
+  }
+  p {
+    margin-left: 50px;
+    margin-right: 35px;
+    margin-bottom: 10vh;
+    color: $light-yellow;
+  }
+
 }
 
-.cover3 h1, .cover3 h2, .cover3 p {
-  margin-left: 26px;
-  margin-right: 10px;
-  color: white;
-}
+// .cover3 h1, .cover3 h2, .cover3 p {
+//   margin-left: 26px;
+//   margin-right: 10px;
+//   color: white;
+// }
 .cover3 .btn-primary {
   border-radius: 39px;
 }
@@ -68,7 +81,7 @@
   justify-content: center;
   align-items: center;
   text-align: justify;
-  color: white;
+  color: $light-yellow;
   font-weight: bold;
 }
 
@@ -76,7 +89,7 @@
   margin-bottom: 50%;
   margin-left: 10%;
   margin-right: 10%;
-  color: white;
+  color: $light-yellow;
   text-align: justify;
 }
 
