@@ -11,44 +11,41 @@
        <div class="health-bar-container">
          <div class="health-bar" style="width:<%= @garden_plant.score %>%; background: <%= color_level(@garden_plant.score) %>">
          </div>
-           <span class="health-bar-score"> <br>
+           <span class="health-bar-score">
             <%= @garden_plant.score %>
           </span>
         </div>
-
+        <span> </span>
         <p>Uhm ça sent le roussi par ici !
         Il faut m’arroser d’ici à demain 💦</p>
-        <div>
+        <%# <div>
           <button class="btn-garden"> + Tard</button>
           <button class="btn-garden"> Fait !</button>
-        </div>
-<!--         <!-- Button trigger modal -->
-          <button type="button" class="btn btn-primary profile-link" data-bs-toggle="modal" data-bs-target="#modal-<%= @garden_plant.plant.id%>">
-            <%= "donne une note à #{@garden_plant.nickname} ⭐️ !" %>
-          </button> -->
-          
+        </div> %>
 
-          <%= render "review_card" %>
 
         <% @garden_plant.tasks.each do |task| %>
         <ul class="tasks-list">
           <% if task.done_time.nil? %>
             <div>
               <%= task.activity %>
+              <%= simple_form_for task, url: update_done_task_path(task) , method: :patch do |f| %>
+                <%= f.button :submit, "Fait", class: "btn-fait" %>
+              <p>A faire avant le <%= task.due_date.day%>/<%= task.due_date.month %>/<%= task.due_date.year %></p>
+            <% end %>
             </div>
-            <%= simple_form_for task, url: update_done_task_path(task) , method: :patch do |f| %>
-              <%= f.button :submit, "Fait", class: "btn btn-primary" %>
-          <% end %>
-        <div>
-          <p>A faire avant le <%= task.due_date.day%>/<%= task.due_date.month %>/<%= task.due_date.year %></p>
-        </div>
         <hr>
-      <% end %>
+        <% end %>
+        </ul>
 
-    </ul>
+        <!-- Button trigger modal -->
+        <div>
+
+          <%# <%= render "review_card" %>
+        </div>
 
     <% end %>
-    <%= link_to 'Retour à mon jardin', garden_path(@garden_plant.garden), class: "yes_no" %>
+    <%= link_to 'Retour à mon jardin', garden_path(@garden_plant.garden), class: "back" %>
     <div class="filler bg-dark-green"></div>
   </div>
 </div>

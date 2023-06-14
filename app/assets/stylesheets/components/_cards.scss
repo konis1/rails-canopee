@@ -128,8 +128,19 @@
     background-color: #90cb63;
     color: white;
     border-radius: 25;
-
+    padding: 12px;
+    margin: 39px;
   }
+
+.btn-fait {
+  background-color: $light-gray;
+  width: 72px;
+  height: 32px;
+  background-color: lightgreen;
+  border-radius: 30px;
+}
+
+
 
   }
 
