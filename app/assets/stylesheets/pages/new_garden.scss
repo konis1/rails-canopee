@@ -32,3 +32,26 @@
   color:#1f3210;
   background-color: white;
 }
+
+
+.light-item {
+  display: inline-block;
+}
+
+.light-selector {
+  position: absolute;
+  transform: scale(0);
+}
+
+.light-selector + label {
+  cursor: pointer;
+  display: inline-block;
+  color: #cc985c;
+  padding: 0.1rem 0.5rem;
+  margin-right: 0.6rem;
+  margin-bottom: 0.4rem;
+}
+
+.light-selector:checked + label {
+  color: #fff;
+}

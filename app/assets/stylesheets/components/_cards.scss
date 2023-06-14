@@ -140,7 +140,7 @@
     background-image: url('cover-plant.png');
     height: 100%;
 
-  .h2 {
+    .h2 {
       padding-bottom: 5px;
     }
   }
@@ -216,4 +216,14 @@
   border-radius: 20px;
   display: flex;
   justify-content: space-between;
+ }
+
+ .form-card {
+  border-top-left-radius: 100px;
+  border-top-right-radius: 100px;
+  color: white;
+  flex-grow: 1;
+  background-size: cover;
+  background-position: center;
+  background-color: $dark-green;
  }
