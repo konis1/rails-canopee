@@ -1,15 +1,76 @@
 <div class="container">
   <div class="d-flex justify-content-between mt-4">
     <h2 class="page-title"><%= @garden.name %></h2>
-    <div class='garden-options mt-2 me-2'>   
+    <div class='garden-options mt-2 me-2'>
       <%= link_to garden_path(@garden), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } do %>
         <i class="fa-solid fa-trash fa-2xl"></i>
       <% end %>
     </div>
   </div>
   <% if @garden.garden_plants.validated.any? %>
-    <p class="page-description">Voici toute ta team en place !</p>
-    <p class="page-description mb-5">N’hésite pas à jeter un oeil de temps à autre voir si tout va bien 😊</p>
+    <div class='weather-container'>
+      <div class='weather-garden-info'>
+        <p><%= @garden.name %></p>
+        <p><%= @garden.location %></p>
+      </div>
+      <p class='day-info'>
+        <% if Time.now.strftime("%A") == 'Monday' %>
+          Lundi
+        <% elsif Time.now.strftime("%A") == 'Tuesday' %>
+          Mardi
+        <% elsif Time.now.strftime("%A") == 'Wednesday' %>
+          Mercredi
+        <% elsif Time.now.strftime("%A") == 'Thursday' %>
+          Jeudi
+        <% elsif Time.now.strftime("%A") == 'Friday' %>
+          Vendredi
+        <% elsif Time.now.strftime("%A") == 'Saturday' %>
+          Samedi
+        <% elsif Time.now.strftime("%A") == 'Sunday' %>
+          Dimanche
+        <% end %>
+        <%= Time.now.day %>
+        <% if Time.now.strftime("%B") == 'January' %>
+          janvier
+        <% elsif Time.now.strftime("%B") == 'February' %>
+          février
+        <% elsif Time.now.strftime("%B") == 'March' %>
+          mars
+        <% elsif Time.now.strftime("%B") == 'April' %>
+          avril
+        <% elsif Time.now.strftime("%B") == 'May' %>
+          mai
+        <% elsif Time.now.strftime("%B") == 'June' %>
+          juin
+        <% elsif Time.now.strftime("%B") == 'July' %>
+          juillet
+        <% elsif Time.now.strftime("%B") == 'August' %>
+          août
+        <% elsif Time.now.strftime("%B") == 'September' %>
+          septembre
+        <% elsif Time.now.strftime("%B") == 'October' %>
+          octobre
+        <% elsif Time.now.strftime("%B") == 'November' %>
+          novembre
+        <% elsif Time.now.strftime("%B") == 'December' %>
+          décembre
+        <% end %>
+      </p>
+      <div class='weather-forecast'>
+        <p><%= @weather_json['temperature_2m'][Time.now.hour] %>C°</p>
+        <% if @hourly_weather == 'drizzle' %>
+          <i class="fa-thin fa-cloud-drizzle"></i>
+        <% elsif @hourly_weather == 'rainy' %>
+          <i class="fa-solid fa-cloud-showers-heavy"></i>
+        <% elsif @hourly_weather == 'sunny' %>
+          <i class="fa-solid fa-sun"></i>
+        <% elsif @hourly_weather == 'cloudy' %>
+          <i class="fa-regular fa-sun-cloud"></i>
+        <% elsif @hourly_weather == 'checking weather...' %>
+          <p>Connection lost!</p>
+        <% end %>
+      </div>
+    </div>
     <div class="row plants-list-wrapper" data-controller='garden-show-plants-list'>
       <% @garden.garden_plants.validated.each do |garden_plant| %>
           <%= link_to garden_plant_path(garden_plant), class: 'garden-plant-card text-decoration-none' do %>

@@ -1,3 +1,27 @@
+.weather-container {
+  background-color: $light-gray;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 3px solid $dark-green;
+  border-radius: 8px;
+  background-color: $lighter-green;
+  padding: 8px;
+  margin-bottom: 16px;
+
+  p {
+    margin: 0;
+  }
+
+  .weather-garden-info, .weather-forecast {
+    flex-basis: 33%;
+  }
+
+  .weather-forecast {
+    text-align: right;
+  }
+}
+
 .plants-list-wrapper {
   margin-bottom: 20px;
 }
