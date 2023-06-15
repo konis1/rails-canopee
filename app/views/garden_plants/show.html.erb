@@ -25,10 +25,10 @@
         </div>
 
         <div class="tasks-list">
-          <% @garden_plant.tasks.each do |task| %>
-              <% if task.done_time.nil? %>
+          <% @garden_plant.tasks.near_future.each do |task| %>
+              <%# if task.done_time.nil? && task.due_date.year == Time.now.year && task.due_date.month == Time.now.month %>
                 <div class="mb-2">
-                  <%= simple_form_for task, url: update_done_task_path(task) , method: :patch, html:{class:"form-activitiy"} do |f| %>
+                  <%= simple_form_for task, url: update_done_task_path(task) , method: :patch, html: { class:"form-activitiy" } do |f| %>
                     <p class="m-0 form-left"><%= task.activity %></p>
                     <div class="form-center">
                       <%= button_tag class: "btn-fait d-flex justify-content-center align-items-center" do %>
@@ -38,7 +38,7 @@
                     <p class="m-0 form-right"><%= task.due_date.day%>/<%= task.due_date.month %>/<%= task.due_date.year %></p>
                   <% end %>
                 </div>
-              <% end %>
+              <%# end %>
 
           <% end %>
         </div>
