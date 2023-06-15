@@ -1,5 +1,7 @@
 class Task < ApplicationRecord
   belongs_to :garden_plant
+  has_one :garden, through: :garden_plant
+  has_one :plant, through: :garden_plant
   after_create_commit :notify_recipient
 
   scope :watering, -> { where(activity: 'Arrose-moi !') }
@@ -38,6 +40,15 @@ class Task < ApplicationRecord
   scope :near_future, -> {
     where(done_time: nil, due_date: (Date.today..Date.today + 30.days))
   }
+
+  def criticity_name
+    case criticity
+      when 0 then "low"
+      when 1 then "medium"
+      when 2 then "high"
+    end
+  end
+
   private
 
   def notify_recipient

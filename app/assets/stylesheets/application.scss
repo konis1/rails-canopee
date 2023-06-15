@@ -59,7 +59,7 @@ a {
   animation: 1s blink ease infinite;
 }
 
-@keyframes "blink" {
+@keyframes blink {
   from, to {
     opacity: 0;
   }
@@ -77,7 +77,7 @@ a {
   }
 }
 
-@-webkit-keyframes "blink" {
+@-webkit-keyframes blink {
   from, to {
     opacity: 0;
   }
@@ -86,7 +86,7 @@ a {
   }
 }
 
-@-ms-keyframes "blink" {
+@-ms-keyframes blink {
   from, to {
     opacity: 0;
   }
@@ -95,7 +95,7 @@ a {
   }
 }
 
-@-o-keyframes "blink" {
+@-o-keyframes blink {
   from, to {
     opacity: 0;
   }
