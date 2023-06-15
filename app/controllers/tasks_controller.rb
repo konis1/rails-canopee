@@ -4,7 +4,7 @@ class TasksController < ApplicationController
   def index
     @my_tasks = Task.joins(garden_plant: [{ garden: :user }]).where('users.id' => current_user.id).where(done: false)
     @current_week_tasks = @my_tasks.where(due_date: DateTime.now.all_week)
-    @next_week_task = @my_tasks.where(due_date: DateTime.now.next_week.all_week)
+    @next_week_tasks = @my_tasks.where(due_date: DateTime.now.next_week.all_week)
     my_activities = Task.select("activity").group("tasks.activity")
     @all_activities = my_activities.map do |acti|
       acti.activity
