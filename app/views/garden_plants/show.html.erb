@@ -25,26 +25,26 @@
         </div>
 
         <div class="tasks-list">
-          <% @garden_plant.tasks.each do |task| %>
-              <% if task.done_time.nil? %>
-                <div >
-                  <%= simple_form_for task, url: update_done_task_path(task) , method: :patch, html:{class:"form-activitiy"} do |f| %>
+          <% @garden_plant.tasks.near_future.each do |task| %>
+              <%# if task.done_time.nil? && task.due_date.year == Time.now.year && task.due_date.month == Time.now.month %>
+                <div class="mb-2">
+                  <%= simple_form_for task, url: update_done_task_path(task) , method: :patch, html: { class:"form-activitiy" } do |f| %>
                     <p class="m-0 form-left"><%= task.activity %></p>
                     <div class="form-center">
-                      <%= button_tag class: "btn-fait" do %>
+                      <%= button_tag class: "btn-fait d-flex justify-content-center align-items-center" do %>
                         <i class="fa-solid fa-check"></i>
                       <% end %>
                     </div>
                     <p class="m-0 form-right"><%= task.due_date.day%>/<%= task.due_date.month %>/<%= task.due_date.year %></p>
                   <% end %>
                 </div>
-              <% end %>
+              <%# end %>
 
           <% end %>
         </div>
 
 
       <%= link_to 'Retour à mon jardin', garden_path(@garden_plant.garden), class: "back d-block mt-5 text-center" %>
-      <%# <div class="filler bg-dark-green"></div> %>
+      <div class="filler bg-dark-green"></div>
   </div>
 </div>
