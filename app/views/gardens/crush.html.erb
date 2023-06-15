@@ -9,6 +9,7 @@
           <p><span data-crush-target="counter"><%= @garden_plants.selected.count %></span> crushes</p>
         </div>
       </div>
+      <div class="crush-cards-container">
         <% @garden_plants.each do |garden_plant| %>
           <div class="card-crush p-3 m-3">
               <a href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvas-<%= garden_plant.id%>">
@@ -25,13 +26,10 @@
             <% end %>
           </div>
         <% end %>
-        <div class="text-center">
-          <%= link_to validate_plants_garden_path(@garden), data: { turbo_method: :post }, class:"link-to-validate" do %>
-          <button type="button" class="btn crush-btn btn-success">Go !</button>           <%# <div class="circle-of-the-plus">
-
-            </div> %>
-          <% end %>
-        </div>
+      </div>
+      <div class="text-center go-crush-btn">
+        <%= link_to "Go !", validate_plants_garden_path(@garden), data: { turbo_method: :post }, class:"link-to-validate btn crush-btn btn-success" %>
+      </div>
     </div>
   </div>
 </div>
