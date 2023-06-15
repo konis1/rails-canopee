@@ -1,6 +1,7 @@
 class GardenPlantsController < ApplicationController
   before_action :set_garden_plant, only: [:show, :edit, :update, :destroy]
 
+
   def index
     @garden_plants = current_user.garden_plants
     @garden_plants = @garden.garden_plants
@@ -18,7 +19,6 @@ class GardenPlantsController < ApplicationController
     @garden = Garden.find(params[:garden_id])
     @garden_plant = @garden_plants.new(garden_plant_params)
     @garden_plant.garden = @garden
-
     if @garden_plant.save
       redirect_to garden_plant_path(@garden_plant), notice: 'Garden plant was successfully created.'
     else

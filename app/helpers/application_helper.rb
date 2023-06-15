@@ -16,7 +16,7 @@ module ApplicationHelper
     elsif percentage < 75
       return "#fb5607"
     elsif percentage <=100
-      return "#06d6a0"
+      return "#698D6E"
     end
   end
 end
