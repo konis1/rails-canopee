@@ -23,4 +23,13 @@ class Garden < ApplicationRecord
     self.plants << plants
     save
   end
+
+
+  def number_of_selected_plants
+    garden_plants.selected.count
+  end
+
+  def number_of_remaining_plants
+    garden_plants.count - garden_plants.where(status: ["selected", "refused"]).count
+  end
 end

@@ -31,8 +31,10 @@ class GardenPlantsController < ApplicationController
 
   def update
     if @garden_plant.update(garden_plant_params)
+      @garden = @garden_plant.garden
+      finished = @garden.number_of_remaining_plants == 0
       respond_to do |format|
-        format.json { render json: { garden_plant_count: @garden_plant.garden.garden_plants.selected.count  } }
+        format.json { render json: { garden_plant_count: @garden.number_of_selected_plants, remaining_plants: @garden.number_of_remaining_plants, finished: finished, garden_crush_path: crush_path(@garden) } }
         format.html { redirect_to garden_plant_path(@garden_plant), notice: 'Garden plant was successfully updated.'}
       end
     else
