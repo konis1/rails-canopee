@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <%= render 'shared/ios_pwa_links' %>
     <%# HTML setup - Layout %>
     <title><%= meta_title %></title>
     <%= favicon_link_tag "icons/favicon-32x32.png", rel: "icon", type: "image/png" %>
@@ -39,7 +40,6 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
 
-    <%= render 'shared/ios_pwa_links' %>
   </head>
 
   <body>
