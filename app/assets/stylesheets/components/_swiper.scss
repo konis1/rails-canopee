@@ -105,6 +105,9 @@ button {
       height: 100%;
       border-radius: 0.8rem;
       position: relative;
+      .h2 {
+        color: $dark-green;
+      }
       &_top {
         position: absolute;
         top: 0;
@@ -112,6 +115,7 @@ button {
         display: flex;
         justify-content: space-between;
         padding: 1rem 2rem 2rem 2rem;
+
 
       }
       &_bottom {
@@ -216,4 +220,16 @@ button {
 // }
 .crush-btn-box {
   bottom: 80px;
+}
+
+.offcanvas-title {
+  color: white;
+  justify-content: center;
+  text-align: center;
+}
+
+.offcanvas-body {
+  margin: 1rem;
+  padding: 1rem;
+  color: white;
 }
