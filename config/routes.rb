@@ -7,10 +7,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   root to: "pages#home"
-  resources :pages
-  get'cover1', to:'pages#cover1'
-  get'cover2', to:'pages#cover2'
-  get'cover3', to:'pages#cover3'
+  resources :pages, only: [:home, :merci]
   get'merci', to:'pages#merci'
 
   resources :gardens do
