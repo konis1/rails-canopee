@@ -1,14 +1,26 @@
 .crush {
-  height: calc(100vh - 104px);
   background-size: cover;
   padding-top: 1rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   text-align: justify;
   font-weight: bold;
   color: $dark-green;
+
+  .crush-cards-container  {
+    height: 65vh;
+    overflow-y: auto;
+
+  }
+
+  .go-crush-btn {
+    background-color: $dark-green;
+    display: block;
+    text-align: center;
+    padding: 1rem 0;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bolder;
+    text-transform: uppercase;
+  }
 }
 
 .crush h1, .crush h2, .crush p {

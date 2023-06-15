@@ -37,18 +37,18 @@
   cursor: pointer;
   display: flex;
   border-radius: 50rem;
-  color: rgb(255, 255, 255);
+  color: $dark-green;
   margin: 0 0.25rem;
   height: 100%;
   justify-content: center;
   align-items: center;
-  background-color: $dark-green;
+  background-color: white;
   transition: all 0.1s ease-in-out;
 }
 
 .size-selector:checked + label {
   color:#1f3210;
-  background-color: white;
+  background-color: #cc985c;
 }
 
 
@@ -64,7 +64,7 @@
 
 .light-selector + label {
   cursor: pointer;
-  color: #cc985c;
+  color: #fff;
   display: flex;
   margin: 0 0.25rem;
   height: 100%;
@@ -74,5 +74,5 @@
 }
 
 .light-selector:checked + label {
-  color: #fff;
+  color: #cc985c;
 }

@@ -215,7 +215,12 @@ export default class extends Controller {
   responseHandler(data) {
     console.log(data);
     if (data.garden_plant_count) {
-      this.counterTarget.innerHTML = data.garden_plant_count
+      if (data.garden_plant_count == 1) {
+        this.counterTarget.innerHTML = `Voir mon crush ❤️`
+      } else {
+        this.counterTarget.innerHTML = `Voir mes ${data.garden_plant_count } crushs ❤️`
+
+      }
     }
   }
 }
