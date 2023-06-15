@@ -26,10 +26,6 @@
     <meta name="twitter:creator" content="<%= DEFAULT_META["twitter_account"] %>">
     <meta name="twitter:image:src" content="<%= meta_image %>">
 
-    <!-- Fonts -->
-    <link href="https://fonts.cdnfonts.com/css/vincentio" rel="stylesheet">
-    <link href="https://allfont.net/allfont.css?fonts=futura-normal" rel="stylesheet" type="text/css" />
-
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <link rel="manifest" href="<%= asset_path 'manifest.json' %>">
@@ -44,7 +40,6 @@
 
   <body>
     <%#= render "shared/navbar" unless action_name == "home" %>
-    <%= render "shared/flashes" %>
     <%# <div class="min-container-scroll-with-fixed-navbar-bottom d-flex flex-column <%= page_background_color_class >"> %>
     <%= yield %>
     <%# </div> %>
