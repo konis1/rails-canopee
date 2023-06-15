@@ -58,17 +58,20 @@
           décembre
         <% end %>
       </p>
-      <% if @hourly_weather == 'drizzle' %>
-        <i class="fa-thin fa-cloud-drizzle"></i>
-      <% elsif @hourly_weather == 'rainy' %>
-        <i class="fa-solid fa-cloud-showers-heavy"></i>
-      <% elsif @hourly_weather == 'sunny' %>
-        <i class="fa-solid fa-sun"></i>
-      <% elsif @hourly_weather == 'cloudy' %>
-        <i class="fa-regular fa-sun-cloud"></i>
-      <% elsif @hourly_weather == 'checking weather...' %>
-        <p>Connection lost!</p>
-      <% end %>
+      <div>
+        <p><%= @weather_json['temperature_2m'][Time.now.hour] %>C°</p>
+        <% if @hourly_weather == 'drizzle' %>
+          <i class="fa-thin fa-cloud-drizzle"></i>
+        <% elsif @hourly_weather == 'rainy' %>
+          <i class="fa-solid fa-cloud-showers-heavy"></i>
+        <% elsif @hourly_weather == 'sunny' %>
+          <i class="fa-solid fa-sun"></i>
+        <% elsif @hourly_weather == 'cloudy' %>
+          <i class="fa-regular fa-sun-cloud"></i>
+        <% elsif @hourly_weather == 'checking weather...' %>
+          <p>Connection lost!</p>
+        <% end %>
+      </div>
     </div>
     <div class="row plants-list-wrapper" data-controller='garden-show-plants-list'>
       <% @garden.garden_plants.validated.each do |garden_plant| %>

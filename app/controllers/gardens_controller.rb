@@ -9,6 +9,7 @@ class GardensController < ApplicationController
   def show
     weather_checker = WeatherService.new(@garden.latitude, @garden.longitude, @garden.location)
     @hourly_weather = weather_checker.determine_weather_of_the_hour
+    @weather_json = weather_checker.retrieve_hourly_weather
   end
 
   def new
