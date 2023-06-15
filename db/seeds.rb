@@ -24,7 +24,7 @@ puts "user Test added with password 123456"
 puts "Adding plants"
 counter = 1
 
-Garden.create(user_id: user.id, name: "Balcon de cuisine", light: 0 , size:0 , care_willing: 0, location: "Paris,France")
+Garden.create(user_id: user.id, name: "Fenêtre de cuisine", light: 0 , size:0 , care_willing: 0, location: "Paris,France")
 
 puts "Adding plants number 1"
 plant = Plant.create(name: "Heuchère",
@@ -50,7 +50,7 @@ plant = Plant.create(name: "Heuchère",
   file = File.open("./app/assets/images/plantes/heuchère.jpg")
   # puts file
   plant.photo.attach(io: file, filename: "#{plant["name"]}.jpg", content_type: "image/jpg")
-  GardenPlant.create(nickname: "Heuss", pot_color: "brown", garden_id: Garden.first.id, plant_id: plant.id)
+  # GardenPlant.create(nickname: "Heuss", pot_color: "brown", garden_id: Garden.first.id, plant_id: plant.id)
 
 ###################################################################
 ###################################################################
@@ -108,7 +108,7 @@ end
 file = File.open("./app/assets/images/plantes/dionée.jpg")
 # puts file
 plant.photo.attach(io: file, filename: "#{plant["name"]}.jpg", content_type: "image/jpg")
-GardenPlant.create(nickname: "Dieudonnée", pot_color: "brown", garden_id: Garden.first.id, plant_id: plant.id)
+# GardenPlant.create(nickname: "Dieudonnée", pot_color: "brown", garden_id: Garden.first.id, plant_id: plant.id)
 
 ###################################################################
 ###################################################################
@@ -137,7 +137,7 @@ end
 file = File.open("./app/assets/images/plantes/fougère.jpg")
 # puts file
 plant.photo.attach(io: file, filename: "#{plant["name"]}.jpg", content_type: "image/jpg")
-GardenPlant.create(nickname: "Fouggiare", pot_color: "brown", garden_id: Garden.first.id, plant_id: plant.id)
+# GardenPlant.create(nickname: "Fouggiare", pot_color: "brown", garden_id: Garden.first.id, plant_id: plant.id)
 
 ###################################################################
 ###################################################################
@@ -166,7 +166,7 @@ end
 file = File.open("./app/assets/images/plantes/lavande.jpg")
 # puts file
 plant.photo.attach(io: file, filename: "#{plant["name"]}.jpg", content_type: "image/jpg")
-GardenPlant.create(nickname: "Lavande", pot_color: "brown", garden_id: Garden.first.id, plant_id: plant.id)
+# GardenPlant.create(nickname: "Lavande", pot_color: "brown", garden_id: Garden.first.id, plant_id: plant.id)
 
 ###################################################################
 ###################################################################
@@ -175,7 +175,7 @@ puts "Adding plants number 6"
 plant = Plant.create(name: "Basilic",
                       color: "Green",
                       caducity: "Persistant",
-                      care_frequency: 0,
+                      care_frequency: 1,
                       water_need: 1,
                       growth_speed: 1,
                       cold_resistance: 2,
@@ -204,7 +204,7 @@ puts "Adding plants number 7"
 plant = Plant.create(name: "Dahlia",
                       color: "pink",
                       caducity: "Persistant",
-                      care_frequency: 0,
+                      care_frequency: 1,
                       water_need: 1,
                       growth_speed: 1,
                       cold_resistance: 2,
@@ -224,7 +224,7 @@ end
 file = File.open("./app/assets/images/plantes/dalia.jpg")
 # puts file
 plant.photo.attach(io: file, filename: "#{plant["name"]}.jpg", content_type: "image/jpg")
-GardenPlant.create(nickname: "Dalida", pot_color: "brown", garden_id: Garden.first.id, plant_id: plant.id)
+# GardenPlant.create(nickname: "Dalida", pot_color: "brown", garden_id: Garden.first.id, plant_id: plant.id)
 
 ###################################################################
 ###################################################################
@@ -233,7 +233,7 @@ puts "Adding plants number 8"
 plant = Plant.create(name: "Dipladenia",
                       color: "pink",
                       caducity: "Persistant",
-                      care_frequency: 0,
+                      care_frequency: 1,
                       water_need: 1,
                       growth_speed: 1,
                       cold_resistance: 2,
@@ -253,7 +253,7 @@ end
 file = File.open("./app/assets/images/plantes/dipladenia.jpg")
 # puts file
 plant.photo.attach(io: file, filename: "#{plant["name"]}.jpg", content_type: "image/jpg")
-GardenPlant.create(nickname: "Dipladenia", pot_color: "brown", garden_id: Garden.first.id, plant_id: plant.id)
+# GardenPlant.create(nickname: "Dipladenia", pot_color: "brown", garden_id: Garden.first.id, plant_id: plant.id)
 
 ###################################################################
 ###################################################################
@@ -262,7 +262,7 @@ puts "Adding plants number 9"
 plant = Plant.create(name: "Fraisier",
                       color: "red",
                       caducity: "Persistant",
-                      care_frequency: 0,
+                      care_frequency: 1,
                       water_need: 1,
                       growth_speed: 1,
                       cold_resistance: 2,
@@ -291,7 +291,7 @@ puts "Adding plants number 10"
 plant = Plant.create(name: "Thym",
                       color: "Green",
                       caducity: "Persistant",
-                      care_frequency: 0,
+                      care_frequency: 1,
                       water_need: 1,
                       growth_speed: 1,
                       cold_resistance: 2,
