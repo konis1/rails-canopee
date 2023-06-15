@@ -26,18 +26,22 @@ counter = 1
 
 Garden.create(user_id: user.id, name: "Balcon de cuisine", light: 0 , size:0 , care_willing: 0, location: "Paris,France")
 
-p Garden.first.id
-
 puts "Adding plants number 1"
 plant = Plant.create(name: "Heuchère",
   color: "Rouge",
   caducity: "Persistant",
-  care_frequency: 0,
+  care_frequency: 1,
   water_need: 0,
   growth_speed: 0,
   cold_resistance: 0,
-  light_need: 0,
-  climate: "Climat semi-océanique",
+  light_need: 1,
+  climate: [
+    "Climat océanique",
+    "Climat semi-océanique",
+    "Climat continental",
+    "Climat montagnard",
+    "Climat méditerranéen"
+  ],
   content: "L’heuchère est une plante vivace de la famille des Saxifragacées, originaire d’Amérique du Nord avec 50 espèces et aujourd’hui plus de 500 variétés horticoles cultivées." ,
   final_size: 0)
   if plant.photo.attached?
@@ -55,12 +59,18 @@ plant = Plant.create(name: "Heuchère",
 plant = Plant.create(name: "Ciboulette",
   color: "Green",
   caducity: "Persistant",
-  care_frequency: 0,
+  care_frequency: 1,
   water_need: 0,
   growth_speed: 0,
   cold_resistance: 0,
-  light_need: 0,
-  climate: "Climat continental",
+  light_need: 1,
+  climate: [
+    "Climat océanique",
+    "Climat semi-océanique",
+    "Climat continental",
+    "Climat montagnard",
+    "Climat méditerranéen"
+  ],
   content: "La ciboulette, superbe plante aromatique, se plaît dans le potager, jardin, terrasse et balcon. C'est une herbe indispensable pour relever nos plats cuisinés. Très facile à cultiver, elle possède, en outre, des vertus apéritives et digestives." ,
   final_size: 0)
   if plant.photo.attached?
@@ -78,12 +88,18 @@ puts "Adding plants number 3"
 plant = Plant.create(name: "Dionée",
                       color: "White",
                       caducity: "Persistant",
-                      care_frequency: 0,
+                      care_frequency: 1,
                       water_need: 1,
                       growth_speed: 1,
                       cold_resistance: 2,
                       light_need: 1,
-                      climate: "Climat continental",
+                      climate: [
+                        "Climat océanique",
+                        "Climat semi-océanique",
+                        "Climat continental",
+                        "Climat montagnard",
+                        "Climat méditerranéen"
+                      ],
                       content: "La dionée (Dionaea) est la plus célèbre des plantes carnivores. Fascinante par ses pièges complexes et efficaces, elle se porte bien en culture extérieure si on la protège en hiver. Elle a besoin de soins attentifs, mais n'est pas d'une culture difficile." ,
                       final_size: 0)
 if plant.photo.attached?
@@ -101,12 +117,18 @@ puts "Adding plants number 4"
 plant = Plant.create(name: "Fougère",
                       color: "Green",
                       caducity: "Persistant",
-                      care_frequency: 0,
+                      care_frequency: 1,
                       water_need: 1,
                       growth_speed: 1,
                       cold_resistance: 2,
                       light_need: 1,
-                      climate: "Climat continental",
+                      climate: [
+                        "Climat océanique",
+                        "Climat semi-océanique",
+                        "Climat continental",
+                        "Climat montagnard",
+                        "Climat méditerranéen"
+                      ],
                       content: "Utilisé comme fougère d’intérieur depuis le XIXe siècle, le nephrolepis offre des frondes opulentes d’aspect décoratif. Il fait partie des plantes vertes basiques et résistantes facilement cultivables, même par ceux qui n’ont pas la main verte." ,
                       final_size: 0)
 if plant.photo.attached?
@@ -124,12 +146,18 @@ puts "Adding plants number 5"
 plant = Plant.create(name: "Lavande",
                       color: "Purple",
                       caducity: "Persistant",
-                      care_frequency: 0,
+                      care_frequency: 1,
                       water_need: 1,
                       growth_speed: 1,
                       cold_resistance: 2,
                       light_need: 1,
-                      climate: "Climat continental",
+                      climate: [
+                        "Climat océanique",
+                        "Climat semi-océanique",
+                        "Climat continental",
+                        "Climat montagnard",
+                        "Climat méditerranéen"
+                      ],
                       content: "La lavande est un élégant arbrisseau qui symbolise la Provence et le soleil. Ses rameaux simples, touffus et dressés sont pourvus de feuilles vert cendré. Ses fleurs aux teintes pastel dégagent un parfum suave et pénétrant." ,
                       final_size: 0)
 if plant.photo.attached?
@@ -152,7 +180,13 @@ plant = Plant.create(name: "Basilic",
                       growth_speed: 1,
                       cold_resistance: 2,
                       light_need: 1,
-                      climate: "Climat continental",
+                      climate: [
+                        "Climat océanique",
+                        "Climat semi-océanique",
+                        "Climat continental",
+                        "Climat montagnard",
+                        "Climat méditerranéen"
+                      ],
                       content: "Le basilic est une plante aromatique facile à cultiver en extérieur ou en intérieur, en pot ou en pleine terre. Très apprécié pour sa fraîcheur et sa saveur, il relève les plats de l'été. C'est un réel plaisir de le cueillir selon ses besoins." ,
                       final_size: 0)
 if plant.photo.attached?
@@ -175,7 +209,13 @@ plant = Plant.create(name: "Dahlia",
                       growth_speed: 1,
                       cold_resistance: 2,
                       light_need: 1,
-                      climate: "Climat continental",
+                      climate: [
+                        "Climat océanique",
+                        "Climat semi-océanique",
+                        "Climat continental",
+                        "Climat montagnard",
+                        "Climat méditerranéen"
+                      ],
                       content: "Le dahlia, d’entretien facile, fleurit de juillet à novembre. Il existe un très grand nombre de variétés aux formes et hauteurs différentes et aux coloris variés. Il se cultive ainsi en pleine terre comme en bac." ,
                       final_size: 0)
 if plant.photo.attached?
@@ -198,7 +238,13 @@ plant = Plant.create(name: "Dipladenia",
                       growth_speed: 1,
                       cold_resistance: 2,
                       light_need: 1,
-                      climate: "Climat continental",
+                      climate: [
+                        "Climat océanique",
+                        "Climat semi-océanique",
+                        "Climat continental",
+                        "Climat montagnard",
+                        "Climat méditerranéen"
+                      ],
                       content: "Cette grimpante tropicale offre une floraison abondante et de longue durée, mise en valeur par un feuillage lustré et persistant. Elle participera au décor de la terrasse ou du balcon du printemps à l’automne." ,
                       final_size: 0)
 if plant.photo.attached?
@@ -221,7 +267,13 @@ plant = Plant.create(name: "Fraisier",
                       growth_speed: 1,
                       cold_resistance: 2,
                       light_need: 1,
-                      climate: "Climat continental",
+                      climate: [
+                        "Climat océanique",
+                        "Climat semi-océanique",
+                        "Climat continental",
+                        "Climat montagnard",
+                        "Climat méditerranéen"
+                      ],
                       content: "À croquer tout juste cueillie, en dessert, sorbet ou confiture, elle est plébiscitée par les enfants et les grands. Petite fraise des bois ou fraise cultivée, elle fait l’unanimité pour son parfum exquis. C’est aussi l’un des premiers fruits au jardin." ,
                       final_size: 0)
 if plant.photo.attached?
@@ -244,7 +296,13 @@ plant = Plant.create(name: "Thym",
                       growth_speed: 1,
                       cold_resistance: 2,
                       light_need: 1,
-                      climate: "Climat continental",
+                      climate: [
+                        "Climat océanique",
+                        "Climat semi-océanique",
+                        "Climat continental",
+                        "Climat montagnard",
+                        "Climat méditerranéen"
+                      ],
                       content: "Plante aromatique aux multiples propriétés, le thym est répandu sur les rocailles du sud de la France. C'est une vivace connue pour son parfum caractéristique, son goût typé et ses petites feuilles couvertes de minuscules fleurs blanches ou roses." ,
                       final_size: 0)
 if plant.photo.attached?
@@ -255,6 +313,13 @@ file = File.open("./app/assets/images/plantes/thym.jpg")
 plant.photo.attach(io: file, filename: "#{plant["name"]}.jpg", content_type: "image/jpg")
 GardenPlant.create(nickname: "Tim", pot_color: "brown", garden_id: Garden.first.id, plant_id: plant.id)
 
+GardenPlant.find_each do |garden_plant|
+  garden_plant.validated!
+end
+
 # GardenPlant.find_each do |garden_plant|
-#   garden_plant.validated!
+#   puts garden_plant.tasks.first
+#   # garden_plant.tasks.each do |task|
+#   #   task.done_time = Time.now
+#   # end
 # end
