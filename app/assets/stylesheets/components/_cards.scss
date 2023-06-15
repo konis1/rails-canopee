@@ -117,6 +117,10 @@
   position: relative;
   top: -60px;
 
+   h1 {
+    font-size: 46px;
+   }
+
   p {
     text-align: justify;
     margin-top: 4px;
@@ -131,10 +135,30 @@
     background-color: #90cb63;
     color: white;
     border-radius: 25;
-
+    padding: 12px;
+    margin: 39px;
   }
 
+.btn-fait {
+  background-color: $light-gray;
+  width: 72px;
+  height: 32px;
+  background-color: $lighter-green;
+  border-radius: 30px;
+}
+}
+
+.tasks-list {
+
+  .simple_form  {
+    display: flex;
+    justify-content: center;
   }
+
+
+}
+
+
 
   .cover-card {
     background-image: url('cover-plant.png');

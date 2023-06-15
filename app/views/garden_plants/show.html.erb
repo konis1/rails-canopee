@@ -1,54 +1,43 @@
- <%= cl_image_tag @garden_plant.plant.photo.key, height: 200, class:"image-card" %>
-<div class="container text-center mt-3">
-
-</div>
-<div class="info-card">
+ <div class="min-full-screen">
+  <%= cl_image_tag @garden_plant.plant.photo.key, height: 200, class:"image-card" %>
   <div class="container text-center mt-3">
-    <h1><strong><%= @garden_plant.nickname %></strong></h1>
-    <p> Je suis un dahlia rouge et j’ai grandi en Ile de France chez Maurice Boyauval mon horticulteur. </p>
-    <h4><%= @garden_plant.plant.name %></h4>
-    <h5>Lire plus sur mon histoire</h5> <br>
-       <div class="health-bar-container">
-         <div class="health-bar" style="width:<%= @garden_plant.score %>%; background: <%= color_level(@garden_plant.score) %>">
-         </div>
-           <span class="health-bar-score"> <br>
-            <%= @garden_plant.score %>
-          </span>
+  </div>
+  <div class="info-card">
+    <div class="container text-center mt-3">
+      <h1><%= @garden_plant.nickname %></h1>
+      <p> Je suis <%= @garden_plant.plant.name %> et j’ai grandi en Ile de France chez Maurice Boyauval mon horticulteur. </p>
+      <h4><%= @garden_plant.plant.name %></h4>
+      <h5> <%= render "review_card" %></h5> <br>
+        <div class="health-bar-container">
+          <div class="health-bar" style="width:<%= @garden_plant.score %>%; background: <%= color_level(@garden_plant.score) %>">
+          </div>
+            <span class="health-bar-score">
+              <%= @garden_plant.score %>
+            </span>
+          </div>
+          <span> </span>
+
         </div>
 
-        <p>Uhm ça sent le roussi par ici !
-        Il faut m’arroser d’ici à demain 💦</p>
-        <div>
-          <button class="btn-garden"> + Tard</button>
-          <button class="btn-garden"> Fait !</button>
-        </div>
-<!--         <!-- Button trigger modal -->
-          <button type="button" class="btn btn-primary profile-link" data-bs-toggle="modal" data-bs-target="#modal-<%= @garden_plant.plant.id%>">
-            <%= "donne une note à #{@garden_plant.nickname} ⭐️ !" %>
-          </button> -->
-          
-
-          <%= render "review_card" %>
-
-        <% @garden_plant.tasks.each do |task| %>
-        <ul class="tasks-list">
-          <% if task.done_time.nil? %>
-            <div>
-              <%= task.activity %>
-            </div>
-            <%= simple_form_for task, url: update_done_task_path(task) , method: :patch do |f| %>
-              <%= f.button :submit, "Fait", class: "btn btn-primary" %>
+        <div class="tasks-list">
+          <% @garden_plant.tasks.each do |task| %>
+              <% if task.done_time.nil? %>
+                <div >
+                  <%= simple_form_for task, url: update_done_task_path(task) , method: :patch, html:{class:"form-activitiy"} do |f| %>
+                    <p><%= task.activity %></p>
+                      <%= button_tag class: "btn-fait" do %>
+                        <i class="fa-solid fa-check"></i>
+                      <% end %>
+                    <p> <%= task.due_date.day%>/<%= task.due_date.month %>/<%= task.due_date.year %></p>
+                  <% end %>
+                </div>
+              <% end %>
+          <hr>
           <% end %>
-        <div>
-          <p>A faire avant le <%= task.due_date.day%>/<%= task.due_date.month %>/<%= task.due_date.year %></p>
         </div>
-        <hr>
-      <% end %>
 
-    </ul>
 
-    <% end %>
-    <%= link_to 'Retour à mon jardin', garden_path(@garden_plant.garden), class: "yes_no" %>
-    <div class="filler bg-dark-green"></div>
+      <%= link_to 'Retour à mon jardin', garden_path(@garden_plant.garden), class: "back" %>
+      <div class="filler bg-dark-green"></div>
   </div>
 </div>
