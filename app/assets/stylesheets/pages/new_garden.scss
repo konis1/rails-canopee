@@ -1,3 +1,18 @@
+#garden_name {
+  &:focus {
+    outline: none !important;
+    border-bottom: var(--bs-border-width) var(--bs-border-style) var(--bs-border-color) !important;
+    box-shadow: none !important;
+    background-color: transparent !important;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+  }
+  &::placeholder {
+    color: rgb(210, 210, 210);
+  }
+}
+
 .cursor-pointer {
   cursor: pointer;
 }
@@ -10,6 +25,7 @@
 
 .size-item {
   display: inline-block;
+  height: 3rem;
 }
 
 .size-selector {
@@ -19,13 +35,15 @@
 
 .size-selector + label {
   cursor: pointer;
-  display: inline-block;
+  display: flex;
   border-radius: 50rem;
-  padding: 0.1rem 0.5rem;
-  color:white;
-  background-color: #1f3210;
-  margin-right: 0.6rem;
-  margin-bottom: 0.4rem;
+  color: rgb(255, 255, 255);
+  margin: 0 0.25rem;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  background-color: $dark-green;
+  transition: all 0.1s ease-in-out;
 }
 
 .size-selector:checked + label {
@@ -36,6 +54,7 @@
 
 .light-item {
   display: inline-block;
+  height: 3rem;
 }
 
 .light-selector {
@@ -45,11 +64,13 @@
 
 .light-selector + label {
   cursor: pointer;
-  display: inline-block;
   color: #cc985c;
-  padding: 0.1rem 0.5rem;
-  margin-right: 0.6rem;
-  margin-bottom: 0.4rem;
+  display: flex;
+  margin: 0 0.25rem;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.1s ease-in-out;
 }
 
 .light-selector:checked + label {
