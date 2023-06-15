@@ -7,6 +7,8 @@ class GardensController < ApplicationController
   end
 
   def show
+    weather_checker = WeatherService.new(@garden.latitude, @garden.longitude, @garden.location)
+    @hourly_weather = weather_checker.determine_weather_of_the_hour
   end
 
   def new

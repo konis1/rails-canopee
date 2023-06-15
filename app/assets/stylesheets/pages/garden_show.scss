@@ -1,3 +1,14 @@
+.weather-container {
+  background-color: $light-gray;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  p {
+    margin: 0;
+  }
+}
+
 .plants-list-wrapper {
   margin-bottom: 20px;
 }

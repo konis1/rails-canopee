@@ -60,6 +60,31 @@ class WeatherService
     locate_in_climate_map(location_region)
   end
 
+  def determine_weather_of_the_hour
+    current_hour = Time.now.hour
+    hourly_weather = retrieve_hourly_weather
+    if hourly_weather['rain'][current_hour].positive? && ['hourly']['rain'][current_hour] < 5.0
+      'drizzle'
+    elsif hourly_weather['rain'][current_hour] > 5.0
+      'rainy'
+    elsif hourly_weather['cloudcover'][current_hour] < 30
+      'sunny'
+    elsif hourly_weather['cloudcover'][current_hour] > 30
+      'cloudy'
+    else
+      'checking weather...'
+    end
+  end
+
+  def retrieve_hourly_weather
+    hourly_weather = RestClient.get @weather_api, { params: { latitude: @latitude,
+                                             longitude: @longitude,
+                                             hourly: 'temperature_2m,rain,cloudcover',
+                                             forecast_days: 1,
+                                             timezone: 'Europe/London' } }
+    JSON.parse(hourly_weather)['hourly']
+  end
+
   private
 
   def retrieve_region
@@ -80,4 +105,12 @@ class WeatherService
       'montagnard'
     end
   end
+
+  # def retrieve_hourly_weather
+  #   RestClient.get @weather_api, { params: { latitude: @latitude,
+  #                                            longitude: @longitude,
+  #                                            hourly: 'temperature_2m,rain,cloudcover',
+  #                                            forecast_days: 1,
+  #                                            timezone: 'Europe/London' } }
+  # end
 end
