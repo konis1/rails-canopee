@@ -43,7 +43,11 @@ export default class extends Controller {
       .then((data) => {
         console.log(data);
         if (data.success) {
-          form.remove();
+          console.log(form)
+          form.parentElement.classList.add('fade_out_left')
+          setTimeout(() => {
+            form.parentElement.remove()
+          }, 500);
         }
       })
   }

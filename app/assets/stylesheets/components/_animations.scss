@@ -1,0 +1,13 @@
+.fade_out_left {
+  animation: fadeOutLeft 0.5s ease-in-out forwards;
+}
+
+@keyframes fadeOutLeft {
+  from {
+    opacity: 1;
+  }
+  to {
+    transform: translateX(-50%);
+    opacity: 0;
+  }
+}

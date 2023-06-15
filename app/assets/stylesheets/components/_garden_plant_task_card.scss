@@ -1,0 +1,50 @@
+.garden-plant-tasks {
+  h6 {
+    font-size: 1.2rem;
+    color: $light-yellow;
+  }
+}
+
+.garden-plant-task-card {
+  margin: 1rem;
+  form {
+    justify-content: flex-start !important;
+    background: white;
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+    .task_done { flex-grow: 1}
+    .form-check { margin: 0 !important; display: flex; };
+  }
+  .garden-plant-card-label {
+    display: flex;
+    align-items: center;
+    p {
+      margin: 0;
+      padding-left: .5rem;
+    }
+    .avatar {
+      height: 50px;
+      width: 50px;
+      object-fit: cover;
+      object-position: bottom;
+    }
+  }
+  button {
+    width: 30px;
+    height: 30px;
+    border: 2px solid $dark-green;
+    border-radius: 50%;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    div {
+      flex: 0 0 20px;
+      height: 20px;
+      border-radius: 50%
+    }
+    &:focus div {
+      background: $dark-green;
+    }
+  }
+}
