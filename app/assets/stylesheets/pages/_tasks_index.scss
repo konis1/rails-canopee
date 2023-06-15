@@ -4,7 +4,7 @@
   justify-content: space-between;
 
   .filler {
-    background-color: #2c6455;
+    background-color: $dark-green;
   }
 
   .title-and-tabs {
@@ -12,19 +12,15 @@
     background-size: cover;
     background-position-y: top 70px;
     background-repeat: no-repeat;
+
+    .tabs {
+      color: $light-yellow;
+    }
   }
 
   .activities-lists {
-    background-color: #2c6455;
+    background-color: $dark-green;
     flex-grow: 1;
-  }
-
-  .accordion-button {
-    background-color: #FFFFFF;
-    display: flex;
-    align-items: center;
-    padding: 8px;
-    margin-bottom: 0;
   }
 
   .accordion-button-water {
@@ -39,9 +35,18 @@
     border-radius: 10px !important;
   }
 
+  .accordion-margin {
+    margin-bottom: 12px;
+  }
+
   .accordion-background {
     background-color: rgba(255, 255, 255, 0.4);
     border: none;
+  }
+
+  .accordion-button-details {
+    align-items: center;
+    text-align: center;
   }
 
   .accordion-button-font-size {

@@ -12,9 +12,9 @@
     <div class="accordion container accordion-border-radius" id="accordionAll">
       <% @all_activities.each do |activity| %>
         <% if activity == 'Arrose-moi !' %>
-          <div class="accordion-item accordion-background accordion-border-radius">
+          <div class="accordion-item accordion-background accordion-border-radius accordion-margin">
             <h4 class="accordion-header accordion-border-radius">
-              <button class="accordion-button accordion-button-water accordion-border-radius accordion-button-font-size collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+              <button class="accordion-button accordion-button-water accordion-border-radius accordion-button-font-size accordion-button-details collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
                 <i class="fa-solid fa-droplet"></i>
                 <p class="accordion-button-text-margin">Arrosage</p>
               </button>
@@ -49,7 +49,7 @@
         <% elsif activity == 'Rempote-moi !' %>
           <div class="accordion-item accordion-background accordion-border-radius">
             <h4 class="accordion-header accordion-border-radius">
-              <button class="accordion-button accordion-button-earth accordion-border-radius accordion-button-font-size collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+              <button class="accordion-button accordion-button-earth accordion-border-radius accordion-button-font-size accordion-button-details collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                 <svg width="16" height="20" viewBox="0 0 16 20" fill="#8F541D" xmlns="http://www.w3.org/2000/svg">
                   <path fill-rule="evenodd" clip-rule="evenodd" d="M3.047 0.000247041C2.91205 -0.00275301 2.77789 0.0215982 2.65261 0.0718334C2.52732 0.122069 2.41351 0.197148 2.31801 0.292547C2.22252 0.387947 2.14733 0.501691 2.09697 0.626926C2.04661 0.752162 2.02213 0.886296 2.025 1.02125C2.041 1.72725 2.212 2.72125 2.692 3.73825C2.959 4.30425 3.302 4.81225 3.732 5.24225C4.012 5.52225 4.325 5.76525 4.665 5.97425H2C1.46957 5.97425 0.960859 6.18496 0.585786 6.56003C0.210714 6.93511 0 7.44381 0 7.97425V9.97425C1.03699e-05 10.328 0.0938727 10.6755 0.27201 10.9812C0.450148 11.2869 0.706185 11.5398 1.014 11.7142C1.153 15.3792 2.289 17.9322 2.851 18.9842C3.201 19.6402 3.874 19.9742 4.535 19.9742H11.465C12.125 19.9742 12.799 19.6402 13.149 18.9842C13.711 17.9322 14.847 15.3792 14.986 11.7142C15.2938 11.5398 15.5499 11.2869 15.728 10.9812C15.9061 10.6755 16 10.328 16 9.97425V7.97425C16 7.44381 15.7893 6.93511 15.4142 6.56003C15.0391 6.18496 14.5304 5.97425 14 5.97425H12.102C12.319 5.74725 12.508 5.49725 12.665 5.22425C12.877 4.85725 13.025 4.45925 13.115 4.03525C13.288 3.23725 13.252 2.41725 13.094 1.63425L12.95 1.06425C12.8731 0.830623 12.7128 0.633542 12.4997 0.510678C12.2866 0.387814 12.0357 0.347786 11.795 0.398247C11.1233 0.549679 10.4817 0.812658 9.897 1.17625C9.241 1.57925 8.702 2.08825 8.335 2.72425C8.285 2.81025 8.24 2.89725 8.197 2.98625C7.9539 2.51476 7.6403 2.08313 7.267 1.70625C6.82981 1.27539 6.32129 0.923524 5.764 0.666247C4.91325 0.26122 3.98862 0.0345711 3.047 0.000247041ZM4.25 2.22425C4.476 2.29425 4.697 2.37425 4.91 2.47425C5.278 2.64825 5.596 2.86325 5.854 3.12125C6.111 3.37825 6.326 3.69625 6.5 4.06425C6.594 4.28125 6.68 4.49725 6.749 4.72425C6.52315 4.65726 6.30255 4.5737 6.089 4.47425C5.73981 4.31482 5.42079 4.09628 5.146 3.82825C4.87788 3.55316 4.65932 3.23379 4.5 2.88425C4.4015 2.6703 4.31796 2.44977 4.25 2.22425ZM11.222 2.72425L11.228 2.95425C11.228 3.18225 11.206 3.40425 11.161 3.61425C11.1173 3.82823 11.0403 4.03405 10.933 4.22425C10.748 4.54425 10.448 4.82825 10.056 5.06925L9.777 5.22325L9.772 4.99525C9.772 4.76725 9.794 4.54525 9.84 4.33425C9.889 4.10725 9.964 3.90325 10.067 3.72425C10.252 3.40425 10.552 3.12125 10.944 2.87925L11.222 2.72425ZM3.028 11.9742H12.972C12.798 14.9972 11.879 17.0992 11.421 17.9742H4.579C4.121 17.0992 3.201 14.9972 3.028 11.9742ZM14 9.97425H2V7.97425H14V9.97425Z" fill="#8F541D"/>
                 </svg>
@@ -92,7 +92,7 @@
     <div class="accordion container accordion-border-radius"  id="accordionCurrent">
       <% @all_activities.each do |activity| %>
         <% if activity == 'Arrose-moi !' %>
-          <div class="accordion-item accordion-background accordion-border-radius">
+          <div class="accordion-item accordion-background accordion-border-radius accordion-margin">
             <h4 class="accordion-header accordion-border-radius">
               <button class="accordion-button accordion-button-water accordion-border-radius accordion-button-font-size collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
                 <i class="fa-solid fa-droplet"></i>
@@ -172,7 +172,7 @@
     <div class="accordion container accordion-border-radius"  id="accordionNext">
       <% @all_activities.each do |activity| %>
         <% if activity == 'Arrose-moi !' %>
-          <div class="accordion-item accordion-background accordion-border-radius">
+          <div class="accordion-item accordion-background accordion-border-radius accordion-margin">
             <h4 class="accordion-header accordion-border-radius">
               <button class="accordion-button accordion-button-water accordion-border-radius accordion-button-font-size collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
                 <i class="fa-solid fa-droplet"></i>
