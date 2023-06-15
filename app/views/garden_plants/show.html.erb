@@ -7,6 +7,7 @@
       <h1><%= @garden_plant.nickname %></h1>
       <p> Je suis <%= @garden_plant.plant.name %> et j’ai grandi en Ile de France chez Maurice Boyauval mon horticulteur. </p>
       <h4><%= @garden_plant.plant.name %></h4>
+      <hr>
       <h5> <%= render "review_card" %></h5> <br>
         <div class="health-bar-container">
           <div class="health-bar" style="width:<%= @garden_plant.score %>%; background: <%= color_level(@garden_plant.score) %>">
@@ -32,7 +33,7 @@
                   <% end %>
                 </div>
               <% end %>
-          <hr>
+
           <% end %>
         </div>
 
