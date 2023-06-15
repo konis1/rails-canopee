@@ -35,6 +35,9 @@ class Task < ApplicationRecord
          )
   }
 
+  scope :near_future, -> {
+    where(done_time: nil, due_date: (Date.today..Date.today + 30.days))
+  }
   private
 
   def notify_recipient
