@@ -25,4 +25,26 @@ export default class extends Controller {
     this.currentTarget.classList.add('d-none');
     this.nextTarget.classList.remove('d-none');
   }
+
+  markAsDone(event) {
+    event.preventDefault();
+    var form = event.currentTarget;
+    const formData = new FormData(form);
+    const url = form.action;
+    const options = {
+      method: 'PATCH',
+      headers: {
+        'Accept': 'application/json'
+      },
+      body: formData
+    };
+    fetch(url, options)
+      .then(response => response.json())
+      .then((data) => {
+        console.log(data);
+        if (data.success) {
+          form.remove();
+        }
+      })
+  }
 }
