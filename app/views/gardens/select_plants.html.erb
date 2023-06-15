@@ -1,4 +1,4 @@
-<div class="d-flex flex-column h-100"
+<div class="container page-container page-container-background d-flex flex-column justify-content-center"
       data-controller="swiper">
   <div class="container">
     <div class="row">
@@ -6,7 +6,9 @@
         <h1>Choisis tes plantes</h1>
         <div class="d-flex btn bg-dark-green p-2 pr-2">
           <p>Mes likes:</p>
-          <div class="likes_counter" data-swiper-target="counter"><%= @garden_plants.selected.count %></div>
+          <div class="likes_counter" data-swiper-target="counter">
+            <%= @garden_plants.selected.count %>
+          </div>
         </div>
       </div>
     </div>
@@ -27,6 +29,4 @@
     <%= link_to 'Mes crushs ❤️', crush_path, class: "btn, btn-primary" %>
     <%= link_to 'Critères avancés', root_path, class: "btn, btn-primary" %>
   </div>
-  <div class="filler"></div>
-
-<div >
+</div>

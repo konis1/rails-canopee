@@ -1,56 +1,62 @@
 <div data-controller="garden-form">
   <%= simple_form_for @garden do |f| %>
-    <div class="m-2">
-      <div data-garden-form-target='input' id="name-and-light">
-        <h3>Nom</h3>
-        <%= f.input :name,
-                    label:false,
-                    wrapper_html: {
-                      class: "card_plant_small"
-                    } %>
+    <div class="rounded-4 p-4 bg-light-green"
+         data-garden-form-target="input">
+      <%= f.input :name,
+                  label: 'Nom de mon jardin',
+                  label_html: {
+                    class: "text-light-yellow fs-4"
+                  },
+                  input_html: {
+                    class: "string optional border-bottom form-control-plaintext text-white",
+                    placeholder: "ex: Mon jardin d'intérieur"
+                  },
+                  wrapper_html: {
+                    class: ""
+                  } %>
+      <p class="text-light-yellow fs-4">Luminosité du jardin</p>
+      <%= f.input :light,
+                  as: :radio_buttons,
+                  label: "",
+                  required: false,
+                  collection: [["Ombre", 0], ["Mi-ombre", 1], ["Ensoleillé", 2]],
+                  input_html: { class: "light-selector" },
+                  item_wrapper_class: "light-item flex-grow-1-1-0",
+                  label_method: lambda { |(label, _value)| render("gardens/labels/light", label: label) },
+                  wrapper_html: {
+                    class: "d-flex justify-content-between legend-hidden"
+                  }
+      %>
+      <p class="text-light-yellow fs-4">Taille du jardin</p>
+      <%= f.input :size,
+                  as: :radio_buttons,
+                  label: "",
+                  required: false,
+                  collection: [["petit", 0], ["moyen", 1], ["grand", 2]],
+                  input_html: { class: "size-selector" },
+                  item_wrapper_class: 'size-item flex-grow-1-1-0',
+                  wrapper_html: {
+                    class: "d-flex justify-content-between legend-hidden"
+                  } %>
+    </div>
 
-        <div class="card_plant_small">
-          <h3>Luminosité</h3>
-          <%= f.input :light,
-                      as: :radio_buttons,
-                      label:"",
-                      required: false,
-                      collection: [["Ombre", 0], ["Mi-ombre", 1], ["Ensoleillé", 2]],
-                      input_html: { class: "light-selector" },
-                      item_wrapper_class: "light-item",
-                      label_method: lambda { |(label, _value)| render("gardens/labels/light", label: label) }
-          %>  
-        </div>
+    <div class="rounded-4 p-4 bg-light-green d-none"
+         data-garden-form-target="input">
+      <div class="card-avatar">
+        <%= f.input :care_willing,
+          label: "Soins",
+          required: false,
+          as: :radio_buttons,
+          collection: [["Pas du tout", 0], ["Un peu", 0], ["Beaucoup", 1], ["Passionnément", 1], ["A la folie", 2]],
+          input_html: { class: "d-none care-willing-selector" },
+          label_method: lambda { |(label, _value)| render("gardens/labels/care_willing", label: label) } %>
       </div>
+    </div>
 
-      <div class="d-none card_plant_small" data-garden-form-target='input' id="size">
-        <h3>Dimension</h3>
-        <%= f.input :size,
-                    as: :radio_buttons,
-                    label: "",
-                    required: false,
-                    collection: [["petit", 0], ["moyen", 1], ["grand", 2]],
-                    input_html: { class: "size-selector" },
-                    item_wrapper_class: 'size-item' %>
-                    
-      </div>
-
-      <div class="d-none card_plant_small" data-garden-form-target='input' id="care-willing">
-        <h3>Soins</h3>
-        <div class="card-avatar">
-          <%= f.input :care_willing,
-            label: "",
-            required: false,
-            as: :radio_buttons,
-            collection: [["Pas du tout", 0], ["Un peu", 0], ["Beaucoup", 1], ["Passionnément", 1], ["A la folie", 2]],
-            input_html: { class: "d-none care-willing-selector" },
-            label_method: lambda { |(label, _value)| render("gardens/labels/care_willing", label: label) } %>
-        </div>
-      </div>
-
-      <div class="d-none card_plant_small" data-garden-form-target='input' id="location">
-        <h3>Ma ville</h3>
-        <%= f.input :location,
+    <div class="rounded-4 p-4 bg-light-green d-none"
+         data-garden-form-target="input">
+      <h3>Ma ville</h3>
+      <%= f.input :location,
                   label:false,
                   input_html: {
                     data: {
@@ -61,34 +67,31 @@
                   wrapper_html: {
                     class: "",
                     data: {
-                      garden_form_target: 'input',
                       controller: "address-autocomplete",
                       address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]
                     }
                   } %>
-      </div>
+    </div>
 
-      <%#= f.input :location,
-                  label:false,
-                  input_html: {
-                    data: {
-                      address_autocomplete_target: "address"
-                    },
-                    class: "d-none card_plant_small"
-                  },
-                  wrapper_html: {
-                    class: "d-none",
-                    data: {
-                      garden_form_target: 'input',
-                      controller: "address-autocomplete",
-                      address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]
-                    }
-                  } %>
-      
-      <span data-action="click->garden-form#goToNextQuestion" class="cursor-pointer">Suivant</span>
-
-      <div style= "text-align: center">
-        <%= button_tag 'Suivant', type: :submit, class: "d-none button_next_step", data: { garden_form_target:'button'}%>
+    <div class="d-flex justify-content-center aling-items-center">
+      <div class="flex-grow-1-1-0"></div>
+      <p class="flex-grow-1-1-0 d-flex justify-content-center align-items-center text-white fs-4 mb-0">
+        <span data-garden-form-target="stepCount">1</span>
+      </p>
+      <div class="flex-grow-1-1-0">
+        <span class="cursor-pointer fs-1 text-white ms-auto d-flex justify-content-end p-4"
+              data-action="click->garden-form#goToNextQuestion">
+          <i class="fa-solid fa-circle-arrow-right"></i>
+        </span>
+        <%#= f.submit '<i class="fa-solid fa-circle-check"></i>'.html_safe,
+                        class: "d-none cursor-pointer fs-1 text-white ms-auto d-flex justify-content-end p-4",
+                        data: {
+                          garden_form_target:'button'
+                        } %>
+        <button type="submit" class="d-none cursor-pointer fs-1 text-white ms-auto d-flex justify-content-end my-3 btn"
+                data-garden-form-target="button">
+          <i class="fa-solid fa-circle-check"></i>
+        </button>
       </div>
     </div>
   <% end %>

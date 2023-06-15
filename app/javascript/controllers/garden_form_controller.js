@@ -2,12 +2,13 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="garden-form"
 export default class extends Controller {
-  static targets = ['input', 'button']
+  static targets = ['input', 'button', 'stepCount']
 
   connect() {
     console.log(this.buttonTarget);
     this.currentStep = 1
     this.stepsCount = this.inputTargets.length
+    this.#setStepCount()
   }
 
   goToNextQuestion(event) {
@@ -16,12 +17,10 @@ export default class extends Controller {
     // this.InputTarget.classList.add();
     // this.InputTarget.classList.remove();
     this.currentStep++
-    console.log(this.currentStep);
-    console.log(this.#getNextInput())
-
+    this.#setStepCount()
     if (this.#getPreviousInput()) this.#getPreviousInput().classList.add('d-none');
     if (this.#getNextInput()) this.#getNextInput().classList.remove('d-none');
-    if (this.currentStep == 4) {
+    if (this.currentStep == this.stepsCount) {
       this.buttonTarget.classList.remove('d-none');
       event.currentTarget.classList.add('d-none');
     }
@@ -35,5 +34,9 @@ export default class extends Controller {
 
   #getNextInput() {
     return this.inputTargets[this.currentStep - 1]
+  }
+
+  #setStepCount() {
+    this.stepCountTarget.innerText = this.currentStep + '/' + this.stepsCount
   }
 }
