@@ -1,10 +1,10 @@
 .min-container-scroll {
-  height: calc(100vh - #{$navbar-height} - #{$navbar-bottom-height});
+  height: calc(100vh - #{$navbar-bottom-height});
   overflow-y: auto;
 }
 
 .min-container-scroll-with-fixed-navbar-bottom {
-  height: calc(100vh - #{$navbar-height} - #{$navbar-bottom-height});
+  height: calc(100vh - #{$navbar-bottom-height});
   overflow-y: auto;
   .filler {
     min-height: $navbar-bottom-total-height;
@@ -21,4 +21,25 @@
 
 .bg-dark-green {
   background-color: $dark-green;
+}
+
+.bg-light-green {
+  background-color: $light-green;
+}
+
+.bg-lighter-green {
+  background-color: $lighter-green;
+}
+
+.bg-cover {
+  background-size: cover;
+}
+
+.legend-hidden {
+  legend {
+    display: none;
+  }
+  .invalid-feedback {
+    display: none;
+  }
 }

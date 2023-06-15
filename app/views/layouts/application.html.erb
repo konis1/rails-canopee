@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 <html>
   <head>
-
     <%# HTML setup - Layout %>
     <title><%= meta_title %></title>
+    <%= favicon_link_tag "icons/favicon-32x32.png", rel: "icon", type: "image/png" %>
     <meta name="description" content="<%= meta_description %>">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, maximum-scale=1, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta http-equiv="ScreenOrientation" content="autoRotate:disabled">
 
     <!-- Facebook Open Graph data -->
     <meta property="og:title" content="<%= meta_title %>">
@@ -21,41 +25,29 @@
     <meta name="twitter:description" content="<%= meta_description %>">
     <meta name="twitter:creator" content="<%= DEFAULT_META["twitter_account"] %>">
     <meta name="twitter:image:src" content="<%= meta_image %>">
-    <%# favicon%>
-    <%= favicon_link_tag "icons/favicon-32x32.png", rel: "icon", type: "image/png" %>
 
     <!-- Fonts -->
     <link href="https://fonts.cdnfonts.com/css/vincentio" rel="stylesheet">
     <link href="https://allfont.net/allfont.css?fonts=futura-normal" rel="stylesheet" type="text/css" />
 
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <link rel="manifest" href="<%= asset_path 'manifest.json' %>">
+
+    <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.css" type="text/css">
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
-    <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.css" type="text/css">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="mobile-web-app-capable" content="yes">
-    <link rel="manifest" href="<%= asset_path 'manifest.json' %>">
+
     <%= render 'shared/ios_pwa_links' %>
   </head>
 
   <body>
-    <% if action_name != "home" %>
-      <%= render "shared/navbar" %>
-    <% end %>
-
+    <%#= render "shared/navbar" unless action_name == "home" %>
     <%= render "shared/flashes" %>
-
-    <div class="min-container-scroll-with-fixed-navbar-bottom d-flex flex-column <%= page_background_color_class %>">
-
-      <%= yield %>
-    </div>
-
-    <% if action_name != "home" %>
-      <%= render "shared/navbar_bottom" %>
-    <% end %>
-
+    <%# <div class="min-container-scroll-with-fixed-navbar-bottom d-flex flex-column <%= page_background_color_class >"> %>
+    <%= yield %>
+    <%# </div> %>
+    <%= render "shared/navbar_bottom" unless action_name == "home" %>
   </body>
 </html>
