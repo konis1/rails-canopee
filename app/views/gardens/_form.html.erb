@@ -76,18 +76,13 @@
     <div class="d-flex justify-content-center aling-items-center">
       <div class="flex-grow-1-1-0"></div>
       <p class="flex-grow-1-1-0 d-flex justify-content-center align-items-center text-white fs-4 mb-0">
-        <span data-garden-form-target="stepCount">1</span>
+        <span data-garden-form-target="stepCount"></span>
       </p>
       <div class="flex-grow-1-1-0">
         <span class="cursor-pointer fs-1 text-white ms-auto d-flex justify-content-end p-4"
               data-action="click->garden-form#goToNextQuestion">
           <i class="fa-solid fa-circle-arrow-right"></i>
         </span>
-        <%#= f.submit '<i class="fa-solid fa-circle-check"></i>'.html_safe,
-                        class: "d-none cursor-pointer fs-1 text-white ms-auto d-flex justify-content-end p-4",
-                        data: {
-                          garden_form_target:'button'
-                        } %>
         <button type="submit" class="d-none cursor-pointer fs-1 text-white ms-auto d-flex justify-content-end my-3 btn"
                 data-garden-form-target="button">
           <i class="fa-solid fa-circle-check"></i>
