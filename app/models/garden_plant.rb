@@ -1,4 +1,6 @@
 class GardenPlant < ApplicationRecord
+  NICKNAMES = ["Tim", "Paul", "Thomas", "Diane", "Cécile", "Julien", "Maxence", "Yass", "Germain", "Baptiste", "PY", "Jérôme", "Mathieu"]
+
   belongs_to :plant
   belongs_to :garden
 
@@ -8,6 +10,7 @@ class GardenPlant < ApplicationRecord
   # validates :pot_color, inclusion: {in: %w()}
 
   after_update :create_initial_tasks
+  after_create_commit :set_nickname
 
   enum :status, {
     pre_selected: 0,
@@ -15,6 +18,7 @@ class GardenPlant < ApplicationRecord
     selected: 10,
     validated: 20
   }
+
 
   def score
     urgence = 0
@@ -68,5 +72,13 @@ class GardenPlant < ApplicationRecord
                 start_time: DateTime.now,
                 due_date: DateTime.now + 1.day,
                 garden_plant: self)
+  end
+
+  def set_nickname
+    available_nicknames = NICKNAMES.reject do |nickname|
+      garden.garden_plants.select(:nickname).include?(nickname)
+    end
+    self.nickname = available_nicknames.sample
+    save
   end
 end
