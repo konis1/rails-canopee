@@ -15,10 +15,10 @@ button {
   align-items: center;
 }
 
-.bg-dark-green {
-  color: white;
+.display-likes {
+  color: $dark-green;
   padding: 2px;
-  border-radius: 20px;
+  // border-radius: 20px;
   justify-content: space-around;
 }
 
@@ -48,7 +48,6 @@ button {
   bottom: 5.875rem;
   overflow: hidden;
   padding-top: 1.5rem;
-  background-color: white;
 
   &__content {
     user-select: none;
@@ -215,3 +214,6 @@ button {
 // .swiper__card_content_top {
 //   justify-content: space-between;
 // }
+.crush-btn-box {
+  bottom: 80px;
+}
