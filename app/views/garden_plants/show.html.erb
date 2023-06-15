@@ -1,8 +1,8 @@
- <div class="min-full-screen">
-  <%= cl_image_tag @garden_plant.plant.photo.key, height: 200, class:"image-card" %>
-  <div class="container text-center mt-3">
+ <div class="d-flex flex-column min-full-screen">
+  <div class="garden-plant-image" style="margin-bottom: -72px;">
+    <%= cl_image_tag @garden_plant.plant.photo.key, height: 387, class:"image-card" %>
   </div>
-  <div class="info-card">
+  <div class="info-card flex-grow-1-1-0">
     <div class="container text-center mt-3">
       <h1><%= @garden_plant.nickname %></h1>
       <p> Je suis <%= @garden_plant.plant.name %> et j’ai grandi en Ile de France chez Maurice Boyauval mon horticulteur. </p>
@@ -10,10 +10,14 @@
       <hr>
       <h5> <%= render "review_card" %></h5> <br>
         <div class="health-bar-container">
-          <div class="health-bar" style="width:<%= @garden_plant.score %>%; background: <%= color_level(@garden_plant.score) %>">
+          <div class="health-bar"
+                style="
+                  width:<%= @garden_plant.score %>%;
+                  background-color: <%= color_level(@garden_plant.score) %>;
+                ">
           </div>
             <span class="health-bar-score">
-              <%= @garden_plant.score %>
+              <%= @garden_plant.score %>%
             </span>
           </div>
           <span> </span>
@@ -25,11 +29,13 @@
               <% if task.done_time.nil? %>
                 <div >
                   <%= simple_form_for task, url: update_done_task_path(task) , method: :patch, html:{class:"form-activitiy"} do |f| %>
-                    <p><%= task.activity %></p>
+                    <p class="m-0 form-left"><%= task.activity %></p>
+                    <div class="form-center">
                       <%= button_tag class: "btn-fait" do %>
                         <i class="fa-solid fa-check"></i>
                       <% end %>
-                    <p> <%= task.due_date.day%>/<%= task.due_date.month %>/<%= task.due_date.year %></p>
+                    </div>
+                    <p class="m-0 form-right"><%= task.due_date.day%>/<%= task.due_date.month %>/<%= task.due_date.year %></p>
                   <% end %>
                 </div>
               <% end %>
@@ -38,7 +44,7 @@
         </div>
 
 
-      <%= link_to 'Retour à mon jardin', garden_path(@garden_plant.garden), class: "back" %>
-      <div class="filler bg-dark-green"></div>
+      <%= link_to 'Retour à mon jardin', garden_path(@garden_plant.garden), class: "back d-block mt-5 text-center" %>
+      <%# <div class="filler bg-dark-green"></div> %>
   </div>
 </div>

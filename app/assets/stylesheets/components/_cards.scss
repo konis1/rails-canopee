@@ -114,8 +114,18 @@
   background-position: center;
   // padding: 370px 0;
   background-color: $dark-green;
-  position: relative;
-  top: -60px;
+  .form-right {
+    text-align: right;
+  }
+
+  .form-center {
+    width: 20%;
+    text-align: center;
+  }
+
+  .form-left, .form-right {
+    width: 40%;
+  }
 
    h1 {
     font-size: 46px;
@@ -139,20 +149,22 @@
     margin: 39px;
   }
 
-.btn-fait {
-  background-color: $light-gray;
-  width: 72px;
-  height: 32px;
-  background-color: $lighter-green;
-  border-radius: 30px;
-}
+  .btn-fait {
+    background-color: $light-gray;
+    max-width: 32px;
+    height: 32px;
+    background-color: #6BAA75;
+    border-radius: 30px;
+    flex-grow: 1;
+    margin: 0 auto;
+  }
 }
 
 .tasks-list {
 
   .simple_form  {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
   }
 
 
