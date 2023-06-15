@@ -76,3 +76,16 @@
 .light-selector:checked + label {
   color: #cc985c;
 }
+
+.btn-active-no-effect {
+  &:active {
+    background-color: transparent !important;
+    color: $light-yellow !important;
+    border: none !important;
+  }
+  &:focus-visible {
+      background-color: transparent !important;
+    color: $light-yellow !important;
+    border: none !important;
+    }
+  }
