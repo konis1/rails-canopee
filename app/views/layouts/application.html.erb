@@ -39,10 +39,7 @@
   </head>
 
   <body>
-    <%#= render "shared/navbar" unless action_name == "home" %>
-    <%# <div class="min-container-scroll-with-fixed-navbar-bottom d-flex flex-column <%= page_background_color_class >"> %>
     <%= yield %>
-    <%# </div> %>
     <%= render "shared/navbar_bottom" unless action_name == "home" %>
   </body>
 </html>
