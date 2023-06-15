@@ -6,20 +6,18 @@
   color: $dark-green;
 
   .crush-cards-container  {
-    height: 65vh;
+    height: 63vh;
     overflow-y: auto;
 
   }
 
   .go-crush-btn {
-    background-color: $dark-green;
     display: block;
     text-align: center;
     padding: 1rem 0;
     color: white;
     font-size: 1.2rem;
     font-weight: bolder;
-    text-transform: uppercase;
   }
 }
 
@@ -29,4 +27,8 @@
   margin-right: 1rem;
   color: $dark-green;
   text-align: justify;
+}
+
+.crush p {
+  margin-bottom: 0;
 }

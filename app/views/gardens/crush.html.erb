@@ -1,4 +1,4 @@
-<div class="crush" style="background-image: url(<%= image_path('cover_crushs.png', alt: 'Cover crushs') %>)">
+<div class="crush page-container" style="background-image: url(<%= image_path('cover_crushs.png', alt: 'Cover crushs') %>)">
   <div data-controller="crush">
     <div class="crush-container">
       <h2 class="page-title">Mes crushes</h2>
@@ -14,6 +14,9 @@
           <div class="card-crush p-3 m-3">
               <a href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvas-<%= garden_plant.id%>">
                 <img src="<%= cl_image_path garden_plant.plant.photo.key, height: 80, crop: :fill %>" alt="A plant" class="first-plant">
+                <div class="d-flex justify-content">
+                <i class="fa-solid fa-circle-info fa-xl" style="color: #0c4019;"></i>
+                </div>
               </a>
             <% if @garden.garden_plants.none? %>
               <p>Vous n'avez pas sélectionné de plante 😭</p>
@@ -27,8 +30,8 @@
           </div>
         <% end %>
       </div>
-      <div class="text-center go-crush-btn">
-        <%= link_to "Go !", validate_plants_garden_path(@garden), data: { turbo_method: :post }, class:"link-to-validate btn crush-btn btn-success" %>
+      <div class="text-center go-crush-btn mb-5 pt-0 ">
+        <%= link_to "c'est parti !", validate_plants_garden_path(@garden), data: { turbo_method: :post }, class:"link-to-validate btn crush-btn btn-success" %>
       </div>
     </div>
   </div>
