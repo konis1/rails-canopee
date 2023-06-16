@@ -6,10 +6,27 @@
   color: $dark-green;
 
   .crush-cards-container  {
-    height: 63vh;
+    height: 62vh;
     overflow-y: auto;
-
   }
+
+  // .crush-container-top {
+  //   position: relative;
+  //   padding-bottom: 3em;
+  //   z-index: 0;
+  //   &::before {
+  //     content: '';
+  //     height: 1.1em;
+  //     width: 100%;
+  //     position: absolute;
+  //     bottom: -17px;
+  //     left: 0;
+  //     right: 0;
+  //     background: linear-gradient(180deg, #e59983, transparent);
+  //     // filter: blur(6px);
+  //     z-index: 1;
+  //   }
+  // }
 
   .go-crush-btn {
     display: block;
