@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="no-overscroll-behavior">
+<html class="no-overscroll-behavior <%= "position-fixed" if params[:controller] == "gardens" && params[:action] == "select_plants" %> ">
   <head>
     <%= render 'shared/ios_pwa_links' %>
     <%# HTML setup - Layout %>

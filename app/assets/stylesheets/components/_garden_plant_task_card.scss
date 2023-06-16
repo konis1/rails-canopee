@@ -31,13 +31,13 @@
   }
   button {
     width: 30px;
-    height: 30px;
     border: 2px solid $dark-green;
     border-radius: 50%;
     background: white;
     display: flex;
     justify-content: center;
     align-items: center;
+    aspect-ratio: 1/1;
     div {
       flex: 0 0 20px;
       height: 20px;
