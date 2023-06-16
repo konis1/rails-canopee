@@ -1,12 +1,14 @@
 <div class="crush page-container" style="background-image: url(<%= image_path('cover_crushs.png', alt: 'Cover crushs') %>)">
   <div data-controller="crush">
     <div class="crush-container">
-      <h2 class="page-title">Mes crushes</h2>
-      <p class="page-description">Voici ta sélection actuelle !</p>
-      <div class='counter-wrapper'>
-        <i class="fa-solid fa-heart"></i>
-        <div class="counter d-flex" >
-          <p><span data-crush-target="counter"><%= @garden_plants.selected.count %></span> crushes</p>
+      <div class="crush-container-top">
+        <h2 class="page-title">Mes crushes</h2>
+        <p class="page-description">Voici ta sélection actuelle !</p>
+        <div class='counter-wrapper'>
+          <i class="fa-solid fa-heart"></i>
+          <div class="counter d-flex" >
+            <p><span data-crush-target="counter"><%= @garden_plants.selected.count %></span> crushes</p>
+          </div>
         </div>
       </div>
       <div class="crush-cards-container">
