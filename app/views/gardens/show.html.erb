@@ -10,52 +10,52 @@
   <% if @garden.garden_plants.validated.any? %>
     <div class='weather-container'>
       <div class='weather-garden-info'>
-        <p><%= @garden.name %></p>
-        <p><%= @garden.location %></p>
-      </div>
-      <p class='day-info'>
-        <% if Time.now.strftime("%A") == 'Monday' %>
-          Lundi
-        <% elsif Time.now.strftime("%A") == 'Tuesday' %>
-          Mardi
-        <% elsif Time.now.strftime("%A") == 'Wednesday' %>
-          Mercredi
-        <% elsif Time.now.strftime("%A") == 'Thursday' %>
-          Jeudi
-        <% elsif Time.now.strftime("%A") == 'Friday' %>
-          Vendredi
-        <% elsif Time.now.strftime("%A") == 'Saturday' %>
-          Samedi
-        <% elsif Time.now.strftime("%A") == 'Sunday' %>
-          Dimanche
-        <% end %>
-        <%= Time.now.day %>
-        <% if Time.now.strftime("%B") == 'January' %>
-          janvier
-        <% elsif Time.now.strftime("%B") == 'February' %>
-          février
-        <% elsif Time.now.strftime("%B") == 'March' %>
-          mars
-        <% elsif Time.now.strftime("%B") == 'April' %>
-          avril
-        <% elsif Time.now.strftime("%B") == 'May' %>
-          mai
-        <% elsif Time.now.strftime("%B") == 'June' %>
-          juin
-        <% elsif Time.now.strftime("%B") == 'July' %>
-          juillet
-        <% elsif Time.now.strftime("%B") == 'August' %>
-          août
-        <% elsif Time.now.strftime("%B") == 'September' %>
-          septembre
-        <% elsif Time.now.strftime("%B") == 'October' %>
-          octobre
-        <% elsif Time.now.strftime("%B") == 'November' %>
-          novembre
-        <% elsif Time.now.strftime("%B") == 'December' %>
-          décembre
-        <% end %>
-      </p>
+         <p><%= @garden.location %></p>
+
+          <p class='day-info'>
+            <% if Time.now.strftime("%A") == 'Monday' %>
+              Lundi
+            <% elsif Time.now.strftime("%A") == 'Tuesday' %>
+              Mardi
+            <% elsif Time.now.strftime("%A") == 'Wednesday' %>
+              Mercredi
+            <% elsif Time.now.strftime("%A") == 'Thursday' %>
+              Jeudi
+            <% elsif Time.now.strftime("%A") == 'Friday' %>
+              Vendredi
+            <% elsif Time.now.strftime("%A") == 'Saturday' %>
+              Samedi
+            <% elsif Time.now.strftime("%A") == 'Sunday' %>
+              Dimanche
+            <% end %>
+            <%= Time.now.day %>
+            <% if Time.now.strftime("%B") == 'January' %>
+              janvier
+            <% elsif Time.now.strftime("%B") == 'February' %>
+              février
+            <% elsif Time.now.strftime("%B") == 'March' %>
+              mars
+            <% elsif Time.now.strftime("%B") == 'April' %>
+              avril
+            <% elsif Time.now.strftime("%B") == 'May' %>
+              mai
+            <% elsif Time.now.strftime("%B") == 'June' %>
+              juin
+            <% elsif Time.now.strftime("%B") == 'July' %>
+              juillet
+            <% elsif Time.now.strftime("%B") == 'August' %>
+              août
+            <% elsif Time.now.strftime("%B") == 'September' %>
+              septembre
+            <% elsif Time.now.strftime("%B") == 'October' %>
+              octobre
+            <% elsif Time.now.strftime("%B") == 'November' %>
+              novembre
+            <% elsif Time.now.strftime("%B") == 'December' %>
+              décembre
+            <% end %>
+          </p>
+        </div>
       <div class='weather-forecast'>
         <p><%= @weather_json['temperature_2m'][Time.now.hour] %>C°</p>
         <% if @hourly_weather == 'drizzle' %>
