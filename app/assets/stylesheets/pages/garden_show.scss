@@ -3,18 +3,24 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border: 3px solid $dark-green;
-  border-radius: 8px;
-  background-color: $lighter-green;
+  // border: 3px solid $dark-green;
+  border-radius: 3px;
+  // background-color: $lighter-green;
   padding: 8px;
   margin-bottom: 16px;
+  font-weight: bold;
+  font-size: large;
 
   p {
     margin: 0;
   }
 
   .weather-garden-info, .weather-forecast {
-    flex-basis: 33%;
+    flex-basis: 41%;
+  }
+  .fa-sun {
+    color: yellow;
+    font-size: xx-large;
   }
 
   .weather-forecast {
