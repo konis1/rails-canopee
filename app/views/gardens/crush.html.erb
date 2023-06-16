@@ -3,7 +3,7 @@
     <div class="crush-container">
       <div class="crush-container-top">
         <h2 class="page-title">Mes crushes</h2>
-        <p class="page-description">Voici ta sélection actuelle !</p>
+        <p class="page-description">Voici ta sélection !</p>
         <div class='counter-wrapper'>
           <i class="fa-solid fa-heart"></i>
           <div class="counter d-flex" >
@@ -33,7 +33,7 @@
           </div>
         <% end %>
       </div>
-      <div class="text-center go-crush-btn pt-0 ">
+      <div class="text-center go-crush-btn mt-3 pt-0 ">
         <%= link_to "c'est parti !", validate_plants_garden_path(@garden), data: { turbo_method: :post }, class:"link-to-validate btn crush-btn btn-success" %>
       </div>
     </div>

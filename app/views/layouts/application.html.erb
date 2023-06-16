@@ -38,7 +38,7 @@
 
   </head>
 
-  <body>
+  <body class="<%= "position-fixed" unless current_page?(tasks_path) || (controller_name == "gardens" && action_name == "show") || (controller_name == "gardens" && action_name == "index") %>">
     <%= yield %>
     <%= render "shared/navbar_bottom" unless action_name == "home" %>
   </body>
