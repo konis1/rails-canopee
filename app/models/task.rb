@@ -4,6 +4,8 @@ class Task < ApplicationRecord
   has_one :plant, through: :garden_plant
   after_create_commit :notify_recipient
 
+  has_noticed_notifications
+
   scope :watering, -> { where(activity: 'Arrose-moi !') }
   scope :mulching, -> { where(activity: 'Paille-moi !') }
   scope :repotting, -> { where(activity: 'Rempote-moi !') }
