@@ -17,6 +17,7 @@ class TaskNotification < Noticed::Base
 
   # Define helper methods to make rendering easier.
   #
+
   def message
     t(".message")
   end
