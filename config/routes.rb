@@ -26,6 +26,7 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :payments, only: [:new, :create]
   resources :garden_plants, only: [:show, :destroy, :update]
   resources :tasks, only: [:update]
   resources :pages, only: [:home, :cover]
