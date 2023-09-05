@@ -1,5 +1,5 @@
-class RetrieveGardenPlantsJob < ApplicationJob
-  queue_as :default
+class RetrieveGardenPlantsJob
+  include Sidekiq::Job
 
   def perform(garden_id, weather_data)
     garden = Garden.find(garden_id)

@@ -1,5 +1,5 @@
-class GenerateDailyTasksForPlantJob < ApplicationJob
-  queue_as :default
+class GenerateDailyTasksForPlantJob
+  include Sidekiq::Job
 
   def perform(garden_plant_id, weather_data)
     @weather_data = weather_data
@@ -26,8 +26,6 @@ class GenerateDailyTasksForPlantJob < ApplicationJob
     generate_plant_cover_task
     generate_mulching_task
   end
-
-  # garden_plant.tasks.watering.pending.each do |task|
 
   private
 
