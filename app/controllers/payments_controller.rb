@@ -1,19 +1,17 @@
-# app/controllers/payments_controller.rb
 class PaymentsController < ApplicationController
   def create
-    @user = Stripe::User.create(
+    # Create a customer in Stripe (not a User)
+    customer = Stripe::Customer.create(
       email: params[:stripeEmail],
       source: params[:stripeToken]
     )
 
-    @charge = Stripe::Charge.create(
-      user: user.id,
-      amount: 10, # Amount in cents
-      description: 'Example Charge',
-      currency: 'usd'
-    )
+    # Now you have a customer object that you can use for future payments
+    # You may want to save the customer.id to associate it with your application's user
 
     # Handle successful payment
+    # ...
+
   rescue Stripe::CardError => e
     flash[:error] = e.message
     redirect_to new_payment_path
