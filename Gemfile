@@ -31,6 +31,7 @@ gem "geocoder"
 
 # Add perso
 gem "cloudinary"
+# Gem in charge of new task notifications
 gem "noticed"
 
 gem 'twilio-ruby'

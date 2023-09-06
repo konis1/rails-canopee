@@ -9,6 +9,4 @@ class RetrieveGardensJob
       RetrieveGardenPlantsJob.perform_async(garden.id, weather_data)
     end
   end
-
-  # Sidekiq::Cron::Job.create(name: 'Retrieve every garden - every day', cron: '0 4 * * *', class: 'RetrieveGardensJob')
 end

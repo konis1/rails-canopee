@@ -52,7 +52,7 @@ class WeatherService
                                                                  forecast_days: 16,
                                                                  timezone: 'Europe/London' } }
     data = JSON.parse(forecast_response)['daily']
-    [data['temperature_2m_max'], data['temperature_2m_min'], data['rain_sum'], data['time']]
+    [data['temperature_2m_min'], data['temperature_2m_max'], data['rain_sum'], data['time']]
   end
 
   def determine_climate

@@ -3,21 +3,22 @@ class GenerateDailyTasksForPlantJob
 
   def perform(garden_plant_id, weather_data)
     @weather_data = weather_data
+
     @min_temp_array = weather_data[0]
     @max_temp_array = weather_data[1]
     @rain_array = weather_data[2]
     @dates_array = weather_data[3]
-    @past_min_temp_array = @min_temp_array.first(30)
-    @past_max_temp_array = @max_temp_array.first(30)
-    @past_rain_array = @rain_array.first(30)
-    @past_dates_array = @dates_array.first(30)
+    @past_min_temp_array = @min_temp_array.first(31)
+    @past_max_temp_array = @max_temp_array.first(31)
+    @past_rain_array = @rain_array.first(31)
+    @past_dates_array = @dates_array.first(31)
     @today_max_temp = @max_temp_array[31]
     @today_min_temp = @min_temp_array[31]
     @today_rain = @rain_array[31]
-    @forecast_min_temp_array = @min_temp_array.drop(31)
-    @forecast_max_temp_array = @max_temp_array.drop(31)
-    @forecast_rain_array = @rain_array.drop(31)
-    @forecast_dates_array = @dates_array.drop(31)
+    @forecast_min_temp_array = @min_temp_array.drop(32)
+    @forecast_max_temp_array = @max_temp_array.drop(32)
+    @forecast_rain_array = @rain_array.drop(32)
+    @forecast_dates_array = @dates_array.drop(32)
 
     @garden_plant = GardenPlant.find(garden_plant_id)
 
@@ -32,14 +33,25 @@ class GenerateDailyTasksForPlantJob
   def generate_plant_watering_task
     watering_interval = calculate_plant_watering_interval
 
-    if @past_rain_array.last(watering_interval).all?(0) && @today_rain.zero? && @garden_plant.tasks.watering.watered_recently.count.zero? && @garden_plant.tasks.watering.pending.count.zero?
+    puts watering_interval
+
+    if @past_rain_array.last(watering_interval).all?(0) && @today_rain.zero?
       Task.create(
         activity: "Arrose-moi !",
-        criticity: 0,
+        criticity: "0",
         due_date: DateTime.now + (watering_interval * 0.7).day,
         start_time: DateTime.now,
         garden_plant: @garden_plant
       )
+    end
+  end
+
+  def calculate_plant_watering_interval
+    plant_watering_needs = @garden_plant.plant.water_need
+    case plant_watering_needs
+    when 0 then 31
+    when 1 then 7
+    when 2 then 1
     end
   end
 
@@ -82,15 +94,6 @@ class GenerateDailyTasksForPlantJob
         start_time: DateTime.now,
         garden_plant: @garden_plant
       )
-    end
-  end
-
-  def calculate_plant_watering_interval
-    plant_watering_needs = @garden_plant.plant.water_need
-    case plant_watering_needs
-    when 0 then 31
-    when 1 then 7
-    when 2 then 1
     end
   end
 end
