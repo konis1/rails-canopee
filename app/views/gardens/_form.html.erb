@@ -2,59 +2,8 @@
   <%= simple_form_for @garden do |f| %>
     <div class="rounded-4 p-4 bg-light-green"
          data-garden-form-target="input">
-      <%= f.input :name,
-                  label: "Choisis mon spot",
-                  label_html: {
-                    class: "text-light-yellow fs-4"
-                  },
-                  input_html: {
-                    class: "string optional border-bottom form-control-plaintext text-white",
-                    placeholder: "ex: Fenêtre avec vue sur mer 🏖"
-                  },
-                  wrapper_html: {
-                    class: ""
-                  } %>
-      <p class="text-light-yellow fs-4">Il y aura un peu de soleil ?</p>
-      <%= f.input :light,
-                  as: :radio_buttons,
-                  label: "",
-                  required: false,
-                  collection: [["Ombre", 0], ["Mi-ombre", 1], ["Ensoleillé", 2]],
-                  input_html: { class: "light-selector" },
-                  item_wrapper_class: "light-item flex-grow-1-1-0",
-                  label_method: lambda { |(label, _value)| render("gardens/labels/light", label: label) },
-                  wrapper_html: {
-                    class: "d-flex justify-content-between legend-hidden"
-                  }
-      %>
-      <p class="text-light-yellow fs-4">Choisis ma taille de pot 🪴</p>
-      <%= f.input :size,
-                  as: :radio_buttons,
-                  label: "",
-                  required: false,
-                  collection: [["petit", 0], ["moyen", 1], ["grand", 2]],
-                  input_html: { class: "size-selector" },
-                  item_wrapper_class: 'size-item flex-grow-1-1-0',
-                  wrapper_html: {
-                    class: "d-flex justify-content-between legend-hidden"
-                  } %>
-    </div>
-    <div class="rounded-4 pt-1 pb-1 px-4 bg-light-green d-none"
-         data-garden-form-target="input">
-      <p class="text-light-yellow fs-4">A quel point vas-tu m'aimer ? (Et t'occuper de moi !)</p>
-      <div class="card-avatar">
-        <%= f.input :care_willing,
-          label: "",
-          required: false,
-          as: :radio_buttons,
-          collection: [["Pas du tout", 0], ["Un peu", 0], ["Beaucoup", 1], ["Passionnément", 1], ["A la folie", 2]],
-          input_html: { class: "d-none care-willing-selector" },
-          label_method: lambda { |(label, _value)| render("gardens/labels/care_willing", label: label) } %>
-      </div>
-    </div>
-    <div class="rounded-4 p-4 bg-light-green d-none"
-         data-garden-form-target="input">
-      <p class="text-light-yellow fs-4">Où vais-je habiter ? 🏠</p>
+      <h3 class="text-light-yellow fs-4">Localisation</h3>
+      <p>Dans quelle ville habitez-vous ? 🏠</p>
       <%= f.input :location,
                   label:false,
                   input_html: {
@@ -70,6 +19,37 @@
                       address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]
                     }
                   } %>
+    </div>
+    <div class="rounded-4 p-4 bg-light-green"
+         data-garden-form-target="input">
+      <h3 class="text-light-yellow fs-4">Luminosité</h3>
+      <p>Quel sera l'ensoleillement pour ta plante</p>
+      <%= f.input :light,
+                  as: :radio_buttons,
+                  label: "",
+                  required: false,
+                  collection: [["Ombre", 0], ["Mi-ombre", 1], ["Ensoleillé", 2]],
+                  input_html: { class: "light-selector" },
+                  item_wrapper_class: "light-item flex-grow-1-1-0",
+                  label_method: lambda { |(label, _value)| render("gardens/labels/light", label: label) },
+                  wrapper_html: {
+                    class: "d-flex justify-content-between legend-hidden"
+                  }
+      %>
+    </div>
+    <div class="rounded-4 bg-light-green"
+         data-garden-form-target="input">
+      <h3 class="text-light-yellow fs-4">Soins</h3>
+      <p>A quel point veux-tu t'occuper de ta plante ?</p>
+      <div class="card-avatar">
+        <%= f.input :care_willing,
+          label: "",
+          required: false,
+          # as: :radio_buttons,
+          collection: [["Pas du tout", 0], ["Un peu", 0], ["Beaucoup", 1], ["Passionnément", 1], ["A la folie", 2]],
+          input_html: { class: "care-willing-selector" },
+          label_method: lambda { |(label, _value)| render("gardens/labels/care_willing", label: label) } %>
+      </div>
     </div>
     <div class="d-flex justify-content-center aling-items-center">
       <div class="flex-grow-1-1-0"></div>
