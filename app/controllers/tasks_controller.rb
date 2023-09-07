@@ -13,16 +13,17 @@ class TasksController < ApplicationController
       acti.activity
     end
     @notifications = current_user.notifications
-    @send_sms = Notification.new
+    # @send_sms = Notification.new
     account_sid = ENV['account_sid']
     auth_token = ENV['auth_token']
     @client = Twilio::REST::Client.new(account_sid, auth_token)
 
-    @send_sms = @client.messages.create(
-      to: '+33613073726', # Replace with the recipient's phone number
-      from: '+15736373667', # Replace with your Twilio phone number
-      body: 'Hello from Bonnefeuille !'
-    )
+    # message = @client.messages.create(
+    #   body: 'Attention votre compagnon a besoin de votre aide! Rendez vous sur votre espace Soin de Bonnefeuille http://www.bonnefeuille.fr/',
+    #   from: 'whatsapp:+14155238886',
+    #   to: 'whatsapp:+33613073726'
+    # )
+
   end
 
   def new

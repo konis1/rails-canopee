@@ -1,7 +1,8 @@
 require 'json'
 require 'rest-client'
 
-# Takes arguments given by Geocoder, gets weather data and region to filter plants by climate.
+# Prends des arguments donnés par Geocoder, récupère la région concernée et de la donnée météo pour filtrer les plantes
+# par climat.
 class WeatherService
   def initialize(latitude, longitude, location)
     @location = "#{location.split(',')[0]}, France"
@@ -11,6 +12,9 @@ class WeatherService
     @geocoding_api = "https://geocoding-api.open-meteo.com/v1/search"
   end
 
+  # J'ai assemblé ce classement des régions et climats de France de manière assez grossière basée sur les indications
+  # pas hyper précises d'Ooreka. Ca serait bien de trouver un moyen d'obtenir des données climatiques très précises sur
+  # chaque lieu. L'API Open Meteo qu'on utilise à apperemment une fonction intéressante de données historiques.
   CONTINENTAL = ['Grand Est', 'Bourgogne-Franche-Comté']
   OCEANIQUE = ['Bretagne', 'Pays de la Loire', 'Nouvelle-Aquitaine']
   SEMI_OCEANIQUE = ['Île-de-France', 'Hauts-de-France']
@@ -52,7 +56,7 @@ class WeatherService
                                                                  forecast_days: 16,
                                                                  timezone: 'Europe/London' } }
     data = JSON.parse(forecast_response)['daily']
-    [data['temperature_2m_max'], data['temperature_2m_min'], data['rain_sum'], data['time']]
+    [data['temperature_2m_min'], data['temperature_2m_max'], data['rain_sum'], data['time']]
   end
 
   def determine_climate
@@ -105,12 +109,4 @@ class WeatherService
       'montagnard'
     end
   end
-
-  # def retrieve_hourly_weather
-  #   RestClient.get @weather_api, { params: { latitude: @latitude,
-  #                                            longitude: @longitude,
-  #                                            hourly: 'temperature_2m,rain,cloudcover',
-  #                                            forecast_days: 1,
-  #                                            timezone: 'Europe/London' } }
-  # end
 end

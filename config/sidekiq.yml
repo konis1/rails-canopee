@@ -10,6 +10,7 @@
   - active_storage_analysis
   - active_storage_purge
 
+# Le code qui suit est sans doute à retirer au vu du changement de sidekiq-scheduler a sidekiq-cron.
 :scheduler:
   :schedule:
     retrieve_gardens:
