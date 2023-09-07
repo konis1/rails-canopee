@@ -45,7 +45,7 @@
         <%= f.input :care_willing,
           label: "",
           required: false,
-          as: :radio_buttons,
+          # as: :radio_buttons,
           collection: [["Pas du tout", 0], ["Un peu", 0], ["Beaucoup", 1], ["Passionnément", 1], ["A la folie", 2]],
           input_html: { class: "care-willing-selector" },
           label_method: lambda { |(label, _value)| render("gardens/labels/care_willing", label: label) } %>

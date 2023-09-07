@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
+  # Les quatre lignes suivantes servent à créer un endpoint 'sidekiq' pour afficher l'interface web de la gem.
+  # Mieux vaut les supprimer une fois l'app déployable, je pense.
   require "sidekiq/web"
-  # authenticate :user, ->(user) { user.admin? } do
+  RailsCanopee::Application.routes.draw do
     mount Sidekiq::Web => '/sidekiq'
-  # end
+  end
 
   devise_for :users
 

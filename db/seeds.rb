@@ -316,10 +316,3 @@ GardenPlant.create(nickname: "Tim", pot_color: "brown", garden_id: Garden.first.
 GardenPlant.find_each do |garden_plant|
   garden_plant.validated!
 end
-
-# GardenPlant.find_each do |garden_plant|
-#   puts garden_plant.tasks.first
-#   # garden_plant.tasks.each do |task|
-#   #   task.done_time = Time.now
-#   # end
-# end
