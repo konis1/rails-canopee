@@ -1,3 +1,5 @@
+# Ce job est appelé sur chaque jardin par le job RetrieveGardensJob dans le but d'itérer sur chaque plante associée
+# au jardin en question.
 class RetrieveGardenPlantsJob
   include Sidekiq::Job
 

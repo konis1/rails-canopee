@@ -1,41 +1,30 @@
+# Ce job est appelé sur chaque plante d'un jardin, organise les données contenues dans weather_data, puis s'en sert pour
+# générer les tâches à effectuer prochainement pour la plante en question.
 class GenerateDailyTasksForPlantJob
   include Sidekiq::Job
 
   def perform(garden_plant_id, weather_data)
     @weather_data = weather_data
 
-    @min_temp_array = weather_data[0]
-    @max_temp_array = weather_data[1]
-    @rain_array = weather_data[2]
-    @dates_array = weather_data[3]
-    @past_min_temp_array = @min_temp_array.first(31)
-    @past_max_temp_array = @max_temp_array.first(31)
-    @past_rain_array = @rain_array.first(31)
-    @past_dates_array = @dates_array.first(31)
-    @today_max_temp = @max_temp_array[31]
-    @today_min_temp = @min_temp_array[31]
-    @today_rain = @rain_array[31]
-    @forecast_min_temp_array = @min_temp_array.drop(32)
-    @forecast_max_temp_array = @max_temp_array.drop(32)
-    @forecast_rain_array = @rain_array.drop(32)
-    @forecast_dates_array = @dates_array.drop(32)
-
     @garden_plant = GardenPlant.find(garden_plant_id)
 
-    generate_plant_watering_task
-    generate_plant_sheltering_task
-    generate_plant_cover_task
-    generate_mulching_task
+    generate_plant_watering_task(@weather_data['past_rain_array'], @weather_data['today_rain'])
+    # generate_plant_sheltering_task
+    # generate_plant_cover_task
+    # generate_mulching_task
   end
 
   private
 
-  def generate_plant_watering_task
+  # C'est la seule tâche générée pour l'instant. J'attends de voir ce que ça donne pour améliorer la logique et
+  # implémenter d'autres tâches.
+  def generate_plant_watering_task(past_rain_array, today_rain)
     watering_interval = calculate_plant_watering_interval
 
-    puts watering_interval
+    puts past_rain_array.inspect
+    puts today_rain.inspect
 
-    if @past_rain_array.last(watering_interval).all?(0) && @today_rain.zero?
+    if past_rain_array.last(watering_interval).all?(0) && today_rain.zero?
       Task.create(
         activity: "Arrose-moi !",
         criticity: "0",
