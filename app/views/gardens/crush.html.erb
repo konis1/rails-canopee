@@ -2,12 +2,12 @@
   <div data-controller="crush">
     <div class="crush-container">
       <div class="crush-container-top">
-        <h2 class="page-title">Mes crushes</h2>
-        <p class="page-description">Voici ta sélection !</p>
+        <h2 class="page-title">Ma sélection</h2>
+        <%# <p class="page-description">Voici ta sélection !</p> %>
         <div class='counter-wrapper'>
           <i class="fa-solid fa-heart"></i>
           <div class="counter d-flex" >
-            <p><span data-crush-target="counter"><%= @garden_plants.selected.count %></span> crushes</p>
+            <p><span data-crush-target="counter"><%= @garden_plants.selected.count %></span> coups de coeur</p>
           </div>
         </div>
       </div>
@@ -34,7 +34,7 @@
         <% end %>
       </div>
       <div class="text-center go-crush-btn mt-3 pt-0 ">
-        <%= link_to "c'est parti !", validate_plants_garden_path(@garden), data: { turbo_method: :post }, class:"link-to-validate btn crush-btn btn-success" %>
+        <%= link_to "JE COMMANDE !", validate_plants_garden_path(@garden), data: { turbo_method: :post }, class:"link-to-validate btn crush-btn btn-success" %>
       </div>
     </div>
   </div>
