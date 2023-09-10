@@ -11,7 +11,7 @@
           <%= link_to garden_path(garden) do %>
             <div class="card-garden without-plants p-3 m-3" data-gardens-counter-target='garden'>
                 <div class="garden-info">
-                  <h3><%= garden.name %></h3>
+                  <h3>Mes plantes<%#= garden.name %></h3>
                   <div class="location-line">
                     <i class="fa-solid fa-location-dot"></i>
                     <p><%= garden.location %></p>
@@ -27,7 +27,7 @@
           <%= link_to garden_path(garden) do %>
             <div class="card-garden with-plants p-3 m-3" data-gardens-counter-target='garden'>
               <div class="garden-info col-8">
-                <h3><%= garden.name %></h3>
+                <h3>Mes plantes<%#= garden.name %></h3>
                 <div class="location-line">
                   <i class="fa-solid fa-location-dot"></i>
                   <p><%= garden.location %></p>
