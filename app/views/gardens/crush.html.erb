@@ -26,7 +26,7 @@
               <span href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvas-<%= garden_plant.id%>">
                 <span class="d-flex justify-content-center"><h3><%= garden_plant.plant.name %></h3><p>50 euros</p></span>
               </span>
-              <%= link_to garden_plant_path(garden_plant), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } do %>
+              <%= link_to garden_plant_path(garden_plant), data: { turbo_method: :delete, turbo_confirm: 'Etes-vous sûr de ne plus vouloir cette plante ?' } do %>
                 <i class="fa-solid fa-trash-can"></i>
               <% end %>
             <% end %>
@@ -34,8 +34,8 @@
         <% end %>
       </div>
       <div class="text-center go-crush-btn mt-3 pt-0 ">
-        <%= link_to "JE COMMANDE !", validate_plants_garden_path(@garden), data: { turbo_method: :post }, class:"link-to-validate btn crush-btn btn-success" %>
-        <p class="CGV mt-2">Livrées en 6 jours en pot (L14 x l10 x h35) et prêtes à s’épanouir 🐣 </p>
+        <%= link_to "JE COMMANDE !", merci_path(@garden), class:"link-to-validate btn crush-btn btn-success" %>
+        <p class="CGV mt-2 text-center">Livrées en 6 jours en pot (L14 x l10 x h35) et prêtes à s’épanouir 🐣 </p>
       </div>
     </div>
   </div>
