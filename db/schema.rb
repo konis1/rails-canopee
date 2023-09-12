@@ -110,7 +110,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_12_130304) do
 
   create_table "tasks", force: :cascade do |t|
     t.string "activity"
-    t.string "criticity"
+    t.integer "criticity"
     t.datetime "due_date"
     t.datetime "done_time"
     t.bigint "garden_plant_id", null: false

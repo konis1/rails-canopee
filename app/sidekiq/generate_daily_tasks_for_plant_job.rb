@@ -32,13 +32,10 @@ class GenerateDailyTasksForPlantJob
   def generate_plant_watering_task(past_rain_array, today_rain)
     watering_interval = calculate_plant_watering_interval
 
-    puts past_rain_array.inspect
-    puts today_rain.inspect
-
-    if past_rain_array.last(watering_interval).all?(0) && today_rain.zero?
+    if past_rain_array.last(watering_interval).all? { |precipitation| precipitation < 10.0 } && today_rain < 10.0 && @garden_plant.tasks.watering.pending.count.zero? && @garden_plant.tasks.watering.done.count.zero?
       Task.create(
         activity: "Arrose-moi !",
-        criticity: "0",
+        criticity: 0,
         due_date: DateTime.now + (watering_interval * 0.7).day,
         start_time: DateTime.now,
         garden_plant: @garden_plant
