@@ -4,7 +4,7 @@ class CreateTasks < ActiveRecord::Migration[7.0]
       t.string :activity
       t.string :criticity
       t.datetime :due_date
-      t.datetime :done_time
+      t.datetime :completion_date
       t.references :garden_plant, null: false, foreign_key: true
 
       t.timestamps

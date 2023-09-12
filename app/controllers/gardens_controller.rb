@@ -62,7 +62,6 @@ class GardensController < ApplicationController
     @garden_plants = @garden.garden_plants.selected.all
   end
 
-
   private
 
   def set_garden
@@ -70,8 +69,6 @@ class GardensController < ApplicationController
   end
 
   def garden_params
-
     params.require(:garden).permit(:name, :light, :size, :care_willing, :location, :color)
-
   end
 end

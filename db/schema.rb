@@ -112,7 +112,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_12_130304) do
     t.string "activity"
     t.integer "criticity"
     t.datetime "due_date"
-    t.datetime "done_time"
+    t.datetime "completion_date"
     t.bigint "garden_plant_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
