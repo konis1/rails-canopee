@@ -16,7 +16,7 @@ GardenPlant.destroy_all
 
 puts "adding users test@test.fr"
 
-user = User.new(email: "test@test.fr", password: "123456")
+user = User.new(email: "test@test.fr", password: "123456", phone_number: "+33613073726")
 user.save
 
 puts "user Test added with password 123456"

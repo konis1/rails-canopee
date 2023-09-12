@@ -1,0 +1,2139 @@
+// voici le code de mon app qui a pour objectif d'aider les utilisateurs a trouver la ou les plante(s) qui correspond(ent) à leur climat et leurs contraintes, puis de les aider à garder la/les plantes en vie grâce à un générateur de tâches relié à la météo locale de l'utilisateur. Pour le moment ne répond pas je t'envoie du code et je te poserai des questions après. merci
+
+
+///ROUTES
+Rails.application.routes.draw do
+  # Les quatre lignes suivantes servent à créer un endpoint 'sidekiq' pour afficher l'interface web de la gem.
+  # Mieux vaut les supprimer une fois l'app déployable, je pense.
+  require "sidekiq/web"
+  RailsCanopee::Application.routes.draw do
+    mount Sidekiq::Web => '/sidekiq'
+  end
+
+  devise_for :users
+
+  root to: "pages#home"
+  resources :pages, only: [:home, :merci]
+  get'merci', to:'pages#merci'
+
+  resources :gardens do
+    resources :garden_plants, only: [:create, :destroy] do
+    end
+  end
+
+  resources :plants, only: [] do
+    resources :reviews, only: [:new, :create]
+  end
+
+  resources :tasks, only: [:index] do
+    member do
+      patch :update_done
+      patch :update_tasks
+    end
+  end
+
+  resources :payments, only: [:new, :create]
+  resources :garden_plants, only: [:show, :destroy, :update]
+  resources :tasks, only: [:update]
+  resources :pages, only: [:home, :cover]
+
+  post "gardens/:id/validate_plants", to: "gardens#validate_plants", as: :validate_plants_garden
+  get "gardens/:id/select_plants", to: "gardens#select_plants", as: :select_plants
+  get "gardens/:id/crush", to: "gardens#crush", as: :crush
+
+
+
+end
+
+///MODELS
+class GardenPlant < ApplicationRecord
+  NICKNAMES = ["Tim", "Paul", "Thomas", "Diane", "Cécile", "Jérémy", "Ursula", "Célia", "Julien", "Maxence", "Yass", "Germain", "Baptiste", "PY", "Jérôme", "Mathieu", "Nicolas", "Anthony", "Adonis", "Malika", "Youval", "Javier", "Hélène", "Jean-Baptiste", "Alexandre", "Stéphanie", "Céline", "Antoine", "Eugène", "Lucie", "Loic", "Titouan", "Arnaud", "Maxime", "Alexis", "Etienne", "Amal", "Clément", 'Lenny', "David", "Lesly", "Jules", "François", "Stéphanie", "Michel", "Michèle", "Matthieu", "Guillaume", "Romain", "Johnny", "Francis", "Hubert", "Patrick", "Nathalie", "Patricia", "John", "Jane", "Luc", "Marie", "Jésus", "Joseph", "Jonathan", "Joe", "Marc", "Julia", "Julie", "Julio", "Adeline", "Justine", "Alexander", "Daniel", "Daniella"]
+
+  belongs_to :plant
+  belongs_to :garden
+
+  has_many :tasks, dependent: :destroy
+
+  # validates :nickname, uniqueness: { scope: :garden_id }
+  # validates :pot_color, inclusion: {in: %w()}
+
+  after_update :create_initial_tasks
+  after_create_commit :set_nickname
+
+  enum :status, {
+    pre_selected: 0,
+    refused: 5,
+    selected: 10,
+    validated: 20
+  }
+
+
+  def score
+    urgence = 0
+    tasks = self.tasks
+    tasks.each do |task|
+      if task.done_time.nil?
+        urgence += task.criticity.to_i * 10
+      end
+    end
+    if urgence < 50 && urgence > 0
+      return 50 - urgence
+    else
+      return 100 - urgence
+    end
+  end
+
+  private
+
+  def create_initial_tasks
+    return unless validated?
+
+    create_initial_repotting_task
+    create_initial_watering_task
+  end
+
+  def create_initial_repotting_task
+    if plant.growth_speed.zero?
+      Task.create(activity: 'Rempote-moi !',
+                  criticity: '0',
+                  start_time: DateTime.now + 1.year,
+                  due_date: DateTime.now + 1.year + 1.week,
+                  garden_plant: self)
+    elsif plant.growth_speed == 1
+      Task.create(activity: 'Rempote-moi !',
+                  criticity: '0',
+                  start_time: DateTime.now + 2.year,
+                  due_date: DateTime.now + 2.year + 1.week,
+                  garden_plant: self)
+    elsif plant.growth_speed == 2
+      Task.create(activity: 'Rempote-moi !',
+                  criticity: '0',
+                  start_time: DateTime.now + 3.year,
+                  due_date: DateTime.now + 3.year + 1.week,
+                  garden_plant: self)
+    end
+  end
+
+  def create_initial_watering_task
+    Task.create(activity: 'Arrose-moi !',
+                criticity: '2',
+                start_time: DateTime.now,
+                due_date: DateTime.now + 1.day,
+                garden_plant: self)
+  end
+
+  def set_nickname
+    available_nicknames = NICKNAMES.reject do |nickname|
+      garden.garden_plants.select(:nickname).include?(nickname)
+    end
+    self.nickname = available_nicknames.sample
+    save
+  end
+end
+
+class Garden < ApplicationRecord
+  belongs_to :user
+  has_many :garden_plants, -> {includes(:plant).order("plants.name desc")}, dependent: :destroy
+  has_many :plants, -> {order(name: :desc)}, through: :garden_plants
+  validates :light, presence: true #:size, :location, presence: true
+  validates :name, uniqueness: true
+  geocoded_by :location
+  after_validation :geocode, if: :will_save_change_to_location?
+
+  after_create_commit :associate_plants
+
+
+  def associate_plants
+
+    # garden = self
+    # recuperer tyoutes les instances de plantes correspondant a ce jardin
+    plants = Plant.where("? = ANY(climate)", "Climat #{self.climate}").where(
+      light_need: self.light,
+      care_frequency: self.care_willing
+      # TODO add other criterias
+    )
+    # et créer les garden_plants correspondantes
+    self.plants << plants
+    save
+  end
+
+
+  def number_of_selected_plants
+    garden_plants.selected.count
+  end
+
+  def number_of_remaining_plants
+    garden_plants.count - garden_plants.where(status: ["selected", "refused"]).count
+  end
+end
+
+class Notification < ApplicationRecord
+  include Noticed::Model
+  belongs_to :recipient, polymorphic: true
+end
+
+class Plant < ApplicationRecord
+  has_many :gardens, through: :garden_plants
+  has_many :garden_plants, dependent: :destroy
+  has_many :reviews, dependent: :destroy
+  has_one_attached :photo
+end
+
+class Task < ApplicationRecord
+  belongs_to :garden_plant
+  belongs_to :user
+  has_one :garden, through: :garden_plant
+  has_one :plant, through: :garden_plant
+  after_create_commit :notify_recipient
+
+  has_noticed_notifications
+
+  scope :watering, -> { where(activity: 'Arrose-moi !') }
+  scope :mulching, -> { where(activity: 'Paille-moi !') }
+  scope :repotting, -> { where(activity: 'Rempote-moi !') }
+  scope :covering, -> { where(activity: 'Couvre-moi !') }
+  scope :sheltering, -> { where(activity: "Rentre-moi à l'intérieur !") }
+  scope :urgent, -> { where(criticity: 2) }
+  scope :pending, -> {
+    where(done_time: nil)
+      .where('due_date > ?', Date.today)
+  }
+  scope :done, -> {
+    where.not(done_time: nil)
+         .where('due_date > ?', Date.today)
+  }
+
+  scope :watered_recently, -> {
+    where.not(done_time: nil)
+         .left_joins(garden_plant: :plant)
+         .where(
+           plant: { water_need: 0 }
+         ).and(where('done_time < ?', Date.today - 31.days))
+         .or(
+           where(
+             plant: { water_need: 1 }
+           ).and(where('done_time < ?', Date.today - 7.days))
+         )
+         .or(
+           where(
+             plant: { water_need: 2 }
+           ).and(where('done_time < ?', Date.today - 1.days))
+         )
+  }
+
+  scope :near_future, -> {
+    where(done_time: nil, due_date: (Date.today..Date.today + 30.days))
+  }
+
+  def criticity_name
+    case criticity
+      when 0 then "low"
+      when 1 then "medium"
+      when 2 then "high"
+    end
+  end
+
+  private
+
+  def notify_recipient
+    TaskNotification.with(task: self).deliver_later(garden_plant.garden.user)
+  end
+end
+
+class User < ApplicationRecord
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :validatable
+  has_many :gardens, dependent: :destroy
+  has_many :reviews, dependent: :destroy
+  has_many :tasks
+  has_many :notifications, as: :recipient, dependent: :destroy
+  has_noticed_notifications
+  validates :phone_number, presence: true, uniqueness: true, format: { with: /\A\+\d+\z/, message: "le format n'est pas valide" }
+end
+
+// CONTROLLERS
+class GardenPlantsController < ApplicationController
+  before_action :set_garden_plant, only: [:show, :edit, :update, :destroy]
+
+
+  def index
+    @garden_plants = current_user.garden_plants
+    @garden_plants = @garden.garden_plants
+  end
+
+  def show
+  end
+
+
+  def new
+    @garden_plant = @garden.garden_plants.new
+  end
+
+  def create
+    @garden = Garden.find(params[:garden_id])
+    @garden_plant = @garden_plants.new(garden_plant_params)
+    @garden_plant.garden = @garden
+    if @garden_plant.save
+      redirect_to garden_plant_path(@garden_plant), notice: 'Garden plant was successfully created.'
+    else
+      render :new, status: :unprocessable_entity
+    end
+  end
+
+  def edit
+  end
+
+  def update
+    if @garden_plant.update(garden_plant_params)
+      @garden = @garden_plant.garden
+      finished = @garden.number_of_remaining_plants == 0
+      respond_to do |format|
+        format.json { render json: { garden_plant_count: @garden.number_of_selected_plants, remaining_plants: @garden.number_of_remaining_plants, finished: finished, garden_crush_path: crush_path(@garden) } }
+        format.html { redirect_to garden_plant_path(@garden_plant), notice: 'Garden plant was successfully updated.'}
+      end
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+    @garden_plant.destroy
+    redirect_to garden_path(@garden_plant.garden), notice: 'Garden plant was successfully destroyed.' if @garden_plant.validated?
+    redirect_to crush_path(@garden_plant.garden), notice: 'Garden plant was successfully destroyed.' if @garden_plant.selected?
+  end
+
+  private
+
+  def set_garden_plant
+    @garden_plant = GardenPlant.find(params[:id])
+  end
+
+  def garden_plant_params
+    params.require(:garden_plant).permit(:nickname, :pot_color, :plant_id, :status)
+  end
+end
+
+
+class GardensController < ApplicationController
+  before_action :set_garden, only: [:show, :edit, :update, :destroy, :select_plants, :crush, :validate_plants]
+
+
+  def index
+    @gardens = Garden.all
+  end
+
+  def show
+    weather_checker = WeatherService.new(@garden.latitude, @garden.longitude, @garden.location)
+    @hourly_weather = weather_checker.determine_weather_of_the_hour
+    @weather_json = weather_checker.retrieve_hourly_weather
+  end
+
+  def new
+    @garden = Garden.new
+  end
+
+  def create
+    @garden = Garden.new(garden_params)
+    @garden.user = current_user
+    climate_checker = WeatherService.new(@garden.latitude, @garden.longitude, @garden.location)
+    @garden.climate = climate_checker.determine_climate
+
+    if @garden.save
+      redirect_to select_plants_path(@garden), notice: 'Garden was successfully created.'
+    else
+      render :new, status: :unprocessable_entity
+    end
+  end
+
+  def edit
+  end
+
+  def update
+    if @garden.update(garden_params)
+      redirect_to garden_path(@garden), notice: 'Garden was successfully updated.'
+    else
+      render :edit, status: :unprocessable_entity
+
+    end
+  end
+
+  def destroy
+    @garden.destroy
+    redirect_to gardens_path, notice: 'Garden was successfully destroyed.'
+  end
+
+  def validate_plants
+    # garden_plants = GardenPlant.where(id: params.dig(:garden_plant, :choices))
+    garden_plants = @garden.garden_plants.selected.all
+    garden_plants.each(&:validated!)
+
+    redirect_to garden_path(@garden)
+  end
+
+  def select_plants
+    @garden_plants = @garden.garden_plants
+  end
+
+  def crush
+    @garden_plants = @garden.garden_plants.selected.all
+  end
+
+
+  private
+
+  def set_garden
+    @garden = Garden.find(params[:id])
+  end
+
+  def garden_params
+
+    params.require(:garden).permit(:name, :light, :size, :care_willing, :location, :color)
+
+  end
+end
+
+class NotificationsController < ApplicationController
+  def index
+    @notifications = current_user.notifications
+  end
+end
+
+class PagesController < ApplicationController
+  skip_before_action :authenticate_user!, only: [ :home, :merci ]
+
+  def home; end
+  def merci; end
+
+
+end
+
+class PaymentsController < ApplicationController
+  def create
+    # Create a customer in Stripe (not a User)
+    customer = Stripe::Customer.create(
+      email: params[:stripeEmail],
+      source: params[:stripeToken]
+    )
+
+    # Now you have a customer object that you can use for future payments
+    # You may want to save the customer.id to associate it with your application's user
+
+    # Handle successful payment
+    # ...
+
+  rescue Stripe::CardError => e
+    flash[:error] = e.message
+    redirect_to new_payment_path
+  end
+end
+
+class TasksController < ApplicationController
+  require 'rubygems'
+  require 'twilio-ruby'
+
+  before_action :set_task, only: [:show, :edit, :update, :destroy]
+
+  def index
+    @my_tasks = Task.joins(garden_plant: [{ garden: :user }]).where('users.id' => current_user.id).where(done: false)
+    @current_week_tasks = @my_tasks.where(due_date: DateTime.now.all_week)
+    @next_week_tasks = @my_tasks.where(due_date: DateTime.now.next_week.all_week)
+    my_activities = Task.select("activity").group("tasks.activity")
+    @all_activities = my_activities.map do |acti|
+      acti.activity
+    end
+    @notifications = current_user.notifications
+    # @send_sms = Notification.new
+    account_sid = ENV['account_sid']
+    auth_token = ENV['auth_token']
+    @client = Twilio::REST::Client.new(account_sid, auth_token)
+
+    # message = @client.messages.create(
+    #   body: 'Attention votre compagnon a besoin de votre aide! Rendez vous sur votre espace Soin de Bonnefeuille http://www.bonnefeuille.fr/',
+    #   from: 'whatsapp:+14155238886',
+    #   to: 'whatsapp:+33613073726'
+    # )
+
+  end
+
+  def new
+    @garden_plant = GardenPlant.find(params[:garden_plant_id])
+    @task = Task.new
+  end
+
+  def edit
+    @garden_plant = @task.garden_plant
+  end
+
+  def create
+    @garden_plant = GardenPlant.find(params[:garden_plant_id])
+    @task = @task.new(task_params)
+    @task.user = current_user
+    @garden_plant.tasks = @tasks
+    if @task.save
+      redirect_to garden_plant_tasks_path(@garden_plant), notice: 'Task was successfully created.'
+    else
+      render :new, status: :unprocessable_entity
+    end
+  end
+
+  def update
+    if @task.update(task_params)
+      set_done_time
+      respond_to do |format|
+        format.html { redirect_to tasks_path, notice: 'Task was successfully updated.' }
+        format.json { render json: { success: true } }
+      end
+    else
+      respond_to do |format|
+        format.html { render :edit, status: :unprocessable_entity }
+        format.json { render json: { success: false } }
+      end
+    end
+  end
+
+  def destroy
+    @garden_plant = @task.garden_plant
+    @task.destroy
+    redirect_to garden_plant_tasks_path(@garden_plant), notice: 'Task was successfully destroyed.'
+  end
+
+  def update_done
+    update_task(params[:id])
+    redirect_to garden_plant_path(@task.garden_plant.id), notice: 'Task is done'
+  end
+
+  def update_tasks
+    update_task(params[:id])
+    redirect_to tasks_path, notice: 'Task is done'
+  end
+
+  private
+
+  def update_task(id)
+    date = DateTime.now
+    @task = Task.find(id)
+    @task.update(done_time: date)
+  end
+
+  def set_task
+    @task = Task.find(params[:id])
+  end
+
+  def task_params
+    params.require(:task).permit(:activity, :criticity, :due_date, :done_time, :done)
+  end
+
+  def set_done_time
+    @task.done_time = DateTime.now if @task.done == true
+    @task.save
+  end
+end
+
+//NOTIFICATIONS
+
+# To deliver this notification:
+#
+# TaskNotification.with(task: @task).deliver_later(current_user)
+# TaskNotification.with(post: @post).deliver(current_user)
+
+class TaskNotification < Noticed::Base
+  # Add your delivery methods
+  #
+  deliver_by :database
+  # deliver_by :email, mailer: "UserMailer"
+  # deliver_by :slack
+  # deliver_by :custom, class: "MyDeliveryMethod"
+
+  # Add required params
+  #
+  param :task
+
+  # Define helper methods to make rendering easier.
+  #
+
+  def message
+    t(".message")
+  end
+
+  def url
+    tasks_path
+  end
+
+  # after_deliver do
+  #   raise
+  #   if notification.read?
+  #     notification.destroy
+  #   end
+  # end
+
+end
+
+//SERVICES
+
+require 'json'
+require 'rest-client'
+
+# Prends des arguments donnés par Geocoder, récupère la région concernée et de la donnée météo pour filtrer les plantes
+# par climat.
+class WeatherService
+  def initialize(latitude, longitude, location)
+    @location = "#{location.split(',')[0]}, France"
+    @latitude = latitude
+    @longitude = longitude
+    @weather_api = "https://api.open-meteo.com/v1/forecast"
+    @geocoding_api = "https://geocoding-api.open-meteo.com/v1/search"
+  end
+
+  # J'ai assemblé ce classement des régions et climats de France de manière assez grossière basée sur les indications
+  # pas hyper précises d'Ooreka. Ca serait bien de trouver un moyen d'obtenir des données climatiques très précises sur
+  # chaque lieu. L'API Open Meteo qu'on utilise à apperemment une fonction intéressante de données historiques.
+  CONTINENTAL = ['Grand Est', 'Bourgogne-Franche-Comté']
+  OCEANIQUE = ['Bretagne', 'Pays de la Loire', 'Nouvelle-Aquitaine']
+  SEMI_OCEANIQUE = ['Île-de-France', 'Hauts-de-France']
+  MEDITERRANEEN = ['Occitanie', "Provence-Alpes-Côte d'Azur", 'Corse']
+  MONTAGNARD = ['Auvergne-Rhône-Alpes']
+
+  def retrieve_daily_rain_data
+    forecast_response = RestClient.get @weather_api, { params: { latitude: @latitude,
+                                                                 longitude: @longitude,
+                                                                 daily: 'rain_sum',
+                                                                 forecast_days: 16,
+                                                                 timezone: 'Europe/London' } }
+    JSON.parse(forecast_response)['daily']['rain_sum'][0]
+  end
+
+  def retrieve_rain_data_16_days
+    forecast_response = RestClient.get @weather_api, { params: { latitude: @latitude,
+                                                                 longitude: @longitude,
+                                                                 daily: 'rain_sum',
+                                                                 forecast_days: 16,
+                                                                 timezone: 'Europe/London' } }
+    JSON.parse(forecast_response)['daily']['rain_sum']
+  end
+
+  def retrieve_min_temp_16_days
+    forecast_response = RestClient.get @weather_api, { params: { latitude: @latitude,
+                                                                 longitude: @longitude,
+                                                                 daily: 'temperature_2m_min',
+                                                                 forecast_days: 16,
+                                                                 timezone: 'Europe/London' } }
+    JSON.parse(forecast_response)['daily']['temperature_2m_min']
+  end
+
+  def retrieve_16_days_forecast
+    forecast_response = RestClient.get @weather_api, { params: { latitude: @latitude,
+                                                                 longitude: @longitude,
+                                                                 daily: 'temperature_2m_max,temperature_2m_min,rain_sum',
+                                                                 past_days: 31,
+                                                                 forecast_days: 16,
+                                                                 timezone: 'Europe/London' } }
+    data = JSON.parse(forecast_response)['daily']
+    [data['temperature_2m_min'], data['temperature_2m_max'], data['rain_sum'], data['time']]
+  end
+
+  def determine_climate
+    location_region = retrieve_region rescue 'continental'
+    locate_in_climate_map(location_region)
+  end
+
+  def determine_weather_of_the_hour
+    current_hour = Time.now.hour
+    hourly_weather = retrieve_hourly_weather
+    if hourly_weather['rain'][current_hour].positive? && hourly_weather['rain'][current_hour] < 5.0
+    # if hourly_weather['rain'][current_hour].positive? && ['hourly']['rain'][current_hour] < 5.0
+      'drizzle'
+    elsif hourly_weather['rain'][current_hour] > 5.0
+      'rainy'
+    elsif hourly_weather['cloudcover'][current_hour] < 30
+      'sunny'
+    elsif hourly_weather['cloudcover'][current_hour] > 30
+      'cloudy'
+    else
+      'checking weather...'
+    end
+  end
+
+  def retrieve_hourly_weather
+    hourly_weather = RestClient.get @weather_api, { params: { latitude: @latitude,
+                                             longitude: @longitude,
+                                             hourly: 'temperature_2m,rain,cloudcover',
+                                             forecast_days: 1,
+                                             timezone: 'Europe/London' } }
+    JSON.parse(hourly_weather)['hourly']
+  end
+
+  private
+
+  def retrieve_region
+    location_data = RestClient.get @geocoding_api, { params: { name: @location, count: 10, language: 'fr', format: 'json' } }
+    JSON.parse(location_data)['results'][0]['admin1']
+  end
+
+  def locate_in_climate_map(region)
+    if CONTINENTAL.include?(region)
+      'continental'
+    elsif OCEANIQUE.include?(region)
+      'océanique'
+    elsif SEMI_OCEANIQUE.include?(region)
+      'semi-océanique'
+    elsif MEDITERRANEEN.include?(region)
+      'méditerranéen'
+    elsif MONTAGNARD.include?(region)
+      'montagnard'
+    end
+  end
+end
+
+require 'json'
+require 'rest-client'
+
+# Prends des arguments donnés par Geocoder, récupère la région concernée et de la donnée météo pour filtrer les plantes
+# par climat.
+class WeatherService
+  def initialize(latitude, longitude, location)
+    @location = "#{location.split(',')[0]}, France"
+    @latitude = latitude
+    @longitude = longitude
+    @weather_api = "https://api.open-meteo.com/v1/forecast"
+    @geocoding_api = "https://geocoding-api.open-meteo.com/v1/search"
+  end
+
+  # J'ai assemblé ce classement des régions et climats de France de manière assez grossière basée sur les indications
+  # pas hyper précises d'Ooreka. Ca serait bien de trouver un moyen d'obtenir des données climatiques très précises sur
+  # chaque lieu. L'API Open Meteo qu'on utilise à apperemment une fonction intéressante de données historiques.
+  CONTINENTAL = ['Grand Est', 'Bourgogne-Franche-Comté']
+  OCEANIQUE = ['Bretagne', 'Pays de la Loire', 'Nouvelle-Aquitaine']
+  SEMI_OCEANIQUE = ['Île-de-France', 'Hauts-de-France']
+  MEDITERRANEEN = ['Occitanie', "Provence-Alpes-Côte d'Azur", 'Corse']
+  MONTAGNARD = ['Auvergne-Rhône-Alpes']
+
+  def retrieve_daily_rain_data
+    forecast_response = RestClient.get @weather_api, { params: { latitude: @latitude,
+                                                                 longitude: @longitude,
+                                                                 daily: 'rain_sum',
+                                                                 forecast_days: 16,
+                                                                 timezone: 'Europe/London' } }
+    JSON.parse(forecast_response)['daily']['rain_sum'][0]
+  end
+
+  def retrieve_rain_data_16_days
+    forecast_response = RestClient.get @weather_api, { params: { latitude: @latitude,
+                                                                 longitude: @longitude,
+                                                                 daily: 'rain_sum',
+                                                                 forecast_days: 16,
+                                                                 timezone: 'Europe/London' } }
+    JSON.parse(forecast_response)['daily']['rain_sum']
+  end
+
+  def retrieve_min_temp_16_days
+    forecast_response = RestClient.get @weather_api, { params: { latitude: @latitude,
+                                                                 longitude: @longitude,
+                                                                 daily: 'temperature_2m_min',
+                                                                 forecast_days: 16,
+                                                                 timezone: 'Europe/London' } }
+    JSON.parse(forecast_response)['daily']['temperature_2m_min']
+  end
+
+  def retrieve_16_days_forecast
+    forecast_response = RestClient.get @weather_api, { params: { latitude: @latitude,
+                                                                 longitude: @longitude,
+                                                                 daily: 'temperature_2m_max,temperature_2m_min,rain_sum',
+                                                                 past_days: 31,
+                                                                 forecast_days: 16,
+                                                                 timezone: 'Europe/London' } }
+    data = JSON.parse(forecast_response)['daily']
+    [data['temperature_2m_min'], data['temperature_2m_max'], data['rain_sum'], data['time']]
+  end
+
+  def determine_climate
+    location_region = retrieve_region rescue 'continental'
+    locate_in_climate_map(location_region)
+  end
+
+  def determine_weather_of_the_hour
+    current_hour = Time.now.hour
+    hourly_weather = retrieve_hourly_weather
+    if hourly_weather['rain'][current_hour].positive? && hourly_weather['rain'][current_hour] < 5.0
+    # if hourly_weather['rain'][current_hour].positive? && ['hourly']['rain'][current_hour] < 5.0
+      'drizzle'
+    elsif hourly_weather['rain'][current_hour] > 5.0
+      'rainy'
+    elsif hourly_weather['cloudcover'][current_hour] < 30
+      'sunny'
+    elsif hourly_weather['cloudcover'][current_hour] > 30
+      'cloudy'
+    else
+      'checking weather...'
+    end
+  end
+
+  def retrieve_hourly_weather
+    hourly_weather = RestClient.get @weather_api, { params: { latitude: @latitude,
+                                             longitude: @longitude,
+                                             hourly: 'temperature_2m,rain,cloudcover',
+                                             forecast_days: 1,
+                                             timezone: 'Europe/London' } }
+    JSON.parse(hourly_weather)['hourly']
+  end
+
+  private
+
+  def retrieve_region
+    location_data = RestClient.get @geocoding_api, { params: { name: @location, count: 10, language: 'fr', format: 'json' } }
+    JSON.parse(location_data)['results'][0]['admin1']
+  end
+
+  def locate_in_climate_map(region)
+    if CONTINENTAL.include?(region)
+      'continental'
+    elsif OCEANIQUE.include?(region)
+      'océanique'
+    elsif SEMI_OCEANIQUE.include?(region)
+      'semi-océanique'
+    elsif MEDITERRANEEN.include?(region)
+      'méditerranéen'
+    elsif MONTAGNARD.include?(region)
+      'montagnard'
+    end
+  end
+end
+
+//SIDEKIQ
+
+# Ce job est appelé sur chaque plante d'un jardin, organise les données contenues dans weather_data, puis s'en sert pour
+# générer les tâches à effectuer prochainement pour la plante en question.
+class GenerateDailyTasksForPlantJob
+  include Sidekiq::Job
+  require 'rubygems'
+  require 'twilio-ruby'
+
+  def perform(garden_plant_id, weather_data)
+    @weather_data = weather_data
+
+    @garden_plant = GardenPlant.find(garden_plant_id)
+
+    generate_plant_watering_task(@weather_data['past_rain_array'], @weather_data['today_rain'])
+    # generate_plant_sheltering_task
+    # generate_plant_cover_task
+    # generate_mulching_task
+    # due_tasks = Task.where(due_date: Date.today)
+
+    # due_tasks.each do |task|
+    #   # Assuming the user model has a phone_number attribute
+    #   user_phone_number = task.user.phone_number
+
+    #   # Send WhatsApp notification
+    #   WhatsappNotificationService.new(user_phone_number, "Your task '#{task.name}' is due today!").send
+    # end
+  end
+
+  private
+
+  # C'est la seule tâche générée pour l'instant. J'attends de voir ce que ça donne pour améliorer la logique et
+  # implémenter d'autres tâches.
+  def generate_plant_watering_task(past_rain_array, today_rain)
+    watering_interval = calculate_plant_watering_interval
+
+    puts past_rain_array.inspect
+    puts today_rain.inspect
+
+    if past_rain_array.last(watering_interval).all?(0) && today_rain.zero?
+      Task.create(
+        activity: "Arrose-moi !",
+        criticity: "0",
+        due_date: DateTime.now + (watering_interval * 0.7).day,
+        start_time: DateTime.now,
+        garden_plant: @garden_plant
+      )
+    end
+  end
+
+  def calculate_plant_watering_interval
+    plant_watering_needs = @garden_plant.plant.water_need
+    case plant_watering_needs
+    when 0 then 31
+    when 1 then 7
+    when 2 then 1
+    end
+  end
+
+  def generate_plant_sheltering_task
+    if @today_min_temp < -5 && @garden_plant.tasks.sheltering.urgent.pending.count.zero?
+      Task.create(activity: "Rentre-moi à l'intérieur !", criticity: 2, due_date: DateTime.now + 1.day, start_time: DateTime.now, garden_plant: @garden_plant)
+    elsif @forecast_min_temp_array.any? { |t| t < -5 } && @garden_plant.tasks.sheltering.pending.count.zero?
+      Task.create(
+        activity: "Rentre-moi à l'intérieur !",
+        criticity: 1,
+        due_date: DateTime.parse(@forecast_dates_array[@forecast_min_temp_array.index(@forecast_min_temp_array.find { |t| t < -5 })]),
+        start_time: DateTime.now,
+        garden_plant: @garden_plant
+      )
+    end
+  end
+
+  def generate_plant_cover_task
+    if @today_min_temp > -5 && @today_min_temp.negative? && @garden_plant.tasks.covering.urgent.pending.count.zero?
+      Task.create(activity: "Couvre-moi !", criticity: 2, due_date: DateTime.now + 1.day, start_time: DateTime.now, garden_plant: @garden_plant)
+    elsif @forecast_min_temp_array.any? { |temperature| (-5..0).cover?(temperature) } && @garden_plant.tasks.sheltering.pending.count.zero?
+      Task.create(
+        activity: "Couvre-moi !",
+        criticity: 1,
+        due_date: DateTime.parse(@forecast_dates_array[@forecast_min_temp_array.index(@forecast_min_temp_array.find { |temperature| (-5..0).cover?(temperature) })]),
+        start_time: DateTime.now,
+        garden_plant: @garden_plant
+      )
+    end
+  end
+
+  def generate_mulching_task
+    if @today_min_temp.positive? && @today_min_temp < 5 && @garden_plant.tasks.mulching.urgent.pending.count.zero?
+      Task.create(activity: "Paille-moi !", criticity: 2, due_date: DateTime.now + 1.day, start_time: DateTime.now, garden_plant: @garden_plant)
+    elsif @forecast_min_temp_array.any? { |temperature| (0..5).cover?(temperature) } && @garden_plant.tasks.mulching.pending.count.zero?
+      Task.create(
+        activity: "Paille-moi !",
+        criticity: 1,
+        due_date: DateTime.parse(@forecast_dates_array[@forecast_min_temp_array.index(@forecast_min_temp_array.find { |temperature| (0..5).cover?(temperature) })]),
+        start_time: DateTime.now,
+        garden_plant: @garden_plant
+      )
+    end
+  end
+end
+
+class WhatsappNotificationService
+  require 'rubygems'
+  require 'twilio-ruby'
+
+  def initialize(phone_number, message)
+    @phone_number = phone_number
+    @message = message
+  end
+
+  def send
+    account_sid = ENV['account_sid']
+    auth_token = ENV['auth_token']
+    @client = Twilio::REST::Client.new(account_sid, auth_token)
+
+    message = @client.messages.create(
+      body: 'Attention votre compagnon a besoin de votre aide! Rendez vous sur votre espace Soin de Bonnefeuille http://www.bonnefeuille.fr/',
+      from: 'whatsapp:+14155238886',
+      to: 'whatsapp:+33683073726'
+    )
+  end
+end
+
+
+# Ce job est appelé sur chaque jardin par le job RetrieveGardensJob dans le but d'itérer sur chaque plante associée
+# au jardin en question.
+class RetrieveGardenPlantsJob
+  include Sidekiq::Job
+
+  def perform(garden_id, weather_data)
+    garden = Garden.find(garden_id)
+    garden.garden_plants.each do |garden_plant|
+      GenerateDailyTasksForPlantJob.perform_async(garden_plant.id, weather_data)
+    end
+  end
+end
+
+# Ce job récupère tous les jardins de la base de données pour itérer dessus. Il s'exécute de manière journalière
+# comme défini par une expression cron située dans config/schedule.yml. Il fait appel à l'API météo afin de lui passer
+# les coordonnées du jardin et de récupérer ses informations météorologiques.
+class RetrieveGardensJob
+  include Sidekiq::Job
+
+  def perform
+    gardens = Garden.all
+    gardens.each do |garden|
+      weather_service = WeatherService.new(garden.latitude, garden.longitude, garden.location)
+      api_weather_data = weather_service.retrieve_16_days_forecast
+
+      reworked_weather_data = {
+        'min_temp_array' => api_weather_data[0],
+        'max_temp_array' => api_weather_data[1],
+        'rain_array' => api_weather_data[2],
+        'dates_array' => api_weather_data[3],
+        'past_min_temp_array' => api_weather_data[0].first(31),
+        'past_max_temp_array' => api_weather_data[1].first(31),
+        'past_rain_array' => api_weather_data[2].first(31),
+        'past_dates_array' => api_weather_data[3].first(31),
+        'today_max_temp' => api_weather_data[1][31],
+        'today_min_temp' => api_weather_data[0][31],
+        'today_rain' => api_weather_data[2][31],
+        'forecast_min_temp_array' => api_weather_data[0].drop(32),
+        'forecast_max_temp_array' => api_weather_data[1].drop(32),
+        'forecast_rain_array' => api_weather_data[2].drop(32),
+        'forecast_dates_array' => api_weather_data[3].drop(32)
+      }
+
+      RetrieveGardenPlantsJob.perform_async(garden.id, reworked_weather_data)
+    end
+  end
+end
+
+///VIEWS
+///VIEWS/garden_plants/show.html.erb
+
+<div class="d-flex flex-column min-full-screen">
+<div class="garden-plant-image" style="margin-bottom: -72px;">
+  <%= cl_image_tag @garden_plant.plant.photo.key, height: 387, class:"image-card" %>
+</div>
+<div class="info-card flex-grow-1-1-0">
+  <div class="container text-center mt-3">
+    <h1><%= @garden_plant.nickname %></h1>
+    <p> J’ai grandi en Ile de France chez Maurice Boyauval mon horticulteur. </p>
+    <h4><%= @garden_plant.plant.name %></h4>
+    <hr>
+    <h5> <%= render "review_card" %></h5> <br>
+      <div class="health-bar-container">
+        <div class="health-bar"
+              style="
+                width:<%= @garden_plant.score %>%;
+                background-color: <%= color_level(@garden_plant.score) %>;
+              ">
+        </div>
+          <span class="health-bar-score">
+            <%= @garden_plant.score %>%
+          </span>
+        </div>
+        <span> </span>
+
+      </div>
+
+      <div class="tasks-list">
+        <% @garden_plant.tasks.near_future.each do |task| %>
+            <%# if task.done_time.nil? && task.due_date.year == Time.now.year && task.due_date.month == Time.now.month %>
+              <div class="mb-2">
+                <%= simple_form_for task, url: update_done_task_path(task) , method: :patch, html: { class:"form-activitiy" } do |f| %>
+                  <p class="m-0 form-left"><%= task.activity %></p>
+                  <div class="form-center">
+                    <%= button_tag class: "btn-fait d-flex justify-content-center align-items-center" do %>
+                      <i class="fa-solid fa-check"></i>
+                    <% end %>
+                  </div>
+                  <p class="m-0 form-right"><%= task.due_date.day%>/<%= task.due_date.month %>/<%= task.due_date.year %></p>
+                <% end %>
+              </div>
+            <%# end %>
+
+        <% end %>
+      </div>
+
+
+    <%= link_to 'Retour à mes plantes', garden_path(@garden_plant.garden), class: "back d-block mt-5 text-center" %>
+    <div class="filler bg-dark-green"></div>
+</div>
+</div>
+
+///VIEWS/gardens/new.html.erb
+<div class="container page-container page-container-background d-flex flex-column justify-content-center">
+  <h2 class="text-center mt-5 mb-4 text-light-yellow d-none">Trouvez votre plante en deux étapes</h2>
+  <div class="my-2"></div>
+  <%= render 'form', garden: @garden %>
+</div>
+
+///VIEWS/gardens/_form.html.erb
+
+<div data-controller="garden-form">
+  <%= simple_form_for @garden do |f| %>
+    <div class="rounded-4 p-2 m-1 bg-light-green"
+         data-garden-form-target="input">
+      <h2 class="text-light-yellow">Localisation</h2>
+      <p>Dans quelle ville habitez-vous ? 🏠</p>
+      <%= f.input :location,
+                  label:false,
+                  input_html: {
+                    data: {
+                      address_autocomplete_target: "address"
+                    },
+                    class: "d-none card_plant_small"
+                  },
+                  wrapper_html: {
+                    class: "",
+                    data: {
+                      controller: "address-autocomplete",
+                      address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]
+                    }
+                  } %>
+    </div>
+    <div class="rounded-4 p-2 m-1 bg-light-green"
+         data-garden-form-target="input">
+      <h2 class="text-light-yellow">Luminosité</h2>
+      <p>Quel sera l'ensoleillement pour votre plante ?</p>
+      <%= f.input :light,
+                  as: :radio_buttons,
+                  label: "",
+                  required: false,
+                  collection: [["Ombre", 0], ["Mi-ombre", 1], ["Ensoleillé", 2]],
+                  input_html: { class: "light-selector" },
+                  item_wrapper_class: "light-item flex-grow-1-1-0",
+                  label_method: lambda { |(label, _value)| render("gardens/labels/light", label: label) },
+                  wrapper_html: {
+                    class: "d-flex justify-content-between legend-hidden"
+                  }
+      %>
+    </div>
+    <div class="rounded-4 p-2 m-1 bg-light-green"
+         data-garden-form-target="input">
+      <h2 class="text-light-yellow">Temps de soins</h2>
+      <p>Quelle sera votre disponibilité pour votre plante ?</p>
+      <div class="card-avatar">
+        <%= f.input :care_willing,
+          label: "",
+          required: false,
+          as: :radio_buttons,
+          collection: [["Un peu", 0], ["Beaucoup", 1], ["A la folie", 2]],
+          input_html: { class: "care-willing-selector d-none" },
+          label_method: lambda { |(label, _value)| render("gardens/labels/care_willing", label: label) }
+        %>
+
+      </div>
+    </div>
+    <div>
+      <%# <div class="flex-grow-1-1-0"></div> %>
+      <%# <p class="flex-grow-1-1-0 d-flex align-items-center text-light-yellow mb-0">
+        <span data-garden-form-target="stepCount"></span>
+      </p> %>
+      <%# <div class="flex-grow-1-1-0"> %>
+        <%# <span class="cursor-pointer fs-1 text-light-yellow ms-auto d-flex justify-content-end p-4"
+              data-action="click->garden-form#goToNextQuestion">
+          <i class="fa-solid fa-circle-arrow-right"></i>
+        </span> %>
+        <button type="submit" class="btn-active-no-effect cursor-pointer fs-1 text-light-yellow ms-auto d-flex justify-content-end mb-3 btn"
+                data-garden-form-target="button">
+          <i class="fa-solid fa-circle-check"></i>
+        </button>
+      <%# </div> %>
+    </div>
+  <% end %>
+  <div class="filler bg-dark-green"></div>
+</div>
+
+///VIEWS/gardens/select_plants.html.erb
+<div class="container page-container page-container-background d-flex flex-column justify-content-center"
+      data-controller="swiper">
+  <div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <h1 class="color-dark-green ml-2">Sélectionnez vos plantes</h1>
+        </div>
+        <div class="col-md-6">
+    <span class="d-flex align-items-center mt-4">
+        <%# <i class="fa-solid fa-hand-pointer fa-3x ml-2" style="color: #ffffff;"></i> %>
+        <h3 class="color-light-gray ml-2">Glissez à droite si vous aimez</h3>
+        <i class="fa-solid fa-arrow-up-right-dots fa-3x" style="color: #ffffff;"></i>
+    </span>
+</div>
+
+    </div>
+</div>
+
+
+  <div class="flex-grow-1 position-relative">
+    <div class="swiper">
+      <div class="swiper__content">
+        <div class="swiper__card-cont">
+          <% @garden_plants.reverse.each do |garden_plant| %>
+            <%= render "swiper_card", garden_plant: garden_plant %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="d-flex justify-content-center w-100 position-fixed crush-btn-box">
+    <%= link_to crush_path, class: "btn, btn-primary" do %>
+      <span data-swiper-target="counter"></span>
+    <% end %>
+  </div>
+</div>
+
+
+
+///VIEWS/gardens/_swiper_card.html.erb
+<div class="swiper__card"
+    data-swiper-target="card"
+    data-id="<%= garden_plant.id %>"
+    data-bs-toggle="offcanvas"
+    data-bs-target="#offcanvas-<%= garden_plant.id%>">
+  <div class="swiper__card__content">
+    <div class="swiper__card__content_top">
+      <h2><%= garden_plant.plant.name %></h2>
+      <h2><%= garden_plant.garden.plants.index(garden_plant.plant)+1 %>/<%= garden_plant.garden.plants.count%></h2>
+      <%# La partie du haut de la carte %>
+    </div>
+
+    <% if garden_plant.plant.photo.attached? %>
+      <%= cl_image_tag garden_plant.plant.photo.key, class: 'swiper__card__img' %>
+    <% end %>
+
+    <div class="swiper__card__content_bottom">
+      <p class="swiper__card__name">
+      </p>
+    </div>
+
+  </div>
+  <div class="swiper__card__choice m--reject"></div>
+  <div class="swiper__card__choice m--like"></div>
+  <div class="swiper__card__drag"></div>
+</div>
+
+
+<div class="offcanvas offcanvas-bottom offcanvas-plant-info" tabindex="-1" id="offcanvas-<%= garden_plant.id %>">
+  <div class="offcanvas-header">
+    <h4 class="offcanvas-title"><%= garden_plant.plant.name %></h4>
+    <%# <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button> %>
+  </div>
+  <div class="offcanvas-body small">
+    <%= cl_image_tag garden_plant.plant.photo.key, class: 'modal_content__img' if garden_plant.plant.photo.attached? %>
+    <h5><%= garden_plant.plant.content %></h5>
+  </div>
+</div>
+
+///VIEWS/gardens/crush.html.erb
+<div class="crush page-container" style="background-image: url(<%= image_path('cover_crushs.png', alt: 'Cover crushs') %>)">
+  <div data-controller="crush">
+    <div class="crush-container">
+      <div class="crush-container-top">
+        <h2 class="page-title">Ma sélection</h2>
+        <%# <p class="page-description">Voici ta sélection !</p> %>
+        <div class='counter-wrapper'>
+          <i class="fa-solid fa-heart"></i>
+          <div class="counter d-flex" >
+            <p><span data-crush-target="counter"><%= @garden_plants.selected.count %></span> coups de coeur</p>
+          </div>
+        </div>
+      </div>
+      <div class="crush-cards-container">
+        <% @garden_plants.each do |garden_plant| %>
+          <div class="card-crush p-3 m-3">
+              <span href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvas-<%= garden_plant.id%>">
+                <img src="<%= cl_image_path garden_plant.plant.photo.key, height: 80, crop: :fill %>" alt="A plant" class="first-plant">
+                <div class="d-flex justify-content">
+                <i class="fa-solid fa-circle-info fa-xl" style="color: #0c4019;"></i>
+                </div>
+              </span>
+            <% if @garden.garden_plants.none? %>
+              <p>Vous n'avez pas sélectionné de plante 😭</p>
+            <% else %>
+              <span href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvas-<%= garden_plant.id%>">
+                <span class="d-flex justify-content-center"><h3><%= garden_plant.plant.name %></h3><p>50 euros</p></span>
+              </span>
+              <%= link_to garden_plant_path(garden_plant), data: { turbo_method: :delete, turbo_confirm: 'Etes-vous sûr de ne plus vouloir cette plante ?' } do %>
+                <i class="fa-solid fa-trash-can"></i>
+              <% end %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+      <div class="text-center go-crush-btn mt-3 pt-0 ">
+        <%= link_to "JE COMMANDE !", validate_plants_garden_path(@garden), data: { turbo_method: :post }, class: "link-to-validate btn crush-btn btn-success" %>
+        <%#= link_to "JE COMMANDE !", merci_path(@garden), class:"link-to-validate btn crush-btn btn-success" %>
+        <p class="CGV mt-2 text-center">Livrées en 6 jours en pot (L14 x l10 x h35) et prêtes à s’épanouir 🐣 </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+///VIEWS/gardens/index.html.erb
+<% @garden_plants.each do |garden_plant| %>
+  <div class="offcanvas offcanvas-bottom offcanvas-plant-info" tabindex="-1" id="offcanvas-<%= garden_plant.id %>">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title"><%= garden_plant.plant.name %></h5>
+      <%# <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button> %>
+    </div>
+    <div class="offcanvas-body small">
+      <%= cl_image_tag garden_plant.plant.photo.key, class: 'modal_content__img' if garden_plant.plant.photo.attached? %>
+      <p><%= garden_plant.plant.content %></p>
+    </div>
+  </div>
+<% end %>
+
+<div class="wrapper gardens-index-wrapper">
+  <div class="container min-full-screen" data-controller='gardens-counter'>
+    <h2 class="page-title">Bienvenue 🪴</h2>
+    <p class="page-description">Retrouvez vos plantes ici !</p>
+    <%# <div class='counter-wrapper'> %>
+      <%# <i class="fa-solid fa-heart"></i> %>
+      <%# <p class="counter-para"><span class='counter-number' data-gardens-counter-target='counter'></span> jardin= 's' if @gardens.count > 1</p> %>
+    <%# </div> %>
+      <% @gardens.each do |garden| %>
+        <% if garden.garden_plants.where(status: 'validated').none? %>
+          <%= link_to garden_path(garden) do %>
+            <div class="card-garden without-plants p-3 m-3" data-gardens-counter-target='garden'>
+                <div class="garden-info">
+                  <h3>Mes plantes<%#= garden.name %></h3>
+                  <div class="location-line">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <p><%= garden.location %></p>
+                  </div>
+                  <div class='plant-count-line'>
+                    <i class="fa-solid fa-seedling"></i>
+                    <p>Vous n'avez pas encore de plantes 😭</p>
+                  </div>
+                </div>
+            </div>
+          <% end %>
+        <% else %>
+          <%= link_to garden_path(garden) do %>
+            <div class="card-garden with-plants p-3 m-3" data-gardens-counter-target='garden'>
+              <div class="garden-info col-8">
+                <h3>Mes plantes<%#= garden.name %></h3>
+                <div class="location-line">
+                  <i class="fa-solid fa-location-dot"></i>
+                  <p><%= garden.location %></p>
+                </div>
+                <div class='plant-count-line'>
+                  <i class="fa-solid fa-seedling"></i>
+                  <p><%= garden.garden_plants.validated.count %></p>
+                </div>
+              </div>
+              <div class="col-4">
+                <img src="<%= cl_image_path garden.garden_plants.first.plant.photo.key %>" alt="A plant" class="plant-image-avatar">
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      <% end %>
+      <%# <div class="text-center"> %>
+        <%#= link_to new_garden_path, class:"link-of-the-plus" do %>
+          <%# <div class="circle-of-the-plus"> %>
+            <%# <i class="fa-solid fa-plus"></i> %>
+          <%# </div> %>
+        <%# end %>
+      <%# </div> %>
+  </div>
+  <div class="filler"></div>
+</div>
+
+///VIEWS/gardens/show.html.erb
+<div class="container">
+  <div class="d-flex justify-content-between mt-4">
+    <h2 class="page-title">Mes plantes<%#= @garden.name %></h2>
+    <div class='garden-options mt-4 me-2'>
+      <%= link_to garden_path(@garden), data: { turbo_method: :delete, turbo_confirm: 'Etes-vous sûr de vouloir supprimer votre espace ?' } do %>
+        <i class="fa-solid fa-trash fa-2xl"></i>
+      <% end %>
+    </div>
+  </div>
+  <% if @garden.garden_plants.validated.any? %>
+    <div class='weather-container'>
+      <div class='weather-garden-info'>
+         <p><%= @garden.location %></p>
+
+          <p class='day-info'>
+            <% if Time.now.strftime("%A") == 'Monday' %>
+              Lundi
+            <% elsif Time.now.strftime("%A") == 'Tuesday' %>
+              Mardi
+            <% elsif Time.now.strftime("%A") == 'Wednesday' %>
+              Mercredi
+            <% elsif Time.now.strftime("%A") == 'Thursday' %>
+              Jeudi
+            <% elsif Time.now.strftime("%A") == 'Friday' %>
+              Vendredi
+            <% elsif Time.now.strftime("%A") == 'Saturday' %>
+              Samedi
+            <% elsif Time.now.strftime("%A") == 'Sunday' %>
+              Dimanche
+            <% end %>
+            <%= Time.now.day %>
+            <% if Time.now.strftime("%B") == 'January' %>
+              janvier
+            <% elsif Time.now.strftime("%B") == 'February' %>
+              février
+            <% elsif Time.now.strftime("%B") == 'March' %>
+              mars
+            <% elsif Time.now.strftime("%B") == 'April' %>
+              avril
+            <% elsif Time.now.strftime("%B") == 'May' %>
+              mai
+            <% elsif Time.now.strftime("%B") == 'June' %>
+              juin
+            <% elsif Time.now.strftime("%B") == 'July' %>
+              juillet
+            <% elsif Time.now.strftime("%B") == 'August' %>
+              août
+            <% elsif Time.now.strftime("%B") == 'September' %>
+              septembre
+            <% elsif Time.now.strftime("%B") == 'October' %>
+              octobre
+            <% elsif Time.now.strftime("%B") == 'November' %>
+              novembre
+            <% elsif Time.now.strftime("%B") == 'December' %>
+              décembre
+            <% end %>
+          </p>
+        </div>
+      <div class='weather-forecast'>
+        <p><%= @weather_json['temperature_2m'][Time.now.hour] %>C°</p>
+        <% if @hourly_weather == 'drizzle' %>
+          <i class="fa-thin fa-cloud-drizzle"></i>
+        <% elsif @hourly_weather == 'rainy' %>
+          <i class="fa-solid fa-cloud-showers-heavy"></i>
+        <% elsif @hourly_weather == 'sunny' %>
+          <i class="fa-solid fa-sun"></i>
+        <% elsif @hourly_weather == 'cloudy' %>
+          <i class="fa-regular fa-sun-cloud"></i>
+        <% elsif @hourly_weather == 'checking weather...' %>
+          <p>Connection perdue !</p>
+        <% end %>
+      </div>
+    </div>
+    <div class="row plants-list-wrapper" data-controller='garden-show-plants-list'>
+      <% @garden.garden_plants.validated.each do |garden_plant| %>
+          <%= link_to garden_plant_path(garden_plant), class: 'garden-plant-card text-decoration-none' do %>
+            <div class='d-flex justify-content-between'>
+              <div class="col-6 nickname-and-life-bar">
+                <h3 class='plant-nickname'><%= garden_plant.nickname %></h3>
+                <div class="hp-container">
+                  <div class="health-bar" style="width:<%= garden_plant.score %>%; background: <%= color_level(garden_plant.score) %>">
+                  </div>
+                    <span class="health-bar-score">
+                      <%= garden_plant.score %> %
+                    </span>
+                </div>
+              </div>
+              <div class="col-6 offset-2">
+                <%= cl_image_tag garden_plant.plant.photo.key, width: 183, class: "image-card-circle" %>
+              </div>
+            </div>
+          <% end %>
+      <% end %>
+    </div>
+    <% else %>
+      <p class="page-description">Tu n'as pas encore de plantes dans ce jardin !</p>
+      <p class="page-description">N’hésite pas à cliquer sur l'un des boutons ci-dessous pour obtenir des suggestions de plantes ou changer les préférences du jardin 😊</p>
+  <% end %>
+</div>
+
+///VIEWS/tasks/index.html.erb
+<div class="tasks-index-wrapper min-full-screen" data-controller='task-checker'>
+  <div class="container title-and-tabs">
+    <h2 class="page-title">Mes soins</h2>
+    <div class="tabs">
+      <h3 class="tab-one" data-action='click->task-checker#all'>Toutes</h3>
+      <h3 class="tab-two" data-action='click->task-checker#current'>ASAP</h3>
+      <h3 class="tab-three" data-action='click->task-checker#next'>Semaine pro</h3>
+    </div>
+  </div>
+
+  <div class='container activities-lists' data-task-checker-target='all'>
+    <div class="accordion container accordion-border-radius" id="accordionAll">
+      <% @all_activities.each do |activity| %>
+        <% if activity == 'Arrose-moi !' %>
+          <div class="accordion-item accordion-background accordion-border-radius accordion-margin">
+            <h4 class="accordion-header accordion-border-radius">
+              <button class="accordion-button accordion-button-water accordion-border-radius accordion-button-font-size accordion-button-details collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                <i class="fa-solid fa-droplet"></i>
+                <p class="accordion-button-text-margin">Arrosage</p>
+              </button>
+            </h4>
+            <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionAll">
+              <div class="accordion-body">
+                <% @my_tasks.watering.group_by{|task| task.garden.name}.each do |garden_name, tasks| %>
+                  <section class="garden-plant-tasks">
+                    <h6><%= garden_name %></h6>
+                    <% tasks.each do |task| %>
+                      <article class="garden-plant-task-card">
+                        <%= simple_form_for task,
+                                            html: {
+                                              class: "#{task.criticity_name}-priority",
+                                              data: {
+                                                action:"submit->task-checker#markAsDone"
+                                              }
+                                            } do |f| %>
+                          <%= f.input :done, label: render(partial: 'shared/garden_plant_task_label', locals: { task: f.object }).html_safe, input_html: {checked: 'checked', class: 'task-checkbox'} %>
+                          <%= button_tag do %>
+                            <div></div>
+                          <% end %>
+                        <% end %>
+                      </article>
+                    <% end %>
+                  </section>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        <% elsif activity == 'Rempote-moi !' %>
+          <div class="accordion-item accordion-background accordion-border-radius">
+            <h4 class="accordion-header accordion-border-radius">
+              <button class="accordion-button accordion-button-earth accordion-border-radius accordion-button-font-size accordion-button-details collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                <svg width="16" height="20" viewBox="0 0 16 20" fill="#8F541D" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M3.047 0.000247041C2.91205 -0.00275301 2.77789 0.0215982 2.65261 0.0718334C2.52732 0.122069 2.41351 0.197148 2.31801 0.292547C2.22252 0.387947 2.14733 0.501691 2.09697 0.626926C2.04661 0.752162 2.02213 0.886296 2.025 1.02125C2.041 1.72725 2.212 2.72125 2.692 3.73825C2.959 4.30425 3.302 4.81225 3.732 5.24225C4.012 5.52225 4.325 5.76525 4.665 5.97425H2C1.46957 5.97425 0.960859 6.18496 0.585786 6.56003C0.210714 6.93511 0 7.44381 0 7.97425V9.97425C1.03699e-05 10.328 0.0938727 10.6755 0.27201 10.9812C0.450148 11.2869 0.706185 11.5398 1.014 11.7142C1.153 15.3792 2.289 17.9322 2.851 18.9842C3.201 19.6402 3.874 19.9742 4.535 19.9742H11.465C12.125 19.9742 12.799 19.6402 13.149 18.9842C13.711 17.9322 14.847 15.3792 14.986 11.7142C15.2938 11.5398 15.5499 11.2869 15.728 10.9812C15.9061 10.6755 16 10.328 16 9.97425V7.97425C16 7.44381 15.7893 6.93511 15.4142 6.56003C15.0391 6.18496 14.5304 5.97425 14 5.97425H12.102C12.319 5.74725 12.508 5.49725 12.665 5.22425C12.877 4.85725 13.025 4.45925 13.115 4.03525C13.288 3.23725 13.252 2.41725 13.094 1.63425L12.95 1.06425C12.8731 0.830623 12.7128 0.633542 12.4997 0.510678C12.2866 0.387814 12.0357 0.347786 11.795 0.398247C11.1233 0.549679 10.4817 0.812658 9.897 1.17625C9.241 1.57925 8.702 2.08825 8.335 2.72425C8.285 2.81025 8.24 2.89725 8.197 2.98625C7.9539 2.51476 7.6403 2.08313 7.267 1.70625C6.82981 1.27539 6.32129 0.923524 5.764 0.666247C4.91325 0.26122 3.98862 0.0345711 3.047 0.000247041ZM4.25 2.22425C4.476 2.29425 4.697 2.37425 4.91 2.47425C5.278 2.64825 5.596 2.86325 5.854 3.12125C6.111 3.37825 6.326 3.69625 6.5 4.06425C6.594 4.28125 6.68 4.49725 6.749 4.72425C6.52315 4.65726 6.30255 4.5737 6.089 4.47425C5.73981 4.31482 5.42079 4.09628 5.146 3.82825C4.87788 3.55316 4.65932 3.23379 4.5 2.88425C4.4015 2.6703 4.31796 2.44977 4.25 2.22425ZM11.222 2.72425L11.228 2.95425C11.228 3.18225 11.206 3.40425 11.161 3.61425C11.1173 3.82823 11.0403 4.03405 10.933 4.22425C10.748 4.54425 10.448 4.82825 10.056 5.06925L9.777 5.22325L9.772 4.99525C9.772 4.76725 9.794 4.54525 9.84 4.33425C9.889 4.10725 9.964 3.90325 10.067 3.72425C10.252 3.40425 10.552 3.12125 10.944 2.87925L11.222 2.72425ZM3.028 11.9742H12.972C12.798 14.9972 11.879 17.0992 11.421 17.9742H4.579C4.121 17.0992 3.201 14.9972 3.028 11.9742ZM14 9.97425H2V7.97425H14V9.97425Z" fill="#8F541D"/>
+                </svg>
+                <p class="accordion-button-text-margin">Rempotage</p>
+              </button>
+            </h4>
+            <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionAll">
+              <div class="accordion-body">
+                <ul>
+                  <% @my_tasks.repotting.each do |task| %>
+                    <li>
+                      <% if task.criticity == '0' %>
+                        <%= simple_form_for task, html: { class: "low-priority", data: {action:"submit->task-checker#markAsDone"}} do |f| %>
+                          <%= f.input :done, label: "#{task.garden_plant.nickname}, dans #{task.garden_plant.garden.name}", input_html: {checked: 'checked', class: 'task-checkbox'} %>
+                          <%= f.submit "✔", class: 'task-submit' %>
+                        <% end %>
+                      <% elsif task.criticity == '1' %>
+                        <%= simple_form_for task, html: { class: "medium-priority", data: {action:"submit->task-checker#markAsDone"}} do |f| %>
+                          <%= f.input :done, label: "#{task.garden_plant.nickname}, dans #{task.garden_plant.garden.name}", input_html: {checked: 'checked', class: 'task-checkbox'} %>
+                          <%= button_tag class: "task-submit" do %>
+                          <% end %>
+                        <% end %>
+                      <% elsif task.criticity == '2' %>
+                        <%= simple_form_for task, html: { class: "high-priority", data: {action:"submit->task-checker#markAsDone"}} do |f| %>
+                          <%= f.input :done, label: "#{task.garden_plant.nickname}, dans #{task.garden_plant.garden.name}", input_html: {checked: 'checked', class: 'task-checkbox'} %>
+                          <%= f.submit "✔", class: 'task-submit' %>
+                        <% end %>
+                      <% end %>
+                    </li>
+                  <% end %>
+                </ul>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class='container activities-lists d-none' data-task-checker-target='current'>
+    <div class="accordion container accordion-border-radius"  id="accordionCurrent">
+      <% @all_activities.each do |activity| %>
+        <% if activity == 'Arrose-moi !' %>
+          <div class="accordion-item accordion-background accordion-border-radius accordion-margin">
+            <h4 class="accordion-header accordion-border-radius">
+              <button class="accordion-button accordion-button-water accordion-border-radius accordion-button-font-size collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                <i class="fa-solid fa-droplet"></i>
+                <p class="accordion-button-text-margin">Arrosage</p>
+              </button>
+            </h4>
+            <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionCurrent">
+              <div class="accordion-body">
+                <ul>
+                  <% @current_week_tasks.watering.each do |task| %>
+                    <li>
+                      <% if task.criticity == '0' %>
+                        <%= simple_form_for task, html: { class: "low-priority", data: {action:"submit->task-checker#markAsDone"}} do |f| %>
+                          <%= f.input :done, label: "#{task.garden_plant.nickname}, dans #{task.garden_plant.garden.name}", input_html: {checked: 'checked', class: 'task-checkbox'} %>
+                          <%= f.submit "✔", class: 'task-submit' %>
+                        <% end %>
+                      <% elsif task.criticity == '1' %>
+                        <%= simple_form_for task, html: { class: "medium-priority", data: {action:"submit->task-checker#markAsDone"}} do |f| %>
+                          <%= f.input :done, label: "#{task.garden_plant.nickname}, dans #{task.garden_plant.garden.name}", input_html: {checked: 'checked', class: 'task-checkbox'} %>
+                          <%= f.submit "✔", class: 'task-submit' %>
+                        <% end %>
+                      <% elsif task.criticity == '2' %>
+                        <%= simple_form_for task, html: { class: "high-priority", data: {action:"submit->task-checker#markAsDone"}} do |f| %>
+                          <%= f.input :done, label: "#{task.garden_plant.nickname}, dans #{task.garden_plant.garden.name}", input_html: {checked: 'checked', class: 'task-checkbox'} %>
+                          <%= f.submit "✔", class: 'task-submit' %>
+                        <% end %>
+                      <% end %>
+                    </li>
+                  <% end %>
+                </ul>
+              </div>
+            </div>
+          </div>
+        <% elsif activity == 'Rempote-moi !' %>
+          <div class="accordion-item accordion-background accordion-border-radius">
+            <h4 class="accordion-header accordion-border-radius">
+              <button class="accordion-button accordion-button-earth accordion-border-radius accordion-button-font-size collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                <svg width="16" height="20" viewBox="0 0 16 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M3.047 0.000247041C2.91205 -0.00275301 2.77789 0.0215982 2.65261 0.0718334C2.52732 0.122069 2.41351 0.197148 2.31801 0.292547C2.22252 0.387947 2.14733 0.501691 2.09697 0.626926C2.04661 0.752162 2.02213 0.886296 2.025 1.02125C2.041 1.72725 2.212 2.72125 2.692 3.73825C2.959 4.30425 3.302 4.81225 3.732 5.24225C4.012 5.52225 4.325 5.76525 4.665 5.97425H2C1.46957 5.97425 0.960859 6.18496 0.585786 6.56003C0.210714 6.93511 0 7.44381 0 7.97425V9.97425C1.03699e-05 10.328 0.0938727 10.6755 0.27201 10.9812C0.450148 11.2869 0.706185 11.5398 1.014 11.7142C1.153 15.3792 2.289 17.9322 2.851 18.9842C3.201 19.6402 3.874 19.9742 4.535 19.9742H11.465C12.125 19.9742 12.799 19.6402 13.149 18.9842C13.711 17.9322 14.847 15.3792 14.986 11.7142C15.2938 11.5398 15.5499 11.2869 15.728 10.9812C15.9061 10.6755 16 10.328 16 9.97425V7.97425C16 7.44381 15.7893 6.93511 15.4142 6.56003C15.0391 6.18496 14.5304 5.97425 14 5.97425H12.102C12.319 5.74725 12.508 5.49725 12.665 5.22425C12.877 4.85725 13.025 4.45925 13.115 4.03525C13.288 3.23725 13.252 2.41725 13.094 1.63425L12.95 1.06425C12.8731 0.830623 12.7128 0.633542 12.4997 0.510678C12.2866 0.387814 12.0357 0.347786 11.795 0.398247C11.1233 0.549679 10.4817 0.812658 9.897 1.17625C9.241 1.57925 8.702 2.08825 8.335 2.72425C8.285 2.81025 8.24 2.89725 8.197 2.98625C7.9539 2.51476 7.6403 2.08313 7.267 1.70625C6.82981 1.27539 6.32129 0.923524 5.764 0.666247C4.91325 0.26122 3.98862 0.0345711 3.047 0.000247041ZM4.25 2.22425C4.476 2.29425 4.697 2.37425 4.91 2.47425C5.278 2.64825 5.596 2.86325 5.854 3.12125C6.111 3.37825 6.326 3.69625 6.5 4.06425C6.594 4.28125 6.68 4.49725 6.749 4.72425C6.52315 4.65726 6.30255 4.5737 6.089 4.47425C5.73981 4.31482 5.42079 4.09628 5.146 3.82825C4.87788 3.55316 4.65932 3.23379 4.5 2.88425C4.4015 2.6703 4.31796 2.44977 4.25 2.22425ZM11.222 2.72425L11.228 2.95425C11.228 3.18225 11.206 3.40425 11.161 3.61425C11.1173 3.82823 11.0403 4.03405 10.933 4.22425C10.748 4.54425 10.448 4.82825 10.056 5.06925L9.777 5.22325L9.772 4.99525C9.772 4.76725 9.794 4.54525 9.84 4.33425C9.889 4.10725 9.964 3.90325 10.067 3.72425C10.252 3.40425 10.552 3.12125 10.944 2.87925L11.222 2.72425ZM3.028 11.9742H12.972C12.798 14.9972 11.879 17.0992 11.421 17.9742H4.579C4.121 17.0992 3.201 14.9972 3.028 11.9742ZM14 9.97425H2V7.97425H14V9.97425Z" fill="black"/>
+                </svg>
+                <p class="accordion-button-text-margin">Rempotage</p>
+              </button>
+            </h4>
+            <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionCurrent">
+              <div class="accordion-body">
+                <ul>
+                  <% @current_week_tasks.repotting.each do |task| %>
+                    <li>
+                      <% if task.criticity == '0' %>
+                        <%= simple_form_for task, html: { class: "low-priority", data: {action:"submit->task-checker#markAsDone"}} do |f| %>
+                          <%= f.input :done, label: "#{task.garden_plant.nickname}, dans #{task.garden_plant.garden.name}", input_html: {checked: 'checked', class: 'task-checkbox'} %>
+                          <%= f.submit "✔", class: 'task-submit' %>
+                        <% end %>
+                      <% elsif task.criticity == '1' %>
+                        <%= simple_form_for task, html: { class: "medium-priority", data: {action:"submit->task-checker#markAsDone"}} do |f| %>
+                          <%= f.input :done, label: "#{task.garden_plant.nickname}, dans #{task.garden_plant.garden.name}", input_html: {checked: 'checked', class: 'task-checkbox'} %>
+                          <%= f.submit "✔", class: 'task-submit' %>
+                        <% end %>
+                      <% elsif task.criticity == '2' %>
+                        <%= simple_form_for task, html: { class: "high-priority", data: {action:"submit->task-checker#markAsDone"}} do |f| %>
+                          <%= f.input :done, label: "#{task.garden_plant.nickname}, dans #{task.garden_plant.garden.name}", input_html: {checked: 'checked', class: 'task-checkbox'} %>
+                          <%= f.submit "✔", class: 'task-submit' %>
+                        <% end %>
+                      <% end %>
+                    </li>
+                  <% end %>
+                </ul>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class='container activities-lists d-none' data-task-checker-target='next'>
+    <div class="accordion container accordion-border-radius"  id="accordionNext">
+      <% @all_activities.each do |activity| %>
+        <% if activity == 'Arrose-moi !' %>
+          <div class="accordion-item accordion-background accordion-border-radius accordion-margin">
+            <h4 class="accordion-header accordion-border-radius">
+              <button class="accordion-button accordion-button-water accordion-border-radius accordion-button-font-size collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                <i class="fa-solid fa-droplet"></i>
+                <p class="accordion-button-text-margin">Arrosage</p>
+              </button>
+            </h4>
+            <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionNext">
+              <div class="accordion-body">
+                <ul>
+                  <% @next_week_tasks.watering.each do |task| %>
+                    <li>
+                      <% if task.criticity == '0' %>
+                        <%= simple_form_for task, html: { class: "low-priority", data: {action:"submit->task-checker#markAsDone"}} do |f| %>
+                          <%= f.input :done, label: "#{task.garden_plant.nickname}, dans #{task.garden_plant.garden.name}", input_html: {checked: 'checked', class: 'task-checkbox'} %>
+                          <%= f.submit "✔", class: 'task-submit' %>
+                        <% end %>
+                      <% elsif task.criticity == '1' %>
+                        <%= simple_form_for task, html: { class: "medium-priority", data: {action:"submit->task-checker#markAsDone"}} do |f| %>
+                          <%= f.input :done, label: "#{task.garden_plant.nickname}, dans #{task.garden_plant.garden.name}", input_html: {checked: 'checked', class: 'task-checkbox'} %>
+                          <%= f.submit "✔", class: 'task-submit' %>
+                        <% end %>
+                      <% elsif task.criticity == '2' %>
+                        <%= simple_form_for task, html: { class: "high-priority", data: {action:"submit->task-checker#markAsDone"}} do |f| %>
+                          <%= f.input :done, label: "#{task.garden_plant.nickname}, dans #{task.garden_plant.garden.name}", input_html: {checked: 'checked', class: 'task-checkbox'} %>
+                          <%= f.submit "✔", class: 'task-submit' %>
+                        <% end %>
+                      <% end %>
+                    </li>
+                  <% end %>
+                </ul>
+              </div>
+            </div>
+          </div>
+        <% elsif activity == 'Rempote-moi !' %>
+          <div class="accordion-item accordion-background accordion-border-radius">
+            <h4 class="accordion-header accordion-border-radius">
+              <button class="accordion-button accordion-button-earth accordion-border-radius accordion-button-font-size collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                <svg width="16" height="20" viewBox="0 0 16 20" fill="#8F541D" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M3.047 0.000247041C2.91205 -0.00275301 2.77789 0.0215982 2.65261 0.0718334C2.52732 0.122069 2.41351 0.197148 2.31801 0.292547C2.22252 0.387947 2.14733 0.501691 2.09697 0.626926C2.04661 0.752162 2.02213 0.886296 2.025 1.02125C2.041 1.72725 2.212 2.72125 2.692 3.73825C2.959 4.30425 3.302 4.81225 3.732 5.24225C4.012 5.52225 4.325 5.76525 4.665 5.97425H2C1.46957 5.97425 0.960859 6.18496 0.585786 6.56003C0.210714 6.93511 0 7.44381 0 7.97425V9.97425C1.03699e-05 10.328 0.0938727 10.6755 0.27201 10.9812C0.450148 11.2869 0.706185 11.5398 1.014 11.7142C1.153 15.3792 2.289 17.9322 2.851 18.9842C3.201 19.6402 3.874 19.9742 4.535 19.9742H11.465C12.125 19.9742 12.799 19.6402 13.149 18.9842C13.711 17.9322 14.847 15.3792 14.986 11.7142C15.2938 11.5398 15.5499 11.2869 15.728 10.9812C15.9061 10.6755 16 10.328 16 9.97425V7.97425C16 7.44381 15.7893 6.93511 15.4142 6.56003C15.0391 6.18496 14.5304 5.97425 14 5.97425H12.102C12.319 5.74725 12.508 5.49725 12.665 5.22425C12.877 4.85725 13.025 4.45925 13.115 4.03525C13.288 3.23725 13.252 2.41725 13.094 1.63425L12.95 1.06425C12.8731 0.830623 12.7128 0.633542 12.4997 0.510678C12.2866 0.387814 12.0357 0.347786 11.795 0.398247C11.1233 0.549679 10.4817 0.812658 9.897 1.17625C9.241 1.57925 8.702 2.08825 8.335 2.72425C8.285 2.81025 8.24 2.89725 8.197 2.98625C7.9539 2.51476 7.6403 2.08313 7.267 1.70625C6.82981 1.27539 6.32129 0.923524 5.764 0.666247C4.91325 0.26122 3.98862 0.0345711 3.047 0.000247041ZM4.25 2.22425C4.476 2.29425 4.697 2.37425 4.91 2.47425C5.278 2.64825 5.596 2.86325 5.854 3.12125C6.111 3.37825 6.326 3.69625 6.5 4.06425C6.594 4.28125 6.68 4.49725 6.749 4.72425C6.52315 4.65726 6.30255 4.5737 6.089 4.47425C5.73981 4.31482 5.42079 4.09628 5.146 3.82825C4.87788 3.55316 4.65932 3.23379 4.5 2.88425C4.4015 2.6703 4.31796 2.44977 4.25 2.22425ZM11.222 2.72425L11.228 2.95425C11.228 3.18225 11.206 3.40425 11.161 3.61425C11.1173 3.82823 11.0403 4.03405 10.933 4.22425C10.748 4.54425 10.448 4.82825 10.056 5.06925L9.777 5.22325L9.772 4.99525C9.772 4.76725 9.794 4.54525 9.84 4.33425C9.889 4.10725 9.964 3.90325 10.067 3.72425C10.252 3.40425 10.552 3.12125 10.944 2.87925L11.222 2.72425ZM3.028 11.9742H12.972C12.798 14.9972 11.879 17.0992 11.421 17.9742H4.579C4.121 17.0992 3.201 14.9972 3.028 11.9742ZM14 9.97425H2V7.97425H14V9.97425Z" fill="#8F541D"/>
+                </svg>
+                <p class="accordion-button-text-margin">Rempotage</p>
+              </button>
+            </h4>
+            <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionNext">
+              <div class="accordion-body">
+                <ul>
+                  <% @next_week_tasks.repotting.each do |task| %>
+                    <li>
+                      <% if task.criticity == '0' %>
+                        <%= simple_form_for task, html: { class: "low-priority", data: {action:"submit->task-checker#markAsDone"}} do |f| %>
+                          <%= f.input :done, label: "#{task.garden_plant.nickname}, dans #{task.garden_plant.garden.name}", input_html: {checked: 'checked', class: 'task-checkbox'} %>
+                          <%= f.submit "✔", class: 'task-submit' %>
+                        <% end %>
+                      <% elsif task.criticity == '1' %>
+                        <%= simple_form_for task, html: { class: "medium-priority", data: {action:"submit->task-checker#markAsDone"}} do |f| %>
+                          <%= f.input :done, label: "#{task.garden_plant.nickname}, dans #{task.garden_plant.garden.name}", input_html: {checked: 'checked', class: 'task-checkbox'} %>
+                          <%= f.submit "✔", class: 'task-submit' %>
+                        <% end %>
+                      <% elsif task.criticity == '2' %>
+                        <%= simple_form_for task, html: { class: "high-priority", data: {action:"submit->task-checker#markAsDone"}} do |f| %>
+                          <%= f.input :done, label: "#{task.garden_plant.nickname}, dans #{task.garden_plant.garden.name}", input_html: {checked: 'checked', class: 'task-checkbox'} %>
+                          <%= f.submit "✔", class: 'task-submit' %>
+                        <% end %>
+                      <% end %>
+                    </li>
+                  <% end %>
+                </ul>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+
+  <div>
+    <% @notifications.each do |notification| %>
+      <% if notification.unread? %>
+        <% notification.mark_as_read! %>
+      <% end %>
+    <% end %>
+  </div>
+  <div class='filler'></div>
+</div>
+
+
+///SCHEMA
+# This file is auto-generated from the current state of the database. Instead
+# of editing this file, please use the migrations feature of Active Record to
+# incrementally modify your database, and then regenerate this schema definition.
+#
+# This file is the source Rails uses to define your schema when running `bin/rails
+# db:schema:load`. When creating a new database, `bin/rails db:schema:load` tends to
+# be faster and is potentially less error prone than running all of your
+# migrations from scratch. Old migrations may fail to apply correctly if those
+# migrations use external dependencies or application code.
+#
+# It's strongly recommended that you check this file into your version control system.
+
+ActiveRecord::Schema[7.0].define(version: 2023_09_12_130304) do
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "active_storage_attachments", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
+    t.datetime "created_at", null: false
+    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
+    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
+  end
+
+  create_table "active_storage_blobs", force: :cascade do |t|
+    t.string "key", null: false
+    t.string "filename", null: false
+    t.string "content_type"
+    t.text "metadata"
+    t.string "service_name", null: false
+    t.bigint "byte_size", null: false
+    t.string "checksum"
+    t.datetime "created_at", null: false
+    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "active_storage_variant_records", force: :cascade do |t|
+    t.bigint "blob_id", null: false
+    t.string "variation_digest", null: false
+    t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
+
+  create_table "garden_plants", force: :cascade do |t|
+    t.string "nickname"
+    t.string "pot_color"
+    t.bigint "plant_id", null: false
+    t.bigint "garden_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "status", default: 0
+    t.index ["garden_id"], name: "index_garden_plants_on_garden_id"
+    t.index ["plant_id"], name: "index_garden_plants_on_plant_id"
+  end
+
+  create_table "gardens", force: :cascade do |t|
+    t.string "name"
+    t.integer "light"
+    t.integer "size"
+    t.integer "care_willing"
+    t.string "location"
+    t.float "latitude"
+    t.float "longitude"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "climate"
+    t.index ["user_id"], name: "index_gardens_on_user_id"
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.string "recipient_type", null: false
+    t.bigint "recipient_id", null: false
+    t.string "type", null: false
+    t.jsonb "params"
+    t.datetime "read_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["read_at"], name: "index_notifications_on_read_at"
+    t.index ["recipient_type", "recipient_id"], name: "index_notifications_on_recipient"
+  end
+
+  create_table "plants", force: :cascade do |t|
+    t.string "name"
+    t.string "color"
+    t.string "caducity"
+    t.integer "final_size"
+    t.integer "light_need"
+    t.integer "water_need"
+    t.integer "growth_speed"
+    t.integer "care_frequency"
+    t.integer "cold_resistance"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "climate", array: true
+    t.text "content"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.float "note"
+    t.text "content"
+    t.bigint "user_id", null: false
+    t.bigint "plant_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["plant_id"], name: "index_reviews_on_plant_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
+  end
+
+  create_table "tasks", force: :cascade do |t|
+    t.string "activity"
+    t.string "criticity"
+    t.datetime "due_date"
+    t.datetime "done_time"
+    t.bigint "garden_plant_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.datetime "start_time"
+    t.boolean "done", default: false
+    t.index ["garden_plant_id"], name: "index_tasks_on_garden_plant_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean "admin", default: false, null: false
+    t.string "phone_number"
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "garden_plants", "gardens"
+  add_foreign_key "garden_plants", "plants"
+  add_foreign_key "gardens", "users"
+  add_foreign_key "reviews", "plants"
+  add_foreign_key "reviews", "users"
+  add_foreign_key "tasks", "garden_plants"
+end
+
+///SEED
+# This file should contain all the record creation needed to seed the database with its default values.
+# The data can then be loaded with the bin/rails db:seed command (or create!d alongside the database with db:setup).
+#
+# Examples:
+#
+#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
+#   Character.create(name: "Luke", movie: movies.first)
+
+require "json"
+
+# Purge database
+Plant.destroy_all
+User.destroy_all
+Garden.destroy_all
+GardenPlant.destroy_all
+
+puts "adding users test@test.fr"
+
+user = User.new(email: "test@test.fr", password: "123456", phone_number: "+33683073726")
+user.save
+
+puts "user Test added with password 123456"
+
+puts "Adding plants"
+counter = 1
+
+# Garden.create(user_id: user.id, name: "Balcon de cuisine", light: 0 , size:0 , care_willing: 0, location: "Paris,France")
+
+puts "Adding plants number 1"
+plant = Plant.create(name: "Heuchère",
+  color: "Rouge",
+  caducity: "Persistant",
+  care_frequency: 1,
+  water_need: 0,
+  growth_speed: 0,
+  cold_resistance: 0,
+  light_need: 1,
+  climate: [
+    "Climat océanique",
+    "Climat semi-océanique",
+    "Climat continental",
+    "Climat montagnard",
+    "Climat méditerranéen"
+  ],
+  content: "L’heuchère est une plante vivace de la famille des Saxifragacées, originaire d’Amérique du Nord avec 50 espèces et aujourd’hui plus de 500 variétés horticoles cultivées." ,
+  final_size: 0)
+  if plant.photo.attached?
+    plant.photo.purge
+  end
+  file = File.open("./app/assets/images/plantes/heuchère.jpg")
+  # puts file
+  plant.photo.attach(io: file, filename: "#{plant["name"]}.jpg", content_type: "image/jpg")
+  # GardenPlant.create(nickname: "Heuss", pot_color: "brown", garden_id: Garden.first.id, plant_id: plant.id)
+
+###################################################################
+###################################################################
+
+  puts "Adding plants number 2"
+plant = Plant.create(name: "Ciboulette",
+  color: "Green",
+  caducity: "Persistant",
+  care_frequency: 1,
+  water_need: 0,
+  growth_speed: 0,
+  cold_resistance: 0,
+  light_need: 1,
+  climate: [
+    "Climat océanique",
+    "Climat semi-océanique",
+    "Climat continental",
+    "Climat montagnard",
+    "Climat méditerranéen"
+  ],
+  content: "La ciboulette, superbe plante aromatique, se plaît dans le potager, jardin, terrasse et balcon. C'est une herbe indispensable pour relever nos plats cuisinés. Très facile à cultiver, elle possède, en outre, des vertus apéritives et digestives." ,
+  final_size: 0)
+  if plant.photo.attached?
+    plant.photo.purge
+  end
+  file = File.open("./app/assets/images/plantes/ciboulette.jpg")
+  # puts file
+  plant.photo.attach(io: file, filename: "#{plant["name"]}.jpg", content_type: "image/jpg")
+  # GardenPlant.create(nickname: "Ciboul", pot_color: "brown", garden_id: Garden.first.id, plant_id: plant.id)
+
+###################################################################
+###################################################################
+
+puts "Adding plants number 3"
+plant = Plant.create(name: "Dionée",
+                      color: "White",
+                      caducity: "Persistant",
+                      care_frequency: 1,
+                      water_need: 1,
+                      growth_speed: 1,
+                      cold_resistance: 2,
+                      light_need: 1,
+                      climate: [
+                        "Climat océanique",
+                        "Climat semi-océanique",
+                        "Climat continental",
+                        "Climat montagnard",
+                        "Climat méditerranéen"
+                      ],
+                      content: "La dionée (Dionaea) est la plus célèbre des plantes carnivores. Fascinante par ses pièges complexes et efficaces, elle se porte bien en culture extérieure si on la protège en hiver. Elle a besoin de soins attentifs, mais n'est pas d'une culture difficile." ,
+                      final_size: 0)
+if plant.photo.attached?
+  plant.photo.purge
+end
+file = File.open("./app/assets/images/plantes/dionée.jpg")
+# puts file
+plant.photo.attach(io: file, filename: "#{plant["name"]}.jpg", content_type: "image/jpg")
+# GardenPlant.create(nickname: "Dieudonnée", pot_color: "brown", garden_id: Garden.first.id, plant_id: plant.id)
+
+###################################################################
+###################################################################
+
+puts "Adding plants number 4"
+plant = Plant.create(name: "Fougère",
+                      color: "Green",
+                      caducity: "Persistant",
+                      care_frequency: 1,
+                      water_need: 1,
+                      growth_speed: 1,
+                      cold_resistance: 2,
+                      light_need: 1,
+                      climate: [
+                        "Climat océanique",
+                        "Climat semi-océanique",
+                        "Climat continental",
+                        "Climat montagnard",
+                        "Climat méditerranéen"
+                      ],
+                      content: "Utilisé comme fougère d’intérieur depuis le XIXe siècle, le nephrolepis offre des frondes opulentes d’aspect décoratif. Il fait partie des plantes vertes basiques et résistantes facilement cultivables, même par ceux qui n’ont pas la main verte." ,
+                      final_size: 0)
+if plant.photo.attached?
+  plant.photo.purge
+end
+file = File.open("./app/assets/images/plantes/fougère.jpg")
+# puts file
+plant.photo.attach(io: file, filename: "#{plant["name"]}.jpg", content_type: "image/jpg")
+# GardenPlant.create(nickname: "Fouggiare", pot_color: "brown", garden_id: Garden.first.id, plant_id: plant.id)
+
+###################################################################
+###################################################################
+
+puts "Adding plants number 5"
+plant = Plant.create(name: "Lavande",
+                      color: "Purple",
+                      caducity: "Persistant",
+                      care_frequency: 1,
+                      water_need: 1,
+                      growth_speed: 1,
+                      cold_resistance: 2,
+                      light_need: 1,
+                      climate: [
+                        "Climat océanique",
+                        "Climat semi-océanique",
+                        "Climat continental",
+                        "Climat montagnard",
+                        "Climat méditerranéen"
+                      ],
+                      content: "La lavande est un élégant arbrisseau qui symbolise la Provence et le soleil. Ses rameaux simples, touffus et dressés sont pourvus de feuilles vert cendré. Ses fleurs aux teintes pastel dégagent un parfum suave et pénétrant." ,
+                      final_size: 0)
+if plant.photo.attached?
+  plant.photo.purge
+end
+file = File.open("./app/assets/images/plantes/lavande.jpg")
+# puts file
+plant.photo.attach(io: file, filename: "#{plant["name"]}.jpg", content_type: "image/jpg")
+# GardenPlant.create(nickname: "Lavande", pot_color: "brown", garden_id: Garden.first.id, plant_id: plant.id)
+
+###################################################################
+###################################################################
+
+puts "Adding plants number 6"
+plant = Plant.create(name: "Basilic",
+                      color: "Green",
+                      caducity: "Persistant",
+                      care_frequency: 1,
+                      water_need: 1,
+                      growth_speed: 1,
+                      cold_resistance: 2,
+                      light_need: 1,
+                      climate: [
+                        "Climat océanique",
+                        "Climat semi-océanique",
+                        "Climat continental",
+                        "Climat montagnard",
+                        "Climat méditerranéen"
+                      ],
+                      content: "Le basilic est une plante aromatique facile à cultiver en extérieur ou en intérieur, en pot ou en pleine terre. Très apprécié pour sa fraîcheur et sa saveur, il relève les plats de l'été. C'est un réel plaisir de le cueillir selon ses besoins." ,
+                      final_size: 0)
+if plant.photo.attached?
+  plant.photo.purge
+end
+file = File.open("./app/assets/images/plantes/basilic.jpg")
+# puts file
+plant.photo.attach(io: file, filename: "#{plant["name"]}.jpg", content_type: "image/jpg")
+# GardenPlant.create(nickname: "Basil", pot_color: "brown", garden_id: Garden.first.id, plant_id: plant.id)
+
+###################################################################
+###################################################################
+
+puts "Adding plants number 7"
+plant = Plant.create(name: "Dahlia",
+                      color: "pink",
+                      caducity: "Persistant",
+                      care_frequency: 1,
+                      water_need: 1,
+                      growth_speed: 1,
+                      cold_resistance: 2,
+                      light_need: 1,
+                      climate: [
+                        "Climat océanique",
+                        "Climat semi-océanique",
+                        "Climat continental",
+                        "Climat montagnard",
+                        "Climat méditerranéen"
+                      ],
+                      content: "Le dahlia, d’entretien facile, fleurit de juillet à novembre. Il existe un très grand nombre de variétés aux formes et hauteurs différentes et aux coloris variés. Il se cultive ainsi en pleine terre comme en bac." ,
+                      final_size: 0)
+if plant.photo.attached?
+  plant.photo.purge
+end
+file = File.open("./app/assets/images/plantes/dalia.jpg")
+# puts file
+plant.photo.attach(io: file, filename: "#{plant["name"]}.jpg", content_type: "image/jpg")
+# GardenPlant.create(nickname: "Dalida", pot_color: "brown", garden_id: Garden.first.id, plant_id: plant.id)
+
+###################################################################
+###################################################################
+
+puts "Adding plants number 8"
+plant = Plant.create(name: "Dipladenia",
+                      color: "pink",
+                      caducity: "Persistant",
+                      care_frequency: 1,
+                      water_need: 1,
+                      growth_speed: 1,
+                      cold_resistance: 2,
+                      light_need: 1,
+                      climate: [
+                        "Climat océanique",
+                        "Climat semi-océanique",
+                        "Climat continental",
+                        "Climat montagnard",
+                        "Climat méditerranéen"
+                      ],
+                      content: "Cette grimpante tropicale offre une floraison abondante et de longue durée, mise en valeur par un feuillage lustré et persistant. Elle participera au décor de la terrasse ou du balcon du printemps à l’automne." ,
+                      final_size: 0)
+if plant.photo.attached?
+  plant.photo.purge
+end
+file = File.open("./app/assets/images/plantes/dipladenia.jpg")
+# puts file
+plant.photo.attach(io: file, filename: "#{plant["name"]}.jpg", content_type: "image/jpg")
+# GardenPlant.create(nickname: "Dipladenia", pot_color: "brown", garden_id: Garden.first.id, plant_id: plant.id)
+
+###################################################################
+###################################################################
+
+puts "Adding plants number 9"
+plant = Plant.create(name: "Fraisier",
+                      color: "red",
+                      caducity: "Persistant",
+                      care_frequency: 1,
+                      water_need: 1,
+                      growth_speed: 1,
+                      cold_resistance: 2,
+                      light_need: 1,
+                      climate: [
+                        "Climat océanique",
+                        "Climat semi-océanique",
+                        "Climat continental",
+                        "Climat montagnard",
+                        "Climat méditerranéen"
+                      ],
+                      content: "À croquer tout juste cueillie, en dessert, sorbet ou confiture, elle est plébiscitée par les enfants et les grands. Petite fraise des bois ou fraise cultivée, elle fait l’unanimité pour son parfum exquis. C’est aussi l’un des premiers fruits au jardin." ,
+                      final_size: 0)
+if plant.photo.attached?
+  plant.photo.purge
+end
+file = File.open("./app/assets/images/plantes/fraisier.jpg")
+# puts file
+plant.photo.attach(io: file, filename: "#{plant["name"]}.jpg", content_type: "image/jpg")
+# GardenPlant.create(nickname: "Didier", pot_color: "brown", garden_id: Garden.first.id, plant_id: plant.id)
+
+###################################################################
+###################################################################
+
+puts "Adding plants number 10"
+plant = Plant.create(name: "Thym",
+                      color: "Green",
+                      caducity: "Persistant",
+                      care_frequency: 1,
+                      water_need: 1,
+                      growth_speed: 1,
+                      cold_resistance: 2,
+                      light_need: 1,
+                      climate: [
+                        "Climat océanique",
+                        "Climat semi-océanique",
+                        "Climat continental",
+                        "Climat montagnard",
+                        "Climat méditerranéen"
+                      ],
+                      content: "Plante aromatique aux multiples propriétés, le thym est répandu sur les rocailles du sud de la France. C'est une vivace connue pour son parfum caractéristique, son goût typé et ses petites feuilles couvertes de minuscules fleurs blanches ou roses." ,
+                      final_size: 0)
+if plant.photo.attached?
+  plant.photo.purge
+end
+file = File.open("./app/assets/images/plantes/thym.jpg")
+# puts file
+plant.photo.attach(io: file, filename: "#{plant["name"]}.jpg", content_type: "image/jpg")
+# GardenPlant.create(nickname: "Tim", pot_color: "brown", garden_id: Garden.first.id, plant_id: plant.id)
+
+GardenPlant.find_each do |garden_plant|
+  garden_plant.validated!
+end

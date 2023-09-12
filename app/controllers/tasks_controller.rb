@@ -21,7 +21,7 @@ class TasksController < ApplicationController
     # message = @client.messages.create(
     #   body: 'Attention votre compagnon a besoin de votre aide! Rendez vous sur votre espace Soin de Bonnefeuille http://www.bonnefeuille.fr/',
     #   from: 'whatsapp:+14155238886',
-    #   to: 'whatsapp:+33613073726'
+    #   to: 'whatsapp:+33683073726'
     # )
 
   end
@@ -37,7 +37,7 @@ class TasksController < ApplicationController
 
   def create
     @garden_plant = GardenPlant.find(params[:garden_plant_id])
-    @task = @task.new(task_params)
+    @task = Task.new(task_params)
     @task.user = current_user
     @garden_plant.tasks = @tasks
     if @task.save
