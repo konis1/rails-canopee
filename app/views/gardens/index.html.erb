@@ -1,17 +1,17 @@
 <div class="wrapper gardens-index-wrapper">
   <div class="container min-full-screen" data-controller='gardens-counter'>
-    <h2 class="page-title">Mes jardins</h2>
-    <p class="page-description">Voici ta sélection actuelle !</p>
-    <div class='counter-wrapper'>
-      <i class="fa-solid fa-heart"></i>
-      <p class="counter-para"><span class='counter-number' data-gardens-counter-target='counter'></span> jardin<%= 's' if @gardens.count > 1 %></p>
-    </div>
+    <h2 class="page-title">Bienvenue 🪴</h2>
+    <p class="page-description">Retrouvez vos plantes ici !</p>
+    <%# <div class='counter-wrapper'> %>
+      <%# <i class="fa-solid fa-heart"></i> %>
+      <%# <p class="counter-para"><span class='counter-number' data-gardens-counter-target='counter'></span> jardin= 's' if @gardens.count > 1</p> %>
+    <%# </div> %>
       <% @gardens.each do |garden| %>
         <% if garden.garden_plants.where(status: 'validated').none? %>
           <%= link_to garden_path(garden) do %>
             <div class="card-garden without-plants p-3 m-3" data-gardens-counter-target='garden'>
                 <div class="garden-info">
-                  <h3><%= garden.name %></h3>
+                  <h3>Mes plantes<%#= garden.name %></h3>
                   <div class="location-line">
                     <i class="fa-solid fa-location-dot"></i>
                     <p><%= garden.location %></p>
@@ -27,14 +27,14 @@
           <%= link_to garden_path(garden) do %>
             <div class="card-garden with-plants p-3 m-3" data-gardens-counter-target='garden'>
               <div class="garden-info col-8">
-                <h3><%= garden.name %></h3>
+                <h3>Mes plantes<%#= garden.name %></h3>
                 <div class="location-line">
                   <i class="fa-solid fa-location-dot"></i>
                   <p><%= garden.location %></p>
                 </div>
                 <div class='plant-count-line'>
                   <i class="fa-solid fa-seedling"></i>
-                  <p><%= garden.plants.count %></p>
+                  <p><%= garden.garden_plants.validated.count %></p>
                 </div>
               </div>
               <div class="col-4">
@@ -44,13 +44,13 @@
           <% end %>
         <% end %>
       <% end %>
-      <div class="text-center">
-        <%= link_to new_garden_path, class:"link-of-the-plus" do %>
-          <div class="circle-of-the-plus">
-            <i class="fa-solid fa-plus"></i>
-          </div>
-        <% end %>
-      </div>
+      <%# <div class="text-center"> %>
+        <%#= link_to new_garden_path, class:"link-of-the-plus" do %>
+          <%# <div class="circle-of-the-plus"> %>
+            <%# <i class="fa-solid fa-plus"></i> %>
+          <%# </div> %>
+        <%# end %>
+      <%# </div> %>
   </div>
   <div class="filler"></div>
 </div>

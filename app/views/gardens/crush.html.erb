@@ -2,12 +2,12 @@
   <div data-controller="crush">
     <div class="crush-container">
       <div class="crush-container-top">
-        <h2 class="page-title">Mes crushes</h2>
-        <p class="page-description">Voici ta sélection !</p>
+        <h2 class="page-title">Ma sélection</h2>
+        <%# <p class="page-description">Voici ta sélection !</p> %>
         <div class='counter-wrapper'>
           <i class="fa-solid fa-heart"></i>
           <div class="counter d-flex" >
-            <p><span data-crush-target="counter"><%= @garden_plants.selected.count %></span> crushes</p>
+            <p><span data-crush-target="counter"><%= @garden_plants.selected.count %></span> coups de coeur</p>
           </div>
         </div>
       </div>
@@ -24,9 +24,9 @@
               <p>Vous n'avez pas sélectionné de plante 😭</p>
             <% else %>
               <span href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvas-<%= garden_plant.id%>">
-                <p><%= garden_plant.plant.name %></p>
+                <span class="d-flex justify-content-center"><h3><%= garden_plant.plant.name %></h3><p>50 euros</p></span>
               </span>
-              <%= link_to garden_plant_path(garden_plant), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } do %>
+              <%= link_to garden_plant_path(garden_plant), data: { turbo_method: :delete, turbo_confirm: 'Etes-vous sûr de ne plus vouloir cette plante ?' } do %>
                 <i class="fa-solid fa-trash-can"></i>
               <% end %>
             <% end %>
@@ -34,7 +34,9 @@
         <% end %>
       </div>
       <div class="text-center go-crush-btn mt-3 pt-0 ">
-        <%= link_to "c'est parti !", validate_plants_garden_path(@garden), data: { turbo_method: :post }, class:"link-to-validate btn crush-btn btn-success" %>
+        <%= link_to "JE COMMANDE !", validate_plants_garden_path(@garden), data: { turbo_method: :post }, class: "link-to-validate btn crush-btn btn-success" %>
+        <%#= link_to "JE COMMANDE !", merci_path(@garden), class:"link-to-validate btn crush-btn btn-success" %>
+        <p class="CGV mt-2 text-center">Livrées en 6 jours en pot (L14 x l10 x h35) et prêtes à s’épanouir 🐣 </p>
       </div>
     </div>
   </div>

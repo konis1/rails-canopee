@@ -28,6 +28,7 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :payments, only: [:new, :create]
   resources :garden_plants, only: [:show, :destroy, :update]
   resources :tasks, only: [:update]
   resources :pages, only: [:home, :cover]
@@ -35,6 +36,7 @@ Rails.application.routes.draw do
   post "gardens/:id/validate_plants", to: "gardens#validate_plants", as: :validate_plants_garden
   get "gardens/:id/select_plants", to: "gardens#select_plants", as: :select_plants
   get "gardens/:id/crush", to: "gardens#crush", as: :crush
+
 
 
 end
