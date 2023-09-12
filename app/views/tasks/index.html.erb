@@ -26,7 +26,7 @@
                   <section class="garden-plant-tasks">
                     <h6><%= garden_name %></h6>
                     <% tasks.each do |task| %>
-                      <% if task.done_time.nil? %>
+                      <% if task.completion_date.nil? %>
                         <article class="garden-plant-task-card">
                           <%= simple_form_for task,
                                               html: {
@@ -62,7 +62,7 @@
               <div class="accordion-body">
                 <ul>
                   <% @my_tasks.repotting.each do |task| %>
-                    <% if task.done_time.nil? %>
+                    <% if task.completion_date.nil? %>
                       <article class="garden-plant-task-card">
                         <%= simple_form_for task,
                                             html: {
@@ -104,7 +104,7 @@
               <div class="accordion-body">
                 <ul>
                   <% @current_week_tasks.watering.each do |task| %>
-                    <% if task.done_time.nil? %>
+                    <% if task.completion_date.nil? %>
                       <article class="garden-plant-task-card">
                         <%= simple_form_for task,
                                             html: {
@@ -139,7 +139,7 @@
               <div class="accordion-body">
                 <ul>
                   <% @current_week_tasks.repotting.each do |task| %>
-                    <% if task.done_time.nil? %>
+                    <% if task.completion_date.nil? %>
                       <article class="garden-plant-task-card">
                         <%= simple_form_for task,
                                             html: {
@@ -181,7 +181,7 @@
               <div class="accordion-body">
                 <ul>
                   <% @next_week_tasks.watering.each do |task| %>
-                    <% if task.done_time.nil? %>
+                    <% if task.completion_date.nil? %>
                       <article class="garden-plant-task-card">
                         <%= simple_form_for task,
                                             html: {
@@ -216,7 +216,7 @@
               <div class="accordion-body">
                 <ul>
                   <% @next_week_tasks.repotting.each do |task| %>
-                    <% if task.done_time.nil? %>
+                    <% if task.completion_date.nil? %>
                       <article class="garden-plant-task-card">
                         <%= simple_form_for task,
                                             html: {
