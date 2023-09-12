@@ -68,7 +68,6 @@ class WeatherService
     current_hour = Time.now.hour
     hourly_weather = retrieve_hourly_weather
     if hourly_weather['rain'][current_hour].positive? && hourly_weather['rain'][current_hour] < 5.0
-    # if hourly_weather['rain'][current_hour].positive? && ['hourly']['rain'][current_hour] < 5.0
       'drizzle'
     elsif hourly_weather['rain'][current_hour] > 5.0
       'rainy'

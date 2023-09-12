@@ -24,7 +24,7 @@ class GardenPlant < ApplicationRecord
     urgence = 0
     tasks = self.tasks
     tasks.each do |task|
-      if task.done_time.nil?
+      if task.completion_date.nil?
         urgence += task.criticity.to_i * 10
       end
     end
