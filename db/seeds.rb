@@ -24,7 +24,7 @@ puts "user Test added with password 123456"
 puts "Adding plants"
 counter = 1
 
-Garden.create(user_id: user.id, name: "Balcon de cuisine", light: 0 , size:0 , care_willing: 0, location: "Paris,France")
+# Garden.create(user_id: user.id, name: "Balcon de cuisine", light: 0 , size:0 , care_willing: 0, location: "Paris,France")
 
 puts "Adding plants number 1"
 plant = Plant.create(name: "Heuchère",
@@ -79,7 +79,7 @@ plant = Plant.create(name: "Ciboulette",
   file = File.open("./app/assets/images/plantes/ciboulette.jpg")
   # puts file
   plant.photo.attach(io: file, filename: "#{plant["name"]}.jpg", content_type: "image/jpg")
-  GardenPlant.create(nickname: "Ciboul", pot_color: "brown", garden_id: Garden.first.id, plant_id: plant.id)
+  # GardenPlant.create(nickname: "Ciboul", pot_color: "brown", garden_id: Garden.first.id, plant_id: plant.id)
 
 ###################################################################
 ###################################################################
@@ -195,7 +195,7 @@ end
 file = File.open("./app/assets/images/plantes/basilic.jpg")
 # puts file
 plant.photo.attach(io: file, filename: "#{plant["name"]}.jpg", content_type: "image/jpg")
-GardenPlant.create(nickname: "Basil", pot_color: "brown", garden_id: Garden.first.id, plant_id: plant.id)
+# GardenPlant.create(nickname: "Basil", pot_color: "brown", garden_id: Garden.first.id, plant_id: plant.id)
 
 ###################################################################
 ###################################################################
@@ -282,7 +282,7 @@ end
 file = File.open("./app/assets/images/plantes/fraisier.jpg")
 # puts file
 plant.photo.attach(io: file, filename: "#{plant["name"]}.jpg", content_type: "image/jpg")
-GardenPlant.create(nickname: "Didier", pot_color: "brown", garden_id: Garden.first.id, plant_id: plant.id)
+# GardenPlant.create(nickname: "Didier", pot_color: "brown", garden_id: Garden.first.id, plant_id: plant.id)
 
 ###################################################################
 ###################################################################
@@ -311,7 +311,7 @@ end
 file = File.open("./app/assets/images/plantes/thym.jpg")
 # puts file
 plant.photo.attach(io: file, filename: "#{plant["name"]}.jpg", content_type: "image/jpg")
-GardenPlant.create(nickname: "Tim", pot_color: "brown", garden_id: Garden.first.id, plant_id: plant.id)
+# GardenPlant.create(nickname: "Tim", pot_color: "brown", garden_id: Garden.first.id, plant_id: plant.id)
 
 GardenPlant.find_each do |garden_plant|
   garden_plant.validated!
