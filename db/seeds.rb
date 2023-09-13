@@ -16,10 +16,14 @@ GardenPlant.destroy_all
 
 puts "adding users test@test.fr"
 
-user = User.new(email: "test@test.fr", password: "123456")
-user.save
-
+user = User.create!(email: "test@test.fr", password: "123456", phone_number: "+33656773726", role: User.roles[:user])
 puts "user Test added with password 123456"
+
+vip = User.create!(email: "vip@test.fr", password: "123456", phone_number: "+33683073726", role: User.roles[:vip])
+puts "vip Test added with password 123456"
+
+admin = User.create!(email: "admin@test.fr", password: "123456", phone_number: "+33613073726", role: User.roles[:admin])
+puts "admin Test added with password 123456"
 
 puts "Adding plants"
 counter = 1

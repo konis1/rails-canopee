@@ -1,5 +1,6 @@
 class Task < ApplicationRecord
   belongs_to :garden_plant
+  belongs_to :user
   has_one :garden, through: :garden_plant
   has_one :plant, through: :garden_plant
   after_create_commit :notify_recipient

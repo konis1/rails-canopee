@@ -35,8 +35,7 @@ gem "cloudinary"
 gem "noticed"
 
 gem 'twilio-ruby'
-gem 'dotenv-rails'
-
+gem 'cancancan'
 gem 'stripe'
 
 # Use Redis adapter to run Action Cable in production
