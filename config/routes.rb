@@ -6,6 +6,20 @@ Rails.application.routes.draw do
     mount Sidekiq::Web => '/sidekiq'
   end
 
+  authenticated :user, ->(user) { user.admin? } do
+
+    get "admin", to: "pages#admin"
+    resources :gardens do
+      resources :garden_plants, only: [:new, :create, :update, :destroy]
+    end
+  end
+
+  authenticated :user, ->(user) { user.vip? } do
+    get "vip", to: "pages#vip"
+    resources :gardens
+    resources :tasks
+  end
+
   devise_for :users
 
   root to: "pages#home"
@@ -36,7 +50,5 @@ Rails.application.routes.draw do
   post "gardens/:id/validate_plants", to: "gardens#validate_plants", as: :validate_plants_garden
   get "gardens/:id/select_plants", to: "gardens#select_plants", as: :select_plants
   get "gardens/:id/crush", to: "gardens#crush", as: :crush
-
-
 
 end

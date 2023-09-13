@@ -5,6 +5,28 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :gardens, dependent: :destroy
   has_many :reviews, dependent: :destroy
+  has_many :tasks
   has_many :notifications, as: :recipient, dependent: :destroy
   has_noticed_notifications
+  validates :phone_number, presence: true, uniqueness: true, format: { with: /\A\+\d+\z/, message: "le format n'est pas valide" }
+
+  enum role: [:user, :vip, :admin]
+  after_initialize :set_default_role, if: :new_record?
+
+  def vip?
+    role == "vip"
+  end
+
+  def admin?
+    role == "admin"
+  end
+
+  def user?
+    role == "user"
+  end
+
+  private
+  def set_default_role
+    self.role ||= :user
+  end
 end
