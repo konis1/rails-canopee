@@ -20,6 +20,5 @@ class WhatsappNotificationService
     )
   rescue Twilio::REST::RestError => e
     puts "Error sending message: #{e.message}"
-    end
   end
 end
