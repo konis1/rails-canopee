@@ -1,8 +1,4 @@
 class RegistrationsController < ApplicationController
-  def new
-    @user = User.new
-  end
-
   def show
     @user = User.find(params[:id])
     @gardens = Garden.where(receiver_id: @user.id)
@@ -19,7 +15,7 @@ class RegistrationsController < ApplicationController
     if @user.save
       redirect_to gardens_path(@user)
     else
-      render "edit"
+      render "new"
     end
   end
 

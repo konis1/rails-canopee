@@ -8,8 +8,8 @@ class User < ApplicationRecord
   has_many :tasks
   has_many :notifications, as: :recipient, dependent: :destroy
   has_noticed_notifications
-  validates :phone_number, uniqueness: true, format: { with: /\A\+\d+\z/, message: "le format n'est pas valide" }
-  validates :email, :code_achat, presence: true
+  # validates :phone_number, uniqueness: true, format: { with: /\A\+\d+\z/, message: "le format n'est pas valide" }
+  # validates :email, :code_achat, :phone_number, presence: true
   enum role: [:user, :vip, :admin]
   after_initialize :set_default_role, if: :new_record?
 
