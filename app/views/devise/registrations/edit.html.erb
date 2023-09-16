@@ -9,7 +9,8 @@
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
       <p>En attente de confirmation : <%= resource.unconfirmed_email %></p>
     <% end %>
-
+    <%= f.input :prenom %>
+    <%= f.input :nom %>
     <%= f.input :password,
                 hint: "Ne remplissez pas si vous souhaitez le conserver !",
                 required: false,
