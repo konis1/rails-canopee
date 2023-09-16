@@ -1,4 +1,18 @@
 class RegistrationsController < ApplicationController
+  def new
+    @user = User.new
+  end
+
+  def create
+    @user = User.new(user_params)
+
+    if @user.save
+      redirect_to gardens_path(@garden), notice: 'Bienvenue, votre compte a été créé avec succès'
+    else
+      render :new, status: :unprocessable_entity
+    end
+  end
+
   def show
     @user = User.find(params[:id])
     @gardens = Garden.where(receiver_id: @user.id)
@@ -13,7 +27,7 @@ class RegistrationsController < ApplicationController
     @user.update(user_params)
 
     if @user.save
-      redirect_to gardens_path(@user)
+      redirect_to gardens_path(@garden)
     else
       render "new"
     end
@@ -21,7 +35,8 @@ class RegistrationsController < ApplicationController
 
   private
 
-    def user_params
-      params.require(:user).permit(:prenom, :nom)
-    end
+  def user_params
+    params.require(:user).permit(:phone_number, :address, :adresse_ville, :adresse_code_postal, :code_achat)
+  end
+
 end
