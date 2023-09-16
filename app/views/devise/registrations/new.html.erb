@@ -9,20 +9,55 @@
           <%= f.input :email,
                       required: true,
                       autofocus: true,
-                      input_html: { autocomplete: "email" },
+                      label: "Adresse mail",
                       label_html: { class: 'control-label' } %>
         </div>
         <div class="form-group">
           <%= f.input :password,
                       required: true,
                       hint: ("#{@minimum_password_length} caractères minimum" if @minimum_password_length),
-                      input_html: { autocomplete: "nouveau-mot-de-passe" },
+                      label: "Mot de passe",
                       label_html: { class: 'control-label' } %>
         </div>
         <div class="form-group">
           <%= f.input :password_confirmation,
                       required: true,
-                      input_html: { autocomplete: "nouveau-mot-de-passe" },
+                      label: "Confirmation du mot de passe",
+                      label_html: { class: 'control-label' } %>
+        </div>
+        <div class="form-group">
+          <%= f.input :phone_number,
+                      required: true,
+                      autofocus: true,
+                      label: "Telephone mobile (pour notifications seulement)",
+                      label_html: { class: 'control-label' } %>
+        </div>
+        <div class="form-group">
+          <%= f.input :address,
+                      required: true,
+                      autofocus: true,
+                      label: "Adresse",
+                      label_html: { class: 'control-label' } %>
+        </div>
+        <div class="form-group">
+          <%= f.input :adresse_ville,
+                      required: true,
+                      autofocus: true,
+                      label: "Ville",
+                      label_html: { class: 'control-label' } %>
+        </div>
+        <div class="form-group">
+          <%= f.input :adresse_code_postal,
+                      required: true,
+                      autofocus: true,
+                      label: "Code postal",
+                      label_html: { class: 'control-label' } %>
+        </div>
+        <div class="form-group">
+          <%= f.input :code_achat,
+                      required: true,
+                      autofocus: true,
+                      label: "Code achat",
                       label_html: { class: 'control-label' } %>
         </div>
 
@@ -30,7 +65,6 @@
           <%= f.button :submit, "M'enregistrer", class: 'btn btn-primary p-2' %>
         </div>
       <% end %>
-      <%#= render "devise/registrations/form" %>
 
       <%= render "devise/shared/links" %>
     </div>
