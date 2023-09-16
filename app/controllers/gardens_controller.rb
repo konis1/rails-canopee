@@ -34,7 +34,7 @@ class GardensController < ApplicationController
 
   def update
     if @garden.update(garden_params)
-      redirect_to garden_path(@garden), notice: 'Garden was successfully updated.'
+      redirect_to select_plants_path(@garden), notice: 'Garden was successfully updated.'
     else
       render :edit, status: :unprocessable_entity
 
