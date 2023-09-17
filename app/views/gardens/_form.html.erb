@@ -42,18 +42,17 @@
       <h2 class="text-light-yellow">Temps de soins</h2>
       <p>Quelle sera votre disponibilité pour votre plante ?</p>
       <div class="card-avatar">
-        <%= f.input :care_willing,
-          label: "",
-          required: false,
-          as: :radio_buttons,
-          collection: [["Un peu", 0], ["Beaucoup", 1], ["A la folie", 2]],
-          input_html: { class: "care-willing-selector d-none" },
-          label_method: lambda { |(label, _value)| render("gardens/labels/care_willing", label: label) }
-        %>
-
+      <%= f.input :care_willing,
+        label: "",
+        required: false,
+        as: :radio_buttons,
+        collection: [["Un peu", 0], ["Beaucoup", 1], ["A la folie", 2]],
+        input_html: { class: "care-willing-selector d-none" },
+        label_method: lambda { |(label, _value)| render("gardens/labels/care_willing", label: label) }
+      %>
       </div>
     </div>
-    <div>
+    <div style="text-align: center">
       <%# <div class="flex-grow-1-1-0"></div> %>
       <%# <p class="flex-grow-1-1-0 d-flex align-items-center text-light-yellow mb-0">
         <span data-garden-form-target="stepCount"></span>
@@ -63,9 +62,9 @@
               data-action="click->garden-form#goToNextQuestion">
           <i class="fa-solid fa-circle-arrow-right"></i>
         </span> %>
-        <button type="submit" class="btn-active-no-effect cursor-pointer fs-1 text-light-yellow ms-auto d-flex justify-content-end mb-3 btn"
+        <button type="submit" class="text-light-yellow m-3 btn"
                 data-garden-form-target="button">
-          <i class="fa-solid fa-circle-check"></i>
+          <h5>Voir les propositions adaptées à mes critères !</h5>
         </button>
       <%# </div> %>
     </div>
