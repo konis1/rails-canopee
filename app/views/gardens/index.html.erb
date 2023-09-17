@@ -6,7 +6,7 @@
       <%# <i class="fa-solid fa-heart"></i> %>
       <%# <p class="counter-para"><span class='counter-number' data-gardens-counter-target='counter'></span> jardin= 's' if @gardens.count > 1</p> %>
     <%# </div> %>
-      <% @gardens.each do |garden| %>
+      <% current_user.gardens.each do |garden| %>
         <% if garden.garden_plants.where(status: 'validated').none? %>
           <%= link_to garden_path(garden) do %>
             <div class="card-garden without-plants p-3 m-3" data-gardens-counter-target='garden'>
