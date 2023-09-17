@@ -77,15 +77,25 @@
   color: #cc985c;
 }
 
-.btn-active-no-effect {
-  &:active {
-    background-color: transparent !important;
-    color: $light-yellow !important;
-    border: none !important;
-  }
-  &:focus-visible {
-      background-color: transparent !important;
-    color: $light-yellow !important;
-    border: none !important;
-    }
-  }
+.radio-button-padding {
+  padding: 5rem;
+}
+
+/* Styles pour les icônes des étiquettes */
+.card-avatar .custom-label {
+  margin-right: 10px; /* Ajustez la valeur de la marge selon vos besoins */
+}
+
+
+// .btn-active-no-effect {
+//   &:active {
+//     background-color: $light-yellow;
+//     color: $dark-green;
+//     align-items: center;
+//   }
+//   &:focus-visible {
+//       background-color: transparent !important;
+//     color: $light-yellow !important;
+//     border: none !important;
+//     }
+//   }
