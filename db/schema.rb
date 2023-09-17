@@ -142,6 +142,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_16_141939) do
     t.string "code_achat"
     t.string "address"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["garden_id"], name: "index_users_on_garden_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
@@ -153,4 +154,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_16_141939) do
   add_foreign_key "reviews", "plants"
   add_foreign_key "reviews", "users"
   add_foreign_key "tasks", "garden_plants"
+  add_foreign_key "users", "gardens"
 end
