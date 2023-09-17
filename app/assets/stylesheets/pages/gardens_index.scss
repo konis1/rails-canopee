@@ -2,6 +2,14 @@
   background-image: url("background_gardens_index.png");
 }
 
+.btn-new-plant {
+  background-color: $light-green;
+  margin-top: 10rem;
+  padding: 3rem;
+  border-radius: 20px;
+  color: $light-yellow;
+}
+
 .counter-wrapper {
   display: flex;
   margin-left: 8px;

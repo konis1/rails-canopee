@@ -1,72 +1,74 @@
-<div class="container">
-  <div class="d-flex justify-content-center align-items-center" style="min-height: 100vh;">
-    <div class="signup-form mx-auto">
-      <h2>Créer mon compte</h2>
-      <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), data: { turbo: :false }) do |f| %>
-        <%= f.error_notification %>
+<div class="wrapper registration-container">
+  <div class="container">
+    <div class="d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+      <div class="signup-form mx-auto">
+        <h2>Créer mon compte</h2>
+        <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), data: { turbo: :false }) do |f| %>
+          <%= f.error_notification %>
 
-        <div class="form-group">
-          <%= f.input :email,
-                      required: true,
-                      autofocus: true,
-                      label: "Adresse mail",
-                      label_html: { class: 'control-label' } %>
-        </div>
-        <div class="form-group">
-          <%= f.input :password,
-                      required: true,
-                      hint: ("#{@minimum_password_length} caractères minimum" if @minimum_password_length),
-                      label: "Mot de passe",
-                      label_html: { class: 'control-label' } %>
-        </div>
-        <div class="form-group">
-          <%= f.input :password_confirmation,
-                      required: true,
-                      label: "Confirmation du mot de passe",
-                      label_html: { class: 'control-label' } %>
-        </div>
-        <div class="form-group">
-          <%= f.input :phone_number,
-                      required: true,
-                      autofocus: true,
-                      label: "Telephone mobile (pour notifications seulement)",
-                      label_html: { class: 'control-label' } %>
-        </div>
-        <div class="form-group">
-          <%= f.input :address,
-                      required: true,
-                      autofocus: true,
-                      label: "Adresse",
-                      label_html: { class: 'control-label' } %>
-        </div>
-        <div class="form-group">
-          <%= f.input :adresse_ville,
-                      required: true,
-                      autofocus: true,
-                      label: "Ville",
-                      label_html: { class: 'control-label' } %>
-        </div>
-        <div class="form-group">
-          <%= f.input :adresse_code_postal,
-                      required: true,
-                      autofocus: true,
-                      label: "Code postal",
-                      label_html: { class: 'control-label' } %>
-        </div>
-        <div class="form-group">
-          <%= f.input :code_achat,
-                      required: true,
-                      autofocus: true,
-                      label: "Code achat",
-                      label_html: { class: 'control-label' } %>
-        </div>
+          <div class="form-group">
+            <%= f.input :email,
+                        required: true,
+                        autofocus: true,
+                        label: "Adresse mail",
+                        label_html: { class: 'control-label' } %>
+          </div>
+          <div class="form-group">
+            <%= f.input :password,
+                        required: true,
+                        hint: ("#{@minimum_password_length} caractères minimum" if @minimum_password_length),
+                        label: "Mot de passe",
+                        label_html: { class: 'control-label' } %>
+          </div>
+          <div class="form-group">
+            <%= f.input :password_confirmation,
+                        required: true,
+                        label: "Confirmation du mot de passe",
+                        label_html: { class: 'control-label' } %>
+          </div>
+          <div class="form-group">
+            <%= f.input :phone_number,
+                        required: true,
+                        autofocus: true,
+                        label: "Telephone mobile (pour notifications seulement)",
+                        label_html: { class: 'control-label' } %>
+          </div>
+          <div class="form-group">
+            <%= f.input :address,
+                        required: true,
+                        autofocus: true,
+                        label: "Adresse",
+                        label_html: { class: 'control-label' } %>
+          </div>
+          <div class="form-group">
+            <%= f.input :adresse_ville,
+                        required: true,
+                        autofocus: true,
+                        label: "Ville",
+                        label_html: { class: 'control-label' } %>
+          </div>
+          <div class="form-group">
+            <%= f.input :adresse_code_postal,
+                        required: true,
+                        autofocus: true,
+                        label: "Code postal",
+                        label_html: { class: 'control-label' } %>
+          </div>
+          <div class="form-group">
+            <%= f.input :code_achat,
+                        required: true,
+                        autofocus: true,
+                        label: "Code achat",
+                        label_html: { class: 'control-label' } %>
+          </div>
 
-        <div class="form-actions">
-          <%= f.button :submit, "M'enregistrer", class: 'btn btn-primary p-2' %>
-        </div>
-      <% end %>
+          <div class="form-actions">
+            <%= f.button :submit, "M'enregistrer", class: 'btn btn-primary p-2' %>
+          </div>
+        <% end %>
 
-      <%= render "devise/shared/links" %>
+        <%= render "devise/shared/links" %>
+      </div>
     </div>
   </div>
 </div>
