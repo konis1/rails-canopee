@@ -38,7 +38,8 @@ class GenerateDailyTasksForPlantJob
         criticity: 0,
         due_date: DateTime.now + (watering_interval * 0.7).day,
         start_time: DateTime.now,
-        garden_plant: @garden_plant
+        garden_plant: @garden_plant,
+        user: @garden_plant.user
       )
     end
   end
