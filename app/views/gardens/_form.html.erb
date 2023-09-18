@@ -1,73 +1,75 @@
-<div data-controller="garden-form">
-  <%= simple_form_for @garden do |f| %>
-    <div class="rounded-4 p-2 m-1 bg-light-green"
-         data-garden-form-target="input">
-      <h2 class="text-light-yellow">Localisation</h2>
-      <p>Dans quelle ville habitez-vous ? 🏠</p>
-      <%= f.input :location,
-                  label:false,
-                  input_html: {
-                    data: {
-                      address_autocomplete_target: "address"
+<div class="new-garden-container">
+  <div data-controller="garden-form">
+    <%= simple_form_for @garden do |f| %>
+      <div class="rounded-4 p-2 m-1 bg-light-green"
+          data-garden-form-target="input">
+        <h2 class="text-light-yellow">Localisation</h2>
+        <p>Dans quelle ville habitez-vous ? 🏠</p>
+        <%= f.input :location,
+                    label:false,
+                    input_html: {
+                      data: {
+                        address_autocomplete_target: "address"
+                      },
+                      class: "d-none card_plant_small"
                     },
-                    class: "d-none card_plant_small"
-                  },
-                  wrapper_html: {
-                    class: "",
-                    data: {
-                      controller: "address-autocomplete",
-                      address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]
-                    }
-                  } %>
-    </div>
-    <div class="rounded-4 p-2 m-1 bg-light-green"
-         data-garden-form-target="input">
-      <h2 class="text-light-yellow">Luminosité</h2>
-      <p>Quel sera l'ensoleillement pour votre plante ?</p>
-      <%= f.input :light,
-                  as: :radio_buttons,
-                  label: "",
-                  required: false,
-                  collection: [["Ombre", 0], ["Mi-ombre", 1], ["Ensoleillé", 2]],
-                  input_html: { class: "light-selector" },
-                  item_wrapper_class: "light-item flex-grow-1-1-0",
-                  label_method: lambda { |(label, _value)| render("gardens/labels/light", label: label) },
-                  wrapper_html: {
-                    class: "d-flex justify-content-between legend-hidden"
-                  }
-      %>
-    </div>
-    <div class="rounded-4 p-2 m-1 bg-light-green"
-         data-garden-form-target="input">
-      <h2 class="text-light-yellow">Temps de soins</h2>
-      <p>Quelle sera votre disponibilité pour votre plante ?</p>
-      <div class="card-avatar">
-      <%= f.input :care_willing,
-        label: "",
-        required: false,
-        as: :radio_buttons,
-        collection: [["Un peu", 0], ["Beaucoup", 1], ["A la folie", 2]],
-        input_html: { class: "care-willing-selector d-none" },
-        label_method: lambda { |(label, _value)| render("gardens/labels/care_willing", label: label) }
-      %>
+                    wrapper_html: {
+                      class: "",
+                      data: {
+                        controller: "address-autocomplete",
+                        address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]
+                      }
+                    } %>
       </div>
-    </div>
-    <div style="text-align: center">
-      <%# <div class="flex-grow-1-1-0"></div> %>
-      <%# <p class="flex-grow-1-1-0 d-flex align-items-center text-light-yellow mb-0">
-        <span data-garden-form-target="stepCount"></span>
-      </p> %>
-      <%# <div class="flex-grow-1-1-0"> %>
-        <%# <span class="cursor-pointer fs-1 text-light-yellow ms-auto d-flex justify-content-end p-4"
-              data-action="click->garden-form#goToNextQuestion">
-          <i class="fa-solid fa-circle-arrow-right"></i>
-        </span> %>
-        <button type="submit" class="text-light-yellow m-3 btn"
-                data-garden-form-target="button">
-          <h5>Voir les propositions adaptées à mes critères !</h5>
-        </button>
-      <%# </div> %>
-    </div>
-  <% end %>
-  <div class="filler bg-dark-green"></div>
+      <div class="rounded-4 p-2 m-1 bg-light-green"
+          data-garden-form-target="input">
+        <h2 class="text-light-yellow">Luminosité</h2>
+        <p>Quel sera l'ensoleillement pour votre plante ?</p>
+        <%= f.input :light,
+                    as: :radio_buttons,
+                    label: "",
+                    required: false,
+                    collection: [["Ombre", 0], ["Mi-ombre", 1], ["Ensoleillé", 2]],
+                    input_html: { class: "light-selector" },
+                    item_wrapper_class: "light-item flex-grow-1-1-0",
+                    label_method: lambda { |(label, _value)| render("gardens/labels/light", label: label) },
+                    wrapper_html: {
+                      class: "d-flex justify-content-between legend-hidden"
+                    }
+        %>
+      </div>
+      <div class="rounded-4 p-2 m-1 bg-light-green"
+          data-garden-form-target="input">
+        <h2 class="text-light-yellow">Temps de soins</h2>
+        <p>Quelle sera votre disponibilité pour votre plante ?</p>
+        <div class="card-avatar">
+        <%= f.input :care_willing,
+          label: "",
+          required: false,
+          as: :radio_buttons,
+          collection: [["Un peu", 0], ["Beaucoup", 1], ["A la folie", 2]],
+          input_html: { class: "care-willing-selector d-none" },
+          label_method: lambda { |(label, _value)| render("gardens/labels/care_willing", label: label) }
+        %>
+        </div>
+      </div>
+      <div style="text-align: center">
+        <%# <div class="flex-grow-1-1-0"></div> %>
+        <%# <p class="flex-grow-1-1-0 d-flex align-items-center text-light-yellow mb-0">
+          <span data-garden-form-target="stepCount"></span>
+        </p> %>
+        <%# <div class="flex-grow-1-1-0"> %>
+          <%# <span class="cursor-pointer fs-1 text-light-yellow ms-auto d-flex justify-content-end p-4"
+                data-action="click->garden-form#goToNextQuestion">
+            <i class="fa-solid fa-circle-arrow-right"></i>
+          </span> %>
+          <button type="submit" class="text-light-yellow m-3 btn"
+                  data-garden-form-target="button">
+            <h5>Voir les propositions adaptées à mes critères !</h5>
+          </button>
+        <%# </div> %>
+      </div>
+    <% end %>
+    <div class="filler bg-dark-green"></div>
+  </div>
 </div>
