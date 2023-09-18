@@ -3,7 +3,7 @@ class Garden < ApplicationRecord
   has_many :garden_plants, -> {includes(:plant).order("plants.name desc")}, dependent: :destroy
   has_many :plants, -> {order(name: :desc)}, through: :garden_plants
   validates :light, presence: true #:size, :location, presence: true
-  validates :name, uniqueness: true
+  # validates :name, uniqueness: true
   geocoded_by :location
   after_validation :geocode, if: :will_save_change_to_location?
 
