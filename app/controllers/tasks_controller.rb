@@ -18,11 +18,11 @@ class TasksController < ApplicationController
     auth_token = ENV['auth_token']
     @client = Twilio::REST::Client.new(account_sid, auth_token)
 
-    # message = @client.messages.create(
-    #   body: 'Cher Romain, pensez à prendre soin de vos nouveaux compagnons ! Nous vous informerons en temps voulu des soins à leur apporter. L équipe BonneFeuille 🪴',
-    #   from: 'whatsapp:+14155238886',
-    #   to: 'whatsapp:+33616592275'
-    # )
+    message = @client.messages.create(
+      body: 'Cher Romain, pensez à prendre soin de vos nouveaux compagnons ! Nous vous informerons en temps voulu des soins à leur apporter. L équipe BonneFeuille 🪴',
+      from: 'whatsapp:+14155238886',
+      to: 'whatsapp:+33616592275'
+    )
 
   end
 
