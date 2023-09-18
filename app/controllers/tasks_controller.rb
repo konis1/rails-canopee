@@ -21,7 +21,7 @@ class TasksController < ApplicationController
     message = @client.messages.create(
       body: 'Cher Romain, pensez à prendre soin de vos nouveaux compagnons ! Nous vous informerons en temps voulu des soins à leur apporter. L équipe BonneFeuille 🪴',
       from: 'whatsapp:+14155238886',
-      to: 'whatsapp:+33613073726'
+      to: 'whatsapp:+33749676385'
     )
 
   end
