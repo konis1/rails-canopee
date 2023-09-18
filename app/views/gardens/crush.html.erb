@@ -1,56 +1,56 @@
-<div class="crush page-container" style="background-image: url(<%= image_path('cover_crushs.png', alt: 'Cover crushs') %>)">
-  <div data-controller="crush">
-    <div class="crush-container">
-      <div class="crush-container-top">
-        <h2 class="page-title">Ma sélection</h2>
-        <%# <p class="page-description">Voici ta sélection !</p> %>
-        <div class='counter-wrapper'>
-          <i class="fa-solid fa-heart"></i>
-          <div class="counter d-flex" >
-            <p><span data-crush-target="counter"><%= @garden_plants.selected.count %></span> coups de coeur</p>
+  <div class="crush page-container" style="background-image: url(<%= image_path('cover_crushs.png', alt: 'Cover crushs') %>)">
+    <div data-controller="crush">
+      <div class="crush-container">
+        <div class="crush-container-top">
+          <h2 class="page-title">Ma sélection</h2>
+          <%# <p class="page-description">Voici ta sélection !</p> %>
+          <div class='counter-wrapper'>
+            <i class="fa-solid fa-heart"></i>
+            <div class="counter d-flex" >
+              <p><span data-crush-target="counter"><%= @garden_plants.selected.count %></span> coups de coeur</p>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="crush-cards-container">
-        <% @garden_plants.each do |garden_plant| %>
-          <div class="card-crush p-3 m-3">
-              <span href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvas-<%= garden_plant.id%>">
-                <img src="<%= cl_image_path garden_plant.plant.photo.key, height: 80, crop: :fill %>" alt="A plant" class="first-plant">
-                <div class="d-flex justify-content">
-                <i class="fa-solid fa-circle-info fa-xl" style="color: #0c4019;"></i>
-                </div>
-              </span>
-            <% if @garden.garden_plants.none? %>
-              <p>Vous n'avez pas sélectionné de plante 😭</p>
-            <% else %>
-              <span href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvas-<%= garden_plant.id%>">
-                <span class="d-flex justify-content-center"><h3><%= garden_plant.plant.name %></h3><p>50 euros</p></span>
-              </span>
-              <%= link_to garden_plant_path(garden_plant), data: { turbo_method: :delete, turbo_confirm: 'Etes-vous sûr de ne plus vouloir cette plante ?' } do %>
-                <i class="fa-solid fa-trash-can"></i>
+        <div class="crush-cards-container">
+          <% @garden_plants.each do |garden_plant| %>
+            <div class="card-crush p-3 m-3">
+                <span href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvas-<%= garden_plant.id%>">
+                  <img src="<%= cl_image_path garden_plant.plant.photo.key, height: 80, crop: :fill %>" alt="A plant" class="first-plant">
+                  <div class="d-flex justify-content">
+                  <i class="fa-solid fa-circle-info fa-xl" style="color: #0c4019;"></i>
+                  </div>
+                </span>
+              <% if @garden.garden_plants.none? %>
+                <p>Vous n'avez pas sélectionné de plante 😭</p>
+              <% else %>
+                <span href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvas-<%= garden_plant.id%>">
+                  <span class="d-flex justify-content-center"><h3><%= garden_plant.plant.name %></h3><p>50 euros</p></span>
+                </span>
+                <%= link_to garden_plant_path(garden_plant), data: { turbo_method: :delete, turbo_confirm: 'Etes-vous sûr de ne plus vouloir cette plante ?' } do %>
+                  <i class="fa-solid fa-trash-can"></i>
+                <% end %>
               <% end %>
-            <% end %>
-          </div>
-        <% end %>
-      </div>
-      <div class="text-center go-crush-btn mt-3 pt-0 ">
-        <%= link_to "JE COMMANDE !", validate_plants_garden_path(@garden), data: { turbo_method: :post }, class: "link-to-validate btn crush-btn btn-success" %>
-        <%#= link_to "JE COMMANDE !", merci_path(@garden), class:"link-to-validate btn crush-btn btn-success" %>
-        <p class="CGV mt-2 text-center">Livrées en 21 jours en pot (L14 x l10 x h35) et prêtes à s’épanouir 🐣 </p>
+            </div>
+          <% end %>
+        </div>
+        <div class="text-center go-crush-btn mt-3 pt-0 ">
+          <%= link_to "JE COMMANDE !", validate_plants_garden_path(@garden), data: { turbo_method: :post }, class: "link-to-validate btn crush-btn btn-success" %>
+          <%#= link_to "JE COMMANDE !", merci_path(@garden), class:"link-to-validate btn crush-btn btn-success" %>
+          <p class="CGV mt-2 text-center">Livrées en 21 jours en pot (L14 x l10 x h35) et prêtes à s’épanouir 🐣 </p>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
-<% @garden_plants.each do |garden_plant| %>
-  <div class="offcanvas offcanvas-bottom offcanvas-plant-info" tabindex="-1" id="offcanvas-<%= garden_plant.id %>">
-    <div class="offcanvas-header">
-      <h5 class="offcanvas-title"><%= garden_plant.plant.name %></h5>
-      <%# <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button> %>
+  <% @garden_plants.each do |garden_plant| %>
+    <div class="offcanvas offcanvas-bottom offcanvas-plant-info" tabindex="-1" id="offcanvas-<%= garden_plant.id %>">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title"><%= garden_plant.plant.name %></h5>
+        <%# <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button> %>
+      </div>
+      <div class="offcanvas-body small">
+        <%= cl_image_tag garden_plant.plant.photo.key, class: 'modal_content__img' if garden_plant.plant.photo.attached? %>
+        <p><%= garden_plant.plant.content %></p>
+      </div>
     </div>
-    <div class="offcanvas-body small">
-      <%= cl_image_tag garden_plant.plant.photo.key, class: 'modal_content__img' if garden_plant.plant.photo.attached? %>
-      <p><%= garden_plant.plant.content %></p>
-    </div>
-  </div>
-<% end %>
+  <% end %>
