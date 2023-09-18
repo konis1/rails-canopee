@@ -2,8 +2,35 @@
   background-image: url("background_gardens_index.png");
   color: white;
 }
+// /* Pour les écrans de petite taille (par exemple, les smartphones) */
+// @media (max-width: 361px) {
+//   .registration-container {
+//     padding: 5px; /* Ajustez la marge ou le rembourrage selon vos besoins */
+//   }
+//   // .signup-form {
+//   //   background-color: white;/* Ajoutez des règles CSS spécifiques pour les petits écrans ici */
+//   // }
+// }
 
-// .links-container {
-//   background-color: black;
-//   color: white;
+// /* Pour les écrans de taille moyenne (par exemple, les tablettes) */
+// @media (min-width: 361px) and (max-width: 400px) {
+//   .registration-container {
+//     padding: 20px;
+//     // .signup-form {
+//     //   background-color: blue;/* Ajoutez des règles CSS spécifiques pour les petits écrans ici */
+//     // }
+//     /* Ajoutez des règles CSS spécifiques pour les écrans de taille moyenne ici */
+//   }
+// }
+
+// /* Pour les écrans de grande taille (par exemple, les ordinateurs de bureau) */
+// @media (min-width: 400px) {
+//   .registration-container {
+//     padding: 55px;
+//     // .signup-form {
+//     //   background-color: red;/* Ajoutez des règles CSS spécifiques pour les petits écrans ici */
+//     // }
+
+//     /* Ajoutez des règles CSS spécifiques pour les grands écrans ici */
+//   }
 // }
