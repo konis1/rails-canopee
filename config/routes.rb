@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
     get "admin", to: "pages#admin"
     resources :gardens do
-      resources :garden_plants, only: [:new, :create, :update, :destroy]
+      resources :garden_plants, only: %i[new create update destroy]
     end
   end
 
@@ -51,4 +51,7 @@ Rails.application.routes.draw do
   get "gardens/:id/select_plants", to: "gardens#select_plants", as: :select_plants
   get "gardens/:id/crush", to: "gardens#crush", as: :crush
 
+  # Cette route est utilisée après la validation des crushes afin de demander les infos de livraison et le code d'achat
+  # de l'utilisateur.
+  get "gardens/:id/delivery_info", to: "registrations#retrieve_delivery_info", as: :retrieve_delivery_info
 end

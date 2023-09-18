@@ -33,10 +33,16 @@ class RegistrationsController < ApplicationController
     end
   end
 
+  # Action utilisée pour afficher un formulaire d'édition des infos de livraison et d'achat de l'utilisateur et
+  # envoyer ces données à une action UPDATE customisée.
+  def retrieve_delivery_info
+    @user = Garden.find(params[:id]).user
+    raise
+  end
+
   private
 
   def user_params
     params.require(:user).permit(:phone_number, :address, :adresse_ville, :adresse_code_postal, :code_achat)
   end
-
 end

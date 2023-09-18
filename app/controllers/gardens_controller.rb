@@ -1,6 +1,5 @@
 class GardensController < ApplicationController
-  before_action :set_garden, only: [:show, :edit, :update, :destroy, :select_plants, :crush, :validate_plants]
-
+  before_action :set_garden, only: %i[show edit update destroy select_plants crush validate_plants]
 
   def index
     @gardens = Garden.all
@@ -46,12 +45,13 @@ class GardensController < ApplicationController
     redirect_to gardens_path, notice: 'Garden was successfully destroyed.'
   end
 
+  # Valide le choix final de plantes d'un jardin et renvoie vers une demande d'infos de livraison.
   def validate_plants
     # garden_plants = GardenPlant.where(id: params.dig(:garden_plant, :choices))
     garden_plants = @garden.garden_plants.selected.all
     garden_plants.each(&:validated!)
 
-    redirect_to garden_path(@garden)
+    redirect_to retrieve_delivery_info_path(@garden)
   end
 
   def select_plants
