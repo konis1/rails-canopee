@@ -1,4 +1,10 @@
 .links-container {
-  background-color: black;
-  color: white;
+  background-color: $light-yellow;
+  border-radius: 1rem;
+  margin-top: 2rem;
+  padding: 1rem;
+}
+
+.filler {
+  background-color: $dark-green;
 }
