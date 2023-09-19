@@ -233,3 +233,9 @@ button {
   padding: 1rem;
   color: white;
 }
+
+.smaller-image {
+  width: 15%;
+  /* Vous pouvez également spécifier la hauteur si nécessaire */
+  height: 15%; /* Pour maintenir le rapport hauteur/largeur d'origine */
+}
