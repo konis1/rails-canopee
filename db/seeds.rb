@@ -316,6 +316,254 @@ file = File.open("./app/assets/images/plantes/thym.jpg")
 # puts file
 plant.photo.attach(io: file, filename: "#{plant["name"]}.jpg", content_type: "image/jpg")
 # GardenPlant.create(nickname: "Tim", pot_color: "brown", garden_id: Garden.first.id, plant_id: plant.id)
+#####################################################
+
+
+puts "Adding plants number 11"
+plant = Plant.create(name: "Clématite montana Broughton",
+  color: "Rose",
+  caducity: "Persistant",
+  care_frequency: 1,
+  water_need: 1,
+  growth_speed: 0,
+  cold_resistance: 0,
+  light_need: 1,
+  climate: [
+    "Climat océanique",
+    "Climat semi-océanique",
+    "Climat continental",
+    "Climat montagnard",
+    "Climat méditerranéen"
+  ],
+  content: "La clématite est une plante vivace de la famille des Saxifragacées, originaire d’Amérique du Nord avec 50 espèces et aujourd’hui plus de 500 variétés horticoles cultivées." ,
+  final_size: 0)
+  if plant.photo.attached?
+    plant.photo.purge
+  end
+  file = File.open("./app/assets/images/plantes/Clematite_montana_Broughton_Star_BENJAMIN.jpg")
+  # puts file
+  plant.photo.attach(io: file, filename: "#{plant["name"]}.jpg", content_type: "image/jpg")
+  # GardenPlant.create(nickname: "Heuss", pot_color: "brown", garden_id: Garden.first.id, plant_id: plant.id)
+########################
+
+puts "Adding plants number 12"
+plant = Plant.create(name: "Passiflore Caerulea",
+  color: "Bleu",
+  caducity: "Persistant",
+  care_frequency: 1,
+  water_need: 1,
+  growth_speed: 0,
+  cold_resistance: 0,
+  light_need: 1,
+  climate: [
+    "Climat océanique",
+    "Climat semi-océanique",
+    "Climat continental",
+    "Climat montagnard",
+    "Climat méditerranéen"
+  ],
+  content: "La passiflore est une plante vivace de la famille des Saxifragacées, originaire d’Amérique du Nord avec 50 espèces et aujourd’hui plus de 500 variétés horticoles cultivées." ,
+  final_size: 0)
+  if plant.photo.attached?
+    plant.photo.purge
+  end
+  file = File.open("./app/assets/images/plantes/Passiflore_Caerulea_PAULETTE.jpg")
+  # puts file
+  plant.photo.attach(io: file, filename: "#{plant["name"]}.jpg", content_type: "image/jpg")
+  # GardenPlant.create(nickname: "Heuss", pot_color: "brown", garden_id: Garden.first.id, plant_id: plant.id)
+########################
+
+puts "Adding plants number 13"
+plant = Plant.create(name: "Passiflore caerulea Clear Sky",
+  color: "Blanc",
+  caducity: "Persistant",
+  care_frequency: 1,
+  water_need: 1,
+  growth_speed: 0,
+  cold_resistance: 0,
+  light_need: 1,
+  climate: [
+    "Climat océanique",
+    "Climat semi-océanique",
+    "Climat continental",
+    "Climat montagnard",
+    "Climat méditerranéen"
+  ],
+  content: "La passiflore est une plante vivace de la famille des Saxifragacées, originaire d’Amérique du Nord avec 50 espèces et aujourd’hui plus de 500 variétés horticoles cultivées." ,
+  final_size: 0)
+  if plant.photo.attached?
+    plant.photo.purge
+  end
+  file = File.open("./app/assets/images/plantes/Passiflore_caerulea_Clear_Sky_AGATHE.jpg")
+  # puts file
+  plant.photo.attach(io: file, filename: "#{plant["name"]}.jpg", content_type: "image/jpg")
+  # GardenPlant.create(nickname: "Heuss", pot_color: "brown", garden_id: Garden.first.id, plant_id: plant.id)
+########################
+
+puts "Adding plants number 14"
+plant = Plant.create(name: "Lierre des bois Helix",
+  color: "vert",
+  caducity: "Persistant",
+  care_frequency: 1,
+  water_need: 1,
+  growth_speed: 0,
+  cold_resistance: 0,
+  light_need: 1,
+  climate: [
+    "Climat océanique",
+    "Climat semi-océanique",
+    "Climat continental",
+    "Climat montagnard",
+    "Climat méditerranéen"
+  ],
+  content: "Le lierre est une plante vivace de la famille des Saxifragacées, originaire d’Amérique du Nord avec 50 espèces et aujourd’hui plus de 500 variétés horticoles cultivées." ,
+  final_size: 0)
+  if plant.photo.attached?
+    plant.photo.purge
+  end
+  file = File.open("./app/assets/images/plantes/Lierre_des_bois_Helix_LOUISE.jpg")
+  # puts file
+  plant.photo.attach(io: file, filename: "#{plant["name"]}.jpg", content_type: "image/jpg")
+  # GardenPlant.create(nickname: "Heuss", pot_color: "brown", garden_id: Garden.first.id, plant_id: plant.id)
+########################
+
+puts "Adding plants number 15"
+plant = Plant.create(name: "Clematite montana",
+                      color: "Blanc",
+                      caducity: "Persistant",
+                      care_frequency: 1,
+                      water_need: 0,
+                      growth_speed: 1,
+                      cold_resistance: 2,
+                      light_need: 1,
+                      climate: [
+                        "Climat océanique",
+                        "Climat semi-océanique",
+                        "Climat continental",
+                        "Climat montagnard",
+                        "Climat méditerranéen"
+                      ],
+                      content: "Plante aromatique aux multiples propriétés, la clématite est répandu sur les rocailles du sud de la France. C'est une vivace connue pour son parfum caractéristique, son goût typé et ses petites feuilles couvertes de minuscules fleurs blanches ou roses." ,
+                      final_size: 0)
+if plant.photo.attached?
+  plant.photo.purge
+end
+file = File.open("./app/assets/images/plantes/Clematite_montana_CLEMENTINE.jpg")
+# puts file
+plant.photo.attach(io: file, filename: "#{plant["name"]}.jpg", content_type: "image/jpg")
+# GardenPlant.create(nickname: "Tim", pot_color: "brown", garden_id: Garden.first.id, plant_id: plant.id)
+#####################################################
+
+
+puts "Adding plants number 16"
+plant = Plant.create(name: "Jasmin etoile asiaticum",
+  color: "Jaune",
+  caducity: "Persistant",
+  care_frequency: 1,
+  water_need: 1,
+  growth_speed: 0,
+  cold_resistance: 0,
+  light_need: 1,
+  climate: [
+    "Climat océanique",
+    "Climat semi-océanique",
+    "Climat continental",
+    "Climat montagnard",
+    "Climat méditerranéen"
+  ],
+  content: "Le jasmin est une plante vivace de la famille des Saxifragacées, originaire d’Amérique du Nord avec 50 espèces et aujourd’hui plus de 500 variétés horticoles cultivées." ,
+  final_size: 0)
+  if plant.photo.attached?
+    plant.photo.purge
+  end
+  file = File.open("./app/assets/images/plantes/Jasmin_etoile_asiaticum_JULES.jpg")
+  # puts file
+  plant.photo.attach(io: file, filename: "#{plant["name"]}.jpg", content_type: "image/jpg")
+  # GardenPlant.create(nickname: "Heuss", pot_color: "brown", garden_id: Garden.first.id, plant_id: plant.id)
+########################
+
+puts "Adding plants number 17"
+plant = Plant.create(name: "Jasmin etoile jasminoides",
+  color: "Blanc",
+  caducity: "Persistant",
+  care_frequency: 1,
+  water_need: 1,
+  growth_speed: 0,
+  cold_resistance: 0,
+  light_need: 1,
+  climate: [
+    "Climat océanique",
+    "Climat semi-océanique",
+    "Climat continental",
+    "Climat montagnard",
+    "Climat méditerranéen"
+  ],
+  content: "Le jasmin est une plante vivace de la famille des Saxifragacées, originaire d’Amérique du Nord avec 50 espèces et aujourd’hui plus de 500 variétés horticoles cultivées." ,
+  final_size: 0)
+  if plant.photo.attached?
+    plant.photo.purge
+  end
+  file = File.open("./app/assets/images/plantes/Jasmin_etoile_ jasminoides_JUSTIN.jpg")
+  # puts file
+  plant.photo.attach(io: file, filename: "#{plant["name"]}.jpg", content_type: "image/jpg")
+  # GardenPlant.create(nickname: "Heuss", pot_color: "brown", garden_id: Garden.first.id, plant_id: plant.id)
+########################
+
+puts "Adding plants number 18"
+plant = Plant.create(name: "Chevrefeuille japonica Sinensis",
+  color: "violet",
+  caducity: "Persistant",
+  care_frequency: 1,
+  water_need: 1,
+  growth_speed: 0,
+  cold_resistance: 0,
+  light_need: 1,
+  climate: [
+    "Climat océanique",
+    "Climat semi-océanique",
+    "Climat continental",
+    "Climat montagnard",
+    "Climat méditerranéen"
+  ],
+  content: "Le chevrefeuille est une plante vivace de la famille des Saxifragacées, originaire d’Amérique du Nord avec 50 espèces et aujourd’hui plus de 500 variétés horticoles cultivées." ,
+  final_size: 0)
+  if plant.photo.attached?
+    plant.photo.purge
+  end
+  file = File.open("./app/assets/images/plantes/Chevrefeuille_japonica_Sinensis_CHARLOTTE.jpg")
+  # puts file
+  plant.photo.attach(io: file, filename: "#{plant["name"]}.jpg", content_type: "image/jpg")
+  # GardenPlant.create(nickname: "Heuss", pot_color: "brown", garden_id: Garden.first.id, plant_id: plant.id)
+########################
+
+puts "Adding plants number 19"
+plant = Plant.create(name: "Chevrefeuille Henry",
+  color: "jaune",
+  caducity: "Persistant",
+  care_frequency: 1,
+  water_need: 1,
+  growth_speed: 0,
+  cold_resistance: 0,
+  light_need: 1,
+  climate: [
+    "Climat océanique",
+    "Climat semi-océanique",
+    "Climat continental",
+    "Climat montagnard",
+    "Climat méditerranéen"
+  ],
+  content: "Le chèvrefeuille est une plante vivace de la famille des Saxifragacées, originaire d’Amérique du Nord avec 50 espèces et aujourd’hui plus de 500 variétés horticoles cultivées." ,
+  final_size: 0)
+  if plant.photo.attached?
+    plant.photo.purge
+  end
+  file = File.open("./app/assets/images/plantes/Chevrefeuille_Henry_HENRY.jpg")
+  # puts file
+  plant.photo.attach(io: file, filename: "#{plant["name"]}.jpg", content_type: "image/jpg")
+  # GardenPlant.create(nickname: "Heuss", pot_color: "brown", garden_id: Garden.first.id, plant_id: plant.id)
+########################
+
+
 
 GardenPlant.find_each do |garden_plant|
   garden_plant.validated!
