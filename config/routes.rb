@@ -53,5 +53,6 @@ Rails.application.routes.draw do
 
   # Cette route est utilisée après la validation des crushes afin de demander les infos de livraison et le code d'achat
   # de l'utilisateur.
-  get "gardens/:id/delivery_info", to: "registrations#retrieve_delivery_info", as: :retrieve_delivery_info
+  get "users/:id/delivery_info", to: "registrations#edit_delivery_info", as: :edit_delivery_info
+  patch "users/:id", to: "registrations#update_delivery_info", as: :update_delivery_info
 end

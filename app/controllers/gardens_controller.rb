@@ -51,7 +51,7 @@ class GardensController < ApplicationController
     garden_plants = @garden.garden_plants.selected.all
     garden_plants.each(&:validated!)
 
-    redirect_to retrieve_delivery_info_path(@garden)
+    redirect_to edit_delivery_info_path(@garden.user)
   end
 
   def select_plants
