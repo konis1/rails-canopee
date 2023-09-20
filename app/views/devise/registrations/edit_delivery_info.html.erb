@@ -1,34 +1,39 @@
-<%= simple_form_for(@user, url: update_delivery_info_path, method: :patch) do |f| %>
+<div class="wrapper registration-container">
+  <div class="container">
+    <%= simple_form_for(@user, url: update_delivery_info_path, method: :patch) do |f| %>
 
-  <% if @user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
-      <ul>
-        <% @user.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
+      <% if @user.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+          <ul>
+            <% @user.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="form-inputs">
+        <%= f.input :nom, label: "Nom" %>
+        <%= f.input :prenom, label: "Prénom" %>
+        <%= f.input :phone_number, label: "Numéro de téléphone (pour notifications seulement)" %>
+        <%= f.input :adresse_numero, label: "Numéro de voie" %>
+        <%= f.input :adresse_type_voie, label: "Type de voie" %>
+        <%= f.input :adresse_nom_voie, label: "Nom de la voie" %>
+        <%= f.input :adresse_code_postal, label: "Code postal" %>
+        <%= f.input :adresse_ville, label: "Ville" %>
+        <%= f.input :adresse_infos_complementaires_1, label: "Infos complémentaires 1" %>
+        <%= f.input :adresse_infos_complementaires_2, label: "Infos complémentaires 2" %>
+        <%#= f.input :code_promo, label: "Code promo" %>
+      </div>
+        <div class="links-container" style="color: white">
+          <div class="form-actions">
+        <%= f.button :submit, "Mettre à jour mes données de livraison !"  %>
+      </div>
+    <% end %>
     </div>
-  <% end %>
-
-  <div class="form-inputs">
-    <%= f.input :nom, label: "Nom" %>
-    <%= f.input :prenom, label: "Prénom" %>
-    <%= f.input :phone_number, label: "Numéro de téléphone" %>
-    <%= f.input :adresse_numero, label: "Numéro de voie" %>
-    <%= f.input :adresse_type_voie, label: "Type de voie" %>
-    <%= f.input :adresse_nom_voie, label: "Nom de la voie" %>
-    <%= f.input :adresse_code_postal, label: "Code postal" %>
-    <%= f.input :adresse_ville, label: "Ville" %>
-    <%= f.input :adresse_infos_complementaires_1, label: "Infos complémentaires 1" %>
-    <%= f.input :adresse_infos_complementaires_2, label: "Infos complémentaires 2" %>
-    <%#= f.input :code_promo, label: "Code promo" %>
+    <%# <div class="alert alert-error"> %>
+      <%#= devise_error_messages! %>
+    <%# </div> %>
   </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Mettre à jour" %>
-  </div>
-<% end %>
-<%# <div class="alert alert-error"> %>
-  <%#= devise_error_messages! %>
-<%# </div> %>
+</div>

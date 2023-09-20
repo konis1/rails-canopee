@@ -221,7 +221,7 @@ export default class extends Controller {
       if (data.garden_plant_count > 0) {
         this.counterTarget.innerHTML = `VALIDER MA SELECTION`
       } else {
-        this.counterTarget.innerHTML = `<i class="fa-solid fa-hand-pointer fa-2x ml-2" style="color: #ffffff;"></i>`
+        this.counterTarget.innerHTML = `GLISSEZ A DROITE SI VOUS AIMEZ`
 
       }
     }
