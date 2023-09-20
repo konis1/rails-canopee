@@ -2,15 +2,11 @@
   <div class="container">
       <div class="py-5">
       </div>
-      <h1 class="py-5">MERCI !</h1>
+      <h1 class="py-5">Merci, <%= @user.prenom %> !</h1>
 
-      <p class="color-light-gray mt-5 p-5"><%= "Je m’appelle  et j'ai hâte de vous rencontrer.
-        Je n’ai pas besoin de beaucoup d’attention mais tout de même,
-        un peu d’eau de temps à autre. Notre ami BonneFeuille vous le rappellera.
-        On est déjà en train de me préparer, je serai bientôt chez vous." %>
+      <p class="color-light-gray mt-5 p-5">
+        L'équipe Bonnefeuille est en train de s'occuper de vtre commande et vous recontatcera lorsqu'elle sera prête.
       </p>
 
-      <%# <%= link_to "VOIR MES PLANTES", validate_plants_garden_path(@garden), data: { turbo_method: :post }, class: "link-to-validate btn crush-btn btn-success" %>
   </div>
 </div>
-<%# #{@garden.garden_plants.selected.nickname} %>
