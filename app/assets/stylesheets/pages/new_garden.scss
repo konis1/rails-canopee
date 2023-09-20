@@ -1,30 +1,37 @@
 .new-garden-container {
-  max-height: 100vh; /* Définissez la hauteur maximale sur la hauteur de la fenêtre visible */
-  overflow-y: auto; /* Ajoutez une barre de défilement verticale lorsque le contenu dépasse la hauteur maximale */
+  // max-height: 100%; /* Définissez la hauteur maximale sur la hauteur de la fenêtre visible */
+  overflow-y: auto;
+  background-size: cover;
+  background-repeat: no-repeat;
+  // background-position: center;
+  min-height: 100vh;
+  width: 100vw;
+  background-image: linear-gradient(0deg, rgba(25, 54, 44, 1) 0%, rgba(25, 54, 44, 1) 70%, rgba(25, 54, 44, 0) 70%, rgba(0, 0, 0, 0) 100%), asset-url('cover-plant.png');
+  /* Ajoutez une barre de défilement verticale lorsque le contenu dépasse la hauteur maximale */
 }
 /* Pour les écrans de petite taille (par exemple, les smartphones) */
-@media (max-width: 361px) {
-  .registration-container {
-      padding: 5px; /* Ajustez la marge ou le rembourrage selon vos besoins */
-      /* Ajoutez des règles CSS spécifiques pour les petits écrans ici */
-  }
+// @media (max-width: 361px) {
+//   .registration-container {
+//       padding: 5px; /* Ajustez la marge ou le rembourrage selon vos besoins */
+//       /* Ajoutez des règles CSS spécifiques pour les petits écrans ici */
+//   }
 
-}
+// }
 
-/* Pour les écrans de taille moyenne (par exemple, les tablettes) */
-@media (min-width: 361px) and (max-width: 400px) {
-  .registration-container {
-      padding: 20px;
-  }
-}
+// /* Pour les écrans de taille moyenne (par exemple, les tablettes) */
+// @media (min-width: 361px) and (max-width: 400px) {
+//   .registration-container {
+//       padding: 20px;
+//   }
+// }
 
-/* Pour les écrans de grande taille (par exemple, les ordinateurs de bureau) */
-@media (min-width: 400px) {
-  .registration-container {
-    padding: 25px;
+// /* Pour les écrans de grande taille (par exemple, les ordinateurs de bureau) */
+// @media (min-width: 400px) {
+//   .registration-container {
+//     padding: 25px;
 
-  }
-}
+//   }
+// }
 
 
 #garden_name {

@@ -20,8 +20,8 @@
           <div class="form-group">
             <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
           </div>
-          <div class="form-actions">
-            <%= f.button :submit, "Me connecter", class: 'btn btn-primary p-2' %>
+          <div class="form-actions links-container">
+            <%= f.button :submit, "Me connecter" %>
           </div>
         <% end %>
         <%= render "devise/shared/links" %>

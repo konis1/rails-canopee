@@ -2,7 +2,16 @@
   background-image: url("background_gardens_index.png");
   color: white;
   max-height: 100vh; /* Définissez la hauteur maximale sur la hauteur de la fenêtre visible */
-  overflow-y: auto; /* Ajoutez une barre de défilement verticale lorsque le contenu dépasse la hauteur maximale */
+  overflow-y: auto;
+  background-size: cover;
+  background-repeat: no-repeat;
+  // background-position: center;
+  min-height: 100vh;
+  width: 100vw;
+}
+
+.text-center-button{
+  text-align: center;
 }
 /* Pour les écrans de petite taille (par exemple, les smartphones) */
 @media (max-width: 361px) {
