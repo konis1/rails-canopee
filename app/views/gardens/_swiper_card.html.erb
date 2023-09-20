@@ -6,7 +6,6 @@
   <div class="swiper__card__content">
     <div class="swiper__card__content_top">
       <%# <h2>= garden_plant.plant.name</h2> %>
-      <%= image_tag 'handswipper', alt: 'hand swipper', class:'smaller-image'%>
       <h2><%= garden_plant.garden.plants.index(garden_plant.plant)+1 %>/<%= garden_plant.garden.plants.count%></h2>
       <%# La partie du haut de la carte %>
     </div>
