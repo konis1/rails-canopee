@@ -9,8 +9,8 @@ class User < ApplicationRecord
   has_many :notifications, as: :recipient, dependent: :destroy
   has_noticed_notifications
   # validates :phone_number, uniqueness: true, format: { with: /\A\+\d+\z/, message: "le format n'est pas valide" }
-  # validates :email, :code_achat, :phone_number, presence: true
-  enum role: [:user, :vip, :admin]
+  validates :email, presence: true, format: { with: /^[A-Za-z0-9+_.-]+@([A-Za-z0-9]+\.)+[A-Za-z]2,6{}/, message: "Format email incorrect !" }
+  enum role: %i[user vip admin]
   after_initialize :set_default_role, if: :new_record?
 
   def vip?
@@ -26,6 +26,7 @@ class User < ApplicationRecord
   end
 
   private
+
   def set_default_role
     self.role ||= :user
   end
