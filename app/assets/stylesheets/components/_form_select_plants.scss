@@ -37,8 +37,9 @@
 
 .medium-image {
   width: 30%;
-  /* Vous pouvez également spécifier la hauteur si nécessaire */
-  height: 30%; /* Pour maintenir le rapport hauteur/largeur d'origine */
+  height: 30%;
+  border-radius: 20px;
+
 }
 
 .color-light-gray {
