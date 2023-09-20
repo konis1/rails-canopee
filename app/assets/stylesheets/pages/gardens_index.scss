@@ -1,5 +1,13 @@
 .gardens-index-wrapper {
   background-image: url("background_gardens_index.png");
+  color: white;
+  max-height: 100vh; /* Définissez la hauteur maximale sur la hauteur de la fenêtre visible */
+  overflow-y: auto;
+  background-size: cover;
+  background-repeat: no-repeat;
+  // background-position: center;
+  min-height: 100vh;
+  width: 100vw;
 }
 
 .btn-new-plant {
@@ -8,6 +16,7 @@
   padding: 3rem;
   border-radius: 20px;
   color: $light-yellow;
+  margin-left: 5rem;
 }
 
 .counter-wrapper {
