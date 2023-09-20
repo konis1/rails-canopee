@@ -23,8 +23,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   root to: "pages#home"
-  resources :pages, only: [:home, :merci]
-  get'merci', to:'pages#merci'
+  resources :pages, only: %i[home merci]
 
   resources :gardens do
     resources :garden_plants, only: [:create, :destroy] do
@@ -32,7 +31,7 @@ Rails.application.routes.draw do
   end
 
   resources :plants, only: [] do
-    resources :reviews, only: [:new, :create]
+    resources :reviews, only: %i[new create]
   end
 
   resources :tasks, only: [:index] do
@@ -43,16 +42,19 @@ Rails.application.routes.draw do
   end
 
   # resources :payments, only: [:new, :create]
-  resources :garden_plants, only: [:show, :destroy, :update]
+  resources :garden_plants, only: %i[show destroy update]
   resources :tasks, only: [:update]
-  resources :pages, only: [:home, :cover]
+  resources :pages, only: %i[home cover]
 
   post "gardens/:id/validate_plants", to: "gardens#validate_plants", as: :validate_plants_garden
   get "gardens/:id/select_plants", to: "gardens#select_plants", as: :select_plants
   get "gardens/:id/crush", to: "gardens#crush", as: :crush
 
-  # Cette route est utilisée après la validation des crushes afin de demander les infos de livraison et le code d'achat
+  # Ces routes sont utilisées après la validation des crushes afin de demander les infos de livraison et le code d'achat
   # de l'utilisateur.
   get "users/:id/delivery_info", to: "registrations#edit_delivery_info", as: :edit_delivery_info
   patch "users/:id", to: "registrations#update_delivery_info", as: :update_delivery_info
+
+  # Cette route envoie l'utilisateur sur une page de remerciement après avoir pris ses coordonnées.
+  get "users/:id/merci", to: "pages#merci", as: :merci
 end

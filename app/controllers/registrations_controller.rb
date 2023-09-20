@@ -45,7 +45,7 @@ class RegistrationsController < ApplicationController
     @user.update(delivery_params)
 
     if @user.save
-      redirect_to gardens_path
+      redirect_to merci_path(@user)
     else
       render :new, status: :unprocessable_entity
     end
