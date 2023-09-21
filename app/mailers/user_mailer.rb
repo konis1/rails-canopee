@@ -1,6 +1,4 @@
-class ApplicationMailer < ActionMailer::Base
-  default from: "bonnefeuilleparis@gmail.com"
-  layout "welcome_email"
+class UserMailer < ApplicationMailer
 
   def welcome_email(user)
     @user = user

@@ -6,7 +6,9 @@ Rails.application.configure do
   config.force_ssl = true
 
   config.action_mailer.default_url_options = { host: "https://www.bonnefeuille.fr" }
-  ActionMailer::Base.delivery_method = :smtp
+  # ApplicationMailer::Base.delivery_method = :smtp
+  UserMailer::Base.delivery_method = :smtp
+  # ActionMailer::Base.delivery_method = :smtp
 
   # Settings specified here will take precedence over those in config/application.rb.
 
