@@ -45,6 +45,7 @@ class RegistrationsController < ApplicationController
     @user.update(delivery_params)
 
     if @user.save
+      ApplicationMailer.welcome_email(current_user).deliver_now
       redirect_to merci_path(@user)
     else
       render :new, status: :unprocessable_entity

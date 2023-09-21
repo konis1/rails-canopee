@@ -1,7 +1,7 @@
 <div class="links-container" style="color: white">
 
   <%- if controller_name != 'sessions' %>
-    <%= link_to "Me connecter", new_session_path(resource_name) %><br />
+    <%= link_to "Déja inscrit ?", new_session_path(resource_name) %><br />
   <% end %>
 
   <%- if devise_mapping.registerable? && controller_name != 'enregistrements' %>

@@ -26,6 +26,7 @@ const Swiper = class Swiper {
     var callback = this.currentCardEventsCallback.bind(this)
     this.currentCard.addEventListener('mousedown', callback)
     this.currentCard.addEventListener('touchstart', callback)
+    this.innerHTML = `PAS DE PLANTE DANS CETTE REGION`
   }
 
   activeCards() {

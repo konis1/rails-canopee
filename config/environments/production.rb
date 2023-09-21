@@ -5,7 +5,12 @@ Rails.application.configure do
   # Force all access to the app over HTTPS, use Strict-Transport-Security, and use secure cookies.
   config.force_ssl = true
 
-  config.action_mailer.default_url_options = { host: "http://TODO_PUT_YOUR_DOMAIN_HERE" }
+  # config.action_mailer.default_url_options = { host: "https://www.bonnefeuille.fr" }
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  ApplicationMailer::Base.delivery_method = :smtp
+  # UserMailer::Base.delivery_method = :smtp
+  # ActionMailer::Base.delivery_method = :smtp
+
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.

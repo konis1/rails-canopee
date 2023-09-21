@@ -2,7 +2,7 @@
   <div class="container">
     <div class="d-flex justify-content-center align-items-center" style="min-height: 100vh;">
       <div class="signup-form mx-auto">
-        <h2>Créer mon compte</h2>
+        <h2>Créer mon compte BonneFeuille</h2>
         <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), data: { turbo: :false }) do |f| %>
           <%= f.error_notification %>
 
@@ -26,13 +26,13 @@
                         label: "Confirmation du mot de passe",
                         label_html: { class: 'control-label' } %>
           </div>
-          <div class="form-group">
-            <%= f.input :phone_number,
+          <%# <div class="form-group"> %>
+            <%#= f.input :phone_number,
                         required: true,
                         autofocus: true,
                         label: "Telephone mobile (pour notifications seulement)",
                         label_html: { class: 'control-label' } %>
-          </div>
+          <%# </div> %>
           <%# <div class="form-group"> %>
             <%#= f.input :address,
                         required: true,
@@ -40,30 +40,30 @@
                         label: "Adresse",
                         label_html: { class: 'control-label' } %>
           <%# </div> %>
-          <div class="form-group">
-            <%= f.input :adresse_ville,
+          <%# <div class="form-group"> %>
+            <%#= f.input :adresse_ville,
                         required: true,
                         autofocus: true,
                         label: "Ville",
                         label_html: { class: 'control-label' } %>
-          </div>
-          <div class="form-group">
-            <%= f.input :adresse_code_postal,
+          <%# </div> %>
+          <%# <div class="form-group"> %>
+            <%#= f.input :adresse_code_postal,
                         required: true,
                         autofocus: true,
                         label: "Code postal",
                         label_html: { class: 'control-label' } %>
-          </div>
-          <div class="form-group">
-            <%= f.input :code_achat,
+          <%# </div> %>
+          <%# <div class="form-group"> %>
+            <%#= f.input :code_achat,
                         required: true,
                         autofocus: true,
                         label: "Code achat",
                         label_html: { class: 'control-label' } %>
-          </div>
+          <%# </div> %>
 
-          <div class="form-actions">
-            <%= f.button :submit, "M'enregistrer", class: 'btn btn-primary p-2' %>
+          <div class="form-actions links-container">
+            <%= f.button :submit, "M'enregistrer" %>
           </div>
         <% end %>
 
