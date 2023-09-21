@@ -22,7 +22,7 @@ puts "user Test added with password 123456"
 vip = User.create!(email: "vip@test.fr", password: "123456", phone_number: "+33683073726", role: User.roles[:vip])
 puts "vip Test added with password 123456"
 
-admin = User.create!(email: "admin@test.fr", password: "123456", phone_number: "+33693073726", role: User.roles[:admin])
+admin = User.create!(email: "admin@test.fr", password: "123456", phone_number: "+33613073726", role: User.roles[:admin])
 puts "admin Test added with password 123456"
 
 puts "Adding plants"
@@ -321,13 +321,13 @@ counter = 1
 
 puts "Adding plants number 1"
 plant = Plant.create(name: "Clématite montana Broughton",
-  color: "Pink",
-  caducity: "Caduc",
+  color: "Rose",
+  caducity: "Persistant",
   care_frequency: 1,
   water_need: 1,
-  growth_speed: 1,
-  cold_resistance: 2,
-  light_need: [0, 1],
+  growth_speed: 0,
+  cold_resistance: 0,
+  light_need: 1,
   climate: [
     "Climat océanique",
     "Climat semi-océanique",
@@ -335,20 +335,8 @@ plant = Plant.create(name: "Clématite montana Broughton",
     "Climat montagnard",
     "Climat méditerranéen"
   ],
-  content: "Les clématites sont considérées, à juste titre, comme les reines des lianes. Elles constituent certainement le groupe de plantes grimpantes le plus diversifié et le plus coloré.
-  Leur souplesse permet de les cultiver dans des situations très variées. On les utilise en association avec les arbustes, les arbres, les haies, en couvre-sol ou en pots.
-  Les clématites peuvent être à grandes fleurs, ou à fleur de plus petite taille comme les Alpina ou les Integrifolia. Certaines vont fleurir en été comme les Florida et d'autres au printemps comme les Montana.
-  Elles sont classées en 3 groupes :
-  - groupe 1 : les clématites persistantes, les Montana et les Alpina.
-  - Groupe 2 : les clématites à grandes fleurs fleurissant sur le bois de l'année précédente puis la deuxième floraison sur la pousse de l'année.
-  - Groupe 3 : Les clématites à grandes fleurs produisant une seule floraison sur la pousse de l'année.
-
-  Espèce :
-  Les clématites montana, clématites des montagnes ou bien clématites Anémones sont des lianes grimpantes à floraison printanière. Elles sont robustes et produisent une grande quantité de fleurs roses ou blanches au printemps. Le feuillage de cette espèce est caduc.
-
-  Variété :
-  Fleurs semi-doubles de couleur rose. Feuillage très découpé. Floraison très abondante." ,
-  final_size: 2)
+  content: "La clématite est une plante vivace de la famille des Saxifragacées, originaire d’Amérique du Nord avec 50 espèces et aujourd’hui plus de 500 variétés horticoles cultivées." ,
+  final_size: 0)
   if plant.photo.attached?
     plant.photo.purge
   end
@@ -360,13 +348,13 @@ plant = Plant.create(name: "Clématite montana Broughton",
 
 puts "Adding plants number 2"
 plant = Plant.create(name: "Passiflore Caerulea",
-  color: "Blue",
-  caducity: "Caduc",
-  care_frequency: 2,
+  color: "Bleu",
+  caducity: "Persistant",
+  care_frequency: 1,
   water_need: 1,
-  growth_speed: 2,
-  cold_resistance: 1,
-  light_need: [0, 1],
+  growth_speed: 0,
+  cold_resistance: 0,
+  light_need: 1,
   climate: [
     "Climat océanique",
     "Climat semi-océanique",
@@ -374,13 +362,7 @@ plant = Plant.create(name: "Passiflore Caerulea",
     "Climat montagnard",
     "Climat méditerranéen"
   ],
-  content: "Le genre Passiflora appartient la famille des passifloracées. Il est représenté par environ 500 espèces. La plupart sont des lianes ou plantes grimpantes volubiles.
-
-  Espèce :
-  Fleurs de 10 cm de diamètre légèrement parfumées et aux pétales et sépales bleutés. Leur couronne, assez large d'un bleu violacé est marquée d'un cercle blanc. Des fruits en forme d'oeufs orangés succèdent parfois aux fleurs. C'est sans conteste la plus rustique de toutes les espèces.
-
-  Variété :
-  Cette variété se distingue de l'espèce type par sa taille de fleur beaucoup plus imposante de la passiflore Caerulea. La couleur est relativement proche mais la passiflore Clear Sky résistera mieux en plein soleil." ,
+  content: "La passiflore est une plante vivace de la famille des Saxifragacées, originaire d’Amérique du Nord avec 50 espèces et aujourd’hui plus de 500 variétés horticoles cultivées." ,
   final_size: 0)
   if plant.photo.attached?
     plant.photo.purge
@@ -392,14 +374,14 @@ plant = Plant.create(name: "Passiflore Caerulea",
 ########################
 
 puts "Adding plants number 3"
-plant = Plant.create(name: "Passiflore caerulea clear sky",
-  color: "Blue",
-  caducity: "Caduc",
+plant = Plant.create(name: "Passiflore",
+  color: "Blanc",
+  caducity: "Persistant",
   care_frequency: 1,
   water_need: 1,
-  growth_speed: 2,
-  cold_resistance: 2,
-  light_need: [0, 1],
+  growth_speed: 0,
+  cold_resistance: 0,
+  light_need: 1,
   climate: [
     "Climat océanique",
     "Climat semi-océanique",
@@ -407,13 +389,7 @@ plant = Plant.create(name: "Passiflore caerulea clear sky",
     "Climat montagnard",
     "Climat méditerranéen"
   ],
-  content: "Cette variété se distingue de l'espèce type par sa taille de fleur beaucoup plus imposante de la passiflore Caerulea. La couleur est relativement proche mais la passiflore Clear Sky résistera mieux en plein soleil. De plus, sa floraison est la plus longue ! Le genre Passiflora appartient à la famille des passifloracées. Il est représenté par environ 500 espèces. La plupart sont des lianes ou plantes grimpantes volubiles.
-
-  Espèce :
-  Fleurs de 10 cm de diamètre légèrement parfumées et aux pétales et sépales bleutés. Leur couronne, assez large d'un bleu violacé est marquée d'un cercle blanc. Des fruits en forme d'oeufs orangés succèdent parfois aux fleurs. C'est sans conteste la plus rustique de toutes les espèces.
-
-  Variété :
-  Cette variété se distingue de l'espèce type par sa taille de fleur beaucoup plus imposante de la passiflore Caerulea. La couleur est relativement proche mais la passiflore Clear Sky résistera mieux en plein soleil." ,
+  content: "La passiflore caerulea Clear Sky est une plante vivace de la famille des Saxifragacées, originaire d’Amérique du Nord avec 50 espèces et aujourd’hui plus de 500 variétés horticoles cultivées." ,
   final_size: 0)
   if plant.photo.attached?
     plant.photo.purge
@@ -426,13 +402,13 @@ plant = Plant.create(name: "Passiflore caerulea clear sky",
 
 puts "Adding plants number 4"
 plant = Plant.create(name: "Lierre des bois Helix",
-  color: "Green",
+  color: "vert",
   caducity: "Persistant",
   care_frequency: 1,
   water_need: 1,
   growth_speed: 0,
-  cold_resistance: 2,
-  light_need: [0, 1, 2],
+  cold_resistance: 0,
+  light_need: 1,
   climate: [
     "Climat océanique",
     "Climat semi-océanique",
@@ -440,10 +416,7 @@ plant = Plant.create(name: "Lierre des bois Helix",
     "Climat montagnard",
     "Climat méditerranéen"
   ],
-  content: "Le lierre d'Irlande ou Hedera helix est une espèce très répandue dans les jardins d'ornement.
-  Il s'agit d'une liane arbustive ou ligneuse. Ce lierre pousse à l'état sauvage dans les régions tempérées et se développe souvent spontanément dans les parties ombragées des jardins ou des haies.
-  De couleur vert foncé, les feuilles sont légèrement découpées en 3 lobes. Elles mesurent environ 4 cm sur 6. Les lierres ou Hedera font partie de la famille des araliacées. Ce genre comprend environ 10 espèces. Le lierre est très utilisé comme plante grimpante, mais également comme couvre-sol très efficace. Ce genre est originaire d'Europe, d'Afrique et d'Asie.
-  " ,
+  content: "Le lierre est une plante vivace de la famille des Saxifragacées, originaire d’Amérique du Nord avec 50 espèces et aujourd’hui plus de 500 variétés horticoles cultivées." ,
   final_size: 0)
   if plant.photo.attached?
     plant.photo.purge
@@ -455,14 +428,14 @@ plant = Plant.create(name: "Lierre des bois Helix",
 ########################
 
 puts "Adding plants number 5"
-plant = Plant.create(name: "Clematite montana grandiflora",
-                      color: "White",
-                      caducity: "Caduc",
+plant = Plant.create(name: "Clematite montana",
+                      color: "Blanc",
+                      caducity: "Persistant",
                       care_frequency: 1,
-                      water_need: 1,
+                      water_need: 0,
                       growth_speed: 1,
                       cold_resistance: 2,
-                      light_need: [0, 1],
+                      light_need: 1,
                       climate: [
                         "Climat océanique",
                         "Climat semi-océanique",
@@ -470,15 +443,7 @@ plant = Plant.create(name: "Clematite montana grandiflora",
                         "Climat montagnard",
                         "Climat méditerranéen"
                       ],
-                      content: "Très longue floraison se prolongeant jusqu'au début de l'été. Grandes fleurs blanches pures plus ou moins parfumées. Variété très rustique.Les clématites sont considérées, à juste titre, comme les reines des lianes. Elles constituent certainement le groupe de plantes grimpantes le plus diversifié et le plus coloré.
-                      Leur souplesse permet de les cultiver dans des situations très variées. On les utilise en association avec les arbustes, les arbres, les haies, en couvre-sol ou en pots.
-                      Les clématites peuvent être à grandes fleurs, ou à fleur de plus petite taille comme les Alpina ou les Integrifolia. Certaines vont fleurir en été comme les Florida et d'autres au printemps comme les Montana.
-                      Elles sont classées en 3 groupes :
-                      - groupe 1 : les clématites persistantes, les Montana et les Alpina.
-                      - Groupe 2 : les clématites à grandes fleurs fleurissant sur le bois de l'année précédente puis la deuxième floraison sur la pousse de l'année.
-                      - Groupe 3 : Les clématites à grandes fleurs produisant une seule floraison sur la pousse de l'année.
-
-                      Les clématites montana, clématites des montagnes ou bien clématites Anémones sont des lianes grimpantes à floraison printanière. Elles sont robustes et produisent une grande quantité de fleurs roses ou blanches au printemps. Le feuillage de cette espèce est caduc." ,
+                      content: "Plante aromatique aux multiples propriétés, la clématite est répandu sur les rocailles du sud de la France. C'est une vivace connue pour son parfum caractéristique, son goût typé et ses petites feuilles couvertes de minuscules fleurs blanches ou roses." ,
                       final_size: 0)
 if plant.photo.attached?
   plant.photo.purge
@@ -491,14 +456,14 @@ plant.photo.attach(io: file, filename: "#{plant["name"]}.jpg", content_type: "im
 
 
 puts "Adding plants number 6"
-plant = Plant.create(name: "Jasmin etoile asiaticum",
-  color: "Yellow",
+plant = Plant.create(name: "Jasmin etoile",
+  color: "Jaune",
   caducity: "Persistant",
   care_frequency: 1,
   water_need: 1,
   growth_speed: 0,
-  cold_resistance: 1,
-  light_need: [0, 1],
+  cold_resistance: 0,
+  light_need: 1,
   climate: [
     "Climat océanique",
     "Climat semi-océanique",
@@ -506,9 +471,7 @@ plant = Plant.create(name: "Jasmin etoile asiaticum",
     "Climat montagnard",
     "Climat méditerranéen"
   ],
-  content: "Ses fleurs sont parfumées comme celles du jasmin mais ses feuilles sont persistantes en hiver.
-  Les fleurs exhalent un parfum délicieux proche de celui du jasmin, mais plus fruité. De couleur blanche, ses fameuses fleurs en forme d'étoiles se regroupent en grappe. Le feuillage vert foncé bien que persistant perd quelques-unes de ses feuilles l'hiver, c'est seulement pour les renouveler !
-  " ,
+  content: "Le jasmin étoilé asiaticum est une plante vivace de la famille des Saxifragacées, originaire d’Amérique du Nord avec 50 espèces et aujourd’hui plus de 500 variétés horticoles cultivées." ,
   final_size: 0)
   if plant.photo.attached?
     plant.photo.purge
@@ -520,14 +483,14 @@ plant = Plant.create(name: "Jasmin etoile asiaticum",
 ########################
 
 puts "Adding plants number 7"
-plant = Plant.create(name: "Jasmin etoile jasminoïde",
+plant = Plant.create(name: "Jasmin etoile",
   color: "Blanc",
   caducity: "Persistant",
   care_frequency: 1,
   water_need: 1,
   growth_speed: 0,
-  cold_resistance: 1,
-  light_need: [0, 1],
+  cold_resistance: 0,
+  light_need: 1,
   climate: [
     "Climat océanique",
     "Climat semi-océanique",
@@ -535,9 +498,7 @@ plant = Plant.create(name: "Jasmin etoile jasminoïde",
     "Climat montagnard",
     "Climat méditerranéen"
   ],
-  content: "Ses fleurs sont parfumées comme celles du jasmin mais ses feuilles sont persistantes en hiver.
-  Les fleurs exhalent un parfum délicieux proche de celui du jasmin, mais plus fruité. De couleur blanche, ses fameuses fleurs en forme d'étoiles se regroupent en grappe. Le feuillage vert foncé bien que persistant perd quelques-unes de ses feuilles l'hiver, c'est seulement pour les renouveler !
-  Le trachelospermum ou jasmin étoilé est une plante ligneuse. Ce genre comprend environ 15 espèces, dont les plus connus : le trachelospermum asiaticum, le trachelospermum jasmonoïdes et le trachelospermum lucidum." ,
+  content: "Le jasmin étoilé jasminoides est une plante vivace de la famille des Saxifragacées, originaire d’Amérique du Nord avec 50 espèces et aujourd’hui plus de 500 variétés horticoles cultivées." ,
   final_size: 0)
   if plant.photo.attached?
     plant.photo.purge
@@ -549,14 +510,14 @@ plant = Plant.create(name: "Jasmin etoile jasminoïde",
 ########################
 
 puts "Adding plants number 8"
-plant = Plant.create(name: "Chevrefeuille japonica sinensis",
-  color: "Pink",
-  caducity: "Semi-Persistant",
+plant = Plant.create(name: "Chevrefeuille",
+  color: "violet",
+  caducity: "Persistant",
   care_frequency: 1,
   water_need: 1,
   growth_speed: 0,
-  cold_resistance: 2,
-  light_need: [0, 1],
+  cold_resistance: 0,
+  light_need: 1,
   climate: [
     "Climat océanique",
     "Climat semi-océanique",
@@ -564,11 +525,7 @@ plant = Plant.create(name: "Chevrefeuille japonica sinensis",
     "Climat montagnard",
     "Climat méditerranéen"
   ],
-  content: "Les fleurs parfumées blanches et rouges contrastent bien avec le feuillage rouge pourpre.
-  Le genre lonicera représente les plantes de la famille des Caprifoliacées. Il en existe environ 200 espèces de lianes ou d'arbuste.
-
-  Le chèvrefeuille japonais est l'espèce de chèvrefeuille la plus connue. Originaire comme son nom l'indique du Japon et de l'Asie en règle générale. Cette espèce est caractérisée par son parfum puissant.
-  " ,
+  content: "Le chevrefeuille japonica Sinensis est une plante vivace de la famille des Saxifragacées, originaire d’Amérique du Nord avec 50 espèces et aujourd’hui plus de 500 variétés horticoles cultivées." ,
   final_size: 0)
   if plant.photo.attached?
     plant.photo.purge
@@ -581,13 +538,13 @@ plant = Plant.create(name: "Chevrefeuille japonica sinensis",
 
 puts "Adding plants number 9"
 plant = Plant.create(name: "Chevrefeuille Henry",
-  color: "Yellow",
+  color: "jaune",
   caducity: "Persistant",
-  care_frequency: 0,
+  care_frequency: 1,
   water_need: 1,
   growth_speed: 0,
-  cold_resistance: 2,
-  light_need: [0, 1],
+  cold_resistance: 0,
+  light_need: 1,
   climate: [
     "Climat océanique",
     "Climat semi-océanique",
@@ -595,12 +552,7 @@ plant = Plant.create(name: "Chevrefeuille Henry",
     "Climat montagnard",
     "Climat méditerranéen"
   ],
-  content: "Cette espèce de chèvrefeuille est considéré à juste titre par beaucoup comme plante de collectionneur. On met souvent à profit ce lonicera pour son feuillage persistant. Ses feuilles lancéolées, lisses et brillantes, sont de couleur verte. Ses fleurs rose saumon se groupent aux extrémités des pousses.
-  Sa croissance rapide permet de l'utiliser pour garnir toute l'année un treillage et servir de fond à des fleurs plus précoces.
-  Les fleurs sont roses à oranger et sont suivies de baies violettes toxiques pour l'homme.
-  Elle garde ses feuilles l'hiver !
-  Le genre lonicera représente les plantes de la famille des Caprifoliacées. Il en existe environ 200 espèces de lianes ou d'arbuste.
-  " ,
+  content: "Le chèvrefeuille Henry est une plante vivace de la famille des Saxifragacées, originaire d’Amérique du Nord avec 50 espèces et aujourd’hui plus de 500 variétés horticoles cultivées." ,
   final_size: 0)
   if plant.photo.attached?
     plant.photo.purge
@@ -612,14 +564,14 @@ plant = Plant.create(name: "Chevrefeuille Henry",
 ########################
 
 puts "Adding plants number 10"
-plant = Plant.create(name: "Chevrefeuille japonica sinensis",
-  color: "Pink",
-  caducity: "Semi-Persistant",
+plant = Plant.create(name: "Chevrefeuille",
+  color: "violet",
+  caducity: "Persistant",
   care_frequency: 1,
   water_need: 1,
   growth_speed: 0,
-  cold_resistance: 2,
-  light_need: [0, 1],
+  cold_resistance: 0,
+  light_need: 1,
   climate: [
     "Climat océanique",
     "Climat semi-océanique",
@@ -627,11 +579,7 @@ plant = Plant.create(name: "Chevrefeuille japonica sinensis",
     "Climat montagnard",
     "Climat méditerranéen"
   ],
-  content: "Les fleurs parfumées blanches et rouges contrastent bien avec le feuillage rouge pourpre.
-  Le genre lonicera représente les plantes de la famille des Caprifoliacées. Il en existe environ 200 espèces de lianes ou d'arbuste.
-
-  Le chèvrefeuille japonais est l'espèce de chèvrefeuille la plus connue. Originaire comme son nom l'indique du Japon et de l'Asie en règle générale. Cette espèce est caractérisée par son parfum puissant.
-  " ,
+  content: "Le chèvrefeuille  japonica Sinensis CHARLOTTE est une plante vivace de la famille des Saxifragacées, originaire d’Amérique du Nord avec 50 espèces et aujourd’hui plus de 500 variétés horticoles cultivées." ,
   final_size: 0)
   if plant.photo.attached?
     plant.photo.purge
