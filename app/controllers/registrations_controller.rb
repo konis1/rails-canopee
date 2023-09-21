@@ -47,6 +47,7 @@ class RegistrationsController < ApplicationController
     @user.placed_order = true
 
     if @user.save
+      ApplicationMailer.welcome_email(current_user).deliver_now
       redirect_to merci_path(@user)
     else
       render 'devise/registrations/edit_delivery_info', status: :unprocessable_entity

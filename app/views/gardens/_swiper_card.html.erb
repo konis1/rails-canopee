@@ -13,7 +13,9 @@
     <% if garden_plant.plant.photo.attached? %>
       <%= cl_image_tag garden_plant.plant.photo.key, class: 'swiper__card__img' %>
     <% end %>
-
+    <div id="no-matching-plants" style="display: none;">
+      Aucune plante ne correspond à vos critères.
+    </div>
     <div class="swiper__card__content_bottom">
       <p class="swiper__card__name">
       </p>
