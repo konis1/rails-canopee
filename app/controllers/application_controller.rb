@@ -17,6 +17,6 @@ class ApplicationController < ActionController::Base
   end
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:phone_number, :address, :adresse_ville, :adresse_code_postal, :code_achat])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:nom, :prenom, :phone_number, :adresse_numero, :adresse_type_voie, :adresse_nom_voie, :adresse_code_postal, :adresse_ville, :adresse_infos_complementaires_1, :adresse_infos_complementaires_2])
   end
 end

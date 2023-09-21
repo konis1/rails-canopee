@@ -26,34 +26,6 @@
                         label: "Confirmation du mot de passe",
                         label_html: { class: 'control-label' } %>
           </div>
-          <div class="form-group">
-            <%= f.input :phone_number,
-                        required: true,
-                        autofocus: true,
-                        label: "Telephone mobile (pour notifications seulement)",
-                        label_html: { class: 'control-label' } %>
-          </div>
-          <div class="form-group">
-            <%= f.input :adresse_ville,
-                        required: true,
-                        autofocus: true,
-                        label: "Ville",
-                        label_html: { class: 'control-label' } %>
-          </div>
-          <div class="form-group">
-            <%= f.input :adresse_code_postal,
-                        required: true,
-                        autofocus: true,
-                        label: "Code postal",
-                        label_html: { class: 'control-label' } %>
-          </div>
-          <div class="form-group">
-            <%= f.input :code_achat,
-                        required: true,
-                        autofocus: true,
-                        label: "Code achat",
-                        label_html: { class: 'control-label' } %>
-          </div>
 
           <div class="form-actions">
             <%= f.button :submit, "M'enregistrer", class: 'btn btn-primary p-2' %>
