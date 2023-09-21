@@ -47,11 +47,10 @@ class GardensController < ApplicationController
 
   # Valide le choix final de plantes d'un jardin et renvoie vers une demande d'infos de livraison.
   def validate_plants
-    # garden_plants = GardenPlant.where(id: params.dig(:garden_plant, :choices))
     garden_plants = @garden.garden_plants.selected.all
     garden_plants.each(&:validated!)
 
-    redirect_to edit_delivery_info_path(@garden.user)
+    redirect_to edit_delivery_info_path(current_user)
   end
 
   def select_plants
