@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   RailsCanopee::Application.routes.draw do
     mount Sidekiq::Web => '/sidekiq'
   end
+require 'sidekiq/cron/web'
 
   authenticated :user, ->(user) { user.admin? } do
 
