@@ -1,5 +1,5 @@
 class GardenPlant < ApplicationRecord
-  NICKNAMES = ["Tim", "Paul", "Thomas", "Diane", "Cécile", "Jérémy", "Ursula", "Célia", "Julien", "Maxence", "Yass", "Germain", "Baptiste", "PY", "Jérôme", "Mathieu", "Nicolas", "Anthony", "Adonis", "Malika", "Youval", "Javier", "Hélène", "Jean-Baptiste", "Alexandre", "Stéphanie", "Céline", "Antoine", "Eugène", "Lucie", "Loic", "Titouan", "Arnaud", "Maxime", "Alexis", "Etienne", "Amal", "Clément", 'Lenny', "David", "Lesly", "Jules", "François", "Stéphanie", "Michel", "Michèle", "Matthieu", "Guillaume", "Romain", "Johnny", "Francis", "Hubert", "Patrick", "Nathalie", "Patricia", "John", "Jane", "Luc", "Marie", "Jésus", "Joseph", "Jonathan", "Joe", "Marc", "Julia", "Julie", "Julio", "Adeline", "Justine", "Alexander", "Daniel", "Daniella"]
+  NICKNAMES = ["Paulette", "Diane", "Célia", "Julia", "Germain", "Baptiste", "Adonis", "Helena", "Alexandra", "Lucie", "Lesly", "Jules", "Robert", "Michel", "Georgette", "Agathe", "Francis", "Hubert", "Patrick", "Nathalie", "Patricia", "Louise", "Jane", "Luc", "Maria", "Joe", "Julio", "Julliette", "Elvis"]
 
   belongs_to :plant
   belongs_to :garden

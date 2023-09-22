@@ -4,6 +4,7 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+  // overflow-y: auto;
 }
 
 .page {
@@ -47,5 +48,15 @@
 }
 
 .text-centered {
-  padding: 10rem;
+  padding: 11rem;
+}
+
+.button_next_step_home {
+  border: solid $dark-green 1px;
+  border-radius: 25px;
+  background-color: $light-gray;
+  padding-left: 10px;
+  padding-right: 10px;
+  color: $dark-green;
+  margin-bottom: 5rem;
 }
