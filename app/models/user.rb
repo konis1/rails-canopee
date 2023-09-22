@@ -10,14 +10,11 @@ class User < ApplicationRecord
   has_noticed_notifications
 
   validates :email, presence: true, format: { with: /\A[A-Za-z0-9+_.-]+@([A-Za-z0-9]+\.)+[A-Za-z]{2,6}/, message: "Format email incorrect !" }
-  validates :nom, presence: true, if: :placed_order
-  validates :prenom, presence: true, if: :placed_order
-  validates :phone_number, presence: true, if: :placed_order
-  validates :adresse_numero, presence: true, if: :placed_order
-  validates :adresse_type_voie, presence: true, if: :placed_order
-  validates :adresse_nom_voie, presence: true, if: :placed_order
-  validates :adresse_ville, presence: true, if: :placed_order
-  validates :adresse_code_postal, presence: true, if: :placed_order
+  validates :nom, :prenom, :phone_number, :adresse_numero, :adresse_type_voie, :adresse_nom_voie, :adresse_ville, :adresse_code_postal, presence: true, if: :placed_order
+  # validates :nom, :prenom, format: { with: /\A[A-Z][a-z]*/ }
+  validates :phone_number, format: { with: /\A[0-9]{10}/ }
+  validates :adresse_numero, format: { with: /\A[1-9][0-9]*/ }
+  validates :adresse_type_voie, format: { with: /\A(?:[a-z]|[A-Z])(?:[a-z]|é|è|â])+/ }
 
   enum role: %i[user vip admin]
   after_initialize :set_default_role, if: :new_record?
