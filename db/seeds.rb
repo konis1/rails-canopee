@@ -448,7 +448,7 @@ plant = Plant.create(name: "Lierre des forêts Helix",
   if plant.photo.attached?
     plant.photo.purge
   end
-  file = File.open("./app/assets/images/plantes/Lierre_des_forêts_Helix_LOUISE.jpg")
+  file = File.open("./app/assets/images/plantes/Lierre_des_forets_Helix_LOUISE.jpg")
   # puts file
   plant.photo.attach(io: file, filename: "#{plant["name"]}.jpg", content_type: "image/jpg")
   # GardenPlant.create(nickname: "Heuss", pot_color: "brown", garden_id: Garden.first.id, plant_id: plant.id)
