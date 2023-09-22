@@ -45,6 +45,10 @@ class RegistrationsController < ApplicationController
     @user = User.find(params[:id])
     @user.update(delivery_params)
     @user.placed_order = true
+    @user.phone_number = format_tel_number(@user.phone_number)
+    @user.nom = @user.nom.downcase
+    @user.prenom = @user.prenom.downcase
+    @user.adresse_ville = @user.adresse_ville.downcase
 
     if @user.save
       # ApplicationMailer.welcome_email(current_user).deliver_now
@@ -52,6 +56,11 @@ class RegistrationsController < ApplicationController
     else
       render 'devise/registrations/edit_delivery_info', status: :unprocessable_entity
     end
+  end
+
+  def format_tel_number(number)
+    number.gsub!(" ", "")
+    number.gsub(".", "")
   end
 
   private
