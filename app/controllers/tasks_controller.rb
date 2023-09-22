@@ -18,11 +18,11 @@ class TasksController < ApplicationController
     auth_token = ENV['auth_token']
     @client = Twilio::REST::Client.new(account_sid, auth_token)
 
-    # message = @client.messages.create(
-    #   body: 'Attention votre compagnon a besoin de votre aide! Rendez vous sur votre espace Soin de Bonnefeuille http://www.bonnefeuille.fr/',
-    #   from: 'whatsapp:+14155238886',
-    #   to: 'whatsapp:+33613073726'
-    # )
+    message = @client.messages.create(
+      body: 'Cher Nicolas, pensez à prendre soin de vos nouveaux compagnons ! Nous vous informerons en temps voulu des soins à leur apporter. L équipe BonneFeuille 🪴',
+      from: 'whatsapp:+14155238886',
+      to: 'whatsapp:+33613073726'
+    )
 
   end
 
@@ -37,7 +37,7 @@ class TasksController < ApplicationController
 
   def create
     @garden_plant = GardenPlant.find(params[:garden_plant_id])
-    @task = @task.new(task_params)
+    @task = Task.new(task_params)
     @task.user = current_user
     @garden_plant.tasks = @tasks
     if @task.save
@@ -49,7 +49,7 @@ class TasksController < ApplicationController
 
   def update
     if @task.update(task_params)
-      set_done_time
+      set_completion_date
       respond_to do |format|
         format.html { redirect_to tasks_path, notice: 'Task was successfully updated.' }
         format.json { render json: { success: true } }
@@ -83,7 +83,7 @@ class TasksController < ApplicationController
   def update_task(id)
     date = DateTime.now
     @task = Task.find(id)
-    @task.update(done_time: date)
+    @task.update(completion_date: date)
   end
 
   def set_task
@@ -91,11 +91,11 @@ class TasksController < ApplicationController
   end
 
   def task_params
-    params.require(:task).permit(:activity, :criticity, :due_date, :done_time, :done)
+    params.require(:task).permit(:activity, :criticity, :due_date, :completion_date, :done)
   end
 
-  def set_done_time
-    @task.done_time = DateTime.now if @task.done == true
+  def set_completion_date
+    @task.completion_date = DateTime.now if @task.done == true
     @task.save
   end
 end

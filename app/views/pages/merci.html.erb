@@ -1,13 +1,9 @@
-<div class="merci" style="background-image: url(<%= image_path('cover.png', alt: 'Cover Photo') %>)">
+<div class="merci-bg-cover" style="background-image: url(<%= image_path('cover.png', alt: 'Cover Photo') %>)">
+      <h1 class="py-5">Merci <%= @user.prenom %> !</h1>
+  <div class="container-merci">
+      <h3 class="color-light-gray mt-5 p-5">
+        L'équipe Bonnefeuille est en train de s'occuper de votre commande et vous recontactera lorsqu'elle sera prête. 🪴
+      </h3>
 
-    <h1>Merci!</h1>
-
-    <p><%= "Je m’appelle #{garden_plant.nickname} et je suis très heureuse de vous rencontrer.
-      Je suis certaine que je serai très bien chez vous.
-      Je n’ai pas besoin de beaucoup d’attention mais tout de même,
-      un peu d’eau de temps à autre. Notre ami Canopée vous le rappellera.
-      On est déjà en train de me préparer, je serai bientôt chez vous." %>
-
-       </p>
-
+  </div>
 </div>

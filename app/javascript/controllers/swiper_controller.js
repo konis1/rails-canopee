@@ -26,6 +26,7 @@ const Swiper = class Swiper {
     var callback = this.currentCardEventsCallback.bind(this)
     this.currentCard.addEventListener('mousedown', callback)
     this.currentCard.addEventListener('touchstart', callback)
+    this.innerHTML = `PAS DE PLANTE DANS CETTE REGION`
   }
 
   activeCards() {
@@ -218,10 +219,10 @@ export default class extends Controller {
       window.location = data.garden_crush_path;
     }
     if (data.garden_plant_count) {
-      if (data.garden_plant_count == 1) {
-        this.counterTarget.innerHTML = `Voir mon crush ❤️`
+      if (data.garden_plant_count > 0) {
+        this.counterTarget.innerHTML = `VALIDER MA SELECTION`
       } else {
-        this.counterTarget.innerHTML = `Voir mes ${data.garden_plant_count } crushs ❤️`
+        this.counterTarget.innerHTML = `GLISSEZ A DROITE SI VOUS AIMEZ`
 
       }
     }

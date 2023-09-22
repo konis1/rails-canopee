@@ -1,6 +1,6 @@
- <div class="d-flex flex-column min-full-screen">
+ <div class="d-flex flex-column min-full-screen bg-dark-green">
   <div class="garden-plant-image" style="margin-bottom: -72px;">
-    <%= cl_image_tag @garden_plant.plant.photo.key, height: 387, class:"image-card" %>
+    <%= cl_image_tag @garden_plant.plant.photo.key, class:"image-card" %>
   </div>
   <div class="info-card flex-grow-1-1-0">
     <div class="container text-center mt-3">
@@ -26,7 +26,7 @@
 
         <div class="tasks-list">
           <% @garden_plant.tasks.near_future.each do |task| %>
-              <%# if task.done_time.nil? && task.due_date.year == Time.now.year && task.due_date.month == Time.now.month %>
+              <%# if task.completion_date.nil? && task.due_date.year == Time.now.year && task.due_date.month == Time.now.month %>
                 <div class="mb-2">
                   <%= simple_form_for task, url: update_done_task_path(task) , method: :patch, html: { class:"form-activitiy" } do |f| %>
                     <p class="m-0 form-left"><%= task.activity %></p>
@@ -44,7 +44,8 @@
         </div>
 
 
-      <%= link_to 'Retour à mon jardin', garden_path(@garden_plant.garden), class: "back d-block mt-5 text-center" %>
-      <div class="filler bg-dark-green"></div>
+      <div class="filler bg-dark-green">
+      <%= link_to 'Retour à mes plantes', garden_path(@garden_plant.garden), class: "back d-block mt-5 text-center" %>
+      </div>
   </div>
 </div>

@@ -6,8 +6,9 @@
   color: $dark-green;
 
   .crush-cards-container  {
-    height: 62vh;
+    height: 65vh;
     overflow-y: auto;
+    // max-height: 100vh; /* Définissez la hauteur maximale sur la hauteur de la fenêtre visible */
   }
 
   // .crush-container-top {
@@ -35,7 +36,9 @@
     color: white;
     font-size: 1.2rem;
     font-weight: bolder;
+    margin-bottom: 5rem;
   }
+
 }
 
 .crush h1, .crush h2, .crush p {
@@ -46,6 +49,6 @@
   text-align: justify;
 }
 
-.crush p {
-  margin-bottom: 0;
-}
+// .crush p {
+//   margin-bottom: 5rem;
+// }

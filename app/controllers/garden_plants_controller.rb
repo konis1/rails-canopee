@@ -20,7 +20,7 @@ class GardenPlantsController < ApplicationController
     @garden_plant = @garden_plants.new(garden_plant_params)
     @garden_plant.garden = @garden
     if @garden_plant.save
-      redirect_to garden_plant_path(@garden_plant), notice: 'Garden plant was successfully created.'
+      redirect_to garden_plant_path(@garden_plant), notice: 'Jardin créé avec succès'
     else
       render :new, status: :unprocessable_entity
     end

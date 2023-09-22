@@ -1,6 +1,6 @@
 <div class="container">
   <div class="d-flex justify-content-between mt-4">
-    <h2 class="page-title"><%= @garden.name %></h2>
+    <h2 class="page-title">Mes plantes<%#= @garden.name %></h2>
     <div class='garden-options mt-4 me-2'>
       <%= link_to garden_path(@garden), data: { turbo_method: :delete, turbo_confirm: 'Etes-vous sûr de vouloir supprimer votre espace ?' } do %>
         <i class="fa-solid fa-trash fa-2xl"></i>
@@ -67,7 +67,7 @@
         <% elsif @hourly_weather == 'cloudy' %>
           <i class="fa-regular fa-sun-cloud"></i>
         <% elsif @hourly_weather == 'checking weather...' %>
-          <p>Connextion perdue !</p>
+          <p>Connection perdue !</p>
         <% end %>
       </div>
     </div>
@@ -93,7 +93,6 @@
       <% end %>
     </div>
     <% else %>
-      <p class="page-description">Tu n'as pas encore de plantes dans ce jardin !</p>
-      <p class="page-description">N’hésite pas à cliquer sur l'un des boutons ci-dessous pour obtenir des suggestions de plantes ou changer les préférences du jardin 😊</p>
-  <% end %>
+    <%= render "gardens/labels/no_plants" %>
+    <% end %>
 </div>

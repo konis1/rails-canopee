@@ -1,11 +1,11 @@
 .min-container-scroll {
   height: calc(100vh - #{$navbar-bottom-height});
-  overflow-y: auto;
+  overflow-y:scroll;
 }
 
 .min-container-scroll-with-fixed-navbar-bottom {
   height: calc(100vh - #{$navbar-bottom-height});
-  overflow-y: auto;
+  overflow-y: scroll;
   .filler {
     min-height: $navbar-bottom-total-height;
   }
@@ -33,6 +33,7 @@
 
 .bg-cover {
   background-size: cover;
+  height: 100vh;
 }
 
 .legend-hidden {

@@ -1,5 +1,26 @@
-.page-description {
+.page-description-show {
+  color: $light-yellow;
+  font-size: 25px;
+  margin-bottom: 0;
+  background-image: linear-gradient(0deg, rgba(25, 54, 44, 1) 0%, rgba(25, 54, 44, 1) 70%, rgba(25, 54, 44, 0) 70%, rgba(0, 0, 0, 0) 100%), asset-url('cover-plant.png');
+  background-size: cover;
+  overflow-y: auto;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  width: 100vw;
+
+
+}
+
+.page-description-index {
   color: $dark-green;
   font-size: 17px;
-  margin-bottom: 0;
+}
+
+.no-plant-text {
+  margin-top: 15rem;
+  margin-left: 5rem;
+  margin-right: 5rem;
+  align-items: center;
+  justify-content: center;
 }

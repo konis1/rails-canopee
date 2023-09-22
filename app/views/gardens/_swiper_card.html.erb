@@ -5,7 +5,7 @@
     data-bs-target="#offcanvas-<%= garden_plant.id%>">
   <div class="swiper__card__content">
     <div class="swiper__card__content_top">
-      <h2><%= garden_plant.plant.name %></h2>
+      <%# <h2>= garden_plant.plant.name</h2> %>
       <h2><%= garden_plant.garden.plants.index(garden_plant.plant)+1 %>/<%= garden_plant.garden.plants.count%></h2>
       <%# La partie du haut de la carte %>
     </div>
@@ -13,7 +13,9 @@
     <% if garden_plant.plant.photo.attached? %>
       <%= cl_image_tag garden_plant.plant.photo.key, class: 'swiper__card__img' %>
     <% end %>
-
+    <div id="no-matching-plants" style="display: none;">
+      Aucune plante ne correspond à vos critères.
+    </div>
     <div class="swiper__card__content_bottom">
       <p class="swiper__card__name">
       </p>

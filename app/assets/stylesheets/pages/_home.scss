@@ -1,9 +1,10 @@
 // // Specific CSS for your home-page
 .home-splashscreen-background {
-  background-image: asset-url('gorillaz_canopee_3.png');
+  background-image: asset-url('Logo_BonneFeuille_ipad_air_best_quality.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+  // overflow-y: auto;
 }
 
 .page {
@@ -44,4 +45,18 @@
 .page-container {
   min-height: 100vh;
   width: 100vw;
+}
+
+.text-centered {
+  padding: 11rem;
+}
+
+.button_next_step_home {
+  border: solid $dark-green 1px;
+  border-radius: 25px;
+  background-color: $light-gray;
+  padding-left: 10px;
+  padding-right: 10px;
+  color: $dark-green;
+  margin-bottom: 5rem;
 }

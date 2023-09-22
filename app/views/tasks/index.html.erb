@@ -1,5 +1,5 @@
 <div class="tasks-index-wrapper min-full-screen" data-controller='task-checker'>
-  <div class="container title-and-tabs">
+  <div class="title-and-tabs">
     <h2 class="page-title">Mes soins</h2>
     <div class="tabs">
       <h3 class="tab-one" data-action='click->task-checker#all'>Toutes</h3>
@@ -8,7 +8,8 @@
     </div>
   </div>
 
-  <div class='container activities-lists' data-task-checker-target='all'>
+  <%# Ce container correspond aux accordéons recensant TOUTES les tâches. %>
+  <div class='activities-lists' data-task-checker-target='all'>
     <div class="accordion container accordion-border-radius" id="accordionAll">
       <% @all_activities.each do |activity| %>
         <% if activity == 'Arrose-moi !' %>
@@ -25,20 +26,22 @@
                   <section class="garden-plant-tasks">
                     <h6><%= garden_name %></h6>
                     <% tasks.each do |task| %>
-                      <article class="garden-plant-task-card">
-                        <%= simple_form_for task,
-                                            html: {
-                                              class: "#{task.criticity_name}-priority",
-                                              data: {
-                                                action:"submit->task-checker#markAsDone"
-                                              }
-                                            } do |f| %>
-                          <%= f.input :done, label: render(partial: 'shared/garden_plant_task_label', locals: { task: f.object }).html_safe, input_html: {checked: 'checked', class: 'task-checkbox'} %>
-                          <%= button_tag do %>
-                            <div></div>
+                      <% if task.completion_date.nil? %>
+                        <article class="garden-plant-task-card">
+                          <%= simple_form_for task,
+                                              html: {
+                                                class: "#{task.criticity_name}-priority",
+                                                data: {
+                                                  action:"submit->task-checker#markAsDone"
+                                                }
+                                              } do |f| %>
+                            <%= f.input :done, label: render(partial: 'shared/garden_plant_task_label', locals: { task: f.object }).html_safe, input_html: {checked: 'checked', class: 'task-checkbox'} %>
+                            <%= button_tag do %>
+                              <div></div>
+                            <% end %>
                           <% end %>
-                        <% end %>
-                      </article>
+                        </article>
+                      <% end %>
                     <% end %>
                   </section>
                 <% end %>
@@ -59,25 +62,22 @@
               <div class="accordion-body">
                 <ul>
                   <% @my_tasks.repotting.each do |task| %>
-                    <li>
-                      <% if task.criticity == '0' %>
-                        <%= simple_form_for task, html: { class: "low-priority", data: {action:"submit->task-checker#markAsDone"}} do |f| %>
-                          <%= f.input :done, label: "#{task.garden_plant.nickname}, dans #{task.garden_plant.garden.name}", input_html: {checked: 'checked', class: 'task-checkbox'} %>
-                          <%= f.submit "✔", class: 'task-submit' %>
-                        <% end %>
-                      <% elsif task.criticity == '1' %>
-                        <%= simple_form_for task, html: { class: "medium-priority", data: {action:"submit->task-checker#markAsDone"}} do |f| %>
-                          <%= f.input :done, label: "#{task.garden_plant.nickname}, dans #{task.garden_plant.garden.name}", input_html: {checked: 'checked', class: 'task-checkbox'} %>
-                          <%= button_tag class: "task-submit" do %>
+                    <% if task.completion_date.nil? %>
+                      <article class="garden-plant-task-card">
+                        <%= simple_form_for task,
+                                            html: {
+                                              class: "#{task.criticity_name}-priority",
+                                              data: {
+                                                action:"submit->task-checker#markAsDone"
+                                              }
+                                            } do |f| %>
+                          <%= f.input :done, label: render(partial: 'shared/garden_plant_task_label', locals: { task: f.object }).html_safe, input_html: {checked: 'checked', class: 'task-checkbox'} %>
+                          <%= button_tag do %>
+                            <div></div>
                           <% end %>
                         <% end %>
-                      <% elsif task.criticity == '2' %>
-                        <%= simple_form_for task, html: { class: "high-priority", data: {action:"submit->task-checker#markAsDone"}} do |f| %>
-                          <%= f.input :done, label: "#{task.garden_plant.nickname}, dans #{task.garden_plant.garden.name}", input_html: {checked: 'checked', class: 'task-checkbox'} %>
-                          <%= f.submit "✔", class: 'task-submit' %>
-                        <% end %>
-                      <% end %>
-                    </li>
+                      </article>
+                    <% end %>
                   <% end %>
                 </ul>
               </div>
@@ -88,6 +88,7 @@
     </div>
   </div>
 
+  <%# Ce container correspond aux accordéons recensant les tâches de la semaine en cours. %>
   <div class='container activities-lists d-none' data-task-checker-target='current'>
     <div class="accordion container accordion-border-radius"  id="accordionCurrent">
       <% @all_activities.each do |activity| %>
@@ -103,24 +104,22 @@
               <div class="accordion-body">
                 <ul>
                   <% @current_week_tasks.watering.each do |task| %>
-                    <li>
-                      <% if task.criticity == '0' %>
-                        <%= simple_form_for task, html: { class: "low-priority", data: {action:"submit->task-checker#markAsDone"}} do |f| %>
-                          <%= f.input :done, label: "#{task.garden_plant.nickname}, dans #{task.garden_plant.garden.name}", input_html: {checked: 'checked', class: 'task-checkbox'} %>
-                          <%= f.submit "✔", class: 'task-submit' %>
+                    <% if task.completion_date.nil? %>
+                      <article class="garden-plant-task-card">
+                        <%= simple_form_for task,
+                                            html: {
+                                              class: "#{task.criticity_name}-priority",
+                                              data: {
+                                                action:"submit->task-checker#markAsDone"
+                                              }
+                                            } do |f| %>
+                          <%= f.input :done, label: render(partial: 'shared/garden_plant_task_label', locals: { task: f.object }).html_safe, input_html: {checked: 'checked', class: 'task-checkbox'} %>
+                          <%= button_tag do %>
+                            <div></div>
+                          <% end %>
                         <% end %>
-                      <% elsif task.criticity == '1' %>
-                        <%= simple_form_for task, html: { class: "medium-priority", data: {action:"submit->task-checker#markAsDone"}} do |f| %>
-                          <%= f.input :done, label: "#{task.garden_plant.nickname}, dans #{task.garden_plant.garden.name}", input_html: {checked: 'checked', class: 'task-checkbox'} %>
-                          <%= f.submit "✔", class: 'task-submit' %>
-                        <% end %>
-                      <% elsif task.criticity == '2' %>
-                        <%= simple_form_for task, html: { class: "high-priority", data: {action:"submit->task-checker#markAsDone"}} do |f| %>
-                          <%= f.input :done, label: "#{task.garden_plant.nickname}, dans #{task.garden_plant.garden.name}", input_html: {checked: 'checked', class: 'task-checkbox'} %>
-                          <%= f.submit "✔", class: 'task-submit' %>
-                        <% end %>
-                      <% end %>
-                    </li>
+                      </article>
+                    <% end %>
                   <% end %>
                 </ul>
               </div>
@@ -140,24 +139,22 @@
               <div class="accordion-body">
                 <ul>
                   <% @current_week_tasks.repotting.each do |task| %>
-                    <li>
-                      <% if task.criticity == '0' %>
-                        <%= simple_form_for task, html: { class: "low-priority", data: {action:"submit->task-checker#markAsDone"}} do |f| %>
-                          <%= f.input :done, label: "#{task.garden_plant.nickname}, dans #{task.garden_plant.garden.name}", input_html: {checked: 'checked', class: 'task-checkbox'} %>
-                          <%= f.submit "✔", class: 'task-submit' %>
+                    <% if task.completion_date.nil? %>
+                      <article class="garden-plant-task-card">
+                        <%= simple_form_for task,
+                                            html: {
+                                              class: "#{task.criticity_name}-priority",
+                                              data: {
+                                                action:"submit->task-checker#markAsDone"
+                                              }
+                                            } do |f| %>
+                          <%= f.input :done, label: render(partial: 'shared/garden_plant_task_label', locals: { task: f.object }).html_safe, input_html: {checked: 'checked', class: 'task-checkbox'} %>
+                          <%= button_tag do %>
+                            <div></div>
+                          <% end %>
                         <% end %>
-                      <% elsif task.criticity == '1' %>
-                        <%= simple_form_for task, html: { class: "medium-priority", data: {action:"submit->task-checker#markAsDone"}} do |f| %>
-                          <%= f.input :done, label: "#{task.garden_plant.nickname}, dans #{task.garden_plant.garden.name}", input_html: {checked: 'checked', class: 'task-checkbox'} %>
-                          <%= f.submit "✔", class: 'task-submit' %>
-                        <% end %>
-                      <% elsif task.criticity == '2' %>
-                        <%= simple_form_for task, html: { class: "high-priority", data: {action:"submit->task-checker#markAsDone"}} do |f| %>
-                          <%= f.input :done, label: "#{task.garden_plant.nickname}, dans #{task.garden_plant.garden.name}", input_html: {checked: 'checked', class: 'task-checkbox'} %>
-                          <%= f.submit "✔", class: 'task-submit' %>
-                        <% end %>
-                      <% end %>
-                    </li>
+                      </article>
+                    <% end %>
                   <% end %>
                 </ul>
               </div>
@@ -168,6 +165,7 @@
     </div>
   </div>
 
+  <%# Ce container correspond aux accordéons recensant les tâches de la semaine prochaine. %>
   <div class='container activities-lists d-none' data-task-checker-target='next'>
     <div class="accordion container accordion-border-radius"  id="accordionNext">
       <% @all_activities.each do |activity| %>
@@ -183,24 +181,22 @@
               <div class="accordion-body">
                 <ul>
                   <% @next_week_tasks.watering.each do |task| %>
-                    <li>
-                      <% if task.criticity == '0' %>
-                        <%= simple_form_for task, html: { class: "low-priority", data: {action:"submit->task-checker#markAsDone"}} do |f| %>
-                          <%= f.input :done, label: "#{task.garden_plant.nickname}, dans #{task.garden_plant.garden.name}", input_html: {checked: 'checked', class: 'task-checkbox'} %>
-                          <%= f.submit "✔", class: 'task-submit' %>
+                    <% if task.completion_date.nil? %>
+                      <article class="garden-plant-task-card">
+                        <%= simple_form_for task,
+                                            html: {
+                                              class: "#{task.criticity_name}-priority",
+                                              data: {
+                                                action:"submit->task-checker#markAsDone"
+                                              }
+                                            } do |f| %>
+                          <%= f.input :done, label: render(partial: 'shared/garden_plant_task_label', locals: { task: f.object }).html_safe, input_html: {checked: 'checked', class: 'task-checkbox'} %>
+                          <%= button_tag do %>
+                            <div></div>
+                          <% end %>
                         <% end %>
-                      <% elsif task.criticity == '1' %>
-                        <%= simple_form_for task, html: { class: "medium-priority", data: {action:"submit->task-checker#markAsDone"}} do |f| %>
-                          <%= f.input :done, label: "#{task.garden_plant.nickname}, dans #{task.garden_plant.garden.name}", input_html: {checked: 'checked', class: 'task-checkbox'} %>
-                          <%= f.submit "✔", class: 'task-submit' %>
-                        <% end %>
-                      <% elsif task.criticity == '2' %>
-                        <%= simple_form_for task, html: { class: "high-priority", data: {action:"submit->task-checker#markAsDone"}} do |f| %>
-                          <%= f.input :done, label: "#{task.garden_plant.nickname}, dans #{task.garden_plant.garden.name}", input_html: {checked: 'checked', class: 'task-checkbox'} %>
-                          <%= f.submit "✔", class: 'task-submit' %>
-                        <% end %>
-                      <% end %>
-                    </li>
+                      </article>
+                    <% end %>
                   <% end %>
                 </ul>
               </div>
@@ -220,24 +216,22 @@
               <div class="accordion-body">
                 <ul>
                   <% @next_week_tasks.repotting.each do |task| %>
-                    <li>
-                      <% if task.criticity == '0' %>
-                        <%= simple_form_for task, html: { class: "low-priority", data: {action:"submit->task-checker#markAsDone"}} do |f| %>
-                          <%= f.input :done, label: "#{task.garden_plant.nickname}, dans #{task.garden_plant.garden.name}", input_html: {checked: 'checked', class: 'task-checkbox'} %>
-                          <%= f.submit "✔", class: 'task-submit' %>
+                    <% if task.completion_date.nil? %>
+                      <article class="garden-plant-task-card">
+                        <%= simple_form_for task,
+                                            html: {
+                                              class: "#{task.criticity_name}-priority",
+                                              data: {
+                                                action:"submit->task-checker#markAsDone"
+                                              }
+                                            } do |f| %>
+                          <%= f.input :done, label: render(partial: 'shared/garden_plant_task_label', locals: { task: f.object }).html_safe, input_html: {checked: 'checked', class: 'task-checkbox'} %>
+                          <%= button_tag do %>
+                            <div></div>
+                          <% end %>
                         <% end %>
-                      <% elsif task.criticity == '1' %>
-                        <%= simple_form_for task, html: { class: "medium-priority", data: {action:"submit->task-checker#markAsDone"}} do |f| %>
-                          <%= f.input :done, label: "#{task.garden_plant.nickname}, dans #{task.garden_plant.garden.name}", input_html: {checked: 'checked', class: 'task-checkbox'} %>
-                          <%= f.submit "✔", class: 'task-submit' %>
-                        <% end %>
-                      <% elsif task.criticity == '2' %>
-                        <%= simple_form_for task, html: { class: "high-priority", data: {action:"submit->task-checker#markAsDone"}} do |f| %>
-                          <%= f.input :done, label: "#{task.garden_plant.nickname}, dans #{task.garden_plant.garden.name}", input_html: {checked: 'checked', class: 'task-checkbox'} %>
-                          <%= f.submit "✔", class: 'task-submit' %>
-                        <% end %>
-                      <% end %>
-                    </li>
+                      </article>
+                    <% end %>
                   <% end %>
                 </ul>
               </div>

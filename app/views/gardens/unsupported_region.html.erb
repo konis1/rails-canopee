@@ -1,0 +1,16 @@
+<div class="merci-bg-cover" style="background-image: url(<%= image_path('cover.png', alt: 'Cover Photo') %>)">
+      <h1 class="py-5 mt-2">Désolé !</h1>
+  <div class="container-merci">
+      <h3 class="color-light-gray mt-5 p-5">
+        Cette région n'est pas encore supportée par l'application.
+      </h3>
+      <h3 class="color-light-gray p-5">
+        A ce jour, BonneFeuille livre dans toute l'Ile de France et les Hauts de France !
+      </h3>
+          <div class="btn btn-new-plant-unsupported-region">
+          <%= link_to new_garden_path, class: "custom-button" do %>
+            <h5>SELECTIONNER UNE NOUVELLE PLANTE !</h5>
+          <% end %>
+          </div>
+  </div>
+</div>

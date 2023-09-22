@@ -29,14 +29,12 @@ button {
 //       grid-template-columns: repeat(2, 1fr);
 //       grid-gap: 10px;
 // }
-.btn-primary {
-  background-color: $dark-green;
-  padding: 4px;
+.btn-valider {
+  background-color: $light-yellow;
+  padding: 10px;
   border-radius: 20px;
-  color: white;
+  color: $dark-green;
   align-items: center;
-  padding-right: 12px;
-  padding-left: 12px;
 }
 
 .swiper {
@@ -47,13 +45,14 @@ button {
   padding-top: 5.875rem;
   bottom: 5.875rem;
   overflow: hidden;
-  padding-top: 1.5rem;
+  // padding-top: 1.5rem;
+  padding: 2rem;
 
   &__content {
     user-select: none;
     height: 100%;
     width: 100%;
-    padding: 0 1rem 2rem 1rem;
+    padding: 0 1rem 3rem 1rem;
   }
 
   &__card-cont {

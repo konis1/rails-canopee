@@ -2,6 +2,8 @@
 # générer les tâches à effectuer prochainement pour la plante en question.
 class GenerateDailyTasksForPlantJob
   include Sidekiq::Job
+  require 'rubygems'
+  require 'twilio-ruby'
 
   def perform(garden_plant_id, weather_data)
     @weather_data = weather_data
@@ -9,9 +11,18 @@ class GenerateDailyTasksForPlantJob
     @garden_plant = GardenPlant.find(garden_plant_id)
 
     generate_plant_watering_task(@weather_data['past_rain_array'], @weather_data['today_rain'])
-    # generate_plant_sheltering_task
-    # generate_plant_cover_task
-    # generate_mulching_task
+    generate_plant_sheltering_task
+    generate_plant_cover_task
+    generate_mulching_task
+    due_tasks = Task.where(due_date: Date.today)
+
+    due_tasks.each do |task|
+      # Assuming the user model has a phone_number attribute
+      user_phone_number = task.user.phone_number
+
+      # Send WhatsApp notification
+      WhatsappNotificationService.new(user_phone_number, "Your task '#{task.name}' is due today!").send
+    end
   end
 
   private
@@ -27,7 +38,8 @@ class GenerateDailyTasksForPlantJob
         criticity: 0,
         due_date: DateTime.now + (watering_interval * 0.7).day,
         start_time: DateTime.now,
-        garden_plant: @garden_plant
+        garden_plant: @garden_plant,
+        user: @garden_plant.user
       )
     end
   end

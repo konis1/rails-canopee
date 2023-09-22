@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_11_170649) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_21_170915) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -112,13 +112,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_11_170649) do
     t.string "activity"
     t.integer "criticity"
     t.datetime "due_date"
-    t.datetime "done_time"
+    t.datetime "completion_date"
     t.bigint "garden_plant_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.datetime "start_time"
     t.boolean "done", default: false
+    t.bigint "user_id", null: false
     t.index ["garden_plant_id"], name: "index_tasks_on_garden_plant_id"
+    t.index ["user_id"], name: "index_tasks_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -130,7 +132,22 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_11_170649) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "admin", default: false, null: false
+    t.string "phone_number"
+    t.integer "role"
+    t.string "nom"
+    t.string "prenom"
+    t.string "adresse_ville"
+    t.string "adresse_code_postal"
+    t.string "adresse_infos_complementaires_1"
+    t.string "adresse_infos_complementaires_2"
+    t.bigint "garden_id"
+    t.string "code_achat"
+    t.string "adresse_numero"
+    t.string "adresse_type_voie"
+    t.string "adresse_nom_voie"
+    t.boolean "placed_order", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["garden_id"], name: "index_users_on_garden_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
@@ -142,4 +159,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_11_170649) do
   add_foreign_key "reviews", "plants"
   add_foreign_key "reviews", "users"
   add_foreign_key "tasks", "garden_plants"
+  add_foreign_key "tasks", "users"
+  add_foreign_key "users", "gardens"
 end

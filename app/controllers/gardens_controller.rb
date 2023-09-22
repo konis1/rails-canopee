@@ -1,6 +1,5 @@
 class GardensController < ApplicationController
-  before_action :set_garden, only: [:show, :edit, :update, :destroy, :select_plants, :crush, :validate_plants]
-
+  before_action :set_garden, only: %i[show edit update destroy select_plants crush validate_plants unsupported_region]
 
   def index
     @gardens = Garden.all
@@ -22,10 +21,15 @@ class GardensController < ApplicationController
     climate_checker = WeatherService.new(@garden.latitude, @garden.longitude, @garden.location)
     @garden.climate = climate_checker.determine_climate
 
-    if @garden.save
-      redirect_to select_plants_path(@garden), notice: 'Garden was successfully created.'
+    if @garden.climate == 'semi-océanique'
+      if @garden.save
+        redirect_to select_plants_path(@garden), notice: 'Garden was successfully created.'
+      else
+        render :new, status: :unprocessable_entity
+      end
     else
-      render :new, status: :unprocessable_entity
+      @garden.save
+      redirect_to unsupported_region_path(@garden)
     end
   end
 
@@ -34,7 +38,7 @@ class GardensController < ApplicationController
 
   def update
     if @garden.update(garden_params)
-      redirect_to garden_path(@garden), notice: 'Garden was successfully updated.'
+      redirect_to select_plants_path(@garden), notice: 'Garden was successfully updated.'
     else
       render :edit, status: :unprocessable_entity
 
@@ -46,12 +50,12 @@ class GardensController < ApplicationController
     redirect_to gardens_path, notice: 'Garden was successfully destroyed.'
   end
 
+  # Valide le choix final de plantes d'un jardin et renvoie vers une demande d'infos de livraison.
   def validate_plants
-    # garden_plants = GardenPlant.where(id: params.dig(:garden_plant, :choices))
     garden_plants = @garden.garden_plants.selected.all
     garden_plants.each(&:validated!)
 
-    redirect_to garden_path(@garden)
+    redirect_to edit_delivery_info_path(current_user)
   end
 
   def select_plants
@@ -62,6 +66,9 @@ class GardensController < ApplicationController
     @garden_plants = @garden.garden_plants.selected.all
   end
 
+  def unsupported_region
+    @garden.destroy
+  end
 
   private
 
@@ -70,8 +77,6 @@ class GardensController < ApplicationController
   end
 
   def garden_params
-
     params.require(:garden).permit(:name, :light, :size, :care_willing, :location, :color)
-
   end
 end

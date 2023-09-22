@@ -25,6 +25,32 @@
   border: 2px solid red;
 }
 
-.color-dark-green {
+.dark-green-title {
   color: $dark-green;
+  text-align: left;
+}
+
+.light-yellow-instruction {
+  color: $light-yellow;
+  text-align: center;
+}
+
+.medium-image {
+  width: 30%;
+  height: 30%;
+  border-radius: 20px;
+
+}
+
+.color-light-gray {
+  color: $light-gray;
+}
+
+.plant-selector-background {
+  background-image: linear-gradient(0deg, rgba(25, 54, 44, 1) 0%, rgba(25, 54, 44, 1) 70%, rgba(25, 54, 44, 0) 70%, rgba(0, 0, 0, 0) 100%), asset-url('cover-plant.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position-y: 30%;
+  min-height: 100vh;
+  width: 100vw;
 }
