@@ -1,5 +1,5 @@
 class GardensController < ApplicationController
-  before_action :set_garden, only: %i[show edit update destroy select_plants crush validate_plants]
+  before_action :set_garden, only: %i[show edit update destroy select_plants crush validate_plants unsupported_region]
 
   def index
     @gardens = Garden.all
@@ -21,10 +21,15 @@ class GardensController < ApplicationController
     climate_checker = WeatherService.new(@garden.latitude, @garden.longitude, @garden.location)
     @garden.climate = climate_checker.determine_climate
 
-    if @garden.save
-      redirect_to select_plants_path(@garden), notice: 'Garden was successfully created.'
+    if @garden.climate == 'semi-océanique'
+      if @garden.save
+        redirect_to select_plants_path(@garden), notice: 'Garden was successfully created.'
+      else
+        render :new, status: :unprocessable_entity
+      end
     else
-      render :new, status: :unprocessable_entity
+      @garden.save
+      redirect_to unsupported_region_path(@garden)
     end
   end
 
@@ -59,6 +64,10 @@ class GardensController < ApplicationController
 
   def crush
     @garden_plants = @garden.garden_plants.selected.all
+  end
+
+  def unsupported_region
+    @garden.destroy
   end
 
   private

@@ -46,6 +46,9 @@ Rails.application.routes.draw do
   resources :tasks, only: [:update]
   resources :pages, only: %i[home cover]
 
+  # Cette route sert à prévenir l'utilisateur que sa région n'est pas supportée par l'app en ce moment.
+  get "gardens/:id/unsupported_region", to: "gardens#unsupported_region", as: :unsupported_region
+
   post "gardens/:id/validate_plants", to: "gardens#validate_plants", as: :validate_plants_garden
   get "gardens/:id/select_plants", to: "gardens#select_plants", as: :select_plants
   get "gardens/:id/crush", to: "gardens#crush", as: :crush
