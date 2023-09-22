@@ -29,7 +29,7 @@ class Garden < ApplicationRecord
 
     # Filtrer les plantes en fonction du light_need
     if [0].include?(self.light)
-      plants = plants.or(Plant.where(light_need: [0]))
+      plants = plants.(Plant.where(light_need: [0, 1]))
     elsif [2].include?(self.light)
       plants = plants.or(Plant.where(light_need: [1, 2]))
     end
@@ -37,8 +37,8 @@ class Garden < ApplicationRecord
     # Filtrer les plantes en fonction du care_willing
     if [2].include?(self.care_willing)
       plants = plants.or(Plant.where(care_frequency: [0, 1, 2]))
-    elsif [0].include?(self.care_willing)
-      plants = plants.or(Plant.where(care_frequency: [0]))
+    elsif [1].include?(self.care_willing)
+      plants = plants.or(Plant.where(care_frequency: [0, 1]))
     end
 
     # Créer les garden_plants correspondantes
