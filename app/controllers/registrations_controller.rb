@@ -46,6 +46,9 @@ class RegistrationsController < ApplicationController
     @user.update(delivery_params)
     @user.placed_order = true
     @user.phone_number = format_tel_number(@user.phone_number)
+    @user.nom = @user.nom.downcase
+    @user.prenom = @user.prenom.downcase
+    @user.adresse_ville = @user.adresse_ville.downcase
 
     if @user.save
       # ApplicationMailer.welcome_email(current_user).deliver_now
