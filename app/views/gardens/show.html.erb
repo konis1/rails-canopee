@@ -91,18 +91,8 @@
             </div>
           <% end %>
       <% end %>
-    </div>
     <% else %>
-  <% end %>
-</div>
-<div class="page-description-show">
-  <div class="no-plant-text">
-    <p>Vous n'avez pas encore de plantes !</p>
-    <p>Vous pouvez relancer la recherche pour trouver la plante qui vous convient 😊</p>
-  </div>
-  <%= link_to new_garden_path, class: "custom-button" do %>
-    <div class="btn btn-new-plant">
-      <h5>SELECTIONNER UNE NOUVELLE PLANTE !</h5>
+    <%= render "gardens/labels/no_plants" %>
+    <% end %>
     </div>
-  <% end %>
 </div>
