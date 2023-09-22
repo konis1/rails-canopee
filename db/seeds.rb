@@ -425,7 +425,7 @@ plant = Plant.create(name: "Passiflore caerulea clear sky",
 ########################
 
 puts "Adding plants number 4"
-plant = Plant.create(name: "Lierre des bois Helix",
+plant = Plant.create(name: "Lierre des forêts Helix",
   color: "Green",
   caducity: "Persistant",
   care_frequency: 0,
