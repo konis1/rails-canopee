@@ -17,16 +17,16 @@ module RailsCanopee
     config.load_defaults 7.0
     config.active_job.queue_adapter = :sidekiq
 
-    config.action_mailer.delivery_method = :smtp
-      config.action_mailer.smtp_settings = {
-          :address => "smtp.gmail.com",
-          :port => 587,
-          :domain => "gmail.com",
-          :user_name => "bonnefeuilleparis@gmail.com",
-          :password => 'GMAIL_PASS',
-          :authentication => "plain",
-          :enable_starttls_auto => true
-      }
+    # config.action_mailer.delivery_method = :smtp
+    #   config.action_mailer.smtp_settings = {
+    #       :address => "smtp.gmail.com",
+    #       :port => 587,
+    #       :domain => "gmail.com",
+    #       :user_name => "bonnefeuilleparis@gmail.com",
+    #       :password => 'GMAIL_PASS',
+    #       :authentication => "plain",
+    #       :enable_starttls_auto => true
+    #   }
 
     # Configuration for the application, engines, and railties goes here.
     #
