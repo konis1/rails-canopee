@@ -1,17 +1,13 @@
+require "sidekiq/web"
+require 'sidekiq/cron/web'
+
 Rails.application.routes.draw do
-  # Les quatre lignes suivantes servent à créer un endpoint 'sidekiq' pour afficher l'interface web de la gem.
-  # Mieux vaut les supprimer une fois l'app déployable, je pense.
-  require "sidekiq/web"
-  RailsCanopee::Application.routes.draw do
-    mount Sidekiq::Web => '/sidekiq'
-  end
-
   authenticated :user, ->(user) { user.admin? } do
-
     get "admin", to: "pages#admin"
     resources :gardens do
       resources :garden_plants, only: %i[new create update destroy]
     end
+    mount Sidekiq::Web => '/sidekiq'
   end
 
   authenticated :user, ->(user) { user.vip? } do
