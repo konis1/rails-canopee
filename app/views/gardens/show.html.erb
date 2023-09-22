@@ -93,7 +93,16 @@
       <% end %>
     </div>
     <% else %>
-      <p class="page-description">Tu n'as pas encore de plantes dans ce jardin !</p>
-      <p class="page-description">N’hésite pas à cliquer sur l'un des boutons ci-dessous pour obtenir des suggestions de plantes ou changer les préférences du jardin 😊</p>
+  <% end %>
+</div>
+<div class="page-description-show">
+  <div class="no-plant-text">
+    <p>Vous n'avez pas encore de plantes !</p>
+    <p>Vous pouvez relancer la recherche pour trouver la plante qui vous convient 😊</p>
+  </div>
+  <%= link_to new_garden_path, class: "custom-button" do %>
+    <div class="btn btn-new-plant">
+      <h5>SELECTIONNER UNE NOUVELLE PLANTE !</h5>
+    </div>
   <% end %>
 </div>
