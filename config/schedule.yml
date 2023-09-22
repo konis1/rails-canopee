@@ -1,7 +1,7 @@
-# Il s'agit d'un fichier YAML désérialisé en un hash qui indique quelles tâches doivent être planifiées, et à quel
-# rythme. En ce moment, le timing est une mise à jour tous les jours à 4 heures du mat (ce qui correspond à un cron de
-# 00 02 * * *, Sidekiq est en retard de deux heures par rapport à l'heure française).
-retrieve_gardens:
-      cron: '00 02 * * *'
-      # cron: '*/1 * * * *'
-      class: 'RetrieveGardensJob'
+# # Il s'agit d'un fichier YAML désérialisé en un hash qui indique quelles tâches doivent être planifiées, et à quel
+# # rythme. En ce moment, le timing est une mise à jour tous les jours à 4 heures du mat (ce qui correspond à un cron de
+# # 00 02 * * *, Sidekiq est en retard de deux heures par rapport à l'heure française).
+# retrieve_gardens:
+#       cron: '00 02 * * *'
+#       # cron: '*/1 * * * *'
+#       class: 'RetrieveGardensJob'
