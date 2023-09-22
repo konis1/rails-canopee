@@ -369,7 +369,7 @@ plant = Plant.create(name: "Passiflore Caerulea",
   light_need: [0, 1],
   climate: [
     "Climat océanique",
-    "Climat semi-océanique",
+    # "Climat semi-océanique",
     "Climat continental",
     "Climat montagnard",
     "Climat méditerranéen"
