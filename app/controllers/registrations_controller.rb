@@ -62,7 +62,8 @@ class RegistrationsController < ApplicationController
 
   def format_tel_number(number)
     number.gsub!(" ", "")
-    number.gsub(".", "")
+    number.gsub!(".", "")
+    number.gsub("+33", "0") if number.start_with?('+33')
   end
 
   private
