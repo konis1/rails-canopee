@@ -48,6 +48,8 @@ class RegistrationsController < ApplicationController
     @user.phone_number = format_tel_number(@user.phone_number)
     @user.nom = @user.nom.downcase
     @user.prenom = @user.prenom.downcase
+    @user.adresse_type_voie = @user.adresse_type_voie.downcase
+    @user.adresse_nom_voie = @user.adresse_nom_voie.downcase
     @user.adresse_ville = @user.adresse_ville.downcase
 
     if @user.save
